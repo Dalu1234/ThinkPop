@@ -264,6 +264,43 @@ export default function ChatPanel({ messages, onSend, aiState }) {
   }
 
   return (
+    <>
+      <motion.button
+        type="button"
+        className={`big-center-mic ${recording ? 'mic-active' : ''} ${sttBusy ? 'mic-busy' : ''}`}
+        onClick={() => void toggleMic()}
+        disabled={isDisabled || sttBusy}
+        title={recording ? 'Stop and transcribe' : 'Speak your question'}
+        whileHover={!isDisabled && !sttBusy ? { scale: 1.15 } : {}}
+        whileTap={!isDisabled && !sttBusy ? { scale: 0.9 } : {}}
+      >
+        {sttBusy ? <span style={{fontSize: '32px', color: 'black'}}>&hellip;</span> : (
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+            <line x1="12" x2="12" y1="19" y2="22" />
+          </svg>
+        )}
+      </motion.button>
+      <div 
+        className={`chat-visualizer-shell ${recording ? 'is-live' : ''}`}
+        style={{
+          position: 'fixed',
+          top: 'calc(82% + 56px)', 
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '280px',
+          opacity: recording ? 1 : 0,
+          pointerEvents: 'none',
+          zIndex: 14
+        }}
+      >
+        <canvas
+          ref={visualizerCanvasRef}
+          className="chat-visualizer-canvas"
+          aria-hidden="true"
+        />
+      </div>
     <motion.div
       className="chat-panel"
       animate={{ y: focused ? -18 : 0 }}
@@ -327,13 +364,7 @@ export default function ChatPanel({ messages, onSend, aiState }) {
       </div>
 
       {/* Input row */}
-      <div className={`chat-visualizer-shell ${recording ? 'is-live' : ''}`}>
-        <canvas
-          ref={visualizerCanvasRef}
-          className="chat-visualizer-canvas"
-          aria-hidden="true"
-        />
-      </div>
+
 
       <div className="chat-input-row">
         <motion.button
@@ -379,5 +410,6 @@ export default function ChatPanel({ messages, onSend, aiState }) {
 
       {sttError && <div className="chat-inline-error">{sttError}</div>}
     </motion.div>
+    </>
   )
 }

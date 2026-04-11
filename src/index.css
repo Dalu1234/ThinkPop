@@ -761,3 +761,73 @@ body {
   opacity: 0.32;
   cursor: not-allowed;
 }
+
+/* ============================================================
+   BIG CENTER MIC BUTTON
+   ============================================================ */
+.big-center-mic {
+  position: fixed;
+  top: calc(82% - 48px);
+  left: calc(50% - 48px);
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border: 4px solid white;
+  color: black;
+  transition: box-shadow 0.25s, border-color 0.25s, background 0.25s, transform 0.2s;
+  z-index: 9999;
+}
+
+.big-center-mic.mic-active {
+  background: rgba(255, 110, 180, 0.22);
+  border-color: #ff6eb4;
+  animation: bigMicGlow 1.1s ease-in-out infinite;
+}
+
+.big-center-mic:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.big-center-mic.mic-busy:disabled {
+  opacity: 0.85;
+  cursor: wait;
+  animation: none;
+}
+
+@keyframes bigMicGlow {
+  0%, 100% { box-shadow: 0 0 16px rgba(255, 110, 180, 0.5); }
+  50%       { box-shadow: 0 0 40px rgba(255, 110, 180, 0.85); }
+}
+
+/* ============================================================
+   BAYMAX WELCOME TEXT
+   ============================================================ */
+.baymax-welcome-text {
+  position: fixed;
+  top: calc(50% - 140px);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  text-align: center;
+  font-size: 19px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+  max-width: 650px;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+
+/* ============================================================
+   HIDE CHAT CONVERSATION
+   ============================================================ */
+.chat-messages, .suggestions, .chat-panel {
+  display: none !important;
+}

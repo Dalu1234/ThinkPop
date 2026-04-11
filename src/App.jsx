@@ -1,8 +1,9 @@
-import { useState, useCallback, useRef } from 'react'
+import { useState, useCallback, useRef, useEffect } from 'react'
+import LandingPage from './LandingPage'
 import ThreeBackground from './components/ThreeBackground'
 import TopicCard from './components/TopicCard'
 import ChatPanel from './components/ChatPanel'
-import ObjectStage from './components/ObjectStage'
+
 import AIStatus from './components/AIStatus'
 import Skyline from './components/Skyline'
 import { textToSpeechBlob, playAudioBlob } from './lib/elevenlabs'
@@ -65,7 +66,7 @@ function BaymaxSpeakingBars({ levels, active }) {
   )
 }
 
-export default function App() {
+function BaymaxExperience() {
   const [aiState, setAiState] = useState(null)
   const [aiError, setAiError] = useState('')
   const [aiAudioLevels, setAiAudioLevels] = useState([])
@@ -172,13 +173,16 @@ export default function App() {
         active={aiAudioActive || aiState === 'speaking'}
       />
 
+      <div className="baymax-welcome-text">
+        Hi! I'm Baymax. Ask me anything — I'll explain it, show you a 3D model, and make learning fun!
+      </div>
       <AIStatus state={aiError ? 'error' : aiState} message={aiError} />
       <TopicCard topic={TOPICS[topicIndex]} />
-      <ObjectStage
-        object={OBJECTS[objectIndex]}
-        visible={objectVisible}
-        active={aiState === 'building'}
-      />
+
+
+
+
+
       <ChatPanel
         messages={messages}
         onSend={sendMessage}
@@ -186,4 +190,20 @@ export default function App() {
       />
     </div>
   )
+}
+
+export default function App() {
+  const [route, setRoute] = useState(() => window.location.hash || '#/')
+
+  useEffect(() => {
+    const syncRoute = () => setRoute(window.location.hash || '#/')
+    window.addEventListener('hashchange', syncRoute)
+    return () => window.removeEventListener('hashchange', syncRoute)
+  }, [])
+
+  if (route === '#/baymax') {
+    return <BaymaxExperience />
+  }
+
+  return <LandingPage />
 }
