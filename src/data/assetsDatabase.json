@@ -17,7 +17,7 @@
     "id": "model_03",
     "name": "Cat Animation",
     "path": "/models/cat_animation.glb",
-    "category": "Characters",
+    "category": "Animals",
     "tags": ["cat", "animation", "animal"]
   },
   {
@@ -96,5 +96,75 @@
     "path": "/models/paprika.glb",
     "category": "Food",
     "tags": ["paprika", "pepper", "vegetable", "food"]
+  },
+  {
+    "id": "model_15",
+    "name": "Violin",
+    "path": "/models/violin.glb",
+    "category": "Instruments",
+    "tags": ["violin", "music", "string", "instrument"]
+  },
+  {
+    "id": "model_16",
+    "name": "Trumpet",
+    "path": "/models/trumpet.glb",
+    "category": "Instruments",
+    "tags": ["trumpet", "music", "brass", "instrument"]
+  },
+  {
+    "id": "model_17",
+    "name": "Fender Electric Guitar",
+    "path": "/models/fender_electric_guitar.glb",
+    "category": "Instruments",
+    "tags": ["fender", "electric guitar", "guitar", "music", "instrument"]
+  },
+  {
+    "id": "model_18",
+    "name": "Saxophone",
+    "path": "/models/saxophone.glb",
+    "category": "Instruments",
+    "tags": ["saxophone", "music", "woodwind", "instrument"]
+  },
+  {
+    "id": "model_19",
+    "name": "Gibson ES-335 Vintage Burst Electric Guitar",
+    "path": "/models/gibson_es-335_vintage_burst_electric_guitar.glb",
+    "category": "Instruments",
+    "tags": ["gibson", "es-335", "electric guitar", "guitar", "music", "instrument"]
+  },
+  {
+    "id": "model_20",
+    "name": "Emperor Penguin",
+    "path": "/models/emperor_penguin.glb",
+    "category": "Animals",
+    "tags": ["penguin", "animal", "bird", "wildlife"]
+  },
+  {
+    "id": "model_21",
+    "name": "Bennington Marble",
+    "path": "/models/bennington_marble.glb",
+    "category": "Props",
+    "tags": ["marble", "toy", "glass", "object"]
+  },
+  {
+    "id": "model_22",
+    "name": "Dolphin",
+    "path": "/models/dolphin.glb",
+    "category": "Animals",
+    "tags": ["dolphin", "animal", "sea", "marine"]
+  },
+  {
+    "id": "model_23",
+    "name": "Realistic Deer",
+    "path": "/models/realistic_deer_3d_model_2.0_demo_free_download.glb",
+    "category": "Animals",
+    "tags": ["deer", "animal", "wildlife", "realistic"]
+  },
+  {
+    "id": "model_24",
+    "name": "Shiny Fish",
+    "path": "/models/shiny_fish.glb",
+    "category": "Animals",
+    "tags": ["fish", "animal", "sea", "marine"]
   }
 ]
