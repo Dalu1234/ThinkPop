@@ -5,12 +5,14 @@ const AGENT_ID = import.meta.env.VITE_ELEVENLABS_AGENT_ID || ''
 export default function VoiceConversationBar({
   onUserTranscript,
   onAgentResponse,
+  onUserSpeechDetected,
   onVoicePhaseChange,
 }) {
-  const { active, starting, lastError, captions, start, stop } = useElevenLabsConversation({
+  const { active, starting, lastError, captions, vadScore, vadThreshold, start, stop } = useElevenLabsConversation({
     agentId: AGENT_ID,
     onUserTranscript,
     onAgentResponse,
+    onUserSpeechDetected,
     onPhaseChange: onVoicePhaseChange,
   })
 
@@ -22,6 +24,31 @@ export default function VoiceConversationBar({
     <div className="voice-conv-bar">
       {showLive && (
         <div className="voice-live-captions" aria-live="polite">
+          <div className="voice-live-meter">
+            <div className="voice-live-meter-head">
+              <span className="voice-live-meter-label">Mic activity</span>
+              <span className={`voice-live-meter-state ${vadScore > vadThreshold ? 'is-hot' : ''}`}>
+                {vadScore > vadThreshold ? 'Hearing you' : 'Waiting for input'}
+              </span>
+            </div>
+            <div
+              className="voice-live-meter-track"
+              role="meter"
+              aria-label="Microphone activity"
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-valuenow={Math.round(vadScore * 100)}
+            >
+              <div
+                className={`voice-live-meter-fill ${vadScore > vadThreshold ? 'is-hot' : ''}`}
+                style={{ width: `${Math.max(6, Math.round(vadScore * 100))}%` }}
+              />
+              <div
+                className="voice-live-meter-threshold"
+                style={{ left: `${Math.round(vadThreshold * 100)}%` }}
+              />
+            </div>
+          </div>
           <div className="voice-live-row voice-live-user">
             <span className="voice-live-label">You</span>
             <p className="voice-live-text">

@@ -96,6 +96,24 @@ body {
   pointer-events: none;
 }
 
+.voice-bob-overlay {
+  position: fixed;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  z-index: 18;
+  pointer-events: none;
+  font-family: 'Fredoka One', cursive;
+  font-size: clamp(72px, 16vw, 180px);
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.94);
+  text-shadow:
+    0 0 22px rgba(0, 229, 255, 0.42),
+    0 0 48px rgba(255, 110, 180, 0.34),
+    0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
 /* ============================================================
    AI STATUS INDICATOR (top-right)
    ============================================================ */
@@ -321,6 +339,75 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.voice-live-meter {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.voice-live-meter-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.voice-live-meter-label,
+.voice-live-meter-state {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.voice-live-meter-label {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.voice-live-meter-state {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.voice-live-meter-state.is-hot {
+  color: #86efac;
+}
+
+.voice-live-meter-track {
+  position: relative;
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.voice-live-meter-fill {
+  height: 100%;
+  min-width: 6px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, rgba(96, 165, 250, 0.8), rgba(167, 139, 250, 0.92));
+  transition: width 0.12s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.voice-live-meter-fill.is-hot {
+  background: linear-gradient(90deg, rgba(74, 222, 128, 0.88), rgba(16, 185, 129, 0.96));
+  box-shadow: 0 0 12px rgba(74, 222, 128, 0.35);
+}
+
+.voice-live-meter-threshold {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 2px;
+  margin-left: -1px;
+  border-radius: 999px;
+  background: rgba(255, 209, 102, 0.9);
+  box-shadow: 0 0 8px rgba(255, 209, 102, 0.35);
+}
+
 .voice-live-row {
   display: grid;
   grid-template-columns: 38px 1fr;
@@ -501,6 +588,28 @@ body {
   display: flex;
   align-items: center;
   gap: 9px;
+}
+
+.chat-inline-error {
+  font-size: 12px;
+  font-weight: 700;
+  color: #fca5a5;
+  padding-left: 4px;
+}
+
+.chat-inline-debug {
+  margin: 0;
+  max-height: 160px;
+  overflow: auto;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 11px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .input-wrapper {

@@ -48,13 +48,13 @@ export async function speechToText(audioBlob, fileName = 'recording.webm') {
     throw new Error(detail || `Speech-to-text failed (${res.status})`)
   }
   const data = await res.json()
+  let text = ''
   if (data.transcripts?.[0]?.text != null) {
-    return String(data.transcripts[0].text).trim()
+    text = String(data.transcripts[0].text).trim()
+  } else if (data.text != null) {
+    text = String(data.text).trim()
   }
-  if (data.text != null) {
-    return String(data.text).trim()
-  }
-  return ''
+  return { text, raw: data }
 }
 
 export function playAudioBlob(blob) {

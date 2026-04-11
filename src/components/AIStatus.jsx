@@ -37,9 +37,15 @@ const STATUS_CONFIG = {
     glow: 'rgba(255, 110, 180, 0.55)',
     dot: '#ff6eb4',
   },
+  error: {
+    label: 'Audio error',
+    color: '#fca5a5',
+    glow: 'rgba(252, 165, 165, 0.45)',
+    dot: '#f87171',
+  },
 }
 
-export default function AIStatus({ state }) {
+export default function AIStatus({ state, message }) {
   const config = state ? STATUS_CONFIG[state] : null
 
   return (
@@ -63,7 +69,7 @@ export default function AIStatus({ state }) {
               style={{ background: config.dot }}
             />
             <span className="status-label" style={{ color: config.color }}>
-              {config.label}
+              {message || config.label}
             </span>
           </motion.div>
         )}

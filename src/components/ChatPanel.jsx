@@ -18,23 +18,26 @@ function extensionForMime(mime) {
   return 'webm'
 }
 
-export default function ChatPanel({ messages, onSend, aiState, voiceChatActive, voiceSlot }) {
+export default function ChatPanel({ messages, onSend, aiState }) {
   const [input, setInput]       = useState('')
   const [focused, setFocused]   = useState(false)
   const [recording, setRecording] = useState(false)
   const [sttBusy, setSttBusy]   = useState(false)
+  const [sttError, setSttError] = useState('')
+  const [sttRaw, setSttRaw]     = useState('')
   const [bounce, setBounce]     = useState(false)
   const messagesEndRef = useRef(null)
   const inputRef       = useRef(null)
   const mediaStreamRef = useRef(null)
   const recorderRef    = useRef(null)
   const chunksRef      = useRef([])
+  const recordingStartedAtRef = useRef(0)
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
 
-  const isDisabled = aiState !== null || voiceChatActive
+  const isDisabled = aiState !== null
 
   useEffect(() => {
     return () => {
@@ -51,13 +54,21 @@ export default function ChatPanel({ messages, onSend, aiState, voiceChatActive, 
 
   const startRecording = useCallback(async () => {
     if (isDisabled || sttBusy) return
+    setSttError('')
+    setSttRaw('')
     const mime =
       typeof MediaRecorder !== 'undefined' && MediaRecorder.isTypeSupported('audio/webm;codecs=opus')
         ? 'audio/webm;codecs=opus'
         : typeof MediaRecorder !== 'undefined' && MediaRecorder.isTypeSupported('audio/webm')
           ? 'audio/webm'
           : ''
-    const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+    const stream = await navigator.mediaDevices.getUserMedia({
+      audio: {
+        echoCancellation: true,
+        noiseSuppression: true,
+        autoGainControl: true,
+      },
+    })
     mediaStreamRef.current = stream
     chunksRef.current = []
     const rec = mime ? new MediaRecorder(stream, { mimeType: mime }) : new MediaRecorder(stream)
@@ -66,6 +77,7 @@ export default function ChatPanel({ messages, onSend, aiState, voiceChatActive, 
       if (e.data.size > 0) chunksRef.current.push(e.data)
     }
     rec.start(250)
+    recordingStartedAtRef.current = Date.now()
     setRecording(true)
   }, [isDisabled, sttBusy])
 
@@ -83,20 +95,30 @@ export default function ChatPanel({ messages, onSend, aiState, voiceChatActive, 
     stopMedia()
     recorderRef.current = null
     setRecording(false)
+    const recordingDurationMs = Math.max(0, Date.now() - recordingStartedAtRef.current)
 
     const blob = new Blob(chunksRef.current, { type: rec.mimeType || 'audio/webm' })
     chunksRef.current = []
-    if (blob.size < 32) return
+    if (blob.size < 32 || recordingDurationMs < 700) {
+      setSttError('Recording too short. Hold the mic for a moment before stopping.')
+      return
+    }
 
     setSttBusy(true)
     try {
       const ext = extensionForMime(rec.mimeType)
-      const text = await speechToText(blob, `recording.${ext}`)
+      const result = await speechToText(blob, `recording.${ext}`)
+      const text = String(result?.text || '').trim()
+      setSttRaw(JSON.stringify(result?.raw ?? {}, null, 2))
       if (text) {
         onSend(text)
         setInput('')
+      } else {
+        setSttError('No speech detected. Try speaking louder or closer to the mic.')
       }
-    } catch {
+    } catch (error) {
+      const detail = error instanceof Error ? error.message : String(error)
+      setSttError(detail || 'Speech-to-text failed.')
     } finally {
       setSttBusy(false)
     }
@@ -142,7 +164,6 @@ export default function ChatPanel({ messages, onSend, aiState, voiceChatActive, 
       animate={{ y: focused ? -18 : 0 }}
       transition={{ duration: 0.32, ease: [0.34, 1.2, 0.64, 1] }}
     >
-      {voiceSlot}
 
       {/* Suggestion chips — show only when chat is fresh */}
       {messages.length <= 1 && (
@@ -207,13 +228,7 @@ export default function ChatPanel({ messages, onSend, aiState, voiceChatActive, 
           className={`mic-btn ${recording ? 'mic-active' : ''} ${sttBusy ? 'mic-busy' : ''}`}
           onClick={() => void toggleMic()}
           disabled={isDisabled || sttBusy}
-          title={
-            voiceChatActive
-              ? 'Use voice chat above'
-              : recording
-                ? 'Stop and transcribe'
-                : 'Speak your question'
-          }
+          title={recording ? 'Stop and transcribe' : 'Speak your question'}
           whileHover={!isDisabled && !sttBusy ? { scale: 1.07 } : {}}
           whileTap={!isDisabled && !sttBusy ? { scale: 0.93 } : {}}
         >
@@ -248,6 +263,11 @@ export default function ChatPanel({ messages, onSend, aiState, voiceChatActive, 
           ✨
         </motion.button>
       </div>
+
+      {sttError && <div className="chat-inline-error">{sttError}</div>}
+      {sttRaw && (
+        <pre className="chat-inline-debug">{sttRaw}</pre>
+      )}
     </motion.div>
   )
 }

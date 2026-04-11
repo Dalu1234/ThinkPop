@@ -1,7 +1,9 @@
 import { useRef, useCallback, useState } from 'react'
-import { useVoiceStream } from 'voice-stream'
 
 const API_PREFIX = '/api/elevenlabs'
+const USER_SPEECH_VAD_THRESHOLD = 0.24
+const INPUT_SAMPLE_RATE = 16000
+const INPUT_BUFFER_SIZE = 4096
 
 const DEFAULT_AGENT_PROMPT = `You are Baymax, a warm educational tutor in a 3D learning app. 
 Answer questions clearly and briefly for spoken dialogue. 
@@ -105,6 +107,53 @@ function createPlaybackScheduler() {
   return { ensureContext, scheduleChunk, stopAll, close }
 }
 
+function downsampleToInt16(channelData, inputSampleRate, targetSampleRate) {
+  if (!channelData?.length) return new Int16Array(0)
+
+  if (inputSampleRate === targetSampleRate) {
+    const out = new Int16Array(channelData.length)
+    for (let i = 0; i < channelData.length; i++) {
+      const s = Math.max(-1, Math.min(1, channelData[i]))
+      out[i] = s < 0 ? s * 0x8000 : s * 0x7fff
+    }
+    return out
+  }
+
+  const ratio = inputSampleRate / targetSampleRate
+  const outLength = Math.max(1, Math.round(channelData.length / ratio))
+  const out = new Int16Array(outLength)
+  let offsetResult = 0
+  let offsetBuffer = 0
+
+  while (offsetResult < out.length) {
+    const nextOffsetBuffer = Math.min(channelData.length, Math.round((offsetResult + 1) * ratio))
+    let accum = 0
+    let count = 0
+    for (let i = offsetBuffer; i < nextOffsetBuffer; i++) {
+      accum += channelData[i]
+      count++
+    }
+    const sample = count > 0 ? accum / count : 0
+    const s = Math.max(-1, Math.min(1, sample))
+    out[offsetResult] = s < 0 ? s * 0x8000 : s * 0x7fff
+    offsetResult++
+    offsetBuffer = nextOffsetBuffer
+  }
+
+  return out
+}
+
+function int16ToBase64(int16) {
+  let binary = ''
+  const bytes = new Uint8Array(int16.buffer)
+  const chunkSize = 0x8000
+  for (let i = 0; i < bytes.length; i += chunkSize) {
+    const chunk = bytes.subarray(i, i + chunkSize)
+    binary += String.fromCharCode(...chunk)
+  }
+  return btoa(binary)
+}
+
 function sendWs(ws, payload) {
   if (ws?.readyState === WebSocket.OPEN) {
     ws.send(JSON.stringify(payload))
@@ -132,6 +181,7 @@ export function useElevenLabsConversation({
   agentId,
   onUserTranscript,
   onAgentResponse,
+  onUserSpeechDetected,
   onPhaseChange,
   onError,
 }) {
@@ -139,17 +189,35 @@ export function useElevenLabsConversation({
   const [starting, setStarting] = useState(false)
   const [lastError, setLastError] = useState(null)
   const [captions, setCaptions] = useState({ user: '', agent: '' })
+  const [vadScore, setVadScore] = useState(0)
 
   const wsRef = useRef(null)
   const playbackRef = useRef(null)
+  const inputAudioContextRef = useRef(null)
+  const inputMediaStreamRef = useRef(null)
+  const inputSourceNodeRef = useRef(null)
+  const inputProcessorNodeRef = useRef(null)
+  const inputSilenceGainRef = useRef(null)
   const outputRateRef = useRef(44100)
   const outputCodecRef = useRef('pcm')
   const captionTimeoutIdsRef = useRef([])
   const agentCaptionAccRef = useRef('')
   const pendingAgentResponseRef = useRef(null)
   const vadSpeakingRef = useRef(false)
-  const callbacksRef = useRef({ onUserTranscript, onAgentResponse, onPhaseChange, onError })
-  callbacksRef.current = { onUserTranscript, onAgentResponse, onPhaseChange, onError }
+  const callbacksRef = useRef({
+    onUserTranscript,
+    onAgentResponse,
+    onUserSpeechDetected,
+    onPhaseChange,
+    onError,
+  })
+  callbacksRef.current = {
+    onUserTranscript,
+    onAgentResponse,
+    onUserSpeechDetected,
+    onPhaseChange,
+    onError,
+  }
 
   const clearCaptionTimeouts = useCallback(() => {
     captionTimeoutIdsRef.current.forEach(tid => window.clearTimeout(tid))
@@ -160,21 +228,84 @@ export function useElevenLabsConversation({
     callbacksRef.current.onPhaseChange?.(phase)
   }, [])
 
-  const { startStreaming, stopStreaming } = useVoiceStream({
-    includeDestination: false,
-    targetSampleRate: 16000,
-    bufferSize: 4096,
-    onAudioChunked: (chunkBase64) => {
-      const ws = wsRef.current
-      if (ws?.readyState === WebSocket.OPEN) {
-        sendWs(ws, { user_audio_chunk: chunkBase64 })
+  const stopStreaming = useCallback(() => {
+    if (inputProcessorNodeRef.current) {
+      inputProcessorNodeRef.current.disconnect()
+      inputProcessorNodeRef.current.onaudioprocess = null
+      inputProcessorNodeRef.current = null
+    }
+    if (inputSourceNodeRef.current) {
+      inputSourceNodeRef.current.disconnect()
+      inputSourceNodeRef.current = null
+    }
+    if (inputSilenceGainRef.current) {
+      inputSilenceGainRef.current.disconnect()
+      inputSilenceGainRef.current = null
+    }
+    if (inputMediaStreamRef.current) {
+      inputMediaStreamRef.current.getTracks().forEach(track => track.stop())
+      inputMediaStreamRef.current = null
+    }
+    if (inputAudioContextRef.current) {
+      inputAudioContextRef.current.close().catch(() => {})
+      inputAudioContextRef.current = null
+    }
+  }, [])
+
+  const startStreaming = useCallback(async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: {
+          echoCancellation: true,
+          noiseSuppression: true,
+          autoGainControl: true,
+        },
+      })
+      const AC = window.AudioContext || window.webkitAudioContext
+      const audioContext = new AC()
+      if (audioContext.state === 'suspended') {
+        await audioContext.resume()
       }
-    },
-    onError: (err) => {
-      setLastError(err.message || String(err))
+
+      const source = audioContext.createMediaStreamSource(stream)
+      const processor = audioContext.createScriptProcessor(INPUT_BUFFER_SIZE, 1, 1)
+      // Route through a muted gain node so audio processing runs without audible mic playback.
+      const silenceGain = audioContext.createGain()
+      silenceGain.gain.value = 0
+
+      processor.onaudioprocess = (audioProcessingEvent) => {
+        try {
+          const inputBuffer = audioProcessingEvent.inputBuffer
+          const channelData = inputBuffer.getChannelData(0)
+          const downsampled = downsampleToInt16(channelData, audioContext.sampleRate, INPUT_SAMPLE_RATE)
+          if (!downsampled.length) return
+          const ws = wsRef.current
+          if (ws?.readyState === WebSocket.OPEN) {
+            sendWs(ws, { user_audio_chunk: int16ToBase64(downsampled) })
+          }
+        } catch (error) {
+          const err = error instanceof Error ? error : new Error(String(error))
+          setLastError(err.message || 'Microphone processing failed.')
+          callbacksRef.current.onError?.(err)
+        }
+      }
+
+      source.connect(processor)
+      processor.connect(silenceGain)
+      silenceGain.connect(audioContext.destination)
+
+      inputMediaStreamRef.current = stream
+      inputAudioContextRef.current = audioContext
+      inputSourceNodeRef.current = source
+      inputProcessorNodeRef.current = processor
+      inputSilenceGainRef.current = silenceGain
+    } catch (error) {
+      const err = error instanceof Error ? error : new Error(String(error))
+      setLastError(err.message || 'Microphone failed.')
       callbacksRef.current.onError?.(err)
-    },
-  })
+      throw err
+    }
+  }, [])
 
   const cleanupSession = useCallback(() => {
     clearCaptionTimeouts()
@@ -182,6 +313,7 @@ export function useElevenLabsConversation({
     pendingAgentResponseRef.current = null
     vadSpeakingRef.current = false
     setCaptions({ user: '', agent: '' })
+    setVadScore(0)
     stopStreaming()
     const w = wsRef.current
     wsRef.current = null
@@ -227,9 +359,15 @@ export function useElevenLabsConversation({
 
       if (data.type === 'vad_score' && data.vad_score_event) {
         const v = Number(data.vad_score_event.vad_score)
-        const speaking = Number.isFinite(v) && v > 0.38
+        const nextScore = Number.isFinite(v) ? Math.max(0, Math.min(1, v)) : 0
+        const speaking = nextScore > USER_SPEECH_VAD_THRESHOLD
+        const wasSpeaking = vadSpeakingRef.current
+        setVadScore(nextScore)
         vadSpeakingRef.current = speaking
         if (speaking) {
+          if (!wasSpeaking) {
+            callbacksRef.current.onUserSpeechDetected?.()
+          }
           setCaptions(c => ({ ...c, user: 'Listening…' }))
         }
         return
@@ -242,6 +380,7 @@ export function useElevenLabsConversation({
         agentCaptionAccRef.current = ''
         pendingAgentResponseRef.current = null
         setCaptions(c => ({ ...c, user: text, agent: '' }))
+        setVadScore(0)
         if (text) callbacksRef.current.onUserTranscript?.(text)
         setPhase('voice_listening')
         return
@@ -353,6 +492,7 @@ export function useElevenLabsConversation({
     pendingAgentResponseRef.current = null
     vadSpeakingRef.current = false
     setCaptions({ user: '', agent: '' })
+    setVadScore(0)
 
     const playback = createPlaybackScheduler()
     playbackRef.current = playback
@@ -441,6 +581,8 @@ export function useElevenLabsConversation({
     starting,
     lastError,
     captions,
+    vadScore,
+    vadThreshold: USER_SPEECH_VAD_THRESHOLD,
     start,
     stop,
   }

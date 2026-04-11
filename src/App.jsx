@@ -5,7 +5,6 @@ import ChatPanel from './components/ChatPanel'
 import ObjectStage from './components/ObjectStage'
 import AIStatus from './components/AIStatus'
 import Skyline from './components/Skyline'
-import VoiceConversationBar from './components/VoiceConversationBar'
 import { textToSpeechBlob, playAudioBlob } from './lib/elevenlabs'
 
 const TOPICS = [
@@ -43,8 +42,8 @@ function delay(ms) {
 }
 
 export default function App() {
-  const [voicePhase, setVoicePhase] = useState(null)
   const [aiState, setAiState] = useState(null)
+  const [aiError, setAiError] = useState('')
   const [topicIndex, setTopicIndex] = useState(0)
   const [objectIndex, setObjectIndex] = useState(0)
   const [objectVisible, setObjectVisible] = useState(true)
@@ -57,8 +56,39 @@ export default function App() {
   ])
   const indexRef = useRef({ topic: 0, object: 0 })
 
+  const speakAiText = useCallback(async (text) => {
+    const spokenText = String(text || '').trim()
+    if (!spokenText) return
+    const audioBlob = await textToSpeechBlob(spokenText)
+    await playAudioBlob(audioBlob)
+  }, [])
+
+  const deliverAiMessage = useCallback(async (text) => {
+    const spokenText = String(text || '').trim()
+    if (!spokenText) return
+
+    const aiMsg = { id: Date.now() + 1, from: 'ai', text: spokenText }
+    setMessages(prev => [...prev, aiMsg])
+    setAiError('')
+
+    try {
+      await speakAiText(spokenText)
+    } catch (error) {
+      console.error('ElevenLabs text-to-speech failed:', error)
+      const detail = error instanceof Error ? error.message : String(error)
+      const normalized = detail.toLowerCase()
+      if (normalized.includes('402') || normalized.includes('payment required')) {
+        setAiError('TTS unavailable on current ElevenLabs plan.')
+      } else {
+        setAiError(detail || 'Text-to-speech failed.')
+      }
+      await delay(2800)
+    }
+  }, [speakAiText])
+
   const sendMessage = useCallback(async (text) => {
-    if (aiState !== null || voicePhase !== null) return
+    if (aiState !== null) return
+    setAiError('')
 
     const userMsg = { id: Date.now(), from: 'user', text }
     setMessages(prev => [...prev, userMsg])
@@ -80,26 +110,14 @@ export default function App() {
     // Speaking + response
     setAiState('speaking')
     const responseIdx = nextObj % FAKE_RESPONSES.length
-    const aiMsg = { id: Date.now() + 1, from: 'ai', text: FAKE_RESPONSES[responseIdx] }
-    setMessages(prev => [...prev, aiMsg])
+    const responseText = FAKE_RESPONSES[responseIdx]
     const nextTopic = (indexRef.current.topic + 1) % TOPICS.length
     indexRef.current.topic = nextTopic
     setTopicIndex(nextTopic)
 
-    try {
-      const audioBlob = await textToSpeechBlob(aiMsg.text)
-      await playAudioBlob(audioBlob)
-    } catch {
-      await delay(2800)
-    }
+    await deliverAiMessage(responseText)
     setAiState(null)
-  }, [aiState, voicePhase])
-
-  const appendVoiceMessage = useCallback((from, text) => {
-    const t = String(text || '').trim()
-    if (!t) return
-    setMessages(prev => [...prev, { id: `${Date.now()}-${Math.random()}`, from, text: t }])
-  }, [])
+  }, [aiState, deliverAiMessage])
 
   return (
     <div className="app-root">
@@ -111,7 +129,7 @@ export default function App() {
 
       <Skyline />
 
-      <AIStatus state={voicePhase ?? aiState} />
+      <AIStatus state={aiError ? 'error' : aiState} message={aiError} />
       <TopicCard topic={TOPICS[topicIndex]} />
       <ObjectStage
         object={OBJECTS[objectIndex]}
@@ -122,14 +140,6 @@ export default function App() {
         messages={messages}
         onSend={sendMessage}
         aiState={aiState}
-        voiceChatActive={voicePhase !== null}
-        voiceSlot={
-          <VoiceConversationBar
-            onUserTranscript={text => appendVoiceMessage('user', text)}
-            onAgentResponse={text => appendVoiceMessage('ai', text)}
-            onVoicePhaseChange={setVoicePhase}
-          />
-        }
       />
     </div>
   )
