@@ -1,0 +1,16 @@
+[
+  {
+    "id": "model_01",
+    "name": "Placeholder Character 1",
+    "path": "/models/placeholder_1.glb",
+    "category": "Characters",
+    "tags": ["sci-fi", "robot"]
+  },
+  {
+    "id": "model_02",
+    "name": "Placeholder Environment 1",
+    "path": "/models/placeholder_2.glb",
+    "category": "Environment",
+    "tags": ["space", "station"]
+  }
+]
