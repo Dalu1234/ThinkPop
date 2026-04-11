@@ -1,10 +1,12 @@
 import { useState, useCallback, useRef } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import ThreeBackground from './components/ThreeBackground'
 import TopicCard from './components/TopicCard'
 import ChatPanel from './components/ChatPanel'
 import ObjectStage from './components/ObjectStage'
 import AIStatus from './components/AIStatus'
 import Skyline from './components/Skyline'
+import TreeGallery from './components/TreeGallery'
 
 const TOPICS = [
   { label: 'Pythagorean Theorem', emoji: '📐' },
@@ -36,12 +38,18 @@ const OBJECTS = [
   { label: 'Magma Chamber', color: '#f97316' },
 ]
 
+const TABS = [
+  { id: 'learn', label: '🤖 Learn' },
+  { id: 'trees', label: '🌲 Trees' },
+]
+
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
 export default function App() {
-  const [aiState, setAiState] = useState(null)
+  const [activeTab, setActiveTab]   = useState('learn')
+  const [aiState, setAiState]       = useState(null)
   const [topicIndex, setTopicIndex] = useState(0)
   const [objectIndex, setObjectIndex] = useState(0)
   const [objectVisible, setObjectVisible] = useState(true)
@@ -89,7 +97,7 @@ export default function App() {
 
   return (
     <div className="app-root">
-      <ThreeBackground aiState={aiState} />
+      <ThreeBackground aiState={activeTab === 'learn' ? aiState : null} />
 
       {/* Edge bloom overlays */}
       <div className="edge-bloom edge-bloom-left" />
@@ -97,14 +105,53 @@ export default function App() {
 
       <Skyline />
 
-      <AIStatus state={aiState} />
-      <TopicCard topic={TOPICS[topicIndex]} />
-      <ObjectStage
-        object={OBJECTS[objectIndex]}
-        visible={objectVisible}
-        active={aiState === 'building'}
-      />
-      <ChatPanel messages={messages} onSend={sendMessage} aiState={aiState} />
+      {/* Tab bar */}
+      <div className="tab-bar">
+        {TABS.map(tab => (
+          <motion.button
+            key={tab.id}
+            className={`tab-btn ${activeTab === tab.id ? 'tab-btn-active' : ''}`}
+            onClick={() => setActiveTab(tab.id)}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.94 }}
+          >
+            {tab.label}
+          </motion.button>
+        ))}
+      </div>
+
+      {/* Page content */}
+      <AnimatePresence mode="wait">
+        {activeTab === 'learn' ? (
+          <motion.div
+            key="learn"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+          >
+            <AIStatus state={aiState} />
+            <TopicCard topic={TOPICS[topicIndex]} />
+            <ObjectStage
+              object={OBJECTS[objectIndex]}
+              visible={objectVisible}
+              active={aiState === 'building'}
+            />
+            <ChatPanel messages={messages} onSend={sendMessage} aiState={aiState} />
+          </motion.div>
+        ) : (
+          <motion.div
+            key="trees"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            style={{ position: 'fixed', inset: 0 }}
+          >
+            <TreeGallery />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
