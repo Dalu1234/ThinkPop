@@ -1,6 +1,18 @@
 import { AnimatePresence, motion } from 'framer-motion'
 
 const STATUS_CONFIG = {
+  voice_connecting: {
+    label: 'Connecting voice…',
+    color: '#a78bfa',
+    glow: 'rgba(167, 139, 250, 0.55)',
+    dot: '#a78bfa',
+  },
+  voice_listening: {
+    label: 'Listening…',
+    color: '#4ade80',
+    glow: 'rgba(74, 222, 128, 0.45)',
+    dot: '#4ade80',
+  },
   thinking: {
     label: 'Thinking...',
     color: '#60a5fa',

@@ -5,6 +5,8 @@ import ChatPanel from './components/ChatPanel'
 import ObjectStage from './components/ObjectStage'
 import AIStatus from './components/AIStatus'
 import Skyline from './components/Skyline'
+import VoiceConversationBar from './components/VoiceConversationBar'
+import { textToSpeechBlob, playAudioBlob } from './lib/elevenlabs'
 
 const TOPICS = [
   { label: 'Pythagorean Theorem', emoji: '📐' },
@@ -41,6 +43,7 @@ function delay(ms) {
 }
 
 export default function App() {
+  const [voicePhase, setVoicePhase] = useState(null)
   const [aiState, setAiState] = useState(null)
   const [topicIndex, setTopicIndex] = useState(0)
   const [objectIndex, setObjectIndex] = useState(0)
@@ -55,7 +58,7 @@ export default function App() {
   const indexRef = useRef({ topic: 0, object: 0 })
 
   const sendMessage = useCallback(async (text) => {
-    if (aiState !== null) return
+    if (aiState !== null || voicePhase !== null) return
 
     const userMsg = { id: Date.now(), from: 'user', text }
     setMessages(prev => [...prev, userMsg])
@@ -83,9 +86,20 @@ export default function App() {
     indexRef.current.topic = nextTopic
     setTopicIndex(nextTopic)
 
-    await delay(2800)
+    try {
+      const audioBlob = await textToSpeechBlob(aiMsg.text)
+      await playAudioBlob(audioBlob)
+    } catch {
+      await delay(2800)
+    }
     setAiState(null)
-  }, [aiState])
+  }, [aiState, voicePhase])
+
+  const appendVoiceMessage = useCallback((from, text) => {
+    const t = String(text || '').trim()
+    if (!t) return
+    setMessages(prev => [...prev, { id: `${Date.now()}-${Math.random()}`, from, text: t }])
+  }, [])
 
   return (
     <div className="app-root">
@@ -97,14 +111,26 @@ export default function App() {
 
       <Skyline />
 
-      <AIStatus state={aiState} />
+      <AIStatus state={voicePhase ?? aiState} />
       <TopicCard topic={TOPICS[topicIndex]} />
       <ObjectStage
         object={OBJECTS[objectIndex]}
         visible={objectVisible}
         active={aiState === 'building'}
       />
-      <ChatPanel messages={messages} onSend={sendMessage} aiState={aiState} />
+      <ChatPanel
+        messages={messages}
+        onSend={sendMessage}
+        aiState={aiState}
+        voiceChatActive={voicePhase !== null}
+        voiceSlot={
+          <VoiceConversationBar
+            onUserTranscript={text => appendVoiceMessage('user', text)}
+            onAgentResponse={text => appendVoiceMessage('ai', text)}
+            onVoicePhaseChange={setVoicePhase}
+          />
+        }
+      />
     </div>
   )
 }
