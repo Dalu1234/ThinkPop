@@ -1,0 +1,7 @@
+{
+  "normalizedProblem": "what is 4 / 2",
+  "gradeBand": "3-5",
+  "mathDomain": "Whole-number division as equal groups",
+  "ambiguities": [],
+  "learnerIntent": "Understand division by sorting a total into equal groups and finding how many groups can be made."
+}

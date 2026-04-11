@@ -1,0 +1,29 @@
+{
+  "gestures": [
+    {
+      "segmentId": "seg-hook",
+      "hand": "right",
+      "motion": "wave"
+    },
+    {
+      "segmentId": "seg-model",
+      "hand": "left",
+      "motion": "point"
+    },
+    {
+      "segmentId": "seg-practice",
+      "hand": "right",
+      "motion": "count"
+    },
+    {
+      "segmentId": "seg-check",
+      "hand": "both",
+      "motion": "emphasize"
+    },
+    {
+      "segmentId": "seg-wrap",
+      "hand": "right",
+      "motion": "open"
+    }
+  ]
+}

@@ -5,4 +5,4 @@ where npm >nul 2>&1 || (
   echo Install from https://nodejs.org/ or fix your PATH.
   exit /b 1
 )
-npm run dev
+npm run dev:split

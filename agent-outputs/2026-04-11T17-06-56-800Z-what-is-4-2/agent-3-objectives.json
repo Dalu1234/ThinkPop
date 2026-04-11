@@ -1,0 +1,19 @@
+{
+  "objectives": [
+    {
+      "id": "obj-1",
+      "statement": "Describe division as putting a total into equal groups.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "obj-2",
+      "statement": "Make groups of 2 from a total of 4.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "obj-3",
+      "statement": "Find that 4 divided by 2 makes 2 equal groups.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

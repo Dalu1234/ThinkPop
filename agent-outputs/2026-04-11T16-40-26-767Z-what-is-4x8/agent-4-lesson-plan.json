@@ -1,0 +1,47 @@
+{
+  "title": "Understanding 4 x 8 as equal groups",
+  "estimatedMinutes": 18,
+  "segments": [
+    {
+      "id": "seg-hook",
+      "kind": "hook",
+      "durationSeconds": 45,
+      "narration": "Imagine 8 rows with 4 apples in each row. Multiplication helps us find the total quickly.",
+      "visualCue": "Show 8 rows forming, with 4 apples placed in each row.",
+      "sceneHint": "array_hook"
+    },
+    {
+      "id": "seg-model",
+      "kind": "model",
+      "durationSeconds": 90,
+      "narration": "The expression 4 times 8 means 8 equal groups of 4. We can count by rows or use repeated addition: 4 + 4 + ... = 32.",
+      "visualCue": "Label each row with 4 and show the full array totaling 32 apples.",
+      "sceneHint": "array_model"
+    },
+    {
+      "id": "seg-practice",
+      "kind": "practice",
+      "durationSeconds": 90,
+      "narration": "Let's count the array together. There are 8 rows, and each row has 4. That makes 32 altogether.",
+      "visualCue": "Pulse one row at a time, then highlight all 32 apples together.",
+      "sceneHint": "array_count_practice"
+    },
+    {
+      "id": "seg-check",
+      "kind": "check",
+      "durationSeconds": 60,
+      "narration": "Quick check: if one row has 4 apples and there are 8 rows, what multiplication sentence matches? 4 x 8 = 32.",
+      "visualCue": "Show the array beside the equation 4 x 8 = 32.",
+      "sceneHint": "multiplication_check"
+    },
+    {
+      "id": "seg-wrap",
+      "kind": "wrap",
+      "durationSeconds": 45,
+      "narration": "Great work. Equal groups help us see multiplication, and now we know that 4 times 8 equals 32.",
+      "visualCue": "Zoom out to the full array and celebrate the product 32.",
+      "sceneHint": "multiplication_wrap"
+    }
+  ],
+  "teacherNotes": "Point to each row as a group and connect the array to repeated addition before naming the product."
+}

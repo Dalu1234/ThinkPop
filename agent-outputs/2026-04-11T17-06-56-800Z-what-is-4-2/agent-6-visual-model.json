@@ -1,0 +1,10 @@
+{
+  "kind": "division_groups",
+  "total": 4,
+  "groupSize": 2,
+  "quotient": 2,
+  "remainder": 0,
+  "itemShape": "apple",
+  "itemColor": "#e84b3c",
+  "caption": "4 ÷ 2 = 2 (2 groups of 2)"
+}

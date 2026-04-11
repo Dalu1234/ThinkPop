@@ -1,0 +1,47 @@
+{
+  "title": "Making equal groups for 4 / 2",
+  "estimatedMinutes": 18,
+  "segments": [
+    {
+      "id": "seg-hook",
+      "kind": "hook",
+      "durationSeconds": 45,
+      "narration": "Here are 4 apples altogether. We want to put them into equal groups of 2.",
+      "visualCue": "Show all 4 apples in one collection before any grouping begins.",
+      "sceneHint": "division_total_hook"
+    },
+    {
+      "id": "seg-model",
+      "kind": "model",
+      "durationSeconds": 90,
+      "narration": "We keep making groups of 2. Each time we make one full group, we count it. 4 divided by 2 tells how many groups we can form.",
+      "visualCue": "Move the apples into equal groups of 2 and count each completed group.",
+      "sceneHint": "division_group_model"
+    },
+    {
+      "id": "seg-practice",
+      "kind": "practice",
+      "durationSeconds": 90,
+      "narration": "Let's group them together. We can make 2 full groups of 2, so the answer is 2.",
+      "visualCue": "Highlight each finished group and show the number of groups growing to 2.",
+      "sceneHint": "division_group_practice"
+    },
+    {
+      "id": "seg-check",
+      "kind": "check",
+      "durationSeconds": 60,
+      "narration": "Quick check: if 4 apples are grouped into sets of 2, how many groups do we make? 2.",
+      "visualCue": "Show the grouped apples beside the equation 4 ÷ 2 = 2.",
+      "sceneHint": "division_check"
+    },
+    {
+      "id": "seg-wrap",
+      "kind": "wrap",
+      "durationSeconds": 45,
+      "narration": "Great work. Division helped us make 2 equal groups of 2, so 4 divided by 2 equals 2.",
+      "visualCue": "Hold the final equal groups on screen and celebrate the quotient 2.",
+      "sceneHint": "division_wrap"
+    }
+  ],
+  "teacherNotes": "Have students say the total, the size of each group, and the number of groups aloud as the apples are sorted."
+}

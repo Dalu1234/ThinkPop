@@ -103,6 +103,38 @@ function ItemGrid({ rows, cols, itemShape, color }) {
   )
 }
 
+function AdditionGrid({ rowCounts, itemShape, color }) {
+  const groupRef = useRef()
+  const layout = useMemo(() => {
+    const gap = 0.36
+    const items = []
+    const rows = rowCounts.length
+    for (let r = 0; r < rows; r++) {
+      const cols = rowCounts[r]
+      for (let c = 0; c < cols; c++) {
+        const x = (c - (cols - 1) / 2) * gap
+        const y = ((rows - 1) / 2 - r) * gap
+        items.push({ key: `${r}-${c}`, position: [x, y, 0] })
+      }
+    }
+    return items
+  }, [rowCounts])
+
+  useFrame((state, delta) => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y += delta * 0.15
+    }
+  })
+
+  return (
+    <group ref={groupRef}>
+      {layout.map(it => (
+        <GridItem key={it.key} shape={itemShape} position={it.position} color={color} />
+      ))}
+    </group>
+  )
+}
+
 function StageContent({ visualModel, fallbackColor }) {
   if (
     visualModel &&
@@ -119,16 +151,30 @@ function StageContent({ visualModel, fallbackColor }) {
       />
     )
   }
+  if (
+    visualModel &&
+    visualModel.kind === 'addition_rows' &&
+    visualModel.rowCounts?.length > 0
+  ) {
+    return (
+      <AdditionGrid
+        rowCounts={visualModel.rowCounts}
+        itemShape={visualModel.itemShape || 'apple'}
+        color={visualModel.itemColor || fallbackColor}
+      />
+    )
+  }
   return <SpinningCube color={fallbackColor} />
 }
 
 export default function ObjectStage({ object, visualModel, visible, active }) {
+  const isCustom = visualModel?.kind === 'grid' || visualModel?.kind === 'addition_rows'
   const label =
-    visualModel?.kind === 'grid' && visualModel.caption
+    isCustom && visualModel.caption
       ? visualModel.caption
       : object.label
   const labelColor =
-    visualModel?.kind === 'grid' && visualModel.itemColor
+    isCustom && visualModel.itemColor
       ? visualModel.itemColor
       : object.color
 
@@ -145,37 +191,39 @@ export default function ObjectStage({ object, visualModel, visible, active }) {
       }}
       transition={{ duration: 0.5 }}
     >
-      <div className="object-canvas-wrapper">
-        <Canvas camera={{ position: [0, 0, 3.4], fov: 48 }}>
-          <ambientLight intensity={0.75} />
-          <pointLight position={[3, 4, 4]} color="white" intensity={2.8} />
-          <pointLight position={[-3, -2, 3]} color={labelColor} intensity={2} />
-          <directionalLight position={[0, 2, 5]} intensity={0.6} />
-          {visible && (
-            <StageContent visualModel={visualModel} fallbackColor={object.color} />
-          )}
-          <OrbitControls
-            enableZoom
-            enablePan={false}
-            minDistance={1.8}
-            maxDistance={6}
-          />
-        </Canvas>
-      </div>
+      <div className="object-stage-inner">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={label}
+            className="object-label"
+            initial={{ opacity: 0, x: -28, scale: 0.85 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 28, scale: 0.85 }}
+            transition={{ duration: 0.38, ease: [0.34, 1.56, 0.64, 1] }}
+            style={{ color: labelColor, borderColor: `${labelColor}44` }}
+          >
+            {label}
+          </motion.div>
+        </AnimatePresence>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={label}
-          className="object-label"
-          initial={{ opacity: 0, x: 28, scale: 0.85 }}
-          animate={{ opacity: 1, x: 0, scale: 1 }}
-          exit={{ opacity: 0, x: -28, scale: 0.85 }}
-          transition={{ duration: 0.38, ease: [0.34, 1.56, 0.64, 1] }}
-          style={{ color: labelColor, borderColor: `${labelColor}44` }}
-        >
-          {label}
-        </motion.div>
-      </AnimatePresence>
+        <div className="object-canvas-wrapper">
+          <Canvas camera={{ position: [0, 0, 3.4], fov: 48 }}>
+            <ambientLight intensity={0.75} />
+            <pointLight position={[3, 4, 4]} color="white" intensity={2.8} />
+            <pointLight position={[-3, -2, 3]} color={labelColor} intensity={2} />
+            <directionalLight position={[0, 2, 5]} intensity={0.6} />
+            {visible && (
+              <StageContent visualModel={visualModel} fallbackColor={object.color} />
+            )}
+            <OrbitControls
+              enableZoom
+              enablePan={false}
+              minDistance={1.8}
+              maxDistance={6}
+            />
+          </Canvas>
+        </div>
+      </div>
 
       <AnimatePresence>
         {active && (

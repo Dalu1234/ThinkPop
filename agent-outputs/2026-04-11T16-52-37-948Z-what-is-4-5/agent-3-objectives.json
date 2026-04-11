@@ -1,0 +1,19 @@
+{
+  "objectives": [
+    {
+      "id": "obj-1",
+      "statement": "Explain what the numerator and denominator represent in a fraction.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "obj-2",
+      "statement": "Add two fractions with the same denominator using a visual model.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "obj-3",
+      "statement": "Rewrite fractions with unlike denominators using a common denominator.",
+      "bloomLevel": "apply"
+    }
+  ]
+}
