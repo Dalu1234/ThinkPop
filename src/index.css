@@ -114,6 +114,52 @@ body {
     0 8px 30px rgba(0, 0, 0, 0.4);
 }
 
+.baymax-speaking-overlay {
+  position: fixed;
+  left: 50%;
+  top: calc(50% - 266px);
+  transform: translateX(-50%);
+  width: min(92vw, 1200px);
+  z-index: 32;
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+  opacity: 0.88;
+}
+
+.baymax-speaking-overlay.is-active {
+  opacity: 1;
+}
+
+.baymax-speaking-line {
+  width: 100%;
+  height: 72px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 0;
+  padding: 10px 8px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(12, 16, 34, 0.24), rgba(12, 16, 34, 0.5));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 14px 30px rgba(0, 0, 0, 0.18),
+    inset 0 0 20px rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.baymax-speaking-bar {
+  width: clamp(6px, 1.5vw, 22px);
+  min-height: 12px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 110, 180, 0.96), rgba(0, 229, 255, 0.96));
+  box-shadow:
+    0 0 16px rgba(0, 229, 255, 0.22),
+    0 0 10px rgba(255, 110, 180, 0.18);
+  transition: height 0.08s linear, opacity 0.12s ease;
+}
+
 /* ============================================================
    AI STATUS INDICATOR (top-right)
    ============================================================ */
@@ -233,6 +279,7 @@ body {
 }
 
 .object-canvas-wrapper {
+  position: relative;
   width: 100%;
   height: 176px;
   border-radius: 24px 24px 0 0;
@@ -584,6 +631,31 @@ body {
 }
 
 /* Input row */
+.chat-visualizer-shell {
+  position: relative;
+  height: 72px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 24px rgba(255, 255, 255, 0.03);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.chat-visualizer-shell.is-live {
+  border-color: rgba(255, 110, 180, 0.38);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow:
+    inset 0 0 26px rgba(255, 255, 255, 0.04),
+    0 0 18px rgba(255, 110, 180, 0.12);
+}
+
+.chat-visualizer-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .chat-input-row {
   display: flex;
   align-items: center;
@@ -595,21 +667,6 @@ body {
   font-weight: 700;
   color: #fca5a5;
   padding-left: 4px;
-}
-
-.chat-inline-debug {
-  margin: 0;
-  max-height: 160px;
-  overflow: auto;
-  padding: 10px 12px;
-  border-radius: 14px;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.82);
-  font-size: 11px;
-  line-height: 1.45;
-  white-space: pre-wrap;
-  word-break: break-word;
 }
 
 .input-wrapper {

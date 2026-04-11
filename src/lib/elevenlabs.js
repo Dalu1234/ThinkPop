@@ -57,26 +57,97 @@ export async function speechToText(audioBlob, fileName = 'recording.webm') {
   return { text, raw: data }
 }
 
-export function playAudioBlob(blob) {
+export function playAudioBlob(blob, options = {}) {
   const url = URL.createObjectURL(blob)
   const audio = new Audio(url)
   return new Promise((resolve, reject) => {
+    const AC = window.AudioContext || window.webkitAudioContext
+    const audioContext = AC ? new AC() : null
+    let analyser = null
+    let source = null
+    let frameId = 0
+    let data = null
+
+    const stopVisualizer = () => {
+      if (frameId) {
+        window.cancelAnimationFrame(frameId)
+        frameId = 0
+      }
+      try {
+        source?.disconnect()
+      } catch {
+        /* ignore */
+      }
+      try {
+        analyser?.disconnect()
+      } catch {
+        /* ignore */
+      }
+      source = null
+      analyser = null
+      data = null
+      audioContext?.close().catch(() => {})
+      options.onLevels?.(null)
+      options.onEnd?.()
+    }
+
+    const tick = () => {
+      if (!analyser || !data) return
+      analyser.getByteFrequencyData(data)
+      const bucketCount = 28
+      const levels = new Array(bucketCount).fill(0).map((_, index) => {
+        const start = Math.floor((index / bucketCount) * data.length)
+        const end = Math.max(start + 1, Math.floor(((index + 1) / bucketCount) * data.length))
+        let total = 0
+        for (let i = start; i < end; i++) total += data[i]
+        return total / ((end - start) * 255)
+      })
+      options.onLevels?.(levels)
+      frameId = window.requestAnimationFrame(tick)
+    }
+
     const done = () => {
+      stopVisualizer()
       URL.revokeObjectURL(url)
       resolve()
+    }
+    if (audioContext) {
+      try {
+        source = audioContext.createMediaElementSource(audio)
+        analyser = audioContext.createAnalyser()
+        analyser.fftSize = 256
+        analyser.smoothingTimeConstant = 0.78
+        data = new Uint8Array(analyser.frequencyBinCount)
+        source.connect(analyser)
+        analyser.connect(audioContext.destination)
+      } catch {
+        source = null
+        analyser = null
+        data = null
+      }
     }
     audio.addEventListener('ended', done, { once: true })
     audio.addEventListener(
       'error',
       () => {
+        stopVisualizer()
         URL.revokeObjectURL(url)
         reject(new Error('Audio playback failed'))
       },
       { once: true }
     )
     audio.play().catch(err => {
+      stopVisualizer()
       URL.revokeObjectURL(url)
       reject(err)
     })
+    Promise.resolve(audioContext?.resume?.())
+      .catch(() => {})
+      .finally(() => {
+        options.onStart?.()
+        if (analyser && data) {
+          tick()
+        }
+      })
   })
 }

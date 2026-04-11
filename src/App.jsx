@@ -41,9 +41,35 @@ function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
+function BaymaxSpeakingBars({ levels, active }) {
+  const bars = levels?.length ? levels : new Array(32).fill(0.04)
+
+  return (
+    <div className={`baymax-speaking-overlay ${active ? 'is-active' : ''}`}>
+      <div className="baymax-speaking-line" aria-hidden="true">
+        {bars.map((level, index) => {
+          const normalized = Math.max(active ? 0.16 : 0.08, Math.min(1, level || 0))
+          return (
+            <span
+              key={index}
+              className="baymax-speaking-bar"
+              style={{
+                height: `${16 + normalized * 46}px`,
+                opacity: active ? 1 : 0.38,
+              }}
+            />
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
 export default function App() {
   const [aiState, setAiState] = useState(null)
   const [aiError, setAiError] = useState('')
+  const [aiAudioLevels, setAiAudioLevels] = useState([])
+  const [aiAudioActive, setAiAudioActive] = useState(false)
   const [topicIndex, setTopicIndex] = useState(0)
   const [objectIndex, setObjectIndex] = useState(0)
   const [objectVisible, setObjectVisible] = useState(true)
@@ -60,7 +86,19 @@ export default function App() {
     const spokenText = String(text || '').trim()
     if (!spokenText) return
     const audioBlob = await textToSpeechBlob(spokenText)
-    await playAudioBlob(audioBlob)
+    await playAudioBlob(audioBlob, {
+      onStart: () => {
+        setAiAudioActive(true)
+        setAiAudioLevels([])
+      },
+      onLevels: (levels) => {
+        setAiAudioLevels(Array.isArray(levels) ? levels : [])
+      },
+      onEnd: () => {
+        setAiAudioActive(false)
+        setAiAudioLevels([])
+      },
+    })
   }, [])
 
   const deliverAiMessage = useCallback(async (text) => {
@@ -128,6 +166,11 @@ export default function App() {
       <div className="edge-bloom edge-bloom-right" />
 
       <Skyline />
+
+      <BaymaxSpeakingBars
+        levels={aiAudioLevels}
+        active={aiAudioActive || aiState === 'speaking'}
+      />
 
       <AIStatus state={aiError ? 'error' : aiState} message={aiError} />
       <TopicCard topic={TOPICS[topicIndex]} />
