@@ -1,11 +1,11 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
 import LandingPage from './LandingPage'
-import ThreeBackground from './components/ThreeBackground'
+import CharacterScene from './components/CharacterScene'
 import TopicCard from './components/TopicCard'
 import ChatPanel from './components/ChatPanel'
 import HistorySidebar from './components/HistorySidebar'
-import ObjectStage from './components/ObjectStage'
 import AIStatus from './components/AIStatus'
+import PipelineProgress from './components/PipelineProgress'
 import Skyline from './components/Skyline'
 import { textToSpeechBlob, playAudioBlob } from './lib/elevenlabs'
 import {
@@ -13,27 +13,66 @@ import {
   formatLessonPlanMessage,
   emojiForTopic,
 } from './lib/lessonApi'
+import { requestMotion, MOTION_PROMPTS, generateProceduralMotion } from './lib/motionApi'
+
+const MDM_TEST_ACTIONS = [
+  { label: 'Wave',      prompt: MOTION_PROMPTS.wave },
+  { label: 'Point',     prompt: MOTION_PROMPTS.point },
+  { label: 'Open',      prompt: MOTION_PROMPTS.open },
+  { label: 'Emphasize', prompt: MOTION_PROMPTS.emphasize },
+  { label: 'Count',     prompt: MOTION_PROMPTS.count },
+  { label: 'Rest',      prompt: MOTION_PROMPTS.rest },
+]
+
+function MDMTestPanel({ onFrames, disabled }) {
+  const [busy, setBusy] = useState(null)   // label of running action
+  const [lastMode, setLastMode] = useState(null)
+
+  async function run(label, prompt) {
+    if (busy) return
+    setBusy(label)
+    try {
+      const data = await requestMotion(prompt, 80)
+      setLastMode(data.mode)
+      onFrames(data.frames)
+    } finally {
+      setBusy(null)
+    }
+  }
+
+  return (
+    <div className="mdm-test-panel">
+      <p className="mdm-test-title">MDM Test</p>
+      <div className="mdm-test-grid">
+        {MDM_TEST_ACTIONS.map(({ label, prompt }) => (
+          <button
+            key={label}
+            className={`mdm-test-btn${busy === label ? ' mdm-test-btn--busy' : ''}`}
+            disabled={!!busy || disabled}
+            onClick={() => run(label, prompt)}
+          >
+            {busy === label ? '...' : label}
+          </button>
+        ))}
+      </div>
+      {lastMode && (
+        <p className="mdm-test-mode">
+          {lastMode.startsWith('procedural') ? 'local fallback' : 'MDM server'}
+        </p>
+      )}
+    </div>
+  )
+}
+
+/** Stable key for segment motion map (ids from LLM are strings; avoid ref misses). */
+function segmentMotionKey(seg, index) {
+  return String(seg?.id != null ? seg.id : `segment-${index}`)
+}
 
 const INITIAL_TOPIC = { label: 'Elementary math', emoji: '🔢' }
 
-const OBJECTS = [
-  { label: 'Number line', color: '#00e5ff' },
-  { label: 'Fraction bars', color: '#ff6eb4' },
-  { label: 'Base-ten blocks', color: '#a78bfa' },
-  { label: 'Geometric solids', color: '#4ade80' },
-  { label: 'Array model', color: '#ffd166' },
-  { label: 'Clock face', color: '#60a5fa' },
-]
-
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms))
-}
-
-function objectIndexFromString(s) {
-  if (!s) return 0
-  let h = 0
-  for (let i = 0; i < s.length; i++) h = (h + s.charCodeAt(i) * (i + 1)) % OBJECTS.length
-  return h
 }
 
 const REST_GESTURE = { motion: 'rest', hand: 'both' }
@@ -68,18 +107,21 @@ function BaymaxExperience() {
   const [aiAudioLevels, setAiAudioLevels] = useState([])
   const [aiAudioActive, setAiAudioActive] = useState(false)
   const [topicDisplay, setTopicDisplay] = useState(INITIAL_TOPIC)
-  const [objectIndex, setObjectIndex] = useState(0)
-  const [objectVisible, setObjectVisible] = useState(true)
-  const [visualModel, setVisualModel] = useState(null)
   const [playGesture, setPlayGesture] = useState(REST_GESTURE)
+  // Looping wave on load — verifies retarget + FBX without running the lesson pipeline
+  const [currentMotionFrames, setCurrentMotionFrames] = useState(() =>
+    generateProceduralMotion(MOTION_PROMPTS.wave, 96).frames
+  )
   const [messages, setMessages] = useState([
     {
       id: 1,
       from: 'ai',
-      text: "Hi! I'm Baymax, your AI math coach. Ask a question — six agents build the lesson, hand motions, and a 3D model. I'll speak the answer too. 🤗",
+      text: "Hi! I'm your AI teacher. Ask me anything — I'll build a full lesson, move to illustrate it, and speak the answer. 🤗",
     },
   ])
-  const pipelineResultRef = useRef(null)
+  const pipelineResultRef  = useRef(null)
+  // Stores pre-generated MDM frames per segment: { [segmentId]: frames[] }
+  const segmentMotionsRef  = useRef({})
 
   const speakAiText = useCallback(async (text) => {
     const spokenText = String(text || '').trim()
@@ -123,6 +165,31 @@ function BaymaxExperience() {
     }
   }, [speakAiText])
 
+  // Pre-generate MDM motion clips for every lesson segment.
+  // Runs sequentially (one GPU at a time) in the background — doesn't block TTS.
+  const generateSegmentMotions = useCallback(async (result) => {
+    const segments = result?.lessonPlan?.segments || []
+    const gestures = result?.gesturePlan?.gestures || []
+    segmentMotionsRef.current = {}
+
+    for (let i = 0; i < segments.length; i++) {
+      const seg = segments[i]
+      const key = segmentMotionKey(seg, i)
+      const g =
+        gestures.find(x => String(x.segmentId) === String(seg.id)) || gestures[i]
+      const prompt = g?.mdmPrompt || MOTION_PROMPTS[g?.motion] || MOTION_PROMPTS.rest
+      try {
+        console.log(`[motion] Generating segment ${i + 1}/${segments.length} [${key}]: "${prompt}"`)
+        const data = await requestMotion(prompt, 80)
+        segmentMotionsRef.current[key] = data.frames
+        console.log(`[motion] Segment ${i + 1} ready (${data.frames.length} frames, ${data.mode})`)
+      } catch (e) {
+        console.warn(`[motion] Segment ${i + 1} failed:`, e.message)
+        segmentMotionsRef.current[key] = generateProceduralMotion(prompt, 80).frames
+      }
+    }
+  }, [])
+
   useEffect(() => {
     if (aiState !== 'speaking') {
       setPlayGesture(REST_GESTURE)
@@ -141,16 +208,30 @@ function BaymaxExperience() {
       if (cancelled.v) return
       if (idx >= segments.length) {
         setPlayGesture(REST_GESTURE)
+        setCurrentMotionFrames([])
         return
       }
       const seg = segments[idx]
       const g =
-        result.gesturePlan?.gestures?.find(x => x.segmentId === seg.id) ||
+        result.gesturePlan?.gestures?.find(x => String(x.segmentId) === String(seg.id)) ||
         result.gesturePlan?.gestures?.[idx]
+
       setPlayGesture({
         motion: g?.motion || 'emphasize',
         hand: g?.hand || 'right',
       })
+
+      const key = segmentMotionKey(seg, idx)
+      let frames = segmentMotionsRef.current[key]
+      if (!frames?.length) {
+        frames = segmentMotionsRef.current[String(seg.id)]
+      }
+      if (!frames?.length) {
+        const prompt = g?.mdmPrompt || MOTION_PROMPTS[g?.motion] || MOTION_PROMPTS.rest
+        frames = generateProceduralMotion(prompt, 80).frames
+      }
+      setCurrentMotionFrames(frames)
+
       const ms = Math.min(60000, Math.max(600, (seg.durationSeconds || 5) * 1000))
       idx += 1
       timerId = setTimeout(step, ms)
@@ -171,7 +252,6 @@ function BaymaxExperience() {
       const userMsg = { id: Date.now(), from: 'user', text }
       setMessages(prev => [...prev, userMsg])
 
-      setVisualModel(null)
       pipelineResultRef.current = null
       setAiState('intake')
 
@@ -194,15 +274,26 @@ function BaymaxExperience() {
         })
       } catch (e) {
         const msg = e instanceof Error ? e.message : String(e)
+        // Surface quota / auth errors more clearly
+        const normalized = msg.toLowerCase()
+        let friendly = msg
+        if (normalized.includes('429') || normalized.includes('quota') || normalized.includes('billing')) {
+          friendly = 'OpenAI quota exceeded — add credits at platform.openai.com/billing'
+        } else if (normalized.includes('401') || normalized.includes('invalid') || normalized.includes('api key')) {
+          friendly = 'OpenAI API key is invalid — check OPENAI_API_KEY in .env'
+        }
+        setAiError(friendly)
         setMessages(prev => [
           ...prev,
           {
             id: Date.now() + 1,
             from: 'ai',
-            text: `Something went wrong while running the lesson agents: ${msg}`,
+            text: `Pipeline error: ${friendly}`,
           },
         ])
         setAiState(null)
+        await delay(4000)
+        setAiError('')
         return
       }
 
@@ -221,28 +312,22 @@ function BaymaxExperience() {
 
       setAiState('building')
       pipelineResultRef.current = result
-      setVisualModel(result.visualModel || null)
 
-      const nextIdx = objectIndexFromString(
-        result.lessonPlan?.title || result.topic?.topicTitle || text
-      )
-      setObjectVisible(false)
-      await delay(120)
-      setObjectIndex(nextIdx)
-      setObjectVisible(true)
-      await delay(400)
+      // Must finish before "speaking" — otherwise the speaking effect reads empty segmentMotionsRef.
+      await generateSegmentMotions(result)
 
       setAiState('speaking')
       const body = formatLessonPlanMessage(result)
       await deliverAiMessage(body)
+      setCurrentMotionFrames(generateProceduralMotion(MOTION_PROMPTS.wave, 96).frames)
       setAiState(null)
     },
-    [aiState, deliverAiMessage]
+    [aiState, deliverAiMessage, generateSegmentMotions]
   )
 
   return (
     <div className="app-root">
-      <ThreeBackground aiState={aiState} gesture={playGesture} />
+      <CharacterScene aiState={aiState} motionFrames={currentMotionFrames} />
 
       <div className="edge-bloom edge-bloom-left" />
       <div className="edge-bloom edge-bloom-right" />
@@ -255,17 +340,10 @@ function BaymaxExperience() {
         active={aiAudioActive || aiState === 'speaking'}
       />
 
-      <div className="baymax-welcome-text">
-        Hi! I'm Baymax. Ask a math question — I'll build a lesson, show a 3D model, and speak the answer.
-      </div>
       <AIStatus state={aiError ? 'error' : aiState} message={aiError} />
+      <PipelineProgress state={aiError ? null : aiState} />
+      <MDMTestPanel onFrames={frames => setCurrentMotionFrames(frames)} disabled={aiState !== null} />
       <TopicCard topic={topicDisplay} />
-      <ObjectStage
-        object={OBJECTS[objectIndex]}
-        visualModel={visualModel}
-        visible={objectVisible}
-        active={aiState === 'building'}
-      />
       <ChatPanel messages={messages} onSend={sendMessage} aiState={aiState} />
     </div>
   )

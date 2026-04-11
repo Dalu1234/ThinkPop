@@ -1,0 +1,28 @@
+{
+  "gestures": [
+    {
+      "segmentId": "hook1",
+      "hand": "both",
+      "motion": "wave",
+      "mdmPrompt": "The person moves both arms to the sides, mimicking opening a box to reveal two apples."
+    },
+    {
+      "segmentId": "model1",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "The person points to an imaginary line as they count apples, emphasizing each addition."
+    },
+    {
+      "segmentId": "practice1",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "The person raises fingers on both hands, counting up to two in front of them."
+    },
+    {
+      "segmentId": "wrap1",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "The person claps their hands and smiles, encouraging everyone to celebrate their addition success."
+    }
+  ]
+}

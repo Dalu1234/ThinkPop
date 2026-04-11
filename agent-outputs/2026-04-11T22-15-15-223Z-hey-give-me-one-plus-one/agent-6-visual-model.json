@@ -1,0 +1,12 @@
+{
+  "kind": "addition_rows",
+  "rows": 2,
+  "cols": 0,
+  "rowCounts": [
+    1,
+    1
+  ],
+  "itemShape": "apple",
+  "itemColor": "#FF0000",
+  "caption": "1 apple plus 1 apple equals 2 apples!"
+}

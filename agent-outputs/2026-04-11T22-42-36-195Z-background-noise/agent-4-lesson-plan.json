@@ -1,0 +1,39 @@
+{
+  "title": "Exploring Basic Shapes Together",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "durationSeconds": 6,
+      "narration": "Can you find shapes around you? Let's identify circles and squares!",
+      "visualCue": "colorful shapes",
+      "sceneHint": "shapes_in_environment"
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "durationSeconds": 8,
+      "narration": "Here are some common 2D shapes: a circle, a square, and a triangle.",
+      "visualCue": "2D shape slideshow",
+      "sceneHint": "shape_slideshow"
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "durationSeconds": 5,
+      "narration": "Look at these 3D shapes; can you sort them by edges and faces?",
+      "visualCue": "3D shape sorting",
+      "sceneHint": "sorting_shapes"
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "durationSeconds": 5,
+      "narration": "Great job today! You are becoming excellent at recognizing shapes!",
+      "visualCue": "happy faces",
+      "sceneHint": "celebration"
+    }
+  ],
+  "teacherNotes": "Encourage students to explore their environment for more shapes."
+}

@@ -1,0 +1,39 @@
+{
+  "title": "Learning Addition with One and One",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "durationSeconds": 5,
+      "narration": "What happens when we have one apple and add one more apple?",
+      "visualCue": "two apples",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "durationSeconds": 6,
+      "narration": "Let's count together: one apple plus one more apple makes two apples!",
+      "visualCue": "counting apples",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "durationSeconds": 7,
+      "narration": "Now, use your fingers to show one plus one, how many do you have?",
+      "visualCue": "fingers showing",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "durationSeconds": 5,
+      "narration": "Great job! One plus one equals two, keep practicing this addition!",
+      "visualCue": "smiling face",
+      "sceneHint": "number_line_jump"
+    }
+  ],
+  "teacherNotes": "Encourage students to use physical objects for hands-on practice with addition."
+}

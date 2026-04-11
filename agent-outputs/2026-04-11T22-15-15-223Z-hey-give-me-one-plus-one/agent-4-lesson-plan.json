@@ -1,0 +1,47 @@
+{
+  "title": "Introduction to Addition",
+  "estimatedMinutes": 30,
+  "segments": [
+    {
+      "id": "hook",
+      "kind": "hook",
+      "durationSeconds": 120,
+      "narration": "Hello, young mathematicians! Today, we are going to go on an exciting adventure into the world of addition! What do you think happens when we put two groups of things together? Let's find out!",
+      "visualCue": "A colorful animation of two groups of apples coming together.",
+      "sceneHint": "group_animation"
+    },
+    {
+      "id": "model",
+      "kind": "model",
+      "durationSeconds": 180,
+      "narration": "Let's look at the numbers involved in addition. When we add, we have two numbers. For example, if we have 1 apple and we get 1 more apple, how many do we have? We can write this as 1 + 1.",
+      "visualCue": "A number line showing 1 moving to 2 with an arrow.",
+      "sceneHint": "number_line_addition"
+    },
+    {
+      "id": "practice",
+      "kind": "practice",
+      "durationSeconds": 180,
+      "narration": "Now it's your turn! Using your fingers or some small objects like blocks, show me what 1 + 1 equals. Count them together!",
+      "visualCue": "Children showing fingers and small objects to visualize addition.",
+      "sceneHint": "hands_on_addition"
+    },
+    {
+      "id": "check",
+      "kind": "check",
+      "durationSeconds": 120,
+      "narration": "Great job! Let’s see if you got the answer right. How many did you find when you added 1 and 1 together? Yes! That’s 2!",
+      "visualCue": "A cheerful 'Correct!' with the number 2 highlighted.",
+      "sceneHint": "answer_feedback"
+    },
+    {
+      "id": "wrap",
+      "kind": "wrap",
+      "durationSeconds": 120,
+      "narration": "You did an amazing job today learning about addition! Remember, when we put groups together, we find out how many we have in total. What fun addition problem will we solve next time?",
+      "visualCue": "A smiling cartoon character waving goodbye.",
+      "sceneHint": "goodbye_animation"
+    }
+  ],
+  "teacherNotes": "Encourage students to use physical objects for hands-on practice. Reinforce the concept of combining groups visually with a number line. Check for understanding and provide praise for participation!"
+}

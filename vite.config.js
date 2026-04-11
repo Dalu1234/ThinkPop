@@ -28,11 +28,22 @@ export default defineConfig(({ mode }) => {
       strictPort: false,
       proxy: {
         '/api/elevenlabs': elevenLabsProxy,
+        // MDM Python server — text-to-motion inference
+        '/api/motion': {
+          target: 'http://localhost:8000',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api\/motion/, '/generate'),
+        },
       },
     },
     preview: {
       proxy: {
         '/api/elevenlabs': elevenLabsProxy,
+        '/api/motion': {
+          target: 'http://localhost:8000',
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api\/motion/, '/generate'),
+        },
       },
     },
   }

@@ -7,6 +7,8 @@
     "dev": "vite",
     "dev:api": "node server/index.mjs",
     "dev:split": "concurrently -k \"vite\" \"node server/index.mjs\"",
+    "dev:motion": "cd motion-server && python -m uvicorn app:app --host 127.0.0.1 --port 8000 --reload",
+    "dev:full": "concurrently -k \"npm run dev\" \"npm run dev:motion\"",
     "build": "vite build",
     "preview": "vite preview"
   },

@@ -1,0 +1,24 @@
+{
+  "objectives": [
+    {
+      "id": "objective1",
+      "statement": "Identify and recognize numbers from 0 to 20.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "objective2",
+      "statement": "Use objects to model addition problems and find totals.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "objective3",
+      "statement": "Write simple addition sentences to represent sums.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "objective4",
+      "statement": "Solve simple addition problems using counting strategies.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

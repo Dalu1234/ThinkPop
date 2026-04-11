@@ -1,0 +1,34 @@
+{
+  "gestures": [
+    {
+      "segmentId": "hook",
+      "hand": "both",
+      "motion": "wave",
+      "mdmPrompt": "The tutor waves both arms excitedly while inviting students to join the adventure of addition."
+    },
+    {
+      "segmentId": "model",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "The tutor points to an imaginary number line while demonstrating how to combine numbers with a clear gesture."
+    },
+    {
+      "segmentId": "practice",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "The tutor holds up both hands and counts fingers to engage students in practicing addition with their own objects."
+    },
+    {
+      "segmentId": "check",
+      "hand": "left",
+      "motion": "open",
+      "mdmPrompt": "The tutor opens their arms wide in excitement while checking if students found the correct answer to the addition problem."
+    },
+    {
+      "segmentId": "wrap",
+      "hand": "right",
+      "motion": "emphasize",
+      "mdmPrompt": "The tutor emphasizes with their right hand while praising the students for their great work and enthusiasm in learning addition."
+    }
+  ]
+}

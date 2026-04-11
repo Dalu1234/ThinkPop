@@ -1,0 +1,47 @@
+{
+  "title": "Introduction to Addition",
+  "estimatedMinutes": 20,
+  "segments": [
+    {
+      "id": "hook",
+      "kind": "hook",
+      "durationSeconds": 120,
+      "narration": "Hello, young mathematicians! Today, we are going to learn about addition! Can you think of times when you bring things together? Let's explore how to add numbers and make them bigger!",
+      "visualCue": "A colorful animated image of objects being grouped together, like apples.",
+      "sceneHint": "object_grouping"
+    },
+    {
+      "id": "model",
+      "kind": "model",
+      "durationSeconds": 120,
+      "narration": "Let's start with a simple problem: 1 plus 1. We can use our fingers or some objects. If I have 1 apple and add another 1 apple, how many do I have? That's right! We have 2 apples!",
+      "visualCue": "A number line showing 1 + 1 = 2 with apple images.",
+      "sceneHint": "number_line_example"
+    },
+    {
+      "id": "practice",
+      "kind": "practice",
+      "durationSeconds": 240,
+      "narration": "Now it's your turn! Let's practice together. If I say 2 plus 1, how many do we get? Use your fingers or objects to find the answer. Count them aloud!",
+      "visualCue": "Interactive screen showing objects for students to count.",
+      "sceneHint": "interactive_counting"
+    },
+    {
+      "id": "check",
+      "kind": "check",
+      "durationSeconds": 120,
+      "narration": "Great job! Let’s check what we learned. If I have 3 toys and I get 2 more toys, how many toys do I have now? Think about it and say your answer!",
+      "visualCue": "Visual question with toys on screen, inviting students to respond.",
+      "sceneHint": "toy_counting_question"
+    },
+    {
+      "id": "wrap",
+      "kind": "wrap",
+      "durationSeconds": 60,
+      "narration": "Fantastic work today learning about addition! Remember, adding means putting numbers together. Keep practicing, and soon you'll be a great mathematician!",
+      "visualCue": "A happy character giving a thumbs up and showing 1 + 1 = 2.",
+      "sceneHint": "math_success"
+    }
+  ],
+  "teacherNotes": "Encourage students to use physical objects and their fingers to experience addition hands-on. Reinforce the concept by allowing them to express their thoughts verbally after practice questions."
+}

@@ -1,0 +1,34 @@
+{
+  "gestures": [
+    {
+      "segmentId": "hook",
+      "hand": "both",
+      "motion": "wave",
+      "mdmPrompt": "The tutor waves both hands enthusiastically while welcoming students and introducing the topic of addition."
+    },
+    {
+      "segmentId": "model",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "The tutor points to the number line while explaining the addition of 1 plus 1 with apple images."
+    },
+    {
+      "segmentId": "practice",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "The tutor holds up fingers on both hands while encouraging students to count aloud with them."
+    },
+    {
+      "segmentId": "check",
+      "hand": "left",
+      "motion": "open",
+      "mdmPrompt": "The tutor opens their left hand while asking the question about the toys, inviting students to respond."
+    },
+    {
+      "segmentId": "wrap",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "The tutor raises both hands with thumbs up, emphasizing the importance of practicing addition and celebrating success."
+    }
+  ]
+}

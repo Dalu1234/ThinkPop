@@ -1,0 +1,28 @@
+{
+  "gestures": [
+    {
+      "segmentId": "hook1",
+      "hand": "both",
+      "motion": "wave",
+      "mdmPrompt": "The tutor stands center and waves both arms, encouraging students to find shapes around them."
+    },
+    {
+      "segmentId": "model1",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "The tutor points to a slideshow of shapes, illustrating each one as they describe it."
+    },
+    {
+      "segmentId": "practice1",
+      "hand": "left",
+      "motion": "count",
+      "mdmPrompt": "The tutor counts off the shapes with their left hand while guiding students on sorting them."
+    },
+    {
+      "segmentId": "wrap1",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "The tutor spreads their arms wide, emphasizing the students' success in recognizing shapes."
+    }
+  ]
+}

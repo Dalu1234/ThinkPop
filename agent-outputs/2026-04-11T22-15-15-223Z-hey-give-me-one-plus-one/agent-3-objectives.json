@@ -1,0 +1,24 @@
+{
+  "objectives": [
+    {
+      "id": "objective_1",
+      "statement": "Identify the numbers involved in a simple addition problem.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "objective_2",
+      "statement": "Use objects or drawings to solve an addition problem within 20.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "objective_3",
+      "statement": "Explain the process of adding two single-digit numbers using a number line.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "objective_4",
+      "statement": "Create and solve a simple word problem involving addition.",
+      "bloomLevel": "analyze"
+    }
+  ]
+}

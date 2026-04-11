@@ -92,52 +92,43 @@ function mockPipeline(problem) {
       ],
     }
     const lessonPlan = {
-      title: `Making ${sum} by adding ${a} and ${b}`,
-      estimatedMinutes: 15,
+      title: `Adding ${a} and ${b}`,
+      estimatedMinutes: 5,
       segments: [
         {
           id: 'seg-hook',
           kind: 'hook',
-          durationSeconds: 45,
-          narration: `Here are ${a} stars and ${b} more stars. Let's put the groups together and see how many we have altogether.`,
-          visualCue: `Show one group of ${a} stars and a second group of ${b} stars with a small gap between them.`,
+          durationSeconds: 6,
+          narration: `We have ${a} stars and ${b} more — let's count them all together.`,
+          visualCue: `Two groups of stars`,
           sceneHint: 'count_groups_hook',
         },
         {
           id: 'seg-model',
           kind: 'model',
-          durationSeconds: 75,
-          narration: `We can count the first group: ${a}. Now we count on ${b} more to make ${sum}. That means ${a} plus ${b} equals ${sum}.`,
-          visualCue: `Slide both groups together and count each star aloud until the total reaches ${sum}.`,
+          durationSeconds: 7,
+          narration: `Start at ${a} and count on ${b} more to get ${sum}.`,
+          visualCue: `Stars combine into one group`,
           sceneHint: 'count_on_addition',
         },
         {
           id: 'seg-practice',
           kind: 'practice',
-          durationSeconds: 90,
-          narration: `Let's try it together. Start at ${a}, then count on ${b} more: ${sum}. Say the full equation with me: ${a} + ${b} = ${sum}.`,
-          visualCue: `Highlight the first ${a} objects, then pulse ${b} additional objects one at a time.`,
+          durationSeconds: 6,
+          narration: `Say it with me: ${a} plus ${b} equals ${sum}.`,
+          visualCue: `Equation ${a} + ${b} = ${sum}`,
           sceneHint: 'guided_addition_practice',
-        },
-        {
-          id: 'seg-check',
-          kind: 'check',
-          durationSeconds: 60,
-          narration: `Quick check: if we have ${a} blocks and add ${b} more, how many blocks do we have altogether? Yes, ${sum}.`,
-          visualCue: `Show stacked number cards ${a}, +, ${b}, =, ? then flip the answer card to ${sum}.`,
-          sceneHint: 'addition_check',
         },
         {
           id: 'seg-wrap',
           kind: 'wrap',
-          durationSeconds: 45,
-          narration: `Nice job. Addition means putting groups together. Today we learned that ${a} plus ${b} equals ${sum}.`,
-          visualCue: `Display the final equation ${a} + ${b} = ${sum} with all ${sum} objects grouped together.`,
+          durationSeconds: 5,
+          narration: `Great work — ${a} plus ${b} always equals ${sum}.`,
+          visualCue: `Final equation highlighted`,
           sceneHint: 'addition_wrap',
         },
       ],
-      teacherNotes:
-        'Encourage learners to count on from the larger number when appropriate and point to each object once while counting.',
+      teacherNotes: 'Have students point to each object while counting on.',
     }
     const gesturePlan = mockGesturePlan(lessonPlan)
     const visualModel = mockVisualModel(problem, intake, topic, lessonPlan)
@@ -181,52 +172,43 @@ function mockPipeline(problem) {
       ],
     }
     const lessonPlan = {
-      title: `Understanding ${a} x ${b} as equal groups`,
-      estimatedMinutes: 18,
+      title: `${a} times ${b} as equal groups`,
+      estimatedMinutes: 5,
       segments: [
         {
           id: 'seg-hook',
           kind: 'hook',
-          durationSeconds: 45,
-          narration: `Imagine ${b} rows with ${a} apples in each row. Multiplication helps us find the total quickly.`,
-          visualCue: `Show ${b} rows forming, with ${a} apples placed in each row.`,
+          durationSeconds: 6,
+          narration: `Here are ${b} rows with ${a} apples in each row.`,
+          visualCue: `Array of ${b} rows × ${a} apples`,
           sceneHint: 'array_hook',
         },
         {
           id: 'seg-model',
           kind: 'model',
-          durationSeconds: 90,
-          narration: `The expression ${a} times ${b} means ${b} equal groups of ${a}. We can count by rows or use repeated addition: ${a} + ${a}${b > 2 ? ` + ...` : ''} = ${product}.`,
-          visualCue: `Label each row with ${a} and show the full array totaling ${product} apples.`,
+          durationSeconds: 7,
+          narration: `${a} times ${b} means ${b} equal groups of ${a}, giving us ${product} total.`,
+          visualCue: `Rows labeled, total shown`,
           sceneHint: 'array_model',
         },
         {
           id: 'seg-practice',
           kind: 'practice',
-          durationSeconds: 90,
-          narration: `Let's count the array together. There are ${b} rows, and each row has ${a}. That makes ${product} altogether.`,
-          visualCue: `Pulse one row at a time, then highlight all ${product} apples together.`,
+          durationSeconds: 6,
+          narration: `Count the rows with me: ${b} rows of ${a} equals ${product}.`,
+          visualCue: `Each row pulses in turn`,
           sceneHint: 'array_count_practice',
-        },
-        {
-          id: 'seg-check',
-          kind: 'check',
-          durationSeconds: 60,
-          narration: `Quick check: if one row has ${a} apples and there are ${b} rows, what multiplication sentence matches? ${a} x ${b} = ${product}.`,
-          visualCue: `Show the array beside the equation ${a} x ${b} = ${product}.`,
-          sceneHint: 'multiplication_check',
         },
         {
           id: 'seg-wrap',
           kind: 'wrap',
-          durationSeconds: 45,
-          narration: `Great work. Equal groups help us see multiplication, and now we know that ${a} times ${b} equals ${product}.`,
-          visualCue: `Zoom out to the full array and celebrate the product ${product}.`,
+          durationSeconds: 5,
+          narration: `${a} times ${b} equals ${product} — remember that!`,
+          visualCue: `Equation ${a} × ${b} = ${product}`,
           sceneHint: 'multiplication_wrap',
         },
       ],
-      teacherNotes:
-        'Point to each row as a group and connect the array to repeated addition before naming the product.',
+      teacherNotes: 'Connect each row to one equal group.',
     }
     const gesturePlan = mockGesturePlan(lessonPlan)
     const visualModel = mockVisualModel(problem, intake, topic, lessonPlan)
@@ -273,58 +255,45 @@ function mockPipeline(problem) {
       ],
     }
     const lessonPlan = {
-      title: `Making equal groups for ${total} / ${groupSize}`,
-      estimatedMinutes: 18,
+      title: `Dividing ${total} into groups of ${groupSize}`,
+      estimatedMinutes: 5,
       segments: [
         {
           id: 'seg-hook',
           kind: 'hook',
-          durationSeconds: 45,
-          narration: `Here are ${total} apples altogether. We want to put them into equal groups of ${groupSize}.`,
-          visualCue: `Show all ${total} apples in one collection before any grouping begins.`,
+          durationSeconds: 6,
+          narration: `We have ${total} apples to split into equal groups of ${groupSize}.`,
+          visualCue: `${total} apples in one pile`,
           sceneHint: 'division_total_hook',
         },
         {
           id: 'seg-model',
           kind: 'model',
-          durationSeconds: 90,
-          narration: `We keep making groups of ${groupSize}. Each time we make one full group, we count it. ${total} divided by ${groupSize} tells how many groups we can form.`,
-          visualCue: `Move the apples into equal groups of ${groupSize} and count each completed group.`,
+          durationSeconds: 7,
+          narration: `We keep making groups of ${groupSize} until we run out — that gives us ${quotient} groups.`,
+          visualCue: `Apples move into groups of ${groupSize}`,
           sceneHint: 'division_group_model',
         },
         {
           id: 'seg-practice',
           kind: 'practice',
-          durationSeconds: 90,
+          durationSeconds: 6,
           narration: remainder
-            ? `Let's group them together. We can make ${quotient} full groups of ${groupSize}, and ${remainder} apple stays left over.`
-            : `Let's group them together. We can make ${quotient} full groups of ${groupSize}, so the answer is ${quotient}.`,
-          visualCue: `Highlight each finished group and show the number of groups growing to ${quotient}.`,
+            ? `${total} divided by ${groupSize} equals ${quotient} with ${remainder} left over.`
+            : `${total} divided by ${groupSize} equals ${quotient}.`,
+          visualCue: `Groups highlighted with answer`,
           sceneHint: 'division_group_practice',
-        },
-        {
-          id: 'seg-check',
-          kind: 'check',
-          durationSeconds: 60,
-          narration: remainder
-            ? `Quick check: if ${total} apples are grouped into sets of ${groupSize}, how many full groups can we make and what is left over?`
-            : `Quick check: if ${total} apples are grouped into sets of ${groupSize}, how many groups do we make? ${quotient}.`,
-          visualCue: `Show the grouped apples beside the equation ${total} ÷ ${groupSize} = ${quotient}${remainder ? ' R ' + remainder : ''}.`,
-          sceneHint: 'division_check',
         },
         {
           id: 'seg-wrap',
           kind: 'wrap',
-          durationSeconds: 45,
-          narration: remainder
-            ? `Great work. Division helped us make ${quotient} equal groups of ${groupSize} with ${remainder} left over.`
-            : `Great work. Division helped us make ${quotient} equal groups of ${groupSize}, so ${total} divided by ${groupSize} equals ${quotient}.`,
-          visualCue: `Hold the final equal groups on screen and celebrate the quotient ${quotient}.`,
+          durationSeconds: 5,
+          narration: `Division splits a total into equal groups — nice work today!`,
+          visualCue: `Final equation displayed`,
           sceneHint: 'division_wrap',
         },
       ],
-      teacherNotes:
-        'Have students say the total, the size of each group, and the number of groups aloud as the apples are sorted.',
+      teacherNotes: 'Have students count each completed group aloud.',
     }
     const gesturePlan = mockGesturePlan(lessonPlan)
     const visualModel = mockVisualModel(problem, intake, topic, lessonPlan)
@@ -367,56 +336,43 @@ function mockPipeline(problem) {
     ],
   }
   const lessonPlan = {
-    title: 'Hands-on fraction addition',
-    estimatedMinutes: 25,
+    title: 'Adding fractions with like denominators',
+    estimatedMinutes: 5,
     segments: [
       {
         id: 'seg-hook',
         kind: 'hook',
-        durationSeconds: 45,
-        narration:
-          "Let's use a chocolate bar to think about pieces that are the same size before we add them.",
-        visualCue: '3D rectangle split into equal parts; pulse one shaded slice.',
+        durationSeconds: 6,
+        narration: 'To add fractions, the pieces need to be the same size first.',
+        visualCue: 'Bar split into equal parts',
         sceneHint: 'area_model_rectangle',
       },
       {
         id: 'seg-model',
         kind: 'model',
-        durationSeconds: 120,
-        narration:
-          'When denominators match, we add the numerators and keep the denominator—the size of each piece did not change.',
-        visualCue: 'Show 1/4 + 2/4 on the same bar; highlight merged shaded region.',
+        durationSeconds: 7,
+        narration: 'When denominators match, just add the numerators and keep the denominator.',
+        visualCue: '1/4 + 2/4 combined on bar',
         sceneHint: 'fraction_bar_add_like',
       },
       {
         id: 'seg-practice',
         kind: 'practice',
-        durationSeconds: 180,
-        narration:
-          'Try 1/2 + 1/4. First, change halves into fourths so the pieces match, then add.',
-        visualCue: 'Transform 1/2 into 2/4 beside 1/4; combine to 3/4.',
+        durationSeconds: 6,
+        narration: 'Try it: one half plus one fourth — convert halves to fourths, then add.',
+        visualCue: '1/2 → 2/4, then 2/4 + 1/4 = 3/4',
         sceneHint: 'equivalent_fraction_transform',
-      },
-      {
-        id: 'seg-check',
-        kind: 'check',
-        durationSeconds: 90,
-        narration: 'Quick check: without drawing, what denominator do 1/3 and 1/6 share?',
-        visualCue: 'Show two empty fraction bars labeled thirds and sixths.',
-        sceneHint: 'compare_denominators',
       },
       {
         id: 'seg-wrap',
         kind: 'wrap',
-        durationSeconds: 60,
-        narration:
-          'Great work! Same-sized pieces let us add safely; equivalent fractions help us resize pieces when needed.',
-        visualCue: 'Celebrate checkmark over the combined bar.',
+        durationSeconds: 5,
+        narration: 'Same-sized pieces let us add fractions safely — great work!',
+        visualCue: 'Final fraction highlighted',
         sceneHint: 'celebration',
       },
     ],
-    teacherNotes:
-      'Emphasize “same-sized part” over rote rules; use gestures or manipulatives alongside the 3D model.',
+    teacherNotes: 'Stress equal piece size before combining numerators.',
   }
   const gesturePlan = mockGesturePlan(lessonPlan)
   const visualModel = mockVisualModel(problem, intake, topic, lessonPlan)
@@ -542,10 +498,10 @@ async function agentTopic(intake) {
   const system = `${BASE}
 You are Agent 2 — Topic designer. Given intake JSON, propose the focused instructional topic.
 Return JSON only with keys:
-- topicTitle (string)
-- subtopics (array of strings, 2–5 items)
-- briefSummary (2–4 sentences)
-- relatedPrerequisites (array of strings, 1–4 items)`
+- topicTitle (string, 3–6 words)
+- subtopics (array of strings, 2–3 items)
+- briefSummary (string, ONE sentence only)
+- relatedPrerequisites (array of strings, 1–2 items)`
   const user = JSON.stringify(intake, null, 2)
   return completeJson({ model: MODEL, system, user })
 }
@@ -554,30 +510,45 @@ async function agentObjectives(intake, topic) {
   const system = `${BASE}
 You are Agent 3 — Objectives. Write measurable outcomes for elementary students.
 Return JSON only with keys:
-- objectives (array of 2–4 objects)
-Each objective object: id (string), statement (string starting with student action), bloomLevel (one of: remember, understand, apply, analyze).`
+- objectives (array of exactly 2 objects)
+Each objective object: id (string), statement (string, one short sentence starting with a student action verb), bloomLevel (one of: remember, understand, apply, analyze).`
   const user = `Intake:\n${JSON.stringify(intake, null, 2)}\n\nTopic:\n${JSON.stringify(topic, null, 2)}`
   return completeJson({ model: MODEL, system, user })
 }
 
 async function agentLessonPlan(intake, topic, objectives) {
   const system = `${BASE}
-You are Agent 4 — Lesson plan. Build a concise lesson that a 3D visual tutor and voice narration can follow.
+You are Agent 4 — Lesson plan. Build a short lesson a 3D visual tutor speaks aloud.
 Return JSON only with keys:
-- title (string)
-- estimatedMinutes (number, 10–40)
-- segments (ordered array, 4–7 items)
-Each segment: id (string), kind (one of: hook, model, practice, check, wrap), durationSeconds (number), narration (string, speak-aloud script), visualCue (string, what appears on screen), sceneHint (short machine token like "number_line_jump" or "fraction_bar")
-- teacherNotes (string, 1–3 sentences for the adult)`
+- title (string, 4–7 words)
+- estimatedMinutes (number, 3–8)
+- segments (ordered array, exactly 3–4 items)
+Each segment: id (string), kind (one of: hook, model, practice, wrap), durationSeconds (number, 4–8), narration (string, ONE sentence of 10–18 words — this is spoken aloud, keep it tight), visualCue (string, 3–5 words), sceneHint (short token like "number_line_jump")
+- teacherNotes (string, one sentence)`
   const user = `Intake:\n${JSON.stringify(intake, null, 2)}\n\nTopic:\n${JSON.stringify(topic, null, 2)}\n\nObjectives:\n${JSON.stringify(objectives, null, 2)}`
   return completeJson({ model: MODEL, system, user })
 }
 
+// MDM motion prompts — text fed directly into the Human Motion Diffusion Model.
+// Phrasing follows HumanML3D training conventions ("a person...").
+const MDM_MOTION_PROMPTS = {
+  wave:      'a person waves their right hand warmly at the audience',
+  point:     'a person raises their right arm and points forward with their finger',
+  count:     'a person counts on their fingers, raising one hand in front of their body',
+  emphasize: 'a person gestures expressively with both hands while explaining something',
+  open:      'a person opens both arms wide to their sides in a welcoming gesture',
+  rest:      'a person stands in a relaxed neutral position with arms at their sides',
+}
+
 async function agentGesturePlan(lessonPlan) {
   const system = `${BASE}
-You are Agent 5 — Gesture director. The 3D tutor will move its arms while each lesson segment is explained.
+You are Agent 5 — Gesture director. The 3D tutor will move its whole body while each lesson segment is explained.
 Return JSON only with key "gestures": an array with EXACTLY one object per segment in the lesson plan, in the SAME ORDER as segments.
-Each object: segmentId (string, must match the segment id), hand ("left"|"right"|"both"), motion ("rest"|"point"|"wave"|"count"|"open"|"emphasize").
+Each object:
+- segmentId (string, must match the segment id)
+- hand ("left"|"right"|"both")
+- motion ("rest"|"point"|"wave"|"count"|"open"|"emphasize")
+- mdmPrompt (string) — a natural-language description of the full-body movement for this segment, 10-20 words, e.g. "a person walks forward and then gestures with their right arm while explaining". Be specific and educational.
 Vary motions naturally: hook might use "wave", model might use "point", practice "count", check "open", wrap "emphasize".`
   const user = JSON.stringify(lessonPlan, null, 2)
   return completeJson({ model: MODEL, system, user })
@@ -612,7 +583,11 @@ function normalizeGesturePlan(lessonPlan, raw) {
       const g = byId.get(seg.id) || list[i] || {}
       const motion = motions.includes(g.motion) ? g.motion : motions[i % motions.length]
       const hand = hands.includes(g.hand) ? g.hand : hands[i % hands.length]
-      return { segmentId: seg.id, hand, motion }
+      // mdmPrompt: use the AI-generated one if valid, else fall back to the default map
+      const mdmPrompt = (typeof g.mdmPrompt === 'string' && g.mdmPrompt.length > 8)
+        ? g.mdmPrompt
+        : MDM_MOTION_PROMPTS[motion]
+      return { segmentId: seg.id, hand, motion, mdmPrompt }
     }),
   }
 }

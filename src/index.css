@@ -210,6 +210,118 @@ body {
 }
 
 /* ============================================================
+   PIPELINE PROGRESS (right side)
+   ============================================================ */
+.pipeline-panel {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  z-index: 19;
+  width: 160px;
+  padding: 14px 14px 10px;
+  background: rgba(6, 8, 15, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.pipeline-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.28);
+  margin: 0 0 12px 0;
+  padding-left: 2px;
+}
+
+.pipeline-steps {
+  display: flex;
+  flex-direction: column;
+}
+
+.pipeline-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-height: 32px;
+}
+
+.pipeline-track {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  width: 22px;
+}
+
+.pipeline-node {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.pipeline-line {
+  width: 1.5px;
+  flex: 1;
+  min-height: 10px;
+  margin: 2px 0;
+  border-radius: 1px;
+}
+
+.pipeline-spinner {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-top-color: currentColor; /* overridden inline */
+  display: block;
+}
+
+.pipeline-num {
+  font-family: 'Nunito', sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.22);
+  line-height: 1;
+}
+
+.pipeline-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 2px;
+  min-height: 22px;
+  gap: 0px;
+}
+
+.pipeline-agent-tag {
+  font-family: 'Nunito', sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 1;
+  margin-bottom: 1px;
+}
+
+.pipeline-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 11.5px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* ============================================================
    TOPIC CARD (top-center)
    ============================================================ */
 .topic-card-wrapper {
@@ -252,98 +364,6 @@ body {
   font-size: 17px;
   color: white;
   letter-spacing: 0.4px;
-}
-
-/* ============================================================
-   OBJECT STAGE (left of Baymax)
-   ============================================================ */
-.object-stage {
-  position: fixed;
-  left: 28px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 500px;
-  z-index: 20;
-
-  padding: 16px;
-
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.13);
-  border-radius: 28px;
-  overflow: visible;
-}
-
-.object-stage-inner {
-  display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
-  align-items: stretch;
-  gap: 16px;
-}
-
-.object-canvas-wrapper {
-  position: relative;
-  min-width: 0;
-  width: 100%;
-  height: 268px;
-  border-radius: 22px;
-  overflow: hidden;
-  background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.08), transparent 58%);
-}
-
-.object-canvas-wrapper canvas {
-  width: 100% !important;
-  height: 100% !important;
-}
-
-.object-label {
-  width: 100%;
-  min-height: 268px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 26px 22px;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 22px;
-  font-family: 'Fredoka One', cursive;
-  font-size: 19px;
-  line-height: 1.35;
-  border: 1px solid;
-  text-align: center;
-  box-shadow: inset 0 0 18px rgba(255, 255, 255, 0.03);
-}
-
-.object-glow-burst {
-  position: absolute;
-  inset: 0;
-  border-radius: 28px;
-  background: radial-gradient(ellipse at center, rgba(255,110,180,0.3), transparent 70%);
-  pointer-events: none;
-  z-index: 1;
-}
-
-@media (max-width: 900px) {
-  .object-stage {
-    left: 16px;
-    width: 390px;
-    padding: 12px;
-  }
-
-  .object-stage-inner {
-    grid-template-columns: 150px minmax(0, 1fr);
-    gap: 12px;
-  }
-
-  .object-canvas-wrapper {
-    height: 228px;
-  }
-
-  .object-label {
-    min-height: 228px;
-    font-size: 16px;
-    padding: 18px 14px;
-  }
 }
 
 /* ============================================================
@@ -858,6 +878,78 @@ body {
   max-width: 650px;
   text-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
   pointer-events: none;
+}
+
+/* ============================================================
+   MDM TEST PANEL (bottom-left)
+   ============================================================ */
+.mdm-test-panel {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 20;
+  padding: 12px 14px;
+  background: rgba(6, 8, 15, 0.80);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+  min-width: 148px;
+}
+
+.mdm-test-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.28);
+  margin: 0 0 9px 0;
+}
+
+.mdm-test-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+
+.mdm-test-btn {
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 8px;
+  border-radius: 7px;
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  background: rgba(0, 229, 255, 0.07);
+  color: rgba(0, 229, 255, 0.85);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.mdm-test-btn:hover:not(:disabled) {
+  background: rgba(0, 229, 255, 0.18);
+  border-color: rgba(0, 229, 255, 0.55);
+}
+
+.mdm-test-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.mdm-test-btn--busy {
+  border-color: rgba(255, 110, 180, 0.5);
+  color: rgba(255, 110, 180, 0.85);
+  background: rgba(255, 110, 180, 0.08);
+}
+
+.mdm-test-mode {
+  font-family: 'Nunito', sans-serif;
+  font-size: 9.5px;
+  color: rgba(255, 255, 255, 0.3);
+  margin: 7px 0 0 0;
+  text-align: center;
 }
 
 /* ============================================================

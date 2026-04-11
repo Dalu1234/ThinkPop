@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Identify the sum of 1 + 1.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "obj2",
+      "statement": "Use objects to demonstrate the addition of 1 + 1.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

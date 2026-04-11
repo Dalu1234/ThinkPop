@@ -11,44 +11,13 @@ export function emojiForTopic(text) {
 
 /** @param {Record<string, unknown>} result */
 export function formatLessonPlanMessage(result) {
-  const { intake, topic, objectives, lessonPlan, gesturePlan, visualModel } = result
-  const lines = []
-
-  lines.push('Your question')
-  lines.push(intake?.normalizedProblem || result.problem || '')
-  lines.push('')
-  lines.push(`Topic - ${topic?.topicTitle || 'Math'}`)
-  if (topic?.briefSummary) {
-    lines.push(topic.briefSummary)
-  }
-
-  lines.push('')
-  lines.push('Learning goals')
-  const objs = objectives?.objectives || []
-  objs.forEach((o, i) => {
-    lines.push(`${i + 1}. ${o.statement || o.text || JSON.stringify(o)}`)
-  })
-
-  lines.push('')
-  lines.push(
-    `Lesson plan - ${lessonPlan?.title || 'Lesson'} (about ${lessonPlan?.estimatedMinutes ?? '?'} min)`
-  )
-
+  const { lessonPlan } = result
   const segs = lessonPlan?.segments || []
-  segs.forEach((s, i) => {
-    const kind = s.kind || 'step'
-    const sec = s.durationSeconds != null ? `${s.durationSeconds}s` : ''
-    lines.push('')
-    lines.push(`${i + 1}. ${kind}${sec ? ` (${sec})` : ''}`)
-    if (s.narration) lines.push(s.narration)
-  })
-
-  if (lessonPlan?.teacherNotes) {
-    lines.push('')
-    lines.push(`Teacher note: ${lessonPlan.teacherNotes}`)
-  }
-
-  return lines.join('\n')
+  // Speak only the narration lines — one sentence each, back to back.
+  return segs
+    .map(s => (s.narration || '').trim())
+    .filter(Boolean)
+    .join(' ')
 }
 
 /**
