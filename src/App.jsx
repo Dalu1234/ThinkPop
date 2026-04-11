@@ -3,7 +3,7 @@ import LandingPage from './LandingPage'
 import ThreeBackground from './components/ThreeBackground'
 import TopicCard from './components/TopicCard'
 import ChatPanel from './components/ChatPanel'
-
+import HistorySidebar from './components/HistorySidebar'
 import AIStatus from './components/AIStatus'
 import Skyline from './components/Skyline'
 import { textToSpeechBlob, playAudioBlob } from './lib/elevenlabs'
@@ -167,6 +167,7 @@ function BaymaxExperience() {
       <div className="edge-bloom edge-bloom-right" />
 
       <Skyline />
+      <HistorySidebar />
 
       <BaymaxSpeakingBars
         levels={aiAudioLevels}
