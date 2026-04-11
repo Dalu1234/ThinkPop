@@ -1,11 +1,11 @@
 import React from 'react';
 import './LandingPage.css';
+import ThreeBackground from './components/ThreeBackground';
 
 export default function LandingPage() {
   return (
     <div className="landing-container">
-      <div className="orb orb-pink"></div>
-      <div className="orb orb-cyan"></div>
+      <ThreeBackground mode="space-only" />
       
       <div className="landing-content">
         <h1 className="landing-title">ThinkPop</h1>

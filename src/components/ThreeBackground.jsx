@@ -242,7 +242,7 @@ function BaymaxCharacter({ aiState }) {
   )
 }
 
-export default function ThreeBackground({ aiState }) {
+export default function ThreeBackground({ aiState, mode = 'full' }) {
   return (
     <div className="three-canvas">
       <Canvas
@@ -255,7 +255,7 @@ export default function ThreeBackground({ aiState }) {
         <pointLight position={[6, 2, 4]} color="#00e5ff" intensity={4} />
 
         <Particles />
-        <BaymaxCharacter aiState={aiState} />
+        {mode !== 'space-only' && <BaymaxCharacter aiState={aiState} />}
       </Canvas>
     </div>
   )
