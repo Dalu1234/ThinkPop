@@ -2,11 +2,11 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const SUGGESTIONS = [
-  'What is the Pythagorean theorem?',
-  'How does photosynthesis work?',
-  'Tell me about the solar system',
-  'What is DNA?',
-  'Explain gravity',
+  'How do I add fractions with different denominators?',
+  'Explain place value with tens and ones',
+  'What is multiplication as repeated addition?',
+  'Help me understand division with remainders',
+  'How do I compare two fractions?',
 ]
 
 export default function ChatPanel({ messages, onSend, aiState }) {
@@ -22,6 +22,16 @@ export default function ChatPanel({ messages, onSend, aiState }) {
   }, [messages])
 
   const isDisabled = aiState !== null
+
+  const showTyping =
+    aiState === 'thinking' ||
+    aiState === 'building' ||
+    aiState === 'intake' ||
+    aiState === 'topic' ||
+    aiState === 'objectives' ||
+    aiState === 'lesson_plan' ||
+    aiState === 'gestures' ||
+    aiState === 'visual_model'
 
   const handleSend = () => {
     if (!input.trim() || isDisabled) return
@@ -87,7 +97,7 @@ export default function ChatPanel({ messages, onSend, aiState }) {
 
         {/* Thinking indicator */}
         <AnimatePresence>
-          {(aiState === 'thinking' || aiState === 'building') && (
+          {showTyping && (
             <motion.div
               className="chat-bubble bubble-ai bubble-thinking"
               initial={{ opacity: 0, y: 12, scale: 0.88 }}

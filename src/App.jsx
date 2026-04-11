@@ -1,106 +1,186 @@
-import { useState, useCallback, useRef } from 'react'
+import { useState, useCallback, useRef, useEffect } from 'react'
 import ThreeBackground from './components/ThreeBackground'
 import TopicCard from './components/TopicCard'
 import ChatPanel from './components/ChatPanel'
 import ObjectStage from './components/ObjectStage'
 import AIStatus from './components/AIStatus'
 import Skyline from './components/Skyline'
+import {
+  streamLessonPipeline,
+  formatLessonPlanMessage,
+  emojiForTopic,
+} from './lib/lessonApi'
 
-const TOPICS = [
-  { label: 'Pythagorean Theorem', emoji: '📐' },
-  { label: 'Photosynthesis', emoji: '🌿' },
-  { label: 'Solar System', emoji: '🪐' },
-  { label: 'DNA Structure', emoji: '🧬' },
-  { label: 'Gravity & Motion', emoji: '🍎' },
-  { label: 'The Water Cycle', emoji: '💧' },
-  { label: 'Volcanic Activity', emoji: '🌋' },
-]
-
-const FAKE_RESPONSES = [
-  "Great question! The Pythagorean theorem states a² + b² = c² for right triangles. I've generated a 3D model to help visualize it — the hypotenuse is always the longest side! 📐",
-  "Photosynthesis is nature's solar power! Plants use chlorophyll to convert sunlight, CO₂, and water into glucose and oxygen. One large tree absorbs ~48 lbs of CO₂ per year! 🌿",
-  "Our solar system has 8 planets orbiting the Sun. Jupiter is so massive you could fit 1,300 Earths inside it! Check out the 3D model — it shows their relative scales. 🪐",
-  "DNA is a double helix with four bases: Adenine, Thymine, Cytosine, Guanine. A always pairs with T, C with G. Every cell in your body contains about 6 feet of DNA! 🧬",
-  "Gravity pulls objects toward each other proportional to mass. On Earth, free-fall acceleration is 9.8 m/s². Einstein revealed gravity is actually curved spacetime! 🍎",
-  "The water cycle moves water through evaporation, condensation, and precipitation — all driven by the Sun. A single water molecule can spend 3,000 years in the ocean! 💧",
-  "Volcanoes form at tectonic plate boundaries or hot spots in Earth's mantle. The 3D model shows a cross-section with the magma chamber, conduit, and lava flows! 🌋",
-]
+const INITIAL_TOPIC = { label: 'Elementary math', emoji: '🔢' }
 
 const OBJECTS = [
-  { label: 'Right Triangle', color: '#00e5ff' },
-  { label: 'Chloroplast', color: '#4ade80' },
-  { label: 'Solar Orrery', color: '#ffd166' },
-  { label: 'DNA Helix', color: '#ff6eb4' },
-  { label: 'Orbital Path', color: '#a78bfa' },
-  { label: 'Water Molecule', color: '#60a5fa' },
-  { label: 'Magma Chamber', color: '#f97316' },
+  { label: 'Number line', color: '#00e5ff' },
+  { label: 'Fraction bars', color: '#ff6eb4' },
+  { label: 'Base-ten blocks', color: '#a78bfa' },
+  { label: 'Geometric solids', color: '#4ade80' },
+  { label: 'Array model', color: '#ffd166' },
+  { label: 'Clock face', color: '#60a5fa' },
 ]
 
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
+function objectIndexFromString(s) {
+  if (!s) return 0
+  let h = 0
+  for (let i = 0; i < s.length; i++) h = (h + s.charCodeAt(i) * (i + 1)) % OBJECTS.length
+  return h
+}
+
+const REST_GESTURE = { motion: 'rest', hand: 'both' }
+
 export default function App() {
   const [aiState, setAiState] = useState(null)
-  const [topicIndex, setTopicIndex] = useState(0)
+  const [topicDisplay, setTopicDisplay] = useState(INITIAL_TOPIC)
   const [objectIndex, setObjectIndex] = useState(0)
   const [objectVisible, setObjectVisible] = useState(true)
+  const [visualModel, setVisualModel] = useState(null)
+  const [playGesture, setPlayGesture] = useState(REST_GESTURE)
   const [messages, setMessages] = useState([
     {
       id: 1,
       from: 'ai',
-      text: "Hi! I'm Baymax, your personal AI 3D teacher. Ask me anything — I'll explain it, show you a 3D model, and make learning fun! 🤗",
+      text: "Hi! I'm Baymax, your AI math coach. Ask a question — six agents build the lesson, hand motions, and a 3D model (like a grid of apples for 3×4). 🤗",
     },
   ])
-  const indexRef = useRef({ topic: 0, object: 0 })
+  const pipelineResultRef = useRef(null)
 
-  const sendMessage = useCallback(async (text) => {
+  useEffect(() => {
+    if (aiState !== 'speaking') {
+      setPlayGesture(REST_GESTURE)
+      return
+    }
+
+    const result = pipelineResultRef.current
+    const segments = result?.lessonPlan?.segments
+    if (!segments?.length) return
+
+    let idx = 0
+    let timerId
+    const cancelled = { v: false }
+
+    const step = () => {
+      if (cancelled.v) return
+      if (idx >= segments.length) {
+        setPlayGesture(REST_GESTURE)
+        return
+      }
+      const seg = segments[idx]
+      const g =
+        result.gesturePlan?.gestures?.find(x => x.segmentId === seg.id) ||
+        result.gesturePlan?.gestures?.[idx]
+      setPlayGesture({
+        motion: g?.motion || 'emphasize',
+        hand: g?.hand || 'right',
+      })
+      const ms = Math.min(60000, Math.max(600, (seg.durationSeconds || 5) * 1000))
+      idx += 1
+      timerId = setTimeout(step, ms)
+    }
+
+    step()
+    return () => {
+      cancelled.v = true
+      clearTimeout(timerId)
+    }
+  }, [aiState])
+
+  const sendMessage = useCallback(async text => {
     if (aiState !== null) return
 
     const userMsg = { id: Date.now(), from: 'user', text }
     setMessages(prev => [...prev, userMsg])
 
-    // Thinking
-    setAiState('thinking')
-    await delay(1500)
+    setVisualModel(null)
+    pipelineResultRef.current = null
+    setAiState('intake')
 
-    // Building 3D object
+    let result
+    try {
+      result = await streamLessonPipeline(text, {
+        onEvent: evt => {
+          if (evt.stage === 'intake') setAiState('topic')
+          if (evt.stage === 'topic' && evt.data?.topicTitle) {
+            setTopicDisplay({
+              label: evt.data.topicTitle,
+              emoji: emojiForTopic(evt.data.topicTitle),
+            })
+            setAiState('objectives')
+          }
+          if (evt.stage === 'objectives') setAiState('lesson_plan')
+          if (evt.stage === 'lessonPlan') setAiState('gestures')
+          if (evt.stage === 'gestures') setAiState('visual_model')
+        },
+      })
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : String(e)
+      setMessages(prev => [
+        ...prev,
+        {
+          id: Date.now() + 1,
+          from: 'ai',
+          text: `Something went wrong while running the lesson agents: ${msg}`,
+        },
+      ])
+      setAiState(null)
+      return
+    }
+
+    if (!result) {
+      setMessages(prev => [
+        ...prev,
+        {
+          id: Date.now() + 1,
+          from: 'ai',
+          text: 'Lesson pipeline finished without a result. Is the dev server running?',
+        },
+      ])
+      setAiState(null)
+      return
+    }
+
     setAiState('building')
-    await delay(900)
-    const nextObj = (indexRef.current.object + 1) % OBJECTS.length
-    indexRef.current.object = nextObj
+    pipelineResultRef.current = result
+    setVisualModel(result.visualModel || null)
+
+    const nextIdx = objectIndexFromString(
+      result.lessonPlan?.title || result.topic?.topicTitle || text
+    )
     setObjectVisible(false)
-    await delay(100)
-    setObjectIndex(nextObj)
+    await delay(120)
+    setObjectIndex(nextIdx)
     setObjectVisible(true)
+    await delay(400)
 
-    // Speaking + response
     setAiState('speaking')
-    const responseIdx = nextObj % FAKE_RESPONSES.length
-    const aiMsg = { id: Date.now() + 1, from: 'ai', text: FAKE_RESPONSES[responseIdx] }
+    const body = formatLessonPlanMessage(result)
+    const aiMsg = { id: Date.now() + 1, from: 'ai', text: body }
     setMessages(prev => [...prev, aiMsg])
-    const nextTopic = (indexRef.current.topic + 1) % TOPICS.length
-    indexRef.current.topic = nextTopic
-    setTopicIndex(nextTopic)
 
-    await delay(2800)
+    await delay(2200)
     setAiState(null)
   }, [aiState])
 
   return (
     <div className="app-root">
-      <ThreeBackground aiState={aiState} />
+      <ThreeBackground aiState={aiState} gesture={playGesture} />
 
-      {/* Edge bloom overlays */}
       <div className="edge-bloom edge-bloom-left" />
       <div className="edge-bloom edge-bloom-right" />
 
       <Skyline />
 
       <AIStatus state={aiState} />
-      <TopicCard topic={TOPICS[topicIndex]} />
+      <TopicCard topic={topicDisplay} />
       <ObjectStage
         object={OBJECTS[objectIndex]}
+        visualModel={visualModel}
         visible={objectVisible}
         active={aiState === 'building'}
       />
