@@ -1,0 +1,47 @@
+{
+  "title": "Understanding 3 x 4 as equal groups",
+  "estimatedMinutes": 18,
+  "segments": [
+    {
+      "id": "seg-hook",
+      "kind": "hook",
+      "durationSeconds": 45,
+      "narration": "Imagine 4 rows with 3 apples in each row. Multiplication helps us find the total quickly.",
+      "visualCue": "Show 4 rows forming, with 3 apples placed in each row.",
+      "sceneHint": "array_hook"
+    },
+    {
+      "id": "seg-model",
+      "kind": "model",
+      "durationSeconds": 90,
+      "narration": "The expression 3 times 4 means 4 equal groups of 3. We can count by rows or use repeated addition: 3 + 3 + ... = 12.",
+      "visualCue": "Label each row with 3 and show the full array totaling 12 apples.",
+      "sceneHint": "array_model"
+    },
+    {
+      "id": "seg-practice",
+      "kind": "practice",
+      "durationSeconds": 90,
+      "narration": "Let's count the array together. There are 4 rows, and each row has 3. That makes 12 altogether.",
+      "visualCue": "Pulse one row at a time, then highlight all 12 apples together.",
+      "sceneHint": "array_count_practice"
+    },
+    {
+      "id": "seg-check",
+      "kind": "check",
+      "durationSeconds": 60,
+      "narration": "Quick check: if one row has 3 apples and there are 4 rows, what multiplication sentence matches? 3 x 4 = 12.",
+      "visualCue": "Show the array beside the equation 3 x 4 = 12.",
+      "sceneHint": "multiplication_check"
+    },
+    {
+      "id": "seg-wrap",
+      "kind": "wrap",
+      "durationSeconds": 45,
+      "narration": "Great work. Equal groups help us see multiplication, and now we know that 3 times 4 equals 12.",
+      "visualCue": "Zoom out to the full array and celebrate the product 12.",
+      "sceneHint": "multiplication_wrap"
+    }
+  ],
+  "teacherNotes": "Point to each row as a group and connect the array to repeated addition before naming the product."
+}

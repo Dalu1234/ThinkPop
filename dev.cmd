@@ -15,5 +15,5 @@ echo Node.js was not found. Install LTS from https://nodejs.org/
 exit /b 1
 
 :run
-"%NPM_CMD%" run dev
+"%NPM_CMD%" run dev:split
 exit /b %ERRORLEVEL%

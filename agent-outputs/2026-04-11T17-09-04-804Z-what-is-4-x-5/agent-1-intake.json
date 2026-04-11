@@ -1,0 +1,7 @@
+{
+  "normalizedProblem": "what is 4 x 5",
+  "gradeBand": "3-5",
+  "mathDomain": "Multiplication as equal groups",
+  "ambiguities": [],
+  "learnerIntent": "Understand multiplication as equal groups and find the total number of objects."
+}

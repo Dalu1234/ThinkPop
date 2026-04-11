@@ -1,0 +1,8 @@
+{
+  "kind": "grid",
+  "rows": 1,
+  "cols": 4,
+  "itemShape": "block",
+  "itemColor": "#ff6eb4",
+  "caption": "Four equal parts — one whole split into fourths"
+}

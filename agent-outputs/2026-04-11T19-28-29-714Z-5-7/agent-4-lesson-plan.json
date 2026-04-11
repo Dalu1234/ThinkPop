@@ -1,0 +1,47 @@
+{
+  "title": "Making 12 by adding 5 and 7",
+  "estimatedMinutes": 15,
+  "segments": [
+    {
+      "id": "seg-hook",
+      "kind": "hook",
+      "durationSeconds": 45,
+      "narration": "Here are 5 stars and 7 more stars. Let's put the groups together and see how many we have altogether.",
+      "visualCue": "Show one group of 5 stars and a second group of 7 stars with a small gap between them.",
+      "sceneHint": "count_groups_hook"
+    },
+    {
+      "id": "seg-model",
+      "kind": "model",
+      "durationSeconds": 75,
+      "narration": "We can count the first group: 5. Now we count on 7 more to make 12. That means 5 plus 7 equals 12.",
+      "visualCue": "Slide both groups together and count each star aloud until the total reaches 12.",
+      "sceneHint": "count_on_addition"
+    },
+    {
+      "id": "seg-practice",
+      "kind": "practice",
+      "durationSeconds": 90,
+      "narration": "Let's try it together. Start at 5, then count on 7 more: 12. Say the full equation with me: 5 + 7 = 12.",
+      "visualCue": "Highlight the first 5 objects, then pulse 7 additional objects one at a time.",
+      "sceneHint": "guided_addition_practice"
+    },
+    {
+      "id": "seg-check",
+      "kind": "check",
+      "durationSeconds": 60,
+      "narration": "Quick check: if we have 5 blocks and add 7 more, how many blocks do we have altogether? Yes, 12.",
+      "visualCue": "Show stacked number cards 5, +, 7, =, ? then flip the answer card to 12.",
+      "sceneHint": "addition_check"
+    },
+    {
+      "id": "seg-wrap",
+      "kind": "wrap",
+      "durationSeconds": 45,
+      "narration": "Nice job. Addition means putting groups together. Today we learned that 5 plus 7 equals 12.",
+      "visualCue": "Display the final equation 5 + 7 = 12 with all 12 objects grouped together.",
+      "sceneHint": "addition_wrap"
+    }
+  ],
+  "teacherNotes": "Encourage learners to count on from the larger number when appropriate and point to each object once while counting."
+}

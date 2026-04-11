@@ -1,0 +1,47 @@
+{
+  "title": "Hands-on fraction addition",
+  "estimatedMinutes": 25,
+  "segments": [
+    {
+      "id": "seg-hook",
+      "kind": "hook",
+      "durationSeconds": 45,
+      "narration": "Let's use a chocolate bar to think about pieces that are the same size before we add them.",
+      "visualCue": "3D rectangle split into equal parts; pulse one shaded slice.",
+      "sceneHint": "area_model_rectangle"
+    },
+    {
+      "id": "seg-model",
+      "kind": "model",
+      "durationSeconds": 120,
+      "narration": "When denominators match, we add the numerators and keep the denominator—the size of each piece did not change.",
+      "visualCue": "Show 1/4 + 2/4 on the same bar; highlight merged shaded region.",
+      "sceneHint": "fraction_bar_add_like"
+    },
+    {
+      "id": "seg-practice",
+      "kind": "practice",
+      "durationSeconds": 180,
+      "narration": "Try 1/2 + 1/4. First, change halves into fourths so the pieces match, then add.",
+      "visualCue": "Transform 1/2 into 2/4 beside 1/4; combine to 3/4.",
+      "sceneHint": "equivalent_fraction_transform"
+    },
+    {
+      "id": "seg-check",
+      "kind": "check",
+      "durationSeconds": 90,
+      "narration": "Quick check: without drawing, what denominator do 1/3 and 1/6 share?",
+      "visualCue": "Show two empty fraction bars labeled thirds and sixths.",
+      "sceneHint": "compare_denominators"
+    },
+    {
+      "id": "seg-wrap",
+      "kind": "wrap",
+      "durationSeconds": 60,
+      "narration": "Great work! Same-sized pieces let us add safely; equivalent fractions help us resize pieces when needed.",
+      "visualCue": "Celebrate checkmark over the combined bar.",
+      "sceneHint": "celebration"
+    }
+  ],
+  "teacherNotes": "Emphasize “same-sized part” over rote rules; use gestures or manipulatives alongside the 3D model."
+}

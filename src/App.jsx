@@ -4,43 +4,39 @@ import ThreeBackground from './components/ThreeBackground'
 import TopicCard from './components/TopicCard'
 import ChatPanel from './components/ChatPanel'
 import HistorySidebar from './components/HistorySidebar'
+import ObjectStage from './components/ObjectStage'
 import AIStatus from './components/AIStatus'
 import Skyline from './components/Skyline'
 import { textToSpeechBlob, playAudioBlob } from './lib/elevenlabs'
+import {
+  streamLessonPipeline,
+  formatLessonPlanMessage,
+  emojiForTopic,
+} from './lib/lessonApi'
 
-const TOPICS = [
-  { label: 'Pythagorean Theorem', emoji: '📐' },
-  { label: 'Photosynthesis', emoji: '🌿' },
-  { label: 'Solar System', emoji: '🪐' },
-  { label: 'DNA Structure', emoji: '🧬' },
-  { label: 'Gravity & Motion', emoji: '🍎' },
-  { label: 'The Water Cycle', emoji: '💧' },
-  { label: 'Volcanic Activity', emoji: '🌋' },
-]
-
-const FAKE_RESPONSES = [
-  "Great question! The Pythagorean theorem states a² + b² = c² for right triangles. I've generated a 3D model to help visualize it — the hypotenuse is always the longest side! 📐",
-  "Photosynthesis is nature's solar power! Plants use chlorophyll to convert sunlight, CO₂, and water into glucose and oxygen. One large tree absorbs ~48 lbs of CO₂ per year! 🌿",
-  "Our solar system has 8 planets orbiting the Sun. Jupiter is so massive you could fit 1,300 Earths inside it! Check out the 3D model — it shows their relative scales. 🪐",
-  "DNA is a double helix with four bases: Adenine, Thymine, Cytosine, Guanine. A always pairs with T, C with G. Every cell in your body contains about 6 feet of DNA! 🧬",
-  "Gravity pulls objects toward each other proportional to mass. On Earth, free-fall acceleration is 9.8 m/s². Einstein revealed gravity is actually curved spacetime! 🍎",
-  "The water cycle moves water through evaporation, condensation, and precipitation — all driven by the Sun. A single water molecule can spend 3,000 years in the ocean! 💧",
-  "Volcanoes form at tectonic plate boundaries or hot spots in Earth's mantle. The 3D model shows a cross-section with the magma chamber, conduit, and lava flows! 🌋",
-]
+const INITIAL_TOPIC = { label: 'Elementary math', emoji: '🔢' }
 
 const OBJECTS = [
-  { label: 'Right Triangle', color: '#00e5ff' },
-  { label: 'Chloroplast', color: '#4ade80' },
-  { label: 'Solar Orrery', color: '#ffd166' },
-  { label: 'DNA Helix', color: '#ff6eb4' },
-  { label: 'Orbital Path', color: '#a78bfa' },
-  { label: 'Water Molecule', color: '#60a5fa' },
-  { label: 'Magma Chamber', color: '#f97316' },
+  { label: 'Number line', color: '#00e5ff' },
+  { label: 'Fraction bars', color: '#ff6eb4' },
+  { label: 'Base-ten blocks', color: '#a78bfa' },
+  { label: 'Geometric solids', color: '#4ade80' },
+  { label: 'Array model', color: '#ffd166' },
+  { label: 'Clock face', color: '#60a5fa' },
 ]
 
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
+
+function objectIndexFromString(s) {
+  if (!s) return 0
+  let h = 0
+  for (let i = 0; i < s.length; i++) h = (h + s.charCodeAt(i) * (i + 1)) % OBJECTS.length
+  return h
+}
+
+const REST_GESTURE = { motion: 'rest', hand: 'both' }
 
 function BaymaxSpeakingBars({ levels, active }) {
   const bars = levels?.length ? levels : new Array(32).fill(0.04)
@@ -71,17 +67,19 @@ function BaymaxExperience() {
   const [aiError, setAiError] = useState('')
   const [aiAudioLevels, setAiAudioLevels] = useState([])
   const [aiAudioActive, setAiAudioActive] = useState(false)
-  const [topicIndex, setTopicIndex] = useState(0)
+  const [topicDisplay, setTopicDisplay] = useState(INITIAL_TOPIC)
   const [objectIndex, setObjectIndex] = useState(0)
   const [objectVisible, setObjectVisible] = useState(true)
+  const [visualModel, setVisualModel] = useState(null)
+  const [playGesture, setPlayGesture] = useState(REST_GESTURE)
   const [messages, setMessages] = useState([
     {
       id: 1,
       from: 'ai',
-      text: "Hi! I'm Baymax, your personal AI 3D teacher. Ask me anything — I'll explain it, show you a 3D model, and make learning fun! 🤗",
+      text: "Hi! I'm Baymax, your AI math coach. Ask a question — six agents build the lesson, hand motions, and a 3D model. I'll speak the answer too. 🤗",
     },
   ])
-  const indexRef = useRef({ topic: 0, object: 0 })
+  const pipelineResultRef = useRef(null)
 
   const speakAiText = useCallback(async (text) => {
     const spokenText = String(text || '').trim()
@@ -125,44 +123,127 @@ function BaymaxExperience() {
     }
   }, [speakAiText])
 
-  const sendMessage = useCallback(async (text) => {
-    if (aiState !== null) return
-    setAiError('')
+  useEffect(() => {
+    if (aiState !== 'speaking') {
+      setPlayGesture(REST_GESTURE)
+      return
+    }
 
-    const userMsg = { id: Date.now(), from: 'user', text }
-    setMessages(prev => [...prev, userMsg])
+    const result = pipelineResultRef.current
+    const segments = result?.lessonPlan?.segments
+    if (!segments?.length) return
 
-    // Thinking
-    setAiState('thinking')
-    await delay(1500)
+    let idx = 0
+    let timerId
+    const cancelled = { v: false }
 
-    // Building 3D object
-    setAiState('building')
-    await delay(900)
-    const nextObj = (indexRef.current.object + 1) % OBJECTS.length
-    indexRef.current.object = nextObj
-    setObjectVisible(false)
-    await delay(100)
-    setObjectIndex(nextObj)
-    setObjectVisible(true)
+    const step = () => {
+      if (cancelled.v) return
+      if (idx >= segments.length) {
+        setPlayGesture(REST_GESTURE)
+        return
+      }
+      const seg = segments[idx]
+      const g =
+        result.gesturePlan?.gestures?.find(x => x.segmentId === seg.id) ||
+        result.gesturePlan?.gestures?.[idx]
+      setPlayGesture({
+        motion: g?.motion || 'emphasize',
+        hand: g?.hand || 'right',
+      })
+      const ms = Math.min(60000, Math.max(600, (seg.durationSeconds || 5) * 1000))
+      idx += 1
+      timerId = setTimeout(step, ms)
+    }
 
-    // Speaking + response
-    setAiState('speaking')
-    const responseIdx = nextObj % FAKE_RESPONSES.length
-    const responseText = FAKE_RESPONSES[responseIdx]
-    const nextTopic = (indexRef.current.topic + 1) % TOPICS.length
-    indexRef.current.topic = nextTopic
-    setTopicIndex(nextTopic)
+    step()
+    return () => {
+      cancelled.v = true
+      clearTimeout(timerId)
+    }
+  }, [aiState])
 
-    await deliverAiMessage(responseText)
-    setAiState(null)
-  }, [aiState, deliverAiMessage])
+  const sendMessage = useCallback(
+    async (text) => {
+      if (aiState !== null) return
+      setAiError('')
+
+      const userMsg = { id: Date.now(), from: 'user', text }
+      setMessages(prev => [...prev, userMsg])
+
+      setVisualModel(null)
+      pipelineResultRef.current = null
+      setAiState('intake')
+
+      let result
+      try {
+        result = await streamLessonPipeline(text, {
+          onEvent: evt => {
+            if (evt.stage === 'intake') setAiState('topic')
+            if (evt.stage === 'topic' && evt.data?.topicTitle) {
+              setTopicDisplay({
+                label: evt.data.topicTitle,
+                emoji: emojiForTopic(evt.data.topicTitle),
+              })
+              setAiState('objectives')
+            }
+            if (evt.stage === 'objectives') setAiState('lesson_plan')
+            if (evt.stage === 'lessonPlan') setAiState('gestures')
+            if (evt.stage === 'gestures') setAiState('visual_model')
+          },
+        })
+      } catch (e) {
+        const msg = e instanceof Error ? e.message : String(e)
+        setMessages(prev => [
+          ...prev,
+          {
+            id: Date.now() + 1,
+            from: 'ai',
+            text: `Something went wrong while running the lesson agents: ${msg}`,
+          },
+        ])
+        setAiState(null)
+        return
+      }
+
+      if (!result) {
+        setMessages(prev => [
+          ...prev,
+          {
+            id: Date.now() + 1,
+            from: 'ai',
+            text: 'Lesson pipeline finished without a result. Is the dev server running?',
+          },
+        ])
+        setAiState(null)
+        return
+      }
+
+      setAiState('building')
+      pipelineResultRef.current = result
+      setVisualModel(result.visualModel || null)
+
+      const nextIdx = objectIndexFromString(
+        result.lessonPlan?.title || result.topic?.topicTitle || text
+      )
+      setObjectVisible(false)
+      await delay(120)
+      setObjectIndex(nextIdx)
+      setObjectVisible(true)
+      await delay(400)
+
+      setAiState('speaking')
+      const body = formatLessonPlanMessage(result)
+      await deliverAiMessage(body)
+      setAiState(null)
+    },
+    [aiState, deliverAiMessage]
+  )
 
   return (
     <div className="app-root">
-      <ThreeBackground aiState={aiState} />
+      <ThreeBackground aiState={aiState} gesture={playGesture} />
 
-      {/* Edge bloom overlays */}
       <div className="edge-bloom edge-bloom-left" />
       <div className="edge-bloom edge-bloom-right" />
 
@@ -175,20 +256,17 @@ function BaymaxExperience() {
       />
 
       <div className="baymax-welcome-text">
-        Hi! I'm Baymax. Ask me anything — I'll explain it, show you a 3D model, and make learning fun!
+        Hi! I'm Baymax. Ask a math question — I'll build a lesson, show a 3D model, and speak the answer.
       </div>
       <AIStatus state={aiError ? 'error' : aiState} message={aiError} />
-      <TopicCard topic={TOPICS[topicIndex]} />
-
-
-
-
-
-      <ChatPanel
-        messages={messages}
-        onSend={sendMessage}
-        aiState={aiState}
+      <TopicCard topic={topicDisplay} />
+      <ObjectStage
+        object={OBJECTS[objectIndex]}
+        visualModel={visualModel}
+        visible={objectVisible}
+        active={aiState === 'building'}
       />
+      <ChatPanel messages={messages} onSend={sendMessage} aiState={aiState} />
     </div>
   )
 }
