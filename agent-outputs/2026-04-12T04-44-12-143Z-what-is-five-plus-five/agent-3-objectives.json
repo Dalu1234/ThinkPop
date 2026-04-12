@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Solve addition problems within 10 using objects or drawings.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "obj2",
+      "statement": "Explain the concept of addition in their own words.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

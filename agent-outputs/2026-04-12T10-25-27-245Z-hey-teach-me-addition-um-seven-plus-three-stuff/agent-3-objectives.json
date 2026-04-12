@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Count and organize 10 objects into groups.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "2",
+      "statement": "Combine two groups of objects to find the total.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

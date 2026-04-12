@@ -1,0 +1,84 @@
+{
+  "title": "Fun with Addition!",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "s1",
+      "kind": "hook",
+      "visualCue": "Exciting number line",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1a",
+          "text": "Today, we’re going to explore the fun world of addition!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s1b",
+          "text": "What happens when we put together the numbers 5 and 5?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "kind": "model",
+      "visualCue": "Counted objects",
+      "sceneHint": "objects_in_hand",
+      "sentences": [
+        {
+          "id": "s2a",
+          "text": "Let’s use our fingers to add 5 and 5 together.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2b",
+          "text": "Count your fingers as you raise them: one, two, three, four, five!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2c",
+          "text": "Now, let’s add five more fingers. Count them too!",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "kind": "practice",
+      "visualCue": "Encouraging smiles",
+      "sceneHint": "group_activity",
+      "sentences": [
+        {
+          "id": "s3a",
+          "text": "Now, let’s try using classroom objects to add!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s3b",
+          "text": "Can you find 5 blocks and then add 5 more?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "kind": "wrap",
+      "visualCue": "Happy celebration",
+      "sceneHint": "everyone_claps",
+      "sentences": [
+        {
+          "id": "s4a",
+          "text": "You did an amazing job adding today, everyone!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4b",
+          "text": "What is 5 plus 5? Yes, it equals 10!",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to use objects for hands-on practice."
+}

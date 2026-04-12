@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "objective1",
+      "statement": "Perform basic subtraction problems with single-digit numbers.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "objective2",
+      "statement": "Explain the process of regrouping when subtracting larger numbers.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

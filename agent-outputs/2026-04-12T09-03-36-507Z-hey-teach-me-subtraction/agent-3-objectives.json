@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Perform subtraction by taking away objects.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "obj2",
+      "statement": "Explain subtraction as finding the difference between numbers.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

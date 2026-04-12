@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Identify the result of 10 minus 5 using objects.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "obj2",
+      "statement": "Solve subtraction problems within 20 using a number line.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor stands tall, smiles widely, and gestures invitingly with both arms while introducing today's lesson on addition"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person leans slightly forward, raises both hands enthusiastically, and encourages excitement about using fun objects for addition"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor picks up five red blocks with one hand and five blue blocks with the other, showing them to the class"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person moves both hands together in a scooping motion, inviting students to think about how many blocks they will have combined"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor holds up three fingers on one hand, directing attention to the fingers while encouraging everyone to join in"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person extends the other hand, raises four fingers, and looks at the class while asking how many fingers they can count"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor claps hands together joyfully, steps forward, and beams with pride while congratulating the class on their learning"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person gestures with both hands toward an imaginary number line, emphasizing the importance of addition in finding totals"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor steps closer to the colorful objects, spreading arms wide to showcase both groups while smiling"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person leans slightly forward, tilts their head inquisitively, and gestures toward the groups as if inviting ideas"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor moves one hand toward the two groups, then brings both hands together in front of their chest to illustrate combining"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person raises one hand to their chin, then gestures toward each group with the other hand while counting softly"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor stands tall, spreads arms wide, and begins counting while moving one hand in front of them to guide the count"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person shifts slightly from side to side, raising both hands and counting aloud as if encouraging the learners to join"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor claps hands together cheerfully, then points confidently to the imaginary total while smiling at the learners"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person places a hand over their heart, then gestures outward with the other hand, encouraging understanding of addition"
+    }
+  ]
+}

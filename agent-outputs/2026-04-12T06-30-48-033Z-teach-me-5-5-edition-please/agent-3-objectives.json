@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Identify decimal numbers in a given set.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "2",
+      "statement": "Add and subtract decimal numbers using place value strategies.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

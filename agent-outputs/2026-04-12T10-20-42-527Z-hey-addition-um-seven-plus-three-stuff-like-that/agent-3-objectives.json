@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Demonstrate how to add the numbers 7 and 3 together.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "obj2",
+      "statement": "Explain what addition means using items or drawings.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

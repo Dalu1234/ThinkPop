@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Identify the minus sign and explain its meaning.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "obj2",
+      "statement": "Solve simple subtraction problems using objects.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

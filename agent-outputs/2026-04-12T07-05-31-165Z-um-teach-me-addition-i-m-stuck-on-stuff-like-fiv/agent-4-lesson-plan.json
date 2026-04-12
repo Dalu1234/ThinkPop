@@ -1,0 +1,79 @@
+{
+  "title": "Fun with Adding Five and Five",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "showing fingers",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Let's explore how to add five and five together!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Who can show me five fingers on one hand?",
+          "durationSeconds": 3
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "using blocks",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Look, I have five blocks here; let's count them!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "Now, I'll add five more blocks. How many do we have?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "hands-on counting",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Can you find five objects and add five more?",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "How many objects do you have now? Let's count!",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "smiling face",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job adding! Five plus five is ten!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "Remember, adding is fun and easy to do!",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to use their hands and objects to visualize addition."
+}

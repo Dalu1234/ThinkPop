@@ -1,0 +1,13 @@
+{
+  "kind": "addition_rows",
+  "rows": 2,
+  "cols": 0,
+  "rowCounts": [
+    7,
+    3
+  ],
+  "itemShape": "apples",
+  "itemColor": "#ff3e3e",
+  "itemLabel": "Seven apples plus three apples",
+  "caption": "Let's see how many apples we have in total!"
+}

@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Identify and name basic 2D shapes like circles, squares, and triangles.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "2",
+      "statement": "Compare 2D shapes by their attributes such as number of sides and angles.",
+      "bloomLevel": "analyze"
+    }
+  ]
+}

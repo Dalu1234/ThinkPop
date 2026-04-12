@@ -1,0 +1,79 @@
+{
+  "title": "Exploring Basic 2D Shapes",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "2D shape images",
+      "sceneHint": "shape_intro",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we will explore different 2D shapes together!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Can you name some shapes you see around you?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "shape examples",
+      "sceneHint": "shape_examples",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Here are a circle, a square, and a triangle.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "Let's describe each shape by its features.",
+          "durationSeconds": 3
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "interactive shapes",
+      "sceneHint": "shape_activity",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Can you find the shape with three sides?",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s6",
+          "text": "Which one is the round shape? Let's spot it!",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "summary graphics",
+      "sceneHint": "wrap_up",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job! Now you can name 2D shapes confidently.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Keep looking for shapes all around you every day!",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to share their own examples of 2D shapes."
+}

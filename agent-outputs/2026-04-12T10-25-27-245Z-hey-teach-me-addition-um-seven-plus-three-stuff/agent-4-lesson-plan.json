@@ -1,0 +1,79 @@
+{
+  "title": "Adding with Objects and Groups",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "colorful objects arranged",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these colorful objects arranged in two groups.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "How can we find out how many there are in total?",
+          "durationSeconds": 3
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "showing combinations",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let's combine these two groups of objects to add them.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "We have 7 in one group and 3 in another group.",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "counting objects aloud",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Together, let's count these objects one by one to find the total.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "Can you count with me? One, two, three, four, five, six, seven!",
+          "durationSeconds": 6
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "total objects displayed",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job! We found that 7 plus 3 equals 10!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "Remember, combining groups helps us understand addition better.",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Use physical objects to illustrate addition with groups, emphasizing counting and combining."
+}

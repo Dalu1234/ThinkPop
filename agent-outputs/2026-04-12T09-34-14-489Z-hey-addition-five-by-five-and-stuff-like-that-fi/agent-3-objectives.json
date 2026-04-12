@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "objective1",
+      "statement": "Add two numbers to find their sum using counting strategies.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "objective2",
+      "statement": "Identify the sum of numbers through visual aids.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor faces the screen, points with both hands toward the two groups of objects, and smiles excitedly"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person gestures with open hands to indicate the two groups, tilting the head slightly while inviting thoughts about the total"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor steps forward, bringing both hands together as if merging the two groups, while nodding in encouragement"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person shifts weight slightly to the side, raises both arms outward, and maintains eye contact while emphasizing the new single group"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor leans in closer, opens both arms invitingly, and moves the hands downward as if counting down to the activity"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person lifts their arms in celebration with each count, stepping lightly from side to side while counting loudly"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor claps hands enthusiastically, stepping back slightly while smiling proudly at the students' efforts"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person nods affirmatively and gestures with both hands toward the class, encouraging them to feel proud of their learning"
+    }
+  ]
+}

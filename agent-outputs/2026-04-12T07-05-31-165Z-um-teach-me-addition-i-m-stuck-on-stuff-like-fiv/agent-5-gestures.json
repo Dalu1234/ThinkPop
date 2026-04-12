@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor smiles widely, opens arms wide, and steps toward the class while inviting them to explore adding numbers."
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person raises one hand and extends fingers to show five, leaning slightly forward to engage the learners."
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor holds five colorful blocks up with both hands, turning slightly to face the class while encouraging them to count."
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person places five more blocks beside the first set, stepping back with a playful gesture to challenge the class."
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor moves around the room, encouraging students to look for five objects and enthusiastically pointing to different areas."
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person kneels down slightly, claps hands together, and smiles while guiding the learners to count their objects aloud."
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor jumps lightly with joy, raises both arms high, and beams at the class while celebrating their success in adding."
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person gestures with hands in a playful manner, swaying side to side while expressing that adding is fun and easy."
+    }
+  ]
+}

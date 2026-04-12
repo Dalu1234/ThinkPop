@@ -1,0 +1,74 @@
+{
+  "title": "Introduction to Addition",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook",
+      "kind": "hook",
+      "visualCue": "showing fingers",
+      "sceneHint": "counting_fingers",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we will learn about adding numbers together.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Can anyone tell me what addition means?",
+          "durationSeconds": 3
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "kind": "model",
+      "visualCue": "number line display",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "This is a number line. We can use it to help add numbers!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "Let’s add two and three together on the number line.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "kind": "practice",
+      "visualCue": "using blocks",
+      "sceneHint": "adding_objects",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, let’s try adding two blocks and three blocks together.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "How many blocks do we have in total?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "kind": "wrap",
+      "visualCue": "thumbs up",
+      "sceneHint": "smiling_robot",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job today! You all did amazing with addition!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to share their answers and reasoning throughout the lesson."
+}

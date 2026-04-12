@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Combine two groups of objects to find the total.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "obj2",
+      "statement": "Count the total number of objects after combining groups.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

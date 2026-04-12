@@ -1,0 +1,79 @@
+{
+  "title": "Fun with Basic Addition",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "Show colorful objects",
+      "sceneHint": "fun_objects",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we will learn how to add two numbers together.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2",
+          "text": "Who is excited to use fun objects to help us add?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "Demonstrate using hands",
+      "sceneHint": "adding_with_hands",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let's start with five red blocks and five blue blocks.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4",
+          "text": "When we put them together, how many blocks do we have?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "Interactive count with fingers",
+      "sceneHint": "counting_fingers",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, let's try adding on our fingers—start with three fingers up.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "Can you add four more fingers? How many do you see?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "Celebrate achievements",
+      "sceneHint": "cheerful_ending",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job learning addition today! You all did amazing.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "Remember, addition helps us find the total when we combine numbers.",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Use engaging visuals and hands-on activities to reinforce learning."
+}

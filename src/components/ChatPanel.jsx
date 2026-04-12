@@ -18,7 +18,13 @@ function extensionForMime(mime) {
   return 'webm'
 }
 
-export default function ChatPanel({ messages, onSend, aiState }) {
+export default function ChatPanel({
+  messages,
+  onSend,
+  aiState,
+  audioOnly = false,
+  inputLocked,
+}) {
   const [input, setInput]       = useState('')
   const [focused, setFocused]   = useState(false)
   const [recording, setRecording] = useState(false)
@@ -42,7 +48,8 @@ export default function ChatPanel({ messages, onSend, aiState }) {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
 
-  const isDisabled = aiState !== null
+  const isDisabled =
+    inputLocked !== undefined ? inputLocked : aiState !== null && aiState !== 'awaiting_user'
 
   useEffect(() => {
     return () => {
@@ -133,7 +140,7 @@ export default function ChatPanel({ messages, onSend, aiState }) {
         const gradient = ctx.createLinearGradient(0, 0, width, 0)
         gradient.addColorStop(0, 'rgba(255, 110, 180, 0.95)')
         gradient.addColorStop(0.5, 'rgba(255, 209, 102, 0.95)')
-        gradient.addColorStop(1, 'rgba(0, 229, 255, 0.95)')
+        gradient.addColorStop(1, 'rgba(251, 146, 60, 0.95)')
 
         ctx.fillStyle = 'rgba(255, 255, 255, 0.05)'
         ctx.fillRect(0, 0, width, height)
@@ -287,8 +294,10 @@ export default function ChatPanel({ messages, onSend, aiState }) {
         whileHover={!isDisabled && !sttBusy ? { scale: 1.15 } : {}}
         whileTap={!isDisabled && !sttBusy ? { scale: 0.9 } : {}}
       >
-        {sttBusy ? <span style={{fontSize: '32px', color: 'black'}}>&hellip;</span> : (
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="black" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+        {sttBusy ? (
+          <span style={{ fontSize: '32px', color: 'currentColor', opacity: 0.85 }}>&hellip;</span>
+        ) : (
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
             <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
             <line x1="12" x2="12" y1="19" y2="22" />
@@ -317,7 +326,7 @@ export default function ChatPanel({ messages, onSend, aiState }) {
     >
 
       {/* Suggestion chips — show only when chat is fresh */}
-      {messages.length <= 1 && (
+      {!audioOnly && messages.length <= 1 && (
         <div className="suggestions">
           {SUGGESTIONS.map(s => (
             <button
@@ -375,48 +384,52 @@ export default function ChatPanel({ messages, onSend, aiState }) {
       {/* Input row */}
 
 
-      <div className="chat-input-row">
-        <motion.button
-          type="button"
-          className={`mic-btn ${recording ? 'mic-active' : ''} ${sttBusy ? 'mic-busy' : ''}`}
-          onClick={() => void toggleMic()}
-          disabled={isDisabled || sttBusy}
-          title={recording ? 'Stop and transcribe' : 'Speak your question'}
-          whileHover={!isDisabled && !sttBusy ? { scale: 1.07 } : {}}
-          whileTap={!isDisabled && !sttBusy ? { scale: 0.93 } : {}}
-        >
-          {sttBusy ? '…' : '🎤'}
-        </motion.button>
+      {!audioOnly && (
+        <div className="chat-input-row">
+          <motion.button
+            type="button"
+            className={`mic-btn ${recording ? 'mic-active' : ''} ${sttBusy ? 'mic-busy' : ''}`}
+            onClick={() => void toggleMic()}
+            disabled={isDisabled || sttBusy}
+            title={recording ? 'Stop and transcribe' : 'Speak your question'}
+            whileHover={!isDisabled && !sttBusy ? { scale: 1.07 } : {}}
+            whileTap={!isDisabled && !sttBusy ? { scale: 0.93 } : {}}
+          >
+            {sttBusy ? '…' : '🎤'}
+          </motion.button>
 
-        <motion.div
-          className="input-wrapper"
-          animate={bounce ? { x: [0, -5, 5, -3, 3, 0] } : {}}
-          transition={{ duration: 0.3 }}
-        >
-          <input
-            ref={inputRef}
-            className="chat-input"
-            placeholder="Ask me anything..."
-            value={input}
-            onChange={e => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            onFocus={() => setFocused(true)}
-            onBlur={() => setFocused(false)}
-            disabled={isDisabled}
-          />
-        </motion.div>
+          <motion.div
+            className="input-wrapper"
+            animate={bounce ? { x: [0, -5, 5, -3, 3, 0] } : {}}
+            transition={{ duration: 0.3 }}
+          >
+            <input
+              ref={inputRef}
+              className="chat-input"
+              placeholder="Ask me anything..."
+              value={input}
+              onChange={e => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              onFocus={() => setFocused(true)}
+              onBlur={() => setFocused(false)}
+              disabled={isDisabled}
+            />
+          </motion.div>
 
-        <motion.button
-          className="send-btn"
-          onClick={handleSend}
-          disabled={isDisabled || !input.trim()}
-          whileHover={!isDisabled && input.trim() ? { scale: 1.1 } : {}}
-          whileTap={!isDisabled && input.trim() ? { scale: 0.9 } : {}}
-        >
-          ✨
-        </motion.button>
-      </div>
+          <motion.button
+            type="button"
+            className="send-btn"
+            onClick={handleSend}
+            disabled={isDisabled || !input.trim()}
+            whileHover={!isDisabled && input.trim() ? { scale: 1.1 } : {}}
+            whileTap={!isDisabled && input.trim() ? { scale: 0.9 } : {}}
+          >
+            ✨
+          </motion.button>
+        </div>
+      )}
 
+      {audioOnly && <div className="chat-inline-error chat-audio-only-hint">Use the mic for every answer.</div>}
       {sttError && <div className="chat-inline-error">{sttError}</div>}
     </motion.div>
     </>

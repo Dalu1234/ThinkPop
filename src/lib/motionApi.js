@@ -46,10 +46,23 @@ const FALLBACK_REST_POSE = [
 
 let activeRestPose = FALLBACK_REST_POSE
 
+// Listeners notified when the rig rest pose changes (used to re-generate frames)
+const _rigReadyListeners = []
+
 export function setRigRestPose(pose) {
   if (Array.isArray(pose) && pose.length === 22 && Array.isArray(pose[0]) && pose[0].length === 3) {
     activeRestPose = pose.map((j) => [+j[0], +j[1], +j[2]])
     console.log('[motionApi] Active rest pose updated from rig')
+    _rigReadyListeners.forEach(fn => { try { fn() } catch (e) { console.error(e) } })
+  }
+}
+
+/** Register a callback fired once when the rig rest pose is first injected. */
+export function onRigReady(fn) {
+  _rigReadyListeners.push(fn)
+  return () => {
+    const i = _rigReadyListeners.indexOf(fn)
+    if (i >= 0) _rigReadyListeners.splice(i, 1)
   }
 }
 
@@ -75,20 +88,29 @@ function styleFromPromptDevStub(prompt) {
 function proceduralFrame(t, style) {
   const pose = clonePose()
   const phase = t * Math.PI * 2
+
+  // [2] Breathing is on spine only — pelvis (pose[0]) is never mutated
+  //     so root Y stays exactly at rest and the retargeter's delta stays zero.
   const breathe = 0.012 * Math.sin(phase * 2)
-  pose[0][1] += breathe
-  pose[3][1] += breathe * 0.6
+  pose[3][1] += breathe * 0.6   // spine1
+  pose[6][1] += breathe * 0.4   // spine2
+  pose[9][1] += breathe * 0.3   // spine3
 
   if (style === 'wave') {
+    // [3] Wave uses OFFSETS from the A-pose rest, keeping positions anatomically valid.
+    //     Right arm (indices 17, 19, 21) raises up and oscillates.
     const wave = Math.sin(phase * 3)
-    pose[17][0] -= 0.06
-    pose[17][1] += 0.14
-    pose[19][0] += 0.1
-    pose[19][1] += 0.5
+    // Right shoulder: lift outward and up
+    pose[17][0] -= 0.04
+    pose[17][1] += 0.18
+    // Right elbow: raise high above shoulder
+    pose[19][0] -= 0.06
+    pose[19][1] += 0.38
     pose[19][2] -= 0.04
-    pose[21][0] += 0.2 + 0.12 * wave
-    pose[21][1] += 0.8 + 0.08 * wave
-    pose[21][2] -= 0.04 + 0.06 * Math.sin(phase * 3 - 0.4)
+    // Right wrist: highest point, oscillates
+    pose[21][0] -= 0.04 + 0.06 * wave
+    pose[21][1] += 0.52 + 0.08 * wave
+    pose[21][2] -= 0.02 + 0.04 * Math.sin(phase * 3 - 0.4)
   } else if (style === 'point') {
     const bob = Math.sin(phase) * 0.04
     pose[17][0] -= 0.04
@@ -118,8 +140,6 @@ function proceduralFrame(t, style) {
     pose[2][2] -= stride * 0.18
     pose[5][2] -= stride * 0.22
     pose[8][2] -= stride * 0.12
-    pose[0][0] += Math.sin(phase * 4) * 0.02
-    pose[0][1] += Math.abs(Math.sin(phase * 2)) * 0.03
     pose[16][1] += 0.04
     pose[16][2] += arm * 0.12
     pose[18][1] += 0.03
@@ -135,28 +155,29 @@ function proceduralFrame(t, style) {
     if (jumpCycle < 0.2) {
       const c = jumpCycle / 0.2
       const dip = 0.1 * Math.sin(c * Math.PI)
-      pose[0][1] -= dip
+      for (let j = 0; j < pose.length; j++) pose[j][1] -= dip
       pose[4][2] += dip * 2.0
       pose[5][2] += dip * 2.0
     } else if (jumpCycle < 0.5) {
       const a = (jumpCycle - 0.2) / 0.3
       const lift = 0.2 * Math.sin(a * Math.PI)
       for (let j = 0; j < pose.length; j++) pose[j][1] += lift
-      const arm = Math.sin(a * Math.PI) * 0.12
-      pose[16][1] += arm
-      pose[17][1] += arm
-      pose[18][1] += arm * 0.7
-      pose[19][1] += arm * 0.7
+      const armLift = Math.sin(a * Math.PI) * 0.12
+      pose[16][1] += armLift
+      pose[17][1] += armLift
+      pose[18][1] += armLift * 0.7
+      pose[19][1] += armLift * 0.7
     } else if (jumpCycle < 0.66) {
       const l = (jumpCycle - 0.5) / 0.16
       const impact = 0.08 * Math.sin(l * Math.PI)
-      pose[0][1] -= impact
+      for (let j = 0; j < pose.length; j++) pose[j][1] -= impact
       pose[4][2] += impact * 1.8
       pose[5][2] += impact * 1.8
     }
   } else if (style === 'rest') {
     /* hold */
   } else {
+    // emphasize
     const s = Math.sin(phase * 2)
     pose[16][0] += 0.08 * Math.abs(s)
     pose[16][1] += 0.06 * s
@@ -215,10 +236,6 @@ function parseMotionJson(data) {
 const clientStub =
   typeof import.meta !== 'undefined' && import.meta.env?.VITE_MOTION_CLIENT_STUB === 'true'
 
-/**
- * Fetch motion from the gateway. Throws if the response is not valid MDM-shaped data,
- * unless VITE_MOTION_CLIENT_STUB=true (then falls back to local procedural).
- */
 export async function requestMotion(prompt, numFrames = 80) {
   try {
     const res = await fetch('/api/motion', {

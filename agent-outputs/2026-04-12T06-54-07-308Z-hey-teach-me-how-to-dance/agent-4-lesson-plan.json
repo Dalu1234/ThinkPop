@@ -1,0 +1,79 @@
+{
+  "title": "Introduction to Shapes",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "s1",
+      "kind": "hook",
+      "visualCue": "colorful shape visuals",
+      "sceneHint": "shape_reveal",
+      "sentences": [
+        {
+          "id": "h1",
+          "text": "Today, we're going to learn about different shapes around us!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "h2",
+          "text": "Can you think of a shape you see every day?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "kind": "model",
+      "visualCue": "show shapes with names",
+      "sceneHint": "2d_shape_display",
+      "sentences": [
+        {
+          "id": "m1",
+          "text": "Here are three common 2D shapes: a circle, a square, and a triangle.",
+          "durationSeconds": 6
+        },
+        {
+          "id": "m2",
+          "text": "A square has four sides and four vertices; can you count them?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "kind": "practice",
+      "visualCue": "interactive shape comparison",
+      "sceneHint": "shape_comparison",
+      "sentences": [
+        {
+          "id": "p1",
+          "text": "Let's compare a triangle and a square; how are they different?",
+          "durationSeconds": 5
+        },
+        {
+          "id": "p2",
+          "text": "Take a moment to think about their sides and angles.",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "kind": "wrap",
+      "visualCue": "review all shapes",
+      "sceneHint": "shape_summary",
+      "sentences": [
+        {
+          "id": "w1",
+          "text": "Great job today! We learned about 2D shapes and their properties.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "w2",
+          "text": "Remember to keep an eye out for shapes everywhere you go!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to share examples of shapes they see in their environment."
+}

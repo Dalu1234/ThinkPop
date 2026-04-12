@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Count and group objects to demonstrate addition of up to ten.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "obj2",
+      "statement": "Explain addition using a number line to solve simple problems.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Students will solve simple addition problems using numbers up to 20.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "obj2",
+      "statement": "Students will demonstrate an understanding of addition concepts by using visual aids.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

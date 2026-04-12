@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor steps forward, opens both arms wide with enthusiasm, and smiles while inviting everyone to explore the topic"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person gestures gently with both hands, forming three distinct groups in the air to illustrate the concept clearly"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor moves one hand to the side while lifting the other hand upward, adding motions as if counting to represent repeated addition"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person raises both hands to show three separate fingers on one hand and points confidently as they explain the total equals nine"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor steps slightly to the right, extending arms to mimic rows and columns while encouraging the class to visualize the array"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person shifts weight back and forth, looking around at the learners with curiosity, while asking about the total number of squares"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor jumps slightly in place, claps hands together with joy, and beams while celebrating the achievement of finding nine"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person gestures with both hands in a sweeping motion, illustrating the ease of counting groups together while smiling warmly"
+    }
+  ]
+}

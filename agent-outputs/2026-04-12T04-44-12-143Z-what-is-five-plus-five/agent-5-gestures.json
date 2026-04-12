@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor steps forward with a big smile, opening both arms wide while inviting everyone to join the fun world of addition"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a tutor shifts weight to one leg and leans slightly forward, looking around the room as if asking for answers about combining groups"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor raises both hands, displaying five fingers on each hand while enthusiastically showcasing the idea of 5 plus 5 with apples"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person steps closer and holds up five fingers on one hand while extending the other hand forward to emphasize adding more apples"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor gestures invitingly with both hands, encouraging students to engage and help solve the addition problem of 5 plus 5"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person bends slightly forward, cheerfully counting along with the class while using hands to mimic counting apples together"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor jumps joyfully, raising both arms high above the head while celebrating the answer of 10 and clapping hands together"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person stands tall and points toward the class while smiling, emphasizing the important idea of addition as putting groups together"
+    }
+  ]
+}

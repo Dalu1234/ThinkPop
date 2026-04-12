@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Solve simple addition problems using the number five.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "2",
+      "statement": "Explain what addition means using visuals.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

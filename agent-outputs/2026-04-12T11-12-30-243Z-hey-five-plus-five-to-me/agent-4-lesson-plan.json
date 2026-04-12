@@ -1,0 +1,79 @@
+{
+  "title": "Exploring Simple Addition",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook_1",
+      "kind": "hook",
+      "visualCue": "Two groups of objects",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these two groups of objects on the screen!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2",
+          "text": "Each group has 5 colorful pieces. How many do we have together?",
+          "durationSeconds": 6
+        }
+      ]
+    },
+    {
+      "id": "model_2",
+      "kind": "model",
+      "visualCue": "Combining groups visibly",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let's combine these two groups of 5 objects.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "Can you see how they come together to form one group?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice_3",
+      "kind": "practice",
+      "visualCue": "Count total objects",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, let's count all the objects together. Ready?",
+          "durationSeconds": 6
+        },
+        {
+          "id": "s6",
+          "text": "One, two, three, four, five, six, seven, eight, nine, ten!",
+          "durationSeconds": 7
+        }
+      ]
+    },
+    {
+      "id": "wrap_4",
+      "kind": "wrap",
+      "visualCue": "Celebrate our learning",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job adding those groups of objects together!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "You have learned how to combine groups to find sums!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to actively count the objects and participate in combining them."
+}

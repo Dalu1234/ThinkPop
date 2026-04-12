@@ -1,0 +1,13 @@
+{
+  "kind": "addition_rows",
+  "rows": 2,
+  "cols": 0,
+  "rowCounts": [
+    2,
+    3
+  ],
+  "itemShape": "blocks",
+  "itemColor": "#8fbc8f",
+  "itemLabel": "Two blocks plus three blocks",
+  "caption": "Let's add two blocks and three blocks together!"
+}

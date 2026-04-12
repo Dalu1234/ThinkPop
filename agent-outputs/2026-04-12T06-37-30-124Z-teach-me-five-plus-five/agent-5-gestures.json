@@ -1,0 +1,44 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor stands confidently with arms open wide, smiling while announcing the topic of adding five plus five"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person raises both hands and proudly shows five fingers on each hand, encouraging the class to participate"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor steps forward slightly, holding up one hand with five fingers while emphasizing the number five"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person gestures smoothly with both hands as if adding, bringing them together to symbolize adding another five"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor leans in slightly, tilting their head with curiosity while asking the class about the total when adding"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person moves toward a table, bending forward with enthusiasm as they prepare to use blocks for addition"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor counts along while bending down to pick up blocks, raising each block to show five and then five more"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person stands tall with arms raised in excitement, inviting the learners to share how many blocks they have"
+    },
+    {
+      "sentenceId": "s9",
+      "mdmPrompt": "a tutor jumps slightly with joy, giving a thumbs up while celebrating the total of five plus five equals ten"
+    },
+    {
+      "sentenceId": "s10",
+      "mdmPrompt": "a person sweeps both arms outward with a big grin, expressing that adding numbers can be fun and exciting"
+    }
+  ]
+}

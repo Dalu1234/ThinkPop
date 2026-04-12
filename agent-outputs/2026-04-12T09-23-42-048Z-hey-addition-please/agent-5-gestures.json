@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor spreads arms wide with a bright smile, stepping forward slightly to engage the class about addition's excitement"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person gestures with both hands coming together, representing combining numbers, while explaining addition's purpose"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor moves toward an imaginary number line, miming a smooth motion as if illustrating numbers being added"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person points forward confidently while using their fingers to show 2 and 3, inviting everyone to visualize the addition"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor leans slightly toward the class, encouragingly tilting their head as they ask about 4 plus 1 on the number line"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person raises both hands as if to stimulate thought, inviting students to think about 3 plus 5 and its answer"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor claps hands together cheerfully, nodding with approval as they celebrate the students' addition learning today"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person gestures outward with open arms, smiling warmly while encouraging everyone to remember the joy of addition in daily life"
+    }
+  ]
+}

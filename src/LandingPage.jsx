@@ -14,9 +14,14 @@ export default function LandingPage() {
           Vivid motion and voice-first explanations make every question easier to ask.
         </p>
         
-        <a href="#/baymax" className="btn-use-baymax">
-          Use Baymax
-        </a>
+        <div className="landing-actions">
+          <a href="#/baymax" className="btn-use-baymax">
+            Use Baymax
+          </a>
+          <a href="#/baymax-voice2" className="btn-use-baymax btn-use-baymax-secondary">
+            Voice-first tutor (dots)
+          </a>
+        </div>
       </div>
     </div>
   );

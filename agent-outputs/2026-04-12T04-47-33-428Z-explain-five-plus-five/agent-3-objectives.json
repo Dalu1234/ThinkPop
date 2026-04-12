@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Students will explain how to combine five and five using counters.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "obj2",
+      "statement": "Students will use a number line to show that five plus five equals ten.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

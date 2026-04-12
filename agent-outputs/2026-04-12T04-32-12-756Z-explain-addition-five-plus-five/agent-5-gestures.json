@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor bends slightly forward, lifts five apples with both hands, and smiles while inviting the class to count together"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person raises both hands with five apples prominently displayed and gestures encouragingly for the students to count the next set"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor extends both arms outward with five apples in each hand, moving them closer together while explaining the addition"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person tilts their head slightly and gestures with both hands invitingly toward the class, encouraging them to think about the total"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor moves to the side, mimics drawing tally marks in the air with one finger, and smiles to invite the class to participate"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person raises one hand, counts on their fingers while smiling, and asks the students about adding two and three together"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor lifts both hands and shows ten fingers clearly, nodding and smiling to reaffirm the answer as they engage the class"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person claps their hands together excitedly and takes a step forward, encouraging the class to keep practicing their addition skills"
+    }
+  ]
+}

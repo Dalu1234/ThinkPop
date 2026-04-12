@@ -1,0 +1,89 @@
+{
+  "title": "Adding Five Plus Five",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "exciting addition hands",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we will learn how to add five plus five!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Are you ready to explore the magic of addition?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "showing number line",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "On the number line, we start at five.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4",
+          "text": "Now, let's jump five more spaces ahead!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s5",
+          "text": "Where do we land? That's right, it's ten!",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "counting with objects",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s6",
+          "text": "Now, let's use our fingers to show five.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s7",
+          "text": "Can you show five again with your other hand?",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "Count all the fingers together—how many do we have?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "clapping for completion",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s9",
+          "text": "Great job learning how to add today!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s10",
+          "text": "Remember, five plus five is always ten!",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to use objects around them for hands-on learning."
+}

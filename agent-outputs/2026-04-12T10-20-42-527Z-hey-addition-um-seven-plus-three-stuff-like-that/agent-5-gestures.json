@@ -1,0 +1,44 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor steps toward the table, spreads arms wide to show the seven apples, and smiles at the learners"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person leans in slightly, tilts head to one side, and gestures with both hands as if suggesting adding apples"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor moves to the number line, points to the number 7, and invites the class to follow along excitedly"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person takes a small step forward, raises one hand to demonstrate jumping, and moves fingers three spaces ahead"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor turns to face the students, spreads arms wide, and nods with excitement as they mention landing on 10"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person holds up one hand and counts on fingers, encouragingly asking the learners to show their seven fingers as well"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor gestures upward with both hands, enthusiastically prompting the students to add three more fingers"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person shakes their head playfully, smiling and inviting the learners to share how many fingers they now have"
+    },
+    {
+      "sentenceId": "s9",
+      "mdmPrompt": "a tutor claps hands together cheerfully, leaning toward the students while congratulating them on their addition skills"
+    },
+    {
+      "sentenceId": "s10",
+      "mdmPrompt": "a person points confidently to an imaginary number line above while stating that 7 plus 3 equals 10, beaming with pride"
+    }
+  ]
+}

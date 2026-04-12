@@ -1,0 +1,79 @@
+{
+  "title": "Exploring 3 Times 3 Together",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "h1",
+      "kind": "hook",
+      "visualCue": "three colorful blocks",
+      "sceneHint": "counting_blocks",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these three colorful blocks I have here!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2",
+          "text": "What if we had three groups of these blocks?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "m1",
+      "kind": "model",
+      "visualCue": "drawn array example",
+      "sceneHint": "array_drawing",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "We can show three times three with a neat array.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4",
+          "text": "Let's draw three rows with three blocks in each row.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "p1",
+      "kind": "practice",
+      "visualCue": "students drawing arrays",
+      "sceneHint": "student_activity",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now it’s your turn! Draw your own 3 times 3 array.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "Count how many blocks are in total when you're finished.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "w1",
+      "kind": "wrap",
+      "visualCue": "celebration gesture",
+      "sceneHint": "end_summary",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job exploring multiplication today with 3 times 3!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Remember, it's just like adding three groups of three objects.",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students and celebrate their creative arrays during practice."
+}

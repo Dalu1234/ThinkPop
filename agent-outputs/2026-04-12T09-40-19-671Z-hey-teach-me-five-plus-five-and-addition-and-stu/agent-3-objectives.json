@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Solve the equation 5 plus 5 using objects or drawings.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "obj2",
+      "statement": "Explain what happens when five is added to five.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

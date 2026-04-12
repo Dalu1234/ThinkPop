@@ -1,0 +1,79 @@
+{
+  "title": "Adding Five Plus Five",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "counting on fingers",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we are going to add five plus five together!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Can you show me five fingers on one hand?",
+          "durationSeconds": 3
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "number line",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let's use a number line to find five plus five.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "Start at five, then count up five more steps.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "hands-on objects",
+      "sceneHint": "hands_on",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, grab five small objects and add another five.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "How many objects do you have now? Can you count them?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "smiling face",
+      "sceneHint": "celebrate",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job adding five and five together!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "You can always use numbers and objects to help you add.",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to express their thoughts about addition throughout the lesson."
+}

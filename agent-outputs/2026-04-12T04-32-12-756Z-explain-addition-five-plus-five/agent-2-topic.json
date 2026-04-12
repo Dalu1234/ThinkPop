@@ -1,0 +1,13 @@
+{
+  "topicTitle": "Understanding Addition Basics",
+  "subtopics": [
+    "What is Addition?",
+    "Using Objects to Add",
+    "Numeric Addition of Small Numbers"
+  ],
+  "briefSummary": "This topic helps students understand the concept of addition using the example of adding 5 plus 5.",
+  "relatedPrerequisites": [
+    "Understanding of numbers 1-10",
+    "Basic counting skills"
+  ]
+}

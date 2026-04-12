@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor stands tall and smiles, moving both arms wide open to welcome everyone to the lesson"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a tutor leans slightly forward, tilts the head, and looks around the class to encourage students to share their experiences"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a person uses hands to create a visual of seven groups, moving fingers to emphasize the number as they speak"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a tutor gestures with both hands as if forming an array, stepping to the side slightly to demonstrate visually"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a person enthusiastically claps hands together, encouraging students while moving closer to them for engagement"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a tutor points to an imaginary array in front, moving one hand in a counting motion to guide students"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor raises both arms over head in celebration while smiling broadly, commending the class for their efforts"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person nods encouragingly, moving both hands in a forward gesture to motivate students about the importance of practice"
+    }
+  ]
+}

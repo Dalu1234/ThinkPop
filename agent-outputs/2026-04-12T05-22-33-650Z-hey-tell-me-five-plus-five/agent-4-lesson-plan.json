@@ -1,0 +1,84 @@
+{
+  "title": "Exploring Addition with Five",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook",
+      "kind": "hook",
+      "visualCue": "showing five fingers",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we will learn about adding five plus five.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Does anyone here know what five plus five equals?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "kind": "model",
+      "visualCue": "drawing two groups",
+      "sceneHint": "visual_aids",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "When we add five and five, we can use groups.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4",
+          "text": "Let's put together two groups of five dots.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s5",
+          "text": "Can you count all the dots in total with me?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "kind": "practice",
+      "visualCue": "interactive counting",
+      "sceneHint": "hands_on",
+      "sentences": [
+        {
+          "id": "s6",
+          "text": "Now, let's practice! What is five plus five?",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s7",
+          "text": "Great job if you said ten! Let's count together!",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "kind": "wrap",
+      "visualCue": "clapping hands",
+      "sceneHint": "celebration",
+      "sentences": [
+        {
+          "id": "s8",
+          "text": "You all did an amazing job learning addition today!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s9",
+          "text": "Remember, addition means putting numbers together to find a total!",
+          "durationSeconds": 6
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to interact and practice counting throughout the lesson."
+}

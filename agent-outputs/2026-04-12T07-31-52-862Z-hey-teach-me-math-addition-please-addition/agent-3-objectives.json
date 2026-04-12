@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Identify and explain the addition symbol (+).",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "2",
+      "statement": "Solve single-digit addition problems.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a person raises one hand and spreads fingers wide while smiling and looking at the class."
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a tutor lifts the other hand, extending fingers while enthusiastically counting out loud to engage the audience."
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor gestures with one hand as if drawing an imaginary number line in front of them, inviting learners to visualize."
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person points toward the imaginary number line with excitement, directing attention to where the number five would appear."
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor takes a small, playful hop forward, mimicking a jumping motion as they describe moving five spaces ahead."
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person looks encouragingly at the camera, spreads arms wide, and invites students to search for small objects at home."
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor brings hands together and gestures as if combining objects, encouraging students to think about adding them."
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person claps hands together joyfully while nodding in approval, celebrating the learners' progress and efforts."
+    },
+    {
+      "sentenceId": "s9",
+      "mdmPrompt": "a tutor lifts both arms up and smiles broadly while pointing to an imaginary total, emphasizing the excitement of reaching ten."
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor stands tall, smiles widely, and gestures with both hands invitingly while stating the lesson topic"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person moves slightly forward, raises both arms with open palms, and nods enthusiastically to engage learners"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor bends slightly at the waist, points forward with one hand, and confidently indicates the number five"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person takes a step forward, extends both arms wide, and demonstrates a big jumping motion as if visualizing the jump"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor turns toward the class, claps hands together excitedly, and beams with pride while sharing the answer ten"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person holds up one hand with fingers spread wide, and gently moves it side to side while saying five"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor gestures with the other hand, mimicking the five fingers again, while encouraging students to join in"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person stands tall, brings both hands together over the fingers, and opens arms wide while inviting responses about the total"
+    },
+    {
+      "sentenceId": "s9",
+      "mdmPrompt": "a tutor steps back slightly, claps hands joyfully, and smiles broadly while praising the students for their efforts"
+    },
+    {
+      "sentenceId": "s10",
+      "mdmPrompt": "a person raises both hands with fingers making a big ten gesture, and nods affirmatively while reinforcing the concept"
+    }
+  ]
+}

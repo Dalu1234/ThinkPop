@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "K2-Counting-1",
+      "statement": "Count verbally from one to five.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "K2-Counting-2",
+      "statement": "Identify and match five objects with the corresponding numbers.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

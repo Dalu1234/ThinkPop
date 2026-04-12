@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Identify the sum of 5 and 5 using counters or drawings.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "obj2",
+      "statement": "Demonstrate addition by solving 5 + 5 using a number line.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

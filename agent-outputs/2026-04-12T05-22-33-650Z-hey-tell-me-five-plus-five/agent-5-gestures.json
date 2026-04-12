@@ -1,0 +1,40 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor stands straight, opens both arms wide with a smile, and leans slightly forward while announcing the topic"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person tilts their head slightly and raises both hands beside their face, inviting responses from the audience"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor motions with one hand, showing a visual group form as they explain adding two sets together"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person steps to the side, using both hands to illustrate two distinct groups while engaging the students"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor crouches slightly, leans closer, and gestures with their fingers, encouraging counting along with enthusiasm"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person stands tall, claps their hands lightly together while posing the question, energizing the students to think"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor raises both arms above their head with excitement, encouraging the class to celebrate their answers together"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person waves their arms gently in front of them, smiling widely as they acknowledge the students' efforts joyfully"
+    },
+    {
+      "sentenceId": "s9",
+      "mdmPrompt": "a tutor takes a step back, spreads their arms wide, and gestures as if pulling numbers together in a warm, inviting way"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "title": "Learning Subtraction Basics",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "s1",
+      "kind": "hook",
+      "visualCue": "Counting fingers",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1a",
+          "text": "Today, we will discover how to subtract numbers together!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s1b",
+          "text": "Subtraction is like taking away items from a group.",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "kind": "model",
+      "visualCue": "Using number line",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s2a",
+          "text": "Here’s how to subtract using a number line.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2b",
+          "text": "If we start at five and take away two, we land on three.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "kind": "practice",
+      "visualCue": "Hands-on subtraction",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s3a",
+          "text": "Now, let’s try a subtraction problem together!",
+          "durationSeconds": 3
+        },
+        {
+          "id": "s3b",
+          "text": "What is seven minus four? Let's figure it out.",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "kind": "wrap",
+      "visualCue": "Celebrating success",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s4a",
+          "text": "Great job learning subtraction today!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4b",
+          "text": "Practice at home with other numbers for fun!",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to visualize subtraction using objects or a number line."
+}

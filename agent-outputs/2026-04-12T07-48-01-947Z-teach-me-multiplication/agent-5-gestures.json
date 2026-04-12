@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor smiles broadly, steps forward with excitement, and gestures with both arms to emphasize the exploration of multiplication"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person leans slightly toward the class, tilts their head, and raises one hand as if inviting responses about multiplication"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor stands tall, gestures with one hand open in front, and moves it forward while explaining factors and products in multiplication"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person points with an animated expression while taking a step to the side, illustrating the factors 3 and 4 leading to the product 12"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor claps their hands together and gently shifts their weight, inviting the students to solve a word problem about multiplication"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person leans forward slightly, raises both hands with fingers spread, and moves them outward to illustrate the 4 bags with 3 apples each"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor raises arms in celebration, beams at the class, and takes a small step backward, expressing pride in the students’ progress"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person nods enthusiastically, places one hand on their heart, and gestures in a circular motion to reinforce the concept of repeated addition"
+    }
+  ]
+}

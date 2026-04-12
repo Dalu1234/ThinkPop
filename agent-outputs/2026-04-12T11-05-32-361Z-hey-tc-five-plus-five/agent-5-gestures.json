@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor stands with a welcoming posture, arms open wide, and gestures toward the colorful blocks on the screen."
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person leans slightly forward, tilts their head, and raises their hand while inviting guesses about the total number of blocks."
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor points with one hand to the first group and counts softly while moving the other hand to emphasize five blocks."
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person gestures toward the second group with excitement, raising both hands briefly before bringing them together to signify addition."
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor steps back slightly, spreading arms wide as if gathering all the blocks together, encouraging students to count aloud."
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person enthusiastically points downwards for each number, moving their arms up and down in rhythm while counting with the class."
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor raises both arms triumphantly, smiling broadly while celebrating the total of ten blocks with the students."
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person invites with open palms and gentle nods, encouraging students to practice adding different groups of objects at home."
+    }
+  ]
+}

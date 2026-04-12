@@ -1,0 +1,79 @@
+{
+  "title": "Exploring Ten Minus Five",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "Show ten apples",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these ten apples on the table.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "What happens if we take away five apples?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "Use fingers to show subtraction",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let's use our fingers to show ten minus five.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "Count down from ten as we take five away.",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "Draw a number line",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Can you help me solve this on a number line?",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s6",
+          "text": "Start at ten and jump back five spaces.",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "Celebrate the answer",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "We found that ten minus five equals five!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "Great job learning subtraction today, everyone!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to use their fingers and number lines for hands-on practice."
+}

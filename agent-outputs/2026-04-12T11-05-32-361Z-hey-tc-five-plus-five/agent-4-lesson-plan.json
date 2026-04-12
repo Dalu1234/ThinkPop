@@ -1,0 +1,79 @@
+{
+  "title": "Adding Two Groups of Objects",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "two groups of objects",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these two groups of colorful blocks on the screen!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2",
+          "text": "Can you guess how many blocks there are in total?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "combining blocks",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let's count the blocks in each group. The first group has five blocks.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "Now, the second group has five blocks too. Let's add them together.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "counting total objects",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "How many blocks do we have now? Let's count them all together!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "One, two, three, four, five, six, seven, eight, nine, ten!",
+          "durationSeconds": 6
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "celebrating the total",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job! We found that five plus five equals ten blocks total.",
+          "durationSeconds": 6
+        },
+        {
+          "id": "s8",
+          "text": "Keep practicing by adding other groups of objects at home!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to explore adding different groups of objects in hands-on activities."
+}

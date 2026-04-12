@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor excitedly jumps in place, waving both hands overhead while announcing today’s addition lesson"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a tutor leans slightly forward, raising a hand with fingers spread wide as if inviting answers from the class"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a person kneels down to eye level, holding up five fingers on one hand and then adding five more with the other"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a tutor tilts their head and spreads arms wide to emphasize the question about total apples"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a person steps to the side, pointing to an imaginary number line while explaining how to solve five plus five"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a tutor hops energetically, mimicking a jump forward as they describe moving from five on the number line"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a person claps their hands together joyfully, smiling at the class while praising their addition learning efforts"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a tutor makes inviting gestures with both hands, emphasizing the idea of putting groups together in addition"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "normalizedProblem": "7 + 3",
+  "gradeBand": "K-2",
+  "mathDomain": "Addition within 20",
+  "ambiguities": [],
+  "learnerIntent": "Learn about addition, specifically simple problems like 7 + 3."
+}

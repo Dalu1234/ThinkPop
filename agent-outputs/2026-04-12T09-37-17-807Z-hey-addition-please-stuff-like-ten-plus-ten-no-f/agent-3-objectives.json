@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "objective1",
+      "statement": "Demonstrate how to add two numbers using objects.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "objective2",
+      "statement": "Identify the sum of five and five using a number line.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

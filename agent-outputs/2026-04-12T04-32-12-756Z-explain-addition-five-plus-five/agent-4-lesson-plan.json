@@ -1,0 +1,79 @@
+{
+  "title": "Adding Five and Five Together",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook",
+      "kind": "hook",
+      "visualCue": "Five apples",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Can you count with me to five using these apples?",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Great! Now let’s count another five apples.",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "kind": "model",
+      "visualCue": "Adding on fingers",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Now, let’s add five apples and five more apples.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4",
+          "text": "How many apples do we have in total?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "kind": "practice",
+      "visualCue": "Drawing tally marks",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Let’s try adding other numbers using tally marks!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "What if we add two and three together next?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "kind": "wrap",
+      "visualCue": "Showing ten fingers",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "So, five plus five equals ten, right?",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "Great job! Let’s keep practicing our addition skills!",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to use physical objects for better understanding."
+}

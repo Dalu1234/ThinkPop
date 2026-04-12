@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor smiles and gestures widely with both hands, inviting everyone to explore addition together"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person holds up their right hand, displaying all five fingers clearly while encouraging the class to do the same"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor steps forward, bending slightly at the knees, and gathers counting blocks with both hands"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person demonstrates setting down five counters in a row and then adds five more, excitedly counting aloud"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor walks to the side of a number line, pointing enthusiastically at the start as they explain adding"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person gestures forward with their arm, showing a clear motion as if moving along the number line to find the answer"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor raises both hands in celebration, smiling broadly while proclaiming that five plus five equals ten"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person claps their hands together and steps backward, encouragingly inviting students to share more fun addition methods"
+    }
+  ]
+}

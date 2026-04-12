@@ -1,0 +1,13 @@
+{
+  "kind": "addition_rows",
+  "rows": 2,
+  "cols": 0,
+  "rowCounts": [
+    2,
+    3
+  ],
+  "itemShape": "stars",
+  "itemColor": "#ffcc00",
+  "itemLabel": "Two stars and three stars",
+  "caption": "Adding two stars and three stars."
+}

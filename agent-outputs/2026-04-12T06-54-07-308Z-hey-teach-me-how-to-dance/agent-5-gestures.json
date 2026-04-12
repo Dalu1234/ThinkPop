@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "h1",
+      "mdmPrompt": "a tutor stands confidently, smiles widely, and gestures with both arms as they introduce the topic of shapes"
+    },
+    {
+      "sentenceId": "h2",
+      "mdmPrompt": "a person leans slightly forward, tilts their head and opens their arms invitingly while asking about shapes"
+    },
+    {
+      "sentenceId": "m1",
+      "mdmPrompt": "a tutor lifts both hands, palms open, and moves gracefully from side to side while showcasing the circle, square, and triangle"
+    },
+    {
+      "sentenceId": "m2",
+      "mdmPrompt": "a person raises one hand and points to an imaginary square while counting to four, emphasizing the sides and vertices"
+    },
+    {
+      "sentenceId": "p1",
+      "mdmPrompt": "a tutor moves closer to the visual display, gestures to a triangle and a square, inviting the class to compare them"
+    },
+    {
+      "sentenceId": "p2",
+      "mdmPrompt": "a person holds their hands together thoughtfully, nods gently, and encourages students to reflect on the shapes' attributes"
+    },
+    {
+      "sentenceId": "w1",
+      "mdmPrompt": "a tutor spreads their arms wide, smiles broadly, and celebrates the students' learning about 2D shapes together"
+    },
+    {
+      "sentenceId": "w2",
+      "mdmPrompt": "a person points upward with one hand and playfully lifts the other arm, as if encouraging students to look for shapes around them"
+    }
+  ]
+}

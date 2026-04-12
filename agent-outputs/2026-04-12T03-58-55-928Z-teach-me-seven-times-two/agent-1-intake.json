@@ -1,0 +1,7 @@
+{
+  "normalizedProblem": "What is seven times two?",
+  "gradeBand": "3-5",
+  "mathDomain": "Multiplication",
+  "ambiguities": [],
+  "learnerIntent": "Learn how to multiply seven by two."
+}

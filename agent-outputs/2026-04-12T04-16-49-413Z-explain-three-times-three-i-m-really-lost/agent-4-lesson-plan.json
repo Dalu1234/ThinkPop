@@ -1,0 +1,79 @@
+{
+  "title": "Understanding 3 Times 3",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "Counting Fingers",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Let's discover what 3 times 3 means together!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Imagine you have three groups of three items.",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "Repeated Addition",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "We can add three three times to find the total.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "That looks like 3 plus 3 plus 3, which equals 9.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "Creating an Array",
+      "sceneHint": "array_visualization",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Let's make an array with 3 rows and 3 columns.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "How many squares do you see in total?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "Reviewing the Concept",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job! We found that 3 times 3 equals 9!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "Multiplication helps us count groups quickly and easily.",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to participate in the discussion and visualizations."
+}

@@ -1,0 +1,79 @@
+{
+  "title": "Introduction to Subtraction",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook",
+      "kind": "hook",
+      "visualCue": "minus sign introduction",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we will learn about subtraction, starting with the minus sign.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2",
+          "text": "The minus sign shows us we are taking away a number.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "kind": "model",
+      "visualCue": "using objects",
+      "sceneHint": "counting_objects",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Imagine you have three apples, and you give one away.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "How many apples do you have left? That's subtraction in action!",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "kind": "practice",
+      "visualCue": "interactive counting",
+      "sceneHint": "counting_objects",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Let's practice! Start with five blocks and remove two blocks.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "Count how many blocks remain after your subtraction.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "kind": "wrap",
+      "visualCue": "summary gesture",
+      "sceneHint": "conclusion",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job learning subtraction today! Remember the minus sign.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Keep practicing by subtracting with different objects at home.",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to visualize subtraction with real objects for better understanding."
+}

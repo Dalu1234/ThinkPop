@@ -1,0 +1,44 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor stands confidently, opens both arms wide as if inviting everyone into a fun adventure in learning, smiling enthusiastically."
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person tilts their head slightly, raises one hand to encourage thought, and takes a small step forward toward the learners."
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor gestures with both hands moving together, demonstrating the concept of bringing numbers together while speaking about addition."
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person points to an imaginary space in front with an outstretched arm while counting up in excitement about apples."
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor raises both hands with open palms, celebrating with a joyful bounce to emphasize the total of five apples."
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person shifts their weight slightly back, moving one hand outward as if to illustrate taking away, while explaining subtraction."
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor crouches slightly, looks around the class, and gestures toward an imaginary group of apples to engage learners in solving."
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person smiles widely, nods their head, and raises one finger in the air to signify they have the right answer about the apples."
+    },
+    {
+      "sentenceId": "s9",
+      "mdmPrompt": "a tutor stands tall, moves hands apart to visually represent combining numbers for addition and pulling them back for subtraction."
+    },
+    {
+      "sentenceId": "s10",
+      "mdmPrompt": "a person claps their hands together enthusiastically, stepping forward slightly to recognize everyone’s hard work and participation."
+    }
+  ]
+}

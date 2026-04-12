@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Count groups of three objects to find the total number of objects.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "2",
+      "statement": "Draw an array to represent the multiplication of 3 times 3.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

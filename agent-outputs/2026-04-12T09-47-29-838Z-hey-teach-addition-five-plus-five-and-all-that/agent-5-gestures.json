@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor stands with a welcoming smile, opens arms wide, and steps forward to engage the students about special numbers"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a tutor leans slightly forward, tilts their head, raising one hand with a questioning gesture toward the class"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a person holds up both hands, extends fingers on each, and moves them in a counting motion while engaging the learners"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a tutor lifts one hand with five fingers and then the other hand with five fingers, confidently showing that together they equal ten"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a person gestures enthusiastically with both arms, encouragingly inviting the class to grab ten blocks from a designated area"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a tutor holds one hand out with five fingers extended, then moves the other hand toward the first as if adding five more blocks"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a person claps hands joyfully, stepping back slightly and smiling brightly to celebrate the students' success in addition"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a tutor raises both arms in excitement, nodding enthusiastically while offering encouragement and praise for the students' skills"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "kind": "grid",
+  "rows": 7,
+  "cols": 2,
+  "rowCounts": [],
+  "itemShape": "apple",
+  "itemColor": "#ff0000",
+  "caption": "Let's visualize seven times two with an array!"
+}

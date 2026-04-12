@@ -1,0 +1,13 @@
+{
+  "kind": "addition_rows",
+  "rows": 2,
+  "cols": 0,
+  "rowCounts": [
+    10,
+    5
+  ],
+  "itemShape": "apples",
+  "itemColor": "#ff4e4e",
+  "itemLabel": "Ten apples minus five apples",
+  "caption": "Counting down from ten apples."
+}

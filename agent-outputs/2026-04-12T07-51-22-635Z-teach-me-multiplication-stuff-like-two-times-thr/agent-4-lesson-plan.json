@@ -1,0 +1,79 @@
+{
+  "title": "Introduction to Multiplication",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook",
+      "kind": "hook",
+      "visualCue": "show hands together",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we will learn about multiplication using two and three.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2",
+          "text": "Multiplication means adding groups of the same size together.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "kind": "model",
+      "visualCue": "display arrays",
+      "sceneHint": "array_visualization",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let's multiply two times three, which means two groups of three.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "We can visualize this with an array of two rows and three columns.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "kind": "practice",
+      "visualCue": "hands on head, thinking",
+      "sceneHint": "student_engagement",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Can you create an array for two times three at your desk?",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "Now, let's discuss what you discovered about your array!",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "kind": "wrap",
+      "visualCue": "clap hands together",
+      "sceneHint": "summarizing_exercise",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Remember, two times three equals six, which is the total.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Great job understanding multiplication today, everyone!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to use their hands to create arrays for better understanding."
+}

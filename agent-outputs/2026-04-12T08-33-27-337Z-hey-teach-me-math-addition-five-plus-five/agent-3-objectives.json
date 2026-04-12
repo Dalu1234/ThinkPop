@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Count and recognize the numbers 5 and 5 using objects.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "obj2",
+      "statement": "Demonstrate the addition of 5 + 5 using a number line.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

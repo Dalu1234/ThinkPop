@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Students will recognize and write the numbers involved in simple addition problems.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "obj2",
+      "statement": "Students will use objects to demonstrate the sum of five plus five.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

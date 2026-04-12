@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor bends slightly forward, opens both arms wide to the blocks, and raises eyebrows in curiosity while explaining"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person smiles widely, gestures toward the group with open palms, and nods positively while sharing the lesson's focus"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor steps back a little, points to the imagined five blocks on an invisible table, and tilts head inquisitively"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person raises both hands and spreads fingers apart, smiling while emphasizing how three blocks remain after subtraction"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor enthusiastically claps hands together, then gestures outward while encouraging students to engage with their blocks"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person leans slightly closer, tilts head and makes a questioning gesture, inviting students to share their results with excitement"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor swings arms outward in celebration, smiles broadly, and gently steps forward to reinforce the joy of learning subtraction"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person nods earnestly, places hands on hips, and gestures with one hand while encouraging a deeper understanding of subtraction"
+    }
+  ]
+}

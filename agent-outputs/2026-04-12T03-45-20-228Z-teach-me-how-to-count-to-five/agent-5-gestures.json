@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor stands tall, smiles widely, and opens both arms invitingly while introducing today's counting lesson"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person claps their hands together enthusiastically, nodding their head as they emphasize the importance of counting in math"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor takes a step forward, extends their arms outward, and gestures in rhythm as they count from one to five"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person tilts their head slightly and waves their hand in a smooth motion as they ask about the sequence of numbers"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor bends slightly forward with excitement, counting with outstretched fingers as they point toward five apples"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person claps their hands together joyfully and gestures encouragingly for learners to look around and find five objects"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor raises both hands in celebration, smiling brightly and nodding in appreciation for the students' counting efforts"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person waves gently with one hand while encouraging learners to keep practicing their counting and enjoy the process"
+    }
+  ]
+}

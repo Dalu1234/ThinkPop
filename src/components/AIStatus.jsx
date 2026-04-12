@@ -61,6 +61,12 @@ const STATUS_CONFIG = {
     glow: 'rgba(248, 250, 252, 0.4)',
     dot: '#f0f0ff',
   },
+  awaiting_user: {
+    label: 'Your turn — answer with the mic',
+    color: '#4ade80',
+    glow: 'rgba(74, 222, 128, 0.45)',
+    dot: '#4ade80',
+  },
   generating: {
     label: 'Generating motion...',
     color: '#00e5ff',

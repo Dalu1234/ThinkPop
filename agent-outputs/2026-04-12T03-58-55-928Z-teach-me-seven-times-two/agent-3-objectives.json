@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Solve multiplication problems using the number seven.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "obj2",
+      "statement": "Create visual arrays to represent multiplication by seven.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

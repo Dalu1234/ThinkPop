@@ -1,0 +1,79 @@
+{
+  "title": "Adding Five and Five Together",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook",
+      "kind": "hook",
+      "visualCue": "showing five fingers",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Let's explore what happens when we add five and five!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Can you show me five fingers on one hand?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "kind": "model",
+      "visualCue": "drawing five apples",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "If we have five apples and add another five, how many do we have?",
+          "durationSeconds": 6
+        },
+        {
+          "id": "s4",
+          "text": "Let's count all the apples together to find the total.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "kind": "practice",
+      "visualCue": "counting with counters",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, let's use counters to find five plus five.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "Count the counters as you combine them.",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "kind": "wrap",
+      "visualCue": "clapping for ten",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job, everyone! Five plus five equals ten!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Can you remember this when adding other numbers?",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Ensure students have manipulatives available for hands-on practice."
+}

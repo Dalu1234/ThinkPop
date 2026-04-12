@@ -1,0 +1,12 @@
+{
+  "kind": "addition_rows",
+  "rows": 0,
+  "cols": 0,
+  "rowCounts": [
+    5,
+    5
+  ],
+  "itemShape": "apple",
+  "itemColor": "#FF0000",
+  "caption": "Let's explore five plus five!"
+}

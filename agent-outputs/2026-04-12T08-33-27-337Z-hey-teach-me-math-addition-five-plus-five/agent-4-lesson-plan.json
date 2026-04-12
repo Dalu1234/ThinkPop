@@ -1,0 +1,84 @@
+{
+  "title": "Introduction to Basic Addition",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "showing fingers",
+      "sceneHint": "counting_fingers",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at my five fingers on one hand.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Now, let’s count five more fingers on my other hand.",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "using a number line",
+      "sceneHint": "number_line_demo",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Here is a number line starting from zero to ten.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4",
+          "text": "Let’s find the number five on the number line.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s5",
+          "text": "Now, from five, we will jump five more spaces.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "joining objects",
+      "sceneHint": "adding_objects",
+      "sentences": [
+        {
+          "id": "s6",
+          "text": "Can you find five small objects at home?",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s7",
+          "text": "Now, find five more and add them together.",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "cheering",
+      "sceneHint": "celebration",
+      "sentences": [
+        {
+          "id": "s8",
+          "text": "Great job learning about addition today!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s9",
+          "text": "Remember, five plus five equals ten!",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to use objects around them for hands-on practice."
+}

@@ -1,0 +1,79 @@
+{
+  "title": "Understanding Simple Addition",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "Two hands counting",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we are going to explore the fun world of addition!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "What happens when we put two groups together?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "Drawing 5 apples",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let's see what 5 plus 5 looks like using apples!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "If I have 5 apples and add 5 more, how many do I have?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "Group number blocks",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Can you help me solve 5 plus 5?",
+          "durationSeconds": 3
+        },
+        {
+          "id": "s6",
+          "text": "Count the apples with me and give me your answer.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "Happy face",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job! 5 plus 5 equals 10!",
+          "durationSeconds": 3
+        },
+        {
+          "id": "s8",
+          "text": "Remember, addition is putting groups together!",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to use objects around them for hands-on practice."
+}

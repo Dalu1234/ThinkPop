@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Students will recall the multiplication problem two times three.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "2",
+      "statement": "Students will demonstrate the concept of multiplication using arrays.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

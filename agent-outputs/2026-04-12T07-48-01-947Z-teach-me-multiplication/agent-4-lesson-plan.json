@@ -1,0 +1,79 @@
+{
+  "title": "Introduction to Multiplication",
+  "estimatedMinutes": 7,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "exciting numbers",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we will explore the amazing world of multiplication!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Can anyone tell me what multiplication might mean?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "factors and products",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Multiplication helps us find the product of two numbers, called factors.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "For example, 3 and 4 are factors of the product 12.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "word problem example",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, let’s solve a word problem using multiplication together!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "If there are 4 bags with 3 apples each, how many apples are there?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "class summary",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great work today! You are all multiplication masters now!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "Remember, multiplication is just repeated addition!",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to think about real-world applications of multiplication."
+}

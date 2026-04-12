@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Identify and name common 2D shapes such as circles, squares, and triangles.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "2",
+      "statement": "Compare and contrast the properties of different shapes, like sides and vertices.",
+      "bloomLevel": "analyze"
+    }
+  ]
+}

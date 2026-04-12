@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor stands tall, smiles warmly, and spreads both arms open wide as they announce the lesson topic."
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person bends slightly forward, tilts their head with curiosity, and gestures toward the class inviting answers."
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor bends down slightly, points at the two blocks of five with enthusiasm while engaging the learners."
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person lifts both blocks together, smiles brightly, and moves them upward as they share the total number."
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor steps back, encourages the class with wide open arms, and invites everyone to join in solving the problem."
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person shifts their weight from one foot to the other, uses fingers to count, and shows how to combine the groups."
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor raises both hands in celebration, claps, and beams with pride while affirming the correct answer."
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person gestures with one hand moving in a circular motion, reinforcing the idea of combining things together."
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "normalizedProblem": "Teach me multiplication, specifically two times three.",
+  "gradeBand": "3-5",
+  "mathDomain": "Multiplication",
+  "ambiguities": [],
+  "learnerIntent": "Learn how to multiply numbers, starting with two times three."
+}

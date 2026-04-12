@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor bends slightly forward, smiles widely, and gestures toward the colorful blocks while inviting attention."
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person moves both hands outward in a welcoming gesture while envisioning three groups of blocks."
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor stands tall, raises their arms to demonstrate a neat array while explaining the concept of three times three."
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person nods enthusiastically, then draws imaginary rows in the air with their right hand, illustrating three rows."
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor claps their hands together and gestures to the learners, encouraging them to start drawing their own arrays."
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person counts on their fingers while happily shifting weight from side to side, reinforcing the counting of blocks."
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor raises both arms high in celebration while praising the learners for their work on multiplication."
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person gestures with their hands to show adding groups while smiling, reinforcing the concept of three groups of three."
+    }
+  ]
+}

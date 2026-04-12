@@ -1,0 +1,79 @@
+{
+  "title": "Introduction to Subtraction",
+  "estimatedMinutes": 6,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "Show a few blocks",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these blocks! What happens if we take some away?",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2",
+          "text": "Today, we will learn about subtraction by taking away!",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "Subtract with counting",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "If we start with five blocks and remove two, how many are left?",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "Five minus two equals three blocks left! That's subtraction.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "Hands-on activity",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now it's your turn! Take away some blocks from your pile.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s6",
+          "text": "How many do you have left after taking them away?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "Review what we've learned",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job! Subtraction is all about taking away and finding what's left.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Remember, subtracting helps us understand how numbers change!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to verbalize their subtraction processes during practice."
+}

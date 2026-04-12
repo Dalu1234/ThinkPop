@@ -1,0 +1,9 @@
+{
+  "kind": "grid",
+  "rows": 3,
+  "cols": 3,
+  "rowCounts": [],
+  "itemShape": "block",
+  "itemColor": "#FF5733",
+  "caption": "Let's explore 3 times 3!"
+}

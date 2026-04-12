@@ -1,0 +1,84 @@
+{
+  "title": "Understanding Two Times Three",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "Show two groups",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we will explore what two times three means.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2",
+          "text": "Can anyone guess how many are in two groups of three?",
+          "durationSeconds": 6
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "Display an array",
+      "sceneHint": "array_visual",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let's look at an array to understand two times three.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4",
+          "text": "Here are two rows with three objects in each row.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s5",
+          "text": "When we count all the objects, what do we get?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "Count together",
+      "sceneHint": "count_with_fingers",
+      "sentences": [
+        {
+          "id": "s6",
+          "text": "Now, let's count these objects together. Ready?",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s7",
+          "text": "One, two, three, four, five, six! We found six total!",
+          "durationSeconds": 6
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "Summarize multiplication",
+      "sceneHint": "summary_visual",
+      "sentences": [
+        {
+          "id": "s8",
+          "text": "Great job! Two times three equals six!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s9",
+          "text": "Multiplication helps us add groups quickly and easily.",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Use visual aids to reinforce the multiplication concept during the lesson."
+}

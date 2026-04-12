@@ -1,0 +1,13 @@
+{
+  "kind": "addition_rows",
+  "rows": 2,
+  "cols": 0,
+  "rowCounts": [
+    5,
+    2
+  ],
+  "itemShape": "blocks",
+  "itemColor": "#8A3FFC",
+  "itemLabel": "Five blocks minus two blocks",
+  "caption": "Start with five blocks and take away two."
+}

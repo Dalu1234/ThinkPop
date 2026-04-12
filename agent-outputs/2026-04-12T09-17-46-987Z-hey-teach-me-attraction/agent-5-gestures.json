@@ -1,0 +1,32 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor turns slightly toward the class with a big smile and gestures forward as if inviting everyone to join"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person leans in slightly with raised eyebrows, encouragingly tilting their head while looking around the classroom"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor stands tall and sweeps one arm across the front while pointing to an imaginary number line in the air"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person moves a hand in an arc from left to right while stepping forward to emphasize the action of adding on the number line"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor crouches down slightly, bringing both hands together in front to indicate stacking two blocks and three blocks"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person raises both hands open, palms up, while looking expectantly around the room as if inviting all to count together"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor claps hands together cheerfully and gives a thumbs up while beaming widely to celebrate the students' efforts"
+    }
+  ]
+}

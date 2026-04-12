@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor stands tall, smiles broadly, and opens both arms wide while enthusiastically announcing the topic of addition"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person raises one hand, extends fingers forward, and gently waves it side to side, inviting the class to show five fingers"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor walks closer to the number line, points to the starting point, and gestures invitingly toward the numbers while explaining"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person steps back slightly, moves one finger upward with each count, and visually highlights the increments on the number line"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor bends down slightly, extends both hands invitingly toward the learners, and encourages them to gather small objects for counting"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person stands confidently, gestures with both hands toward the objects, and encourages everyone to count them out loud together"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor claps hands together, beams with joy, and leans slightly forward to celebrate the successful addition of five plus five"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person raises one hand, spreads fingers wide, and gestures back and forth as if demonstrating the use of numbers and objects"
+    }
+  ]
+}

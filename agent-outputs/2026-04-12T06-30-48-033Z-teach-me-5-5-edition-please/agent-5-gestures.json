@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1_1",
+      "mdmPrompt": "a tutor smiles warmly, gestures with open hands, and steps slightly forward while introducing decimal numbers"
+    },
+    {
+      "sentenceId": "s1_2",
+      "mdmPrompt": "a person nods and tilts the head slightly while spreading arms to the side as they explain non-whole numbers"
+    },
+    {
+      "sentenceId": "s2_1",
+      "mdmPrompt": "a tutor walks to the side, raises one hand, and sweeps it across as if illustrating a number line for comparison"
+    },
+    {
+      "sentenceId": "s2_2",
+      "mdmPrompt": "a person points directly ahead with the right hand and shifts their weight slightly, emphasizing 0.5 over 0.3"
+    },
+    {
+      "sentenceId": "s3_1",
+      "mdmPrompt": "a tutor steps back and claps hands together cheerfully while inviting everyone to practice adding decimals"
+    },
+    {
+      "sentenceId": "s3_2",
+      "mdmPrompt": "a person holds both hands out with fingers spread, as if counting, while posing a question about the sum of numbers"
+    },
+    {
+      "sentenceId": "s4_1",
+      "mdmPrompt": "a tutor raises both arms high and rotates in place, celebrating the learners' achievements in understanding decimals"
+    },
+    {
+      "sentenceId": "s4_2",
+      "mdmPrompt": "a person gently waves a hand in a circular motion while nodding, reinforcing the idea of decimals as parts of a whole"
+    }
+  ]
+}

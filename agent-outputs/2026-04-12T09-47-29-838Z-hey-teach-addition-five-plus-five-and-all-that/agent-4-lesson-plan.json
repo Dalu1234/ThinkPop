@@ -1,0 +1,79 @@
+{
+  "title": "Adding 5 and 5 Together",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook",
+      "kind": "hook",
+      "visualCue": "exciting number friends",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we are going to add two special numbers!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Can you guess what happens when we add 5 and 5 together?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "kind": "model",
+      "visualCue": "showing fingers",
+      "sceneHint": "counting_with_fingers",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let's count together using our fingers to find 5 plus 5.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "Five fingers on one hand and five on the other make ten fingers.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "kind": "practice",
+      "visualCue": "using manipulatives",
+      "sceneHint": "adding_with_blocks",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, grab ten blocks to see how many we have.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s6",
+          "text": "Count out five blocks and then add another five blocks.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "kind": "wrap",
+      "visualCue": "celebrating success",
+      "sceneHint": "happy_clapping",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job! Five plus five equals ten!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "You're amazing at adding numbers to ten, keep it up!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Use hands-on materials for effective learning during the practice segment."
+}

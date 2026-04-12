@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor smiles warmly, opens both arms wide, and gently sways side to side while announcing the lesson"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person leans slightly forward, tilts their head inquisitively, and gestures with one hand encouragingly toward the students"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor holds up one arm, displaying three fingers while articulating each shape name clearly and enthusiastically"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person steps back with both arms raised high, illustrating the act of describing shapes and highlighting their features"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor moves closer to the shapes, crouching slightly and pointing with excitement at the variety available for discovery"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person looks around with anticipation, gestures in a circular motion with both hands, and encourages students to spot the round shape"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor claps hands together joyfully, nods in approval, and beams proudly at the students for their newfound knowledge"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person gently waves goodbye with one hand while gesturing outward, inviting students to continue their shape exploration daily"
+    }
+  ]
+}

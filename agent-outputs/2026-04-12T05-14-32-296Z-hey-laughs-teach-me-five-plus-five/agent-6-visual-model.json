@@ -1,0 +1,12 @@
+{
+  "kind": "addition_rows",
+  "rows": 2,
+  "cols": 0,
+  "rowCounts": [
+    5,
+    5
+  ],
+  "itemShape": "block",
+  "itemColor": "#FF0000",
+  "caption": "Let's add five red blocks and five blue blocks!"
+}

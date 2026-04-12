@@ -1,0 +1,79 @@
+{
+  "title": "Fun with Simple Addition",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "Count with fingers",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we will learn how to add numbers together!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Who can tell me what happens when we combine two groups?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "Show number blocks",
+      "sceneHint": "visual_aids",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Look at these two blocks of five.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4",
+          "text": "When we put them together, we have ten blocks!",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "Solve addition together",
+      "sceneHint": "group_activity",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Let's solve five plus five together!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s6",
+          "text": "Count each group and then count them all.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "Clap for answers",
+      "sceneHint": "celebration",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job, everyone! Five plus five equals ten!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Remember, adding means putting things together!",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to use fingers or objects for hands-on practice."
+}

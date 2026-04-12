@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Multiply two and three to find their product.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "obj2",
+      "statement": "Explain how two groups of three can be represented using arrays.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

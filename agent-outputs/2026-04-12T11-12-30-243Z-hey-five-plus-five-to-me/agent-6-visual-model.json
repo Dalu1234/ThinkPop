@@ -1,0 +1,13 @@
+{
+  "kind": "addition_rows",
+  "rows": 2,
+  "cols": 0,
+  "rowCounts": [
+    5,
+    5
+  ],
+  "itemShape": "colorful pieces",
+  "itemColor": "#ff5e6c",
+  "itemLabel": "Five colorful pieces plus five colorful pieces",
+  "caption": "Let's add five colorful pieces to five colorful pieces!"
+}

@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Add two numbers together using objects.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "2",
+      "statement": "Recall the sum of 5 + 5.",
+      "bloomLevel": "remember"
+    }
+  ]
+}

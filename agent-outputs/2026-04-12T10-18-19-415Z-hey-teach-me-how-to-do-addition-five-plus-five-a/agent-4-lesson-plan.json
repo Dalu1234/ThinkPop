@@ -1,0 +1,79 @@
+{
+  "title": "Introduction to Addition",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "excited waving hands",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we are going to learn about addition!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Who can tell me what happens when we add two groups together?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "showing fingers",
+      "sceneHint": "counting_objects",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let’s start with five apples and add five more.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "How many apples do we have in total?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "pointing to a number line",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, let’s use a number line to solve five plus five.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "Start at five and jump forward five spaces.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "clapping hands",
+      "sceneHint": "celebration",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job learning about addition today, everyone!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "Remember, addition means putting groups together!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to use objects for hands-on practice with addition."
+}

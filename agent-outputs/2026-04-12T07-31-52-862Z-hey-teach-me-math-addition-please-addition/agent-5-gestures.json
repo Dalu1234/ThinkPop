@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor steps closer to the class, holds up a large paper with a plus sign, and smiles while asking what it means"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person moves both arms outward in a welcoming gesture, emphasizing the idea of combining numbers together"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor crouches slightly and points down to an imaginary number line, encouraging the learners to count 2 plus 3 together"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person raises both hands in celebration, moving them up as if showing that adding 2 and 3 gives 5"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor steps forward with an inviting gesture, asking the learners to solve 4 plus 2 while looking around the class"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person leans slightly forward, encouragingly nodding while asking the learners to count up and share the answer"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor stands tall with arms wide open, celebrating the learners' efforts while praising their skills in adding numbers"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person gestures with a hand moving in a circular motion, encouraging ongoing practice to get even better at addition"
+    }
+  ]
+}

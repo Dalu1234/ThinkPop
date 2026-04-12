@@ -102,7 +102,7 @@
     "name": "Peach (3D scan)",
     "path": "/models/peach_by_afinia_es360_3d_scanner.glb",
     "category": "Food",
-    "tags": ["peach", "fruit", "food", "scanner"]
+    "tags": ["peach", "fruit", "food", "scanner", "orange", "oranges", "citrus"]
   },
   {
     "id": "model_16",

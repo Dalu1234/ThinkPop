@@ -1,0 +1,9 @@
+{
+  "kind": "grid",
+  "rows": 3,
+  "cols": 3,
+  "rowCounts": [],
+  "itemShape": "apple",
+  "itemColor": "#FF5733",
+  "caption": "Let's visualize 3 times 3 with an array!"
+}

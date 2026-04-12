@@ -1,0 +1,9 @@
+{
+  "kind": "grid",
+  "rows": 2,
+  "cols": 3,
+  "rowCounts": [],
+  "itemShape": "apple",
+  "itemColor": "#FF0000",
+  "caption": "Let's see two rows of three apples each!"
+}

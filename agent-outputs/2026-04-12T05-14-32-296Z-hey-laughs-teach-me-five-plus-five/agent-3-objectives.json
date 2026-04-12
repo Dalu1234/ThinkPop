@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Identify the sum of two numbers using objects.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "2",
+      "statement": "Demonstrate addition using a number line.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

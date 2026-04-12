@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "objective1",
+      "statement": "Solve addition problems involving single-digit numbers.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "objective2",
+      "statement": "Explain how to use a number line to find the sum of two numbers.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

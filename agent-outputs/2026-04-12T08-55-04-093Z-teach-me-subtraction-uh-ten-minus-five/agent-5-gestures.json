@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor gestures toward the apples on the table with both hands, smiling while inviting attention to the ten apples"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person tilts their head slightly and takes a step closer while looking curiously at the audience, prompting them with a questioning expression"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor raises both hands in front, displaying fingers to demonstrate counting from ten down to five, engaging the learners"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person moves their fingers down slowly while counting, stepping back slightly as if to visualize the subtraction"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor points enthusiastically to an imaginary number line before them, inviting students to participate in solving the problem together"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person pretends to jump backward, stepping back while counting down from ten, encouraging students to visualize the jumps"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor raises both arms in celebration, smiling broadly while stating the answer with excitement, engaging the classroom"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person claps their hands together and nods approvingly, moving toward the learners to celebrate their progress in subtraction"
+    }
+  ]
+}

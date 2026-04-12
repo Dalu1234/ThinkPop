@@ -1,0 +1,79 @@
+{
+  "title": "Learning Addition with Fun",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "exciting introduction",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we will explore the exciting world of addition together!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Can you tell me what happens when we put two numbers together?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "adding with blocks",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let's add five blocks to another five blocks.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4",
+          "text": "Count the total number of blocks with me now.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "hands-on activity",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now it's your turn! Add five and five using your fingers.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "What is the sum? Let’s shout it out together!",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "encouraging conclusion",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job adding today! Remember, five plus five equals ten.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Keep practicing, and you will become an addition expert!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students throughout the lesson and celebrate their answers."
+}

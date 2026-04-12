@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Add 5 and 5 to find the total.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "obj2",
+      "statement": "Explain how addition works using visual aids.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

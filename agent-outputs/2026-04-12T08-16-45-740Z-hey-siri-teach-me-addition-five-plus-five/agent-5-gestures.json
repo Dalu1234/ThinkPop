@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor steps forward, opens both arms wide with excitement, and smiles while introducing the topic of addition"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person leans slightly forward, tilting the head and encouragingly points toward the class while asking a question"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor stands with hands on hips, nods confidently, and gestures toward an imaginary number line as they explain"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person bends at the knees, mimicking a jumping motion as they visualize moving forward on a number line"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor crouches down and gathers imaginary counters with both hands, showing enthusiasm for the counting activity"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person lifts hands up, counting along and gesturing outward as they guide the addition of more counters"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor raises both arms in celebration, smiling broadly and nodding to emphasize the success of learning addition"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person gestures with one hand to symbolize grouping, while the other hand moves in a circular motion to illustrate addition"
+    }
+  ]
+}

@@ -338,7 +338,7 @@ function mockPipeline(problem) {
   }
   const topic = {
     topicTitle: 'Adding fractions with visual models',
-    subtopics: ['Unit fractions', 'Common denominators', 'Number line model'],
+    subtopics: ['Unit fractions', 'Common denominators', 'Parts of a whole'],
     briefSummary:
       'Learners connect symbolic fraction addition to area and length models before practicing symbolic steps.',
     relatedPrerequisites: ['Parts of a whole', 'Equivalent fractions'],
@@ -446,6 +446,55 @@ function clampSentenceDurationSeconds(v) {
   return Math.min(12, Math.max(2, Math.round(n)))
 }
 
+/** App shows 3D object groups, not a number line — rewrite model drift before TTS. */
+function scrubNumberLinePhrases(text) {
+  if (typeof text !== 'string' || !text) return text
+  let t = text
+  t = t.replace(/\bmove\s+along\s+the\s+number\s+line\b/gi, 'count the objects on the screen')
+  t = t.replace(/\bjump(?:ing)?\s+on\s+the\s+number\s+line\b/gi, 'count with the objects on the screen')
+  t = t.replace(/\bon\s+the\s+number\s+line\b/gi, 'on the screen')
+  t = t.replace(/\busing\s+(?:a\s+)?(?:the\s+)?number\s+line\b/gi, 'using the groups you see')
+  t = t.replace(/\bwith\s+(?:a\s+)?(?:the\s+)?number\s+line\b/gi, 'with the groups you see')
+  t = t.replace(/\bfrom\s+(?:the\s+)?number\s+line\b/gi, 'from what you see')
+  t = t.replace(/\bto\s+(?:the\s+)?number\s+line\b/gi, 'to what you see')
+  t = t.replace(/\bthe\s+number\s+lines\b/gi, 'the objects on the screen')
+  t = t.replace(/\bnumber\s+lines\b/gi, 'objects on the screen')
+  t = t.replace(/\bthe\s+number\s+line\b/gi, 'what you see on the screen')
+  t = t.replace(/\ba\s+number\s+line\b/gi, 'the picture on the screen')
+  t = t.replace(/\bnumber\s+line\b/gi, 'what you see')
+  return t
+}
+
+function normalizeTopicForSpeech(topic) {
+  if (!topic || typeof topic !== 'object') return topic
+  return {
+    ...topic,
+    topicTitle:
+      typeof topic.topicTitle === 'string' ? scrubNumberLinePhrases(topic.topicTitle) : topic.topicTitle,
+    briefSummary:
+      typeof topic.briefSummary === 'string' ? scrubNumberLinePhrases(topic.briefSummary) : topic.briefSummary,
+    subtopics: Array.isArray(topic.subtopics)
+      ? topic.subtopics.map(st => (typeof st === 'string' ? scrubNumberLinePhrases(st) : st))
+      : topic.subtopics,
+    relatedPrerequisites: Array.isArray(topic.relatedPrerequisites)
+      ? topic.relatedPrerequisites.map(st => (typeof st === 'string' ? scrubNumberLinePhrases(st) : st))
+      : topic.relatedPrerequisites,
+  }
+}
+
+function normalizeObjectivesForSpeech(obj) {
+  if (!obj || typeof obj !== 'object') return obj
+  const list = Array.isArray(obj.objectives) ? obj.objectives : []
+  return {
+    ...obj,
+    objectives: list.map(o => ({
+      ...o,
+      statement:
+        typeof o.statement === 'string' ? scrubNumberLinePhrases(o.statement) : o.statement,
+    })),
+  }
+}
+
 /**
  * Ensure every segment has a `sentences` array so Agent 5 and the client agree on ids.
  * Migrates legacy `narration` + `durationSeconds` into a single sentence per segment.
@@ -455,14 +504,20 @@ function normalizeLessonPlan(raw) {
   const segments = Array.isArray(base.segments) ? base.segments : []
   return {
     ...base,
+    title: typeof base.title === 'string' ? scrubNumberLinePhrases(base.title) : base.title,
+    teacherNotes:
+      typeof base.teacherNotes === 'string' ? scrubNumberLinePhrases(base.teacherNotes) : base.teacherNotes,
     segments: segments.map((seg) => {
       const sid = String(seg.id ?? 'seg')
+      const visualCue =
+        typeof seg.visualCue === 'string' ? scrubNumberLinePhrases(seg.visualCue.trim()) : seg.visualCue
       if (Array.isArray(seg.sentences) && seg.sentences.length > 0) {
         return {
           ...seg,
+          visualCue,
           sentences: seg.sentences
             .map((s, j) => {
-              const text = String(s.text ?? s.narration ?? '').trim()
+              const text = scrubNumberLinePhrases(String(s.text ?? s.narration ?? '').trim())
               if (!text) return null
               return {
                 id: String(s.id ?? `${sid}-s${j}`),
@@ -475,10 +530,11 @@ function normalizeLessonPlan(raw) {
             .filter(Boolean),
         }
       }
-      const narr = typeof seg.narration === 'string' ? seg.narration.trim() : ''
+      const narr = typeof seg.narration === 'string' ? scrubNumberLinePhrases(seg.narration.trim()) : ''
       if (narr) {
         return {
           ...seg,
+          visualCue,
           sentences: [
             {
               id: `${sid}-s0`,
@@ -488,7 +544,7 @@ function normalizeLessonPlan(raw) {
           ],
         }
       }
-      return { ...seg, sentences: [] }
+      return { ...seg, visualCue, sentences: [] }
     }),
   }
 }
@@ -508,9 +564,42 @@ function enumerateLessonSentences(lessonPlan) {
   return rows
 }
 
+const SPOKEN_NUMBERS = {
+  zero: 0, one: 1, two: 2, three: 3, four: 4, five: 5,
+  six: 6, seven: 7, eight: 8, nine: 9, ten: 10,
+  eleven: 11, twelve: 12, thirteen: 13, fourteen: 14, fifteen: 15,
+  sixteen: 16, seventeen: 17, eighteen: 18, nineteen: 19, twenty: 20,
+}
+
+/** Replace spoken number words with digits and strip filler ("what is", "teach me", etc.) */
+function normalizeMathInput(problem) {
+  let s = String(problem || '').toLowerCase()
+  s = s.replace(/\b(what\s+is|what's|teach\s+me|show\s+me|explain|help\s+me\s+with|can\s+you)\b/gi, ' ')
+  s = s.replace(
+    /\b(zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty)\b/gi,
+    m => String(SPOKEN_NUMBERS[m.toLowerCase()] ?? m)
+  )
+  s = s.replace(/\bplus\b/gi, '+')
+  s = s.replace(/\bminus\b/gi, '-')
+  s = s.replace(/\btake\s+away\b/gi, '-')
+  s = s.replace(/\btimes\b/gi, 'x')
+  s = s.replace(/\bmultiplied\s+by\b/gi, 'x')
+  s = s.replace(/\bdivided\s+by\b/gi, '/')
+  return s
+}
+
 function parseAddition(problem) {
-  const s = (problem || '').replace(/\s+/g, '')
-  const m = s.match(/(\d{1,2})\s*\+\s*(\d{1,2})/)
+  const s = normalizeMathInput(problem).replace(/\s+/g, '')
+  const m = s.match(/(\d{1,3})\s*\+\s*(\d{1,3})/)
+  if (!m) return null
+  const a = Math.max(0, parseInt(m[1], 10))
+  const b = Math.max(0, parseInt(m[2], 10))
+  return { a, b }
+}
+
+function parseSubtraction(problem) {
+  const s = normalizeMathInput(problem).replace(/\s+/g, '')
+  const m = s.match(/(\d{1,3})\s*[-−]\s*(\d{1,3})/)
   if (!m) return null
   const a = Math.max(0, parseInt(m[1], 10))
   const b = Math.max(0, parseInt(m[2], 10))
@@ -518,8 +607,8 @@ function parseAddition(problem) {
 }
 
 function parseMultiplication(problem) {
-  const s = (problem || '').replace(/\s+/g, '')
-  const m = s.match(/(\d{1,2})\s*[x×*]\s*(\d{1,2})/i) || s.match(/(\d{1,2})\s*times\s*(\d{1,2})/i)
+  const s = normalizeMathInput(problem).replace(/\s+/g, '')
+  const m = s.match(/(\d{1,2})\s*[x×*]\s*(\d{1,2})/i)
   if (!m) return null
   const a = Math.min(12, Math.max(1, parseInt(m[1], 10)))
   const b = Math.min(12, Math.max(1, parseInt(m[2], 10)))
@@ -527,7 +616,7 @@ function parseMultiplication(problem) {
 }
 
 function parseDivision(problem) {
-  const s = (problem || '').replace(/\s+/g, '')
+  const s = normalizeMathInput(problem).replace(/\s+/g, '')
   const m =
     s.match(/(\d{1,2})\s*[\/÷]\s*(\d{1,2})/i) ||
     s.match(/(\d{1,2})\s*dividedby\s*(\d{1,2})/i)
@@ -537,14 +626,70 @@ function parseDivision(problem) {
   return { total, groupSize }
 }
 
+/** Pick a countable noun for mock viz — keywords from the message, else hash the text for variety. */
+function inferMockItemShape(problem) {
+  const p = String(problem || '')
+  const pairs = [
+    [/pumpkin|gourd/i, 'pumpkin'],
+    [/orange(s)?|citrus|tangerine|mandarin/i, 'orange'],
+    [/apple/i, 'apple'],
+    [/avocado/i, 'avocado'],
+    [/walnut|\bnut\b|nuts/i, 'walnut'],
+    [/balloon/i, 'balloons'],
+    [/gift|present|fnaf/i, 'gift box'],
+    [/\bcat\b/i, 'cat'],
+    [/penguin/i, 'penguin'],
+    [/dolphin/i, 'dolphin'],
+    [/deer/i, 'deer'],
+    [/peach/i, 'peach'],
+    [/paprika|pepper/i, 'paprika'],
+    [/party\s*hat|hat\b/i, 'party hat'],
+    [/guitar/i, 'guitar'],
+    [/saxophone/i, 'saxophone'],
+    [/block|cube/i, 'block'],
+    [/star/i, 'star'],
+  ]
+  for (const [re, shape] of pairs) {
+    if (re.test(p)) return shape
+  }
+  const pool = ['apple', 'pumpkin', 'orange', 'avocado', 'gift box', 'balloons', 'peach', 'paprika', 'walnut']
+  let h = 0
+  for (let i = 0; i < p.length; i++) h = (h * 31 + p.charCodeAt(i)) >>> 0
+  return pool[h % pool.length]
+}
+
+const MOCK_SHAPE_COLORS = {
+  apple: '#e84b3c',
+  pumpkin: '#ff8c00',
+  orange: '#ff8c42',
+  avocado: '#6b8c5a',
+  walnut: '#c4a574',
+  balloons: '#ff6eb4',
+  'gift box': '#ffd166',
+  cat: '#c9a87c',
+  penguin: '#2a2a2a',
+  dolphin: '#5ab4c4',
+  deer: '#a67c52',
+  peach: '#ffb07c',
+  paprika: '#cc4422',
+  'party hat': '#ff44aa',
+  guitar: '#cc3333',
+  saxophone: '#d4af37',
+  block: '#7cefff',
+  star: '#ffd166',
+}
+
 function mockVisualModel(problem, intake, topic, lessonPlan) {
+  const shape = inferMockItemShape(problem)
+  const itemColor = MOCK_SHAPE_COLORS[shape] || '#00e5ff'
+
   const addition = parseAddition(problem)
   if (addition) {
     return {
       kind: 'addition_rows',
       rowCounts: [addition.a, addition.b],
-      itemShape: 'apple',
-      itemColor: '#e84b3c',
+      itemShape: shape,
+      itemColor,
       caption: `${addition.a} + ${addition.b} = ${addition.a + addition.b}`,
     }
   }
@@ -558,8 +703,8 @@ function mockVisualModel(problem, intake, topic, lessonPlan) {
       groupSize: div.groupSize,
       quotient,
       remainder,
-      itemShape: 'apple',
-      itemColor: '#e84b3c',
+      itemShape: shape,
+      itemColor,
       caption: remainder
         ? `${div.total} ÷ ${div.groupSize} = ${quotient} remainder ${remainder}`
         : `${div.total} ÷ ${div.groupSize} = ${quotient} (${quotient} groups of ${div.groupSize})`,
@@ -573,8 +718,8 @@ function mockVisualModel(problem, intake, topic, lessonPlan) {
       kind: 'grid',
       rows,
       cols,
-      itemShape: 'apple',
-      itemColor: '#e84b3c',
+      itemShape: shape,
+      itemColor,
       caption: `${mult.a} × ${mult.b} = ${mult.a * mult.b} (${cols} per row × ${rows} rows)`,
     }
   }
@@ -618,7 +763,8 @@ Return JSON only with keys:
 - topicTitle (string, 3–6 words)
 - subtopics (array of strings, 2–3 items)
 - briefSummary (string, ONE sentence only)
-- relatedPrerequisites (array of strings, 1–2 items)`
+- relatedPrerequisites (array of strings, 1–2 items)
+Do NOT use "number line" or number-line-based subtopics — the product teaches with countable 3D objects and groups, not a drawn line.`
   const user = JSON.stringify(intake, null, 2)
   return completeJson({ model: MODEL, system, user })
 }
@@ -628,7 +774,8 @@ async function agentObjectives(intake, topic) {
 You are Agent 3 — Objectives. Write measurable outcomes for elementary students.
 Return JSON only with keys:
 - objectives (array of exactly 2 objects)
-Each objective object: id (string), statement (string, one short sentence starting with a student action verb), bloomLevel (one of: remember, understand, apply, analyze).`
+Each objective object: id (string), statement (string, one short sentence starting with a student action verb), bloomLevel (one of: remember, understand, apply, analyze).
+Objectives must describe counting, grouping, or combining objects — never mention number lines (the app has no number line UI).`
   const user = `Intake:\n${JSON.stringify(intake, null, 2)}\n\nTopic:\n${JSON.stringify(topic, null, 2)}`
   return completeJson({ model: MODEL, system, user })
 }
@@ -640,10 +787,15 @@ Return JSON only with keys:
 - title (string, 4–7 words)
 - estimatedMinutes (number, 3–8)
 - segments (ordered array, exactly 3–4 items)
-Each segment: id (string), kind (one of: hook, model, practice, wrap), visualCue (string, 3–5 words), sceneHint (short token like "number_line_jump"), sentences (array of 2–3 objects)
+Each segment: id (string), kind (one of: hook, model, practice, wrap), visualCue (string, 3–5 words), sceneHint (short snake_case token, e.g. "object_groups_hook", "combine_rows_model", "count_aloud_practice", "lesson_wrap"), sentences (array of 2–3 objects)
 Each sentence object: id (string, globally unique like "s1","s2"…), text (string, ONE spoken sentence of 8–16 words), durationSeconds (number, 3–6)
 The robot will perform a distinct gesture for EVERY sentence, so each sentence should be a complete thought.
-- teacherNotes (string, one sentence)`
+- teacherNotes (string, one sentence)
+
+CRITICAL — spoken text must match what is on screen:
+- The tutor shows 3D countable objects in rows, groups, or a grid — not a number line. Never say "number line", "on the line", "jump on the line", "move along the line", or similar.
+- Describe what learners see: objects, groups, rows, "on the screen", "these pieces", "two groups", etc.
+- teacherNotes must not mention number lines either.`
   const user = `Intake:\n${JSON.stringify(intake, null, 2)}\n\nTopic:\n${JSON.stringify(topic, null, 2)}\n\nObjectives:\n${JSON.stringify(objectives, null, 2)}`
   return completeJson({ model: MODEL, system, user })
 }
@@ -674,6 +826,7 @@ mdmPrompt rules (CRITICAL):
 - Tie motion to teaching intent (welcoming, pointing at an idea, celebrating, inviting practice)
 - Do NOT output enums, tags, or shorthand like "wave" or "point" alone — always a full phrase
 - Avoid vague lines like "moves hands" or "gestures while talking"
+- Do NOT mention number lines — the scene uses 3D objects; gesture toward imaginary groups or the air in front of the tutor instead
 
 Good examples:
 - "a tutor steps slightly forward, opens both palms toward the class, and nods while introducing the new topic"
@@ -692,16 +845,23 @@ Vary prompts across sentences so the character feels alive and aligned with each
 async function agentVisualModel(intake, topic, lessonPlan) {
   const system = `${BASE}
 You are Agent 6 — Visual model director. Choose a concrete countable 3D arrangement for the MAIN mathematical idea.
-For whole-number addition (e.g., 3+4), use kind "addition_rows" with rowCounts array (e.g. [3, 4]) to show groups on separate rows. Use itemShape "apple" by default.
+For whole-number addition (e.g., 3+4), use kind "addition_rows" with rowCounts array (e.g. [3, 4]) to show groups on separate rows.
+Pick WHAT is being counted — itemShape is a short English noun phrase the UI will show as 3D tokens (e.g. "oranges", "stars", "apples", "crayons"). Match the learner's message when possible. Do NOT default every problem to apples; vary objects (snacks, toys, animals, school supplies) to fit context.
 For whole-number multiplication (e.g. 3×4), use kind "grid" with rows and cols so rows*cols equals the product; put the FIRST factor as cols (items per row) and SECOND as rows unless the problem wording clearly says otherwise (e.g. "3 apples in each of 4 rows" → cols 3, rows 4).
+For whole-number division (e.g., 12÷3), use kind "division_groups" with total (dividend), groupSize (divisor), quotient, and remainder (0 if it divides evenly). Cap total at 36 and groupSize at 12.
 Return JSON only:
-- kind: "grid"|"addition_rows"|"none"
-- rows: integer 1-12 (use 0 if kind is none or addition_rows)
-- cols: integer 1-12 (use 0 if kind is none or addition_rows)
+- kind: "grid"|"addition_rows"|"division_groups"|"none"
+- rows: integer 1-12 (use 0 if kind is none, addition_rows, or division_groups)
+- cols: integer 1-12 (use 0 if kind is none, addition_rows, or division_groups)
 - rowCounts: array of integers (e.g., [3, 4]) ONLY if kind is "addition_rows"
-- itemShape: "apple"|"sphere"|"block"
-- itemColor: CSS hex color
-- caption: one short line for the learner
+- total: positive integer (dividend) ONLY if kind is "division_groups"
+- groupSize: positive integer (divisor) ONLY if kind is "division_groups"
+- quotient: integer ONLY if kind is "division_groups"
+- remainder: integer >= 0 ONLY if kind is "division_groups"
+- itemShape: lowercase words for the countable object (e.g. "oranges", "apple", "blocks") — not only apple/sphere/block
+- itemColor: CSS hex color that fits the object (oranges → warm orange #ff8c42)
+- itemLabel: optional 3–8 words shown under the scene (e.g. "Five oranges plus three oranges")
+- caption: one short line for the learner (can match itemLabel); never mention number lines
 If the lesson is purely symbolic with no discrete model, use kind "none" with rows 0, cols 0.`
   const user = `Intake:\n${JSON.stringify(intake, null, 2)}\n\nTopic:\n${JSON.stringify(topic, null, 2)}\n\nLesson plan:\n${JSON.stringify(lessonPlan, null, 2)}`
   return completeJson({ model: MODEL, system, user })
@@ -723,7 +883,8 @@ function normalizeGesturePlan(lessonPlan, raw) {
       bySegmentId.get(String(seg.id)) ||
       list[i] ||
       {}
-    let mdmPrompt = typeof g.mdmPrompt === 'string' ? g.mdmPrompt.trim() : ''
+    let mdmPrompt =
+      typeof g.mdmPrompt === 'string' ? scrubNumberLinePhrases(g.mdmPrompt.trim()) : ''
     if (mdmPrompt.length < 12) mdmPrompt = DEFAULT_MDM_PROMPT_FALLBACK
     gestures.push({ sentenceId: sent.id, mdmPrompt })
     i++
@@ -732,7 +893,7 @@ function normalizeGesturePlan(lessonPlan, raw) {
 }
 
 function normalizeVisualModel(raw) {
-  const validKinds = ['grid', 'addition_rows']
+  const validKinds = ['grid', 'addition_rows', 'division_groups']
   const kind = validKinds.includes(raw?.kind) ? raw.kind : 'none'
   let rows = Number(raw?.rows) || 0
   let cols = Number(raw?.cols) || 0
@@ -746,18 +907,51 @@ function normalizeVisualModel(raw) {
       rowCounts = raw.rowCounts.map(n => Math.min(12, Math.max(0, Math.round(Number(n) || 0))))
     }
   }
-  const shapes = ['apple', 'sphere', 'block']
-  const shape = shapes.includes(raw?.itemShape) ? raw.itemShape : 'sphere'
+  let total = 0
+  let groupSize = 0
+  let quotient = 0
+  let remainder = 0
+  if (kind === 'division_groups') {
+    total = Math.min(36, Math.max(1, Math.round(Number(raw?.total) || 0)))
+    groupSize = Math.min(12, Math.max(1, Math.round(Number(raw?.groupSize) || 0)))
+    if (groupSize > 0) {
+      quotient = Math.floor(total / groupSize)
+      remainder = total % groupSize
+    }
+    const q = Number(raw?.quotient)
+    const r = Number(raw?.remainder)
+    if (Number.isFinite(q) && Number.isFinite(r) && q * groupSize + r === total) {
+      quotient = Math.max(0, Math.round(q))
+      remainder = Math.max(0, Math.min(groupSize - 1, Math.round(r)))
+    }
+  }
+  const rawShape = String(raw?.itemShape ?? '').trim().toLowerCase()
+  const shape = rawShape
   const color = typeof raw?.itemColor === 'string' && raw.itemColor.startsWith('#') ? raw.itemColor : '#00e5ff'
-  return {
+  const itemLabel =
+    typeof raw?.itemLabel === 'string' && raw.itemLabel.trim()
+      ? scrubNumberLinePhrases(raw.itemLabel.trim())
+      : ''
+  const base = {
     kind,
     rows,
     cols,
     rowCounts,
     itemShape: shape,
     itemColor: color,
-    caption: String(raw?.caption || ''),
+    itemLabel,
+    caption: scrubNumberLinePhrases(String(raw?.caption || '')),
   }
+  if (kind === 'division_groups') {
+    return {
+      ...base,
+      total,
+      groupSize,
+      quotient,
+      remainder,
+    }
+  }
+  return base
 }
 
 /**
@@ -808,10 +1002,10 @@ export async function* runLessonPipelineStream(input) {
     const intake = await agentIntake(problem)
     yield { stage: 'intake', agent: 'Agent 1 — Intake', data: intake }
 
-    const topic = await agentTopic(intake)
+    const topic = normalizeTopicForSpeech(await agentTopic(intake))
     yield { stage: 'topic', agent: 'Agent 2 — Topic', data: topic }
 
-    const objectives = await agentObjectives(intake, topic)
+    const objectives = normalizeObjectivesForSpeech(await agentObjectives(intake, topic))
     yield { stage: 'objectives', agent: 'Agent 3 — Objectives', data: objectives }
 
     const lessonPlanRaw = await agentLessonPlan(intake, topic, objectives)

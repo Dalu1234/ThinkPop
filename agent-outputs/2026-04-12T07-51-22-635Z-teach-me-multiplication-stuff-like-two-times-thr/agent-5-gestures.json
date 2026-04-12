@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor stands tall, opens both arms wide, and smiles while introducing the topic of multiplication"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person tilts their head slightly, brings hands together, and gestures outward as they explain the concept of adding groups"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor takes a step forward, holds up two fingers on one hand, and gestures with the other hand to indicate three"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person points to an imaginary grid in front of them while illustrating the idea of an array with two rows and three columns"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor leans slightly forward, looks around the room encouragingly, and raises both hands as if inviting students to create their arrays"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person claps their hands together, steps back, and encourages discussion by gesturing toward the students with enthusiasm"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor raises both hands, spreads them apart, and nods confidently while stating that two times three equals six"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person claps their hands joyfully, smiles widely, and gestures to the class while praising their understanding of multiplication"
+    }
+  ]
+}

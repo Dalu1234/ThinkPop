@@ -1,0 +1,79 @@
+{
+  "title": "Understanding Decimal Numbers",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "s1",
+      "kind": "hook",
+      "visualCue": "Decimal Basics Image",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1_1",
+          "text": "Today, we will learn about decimal numbers and how to use them.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s1_2",
+          "text": "Decimals help us represent values that are not whole numbers.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "kind": "model",
+      "visualCue": "Decimal Comparison Chart",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s2_1",
+          "text": "Let's compare decimal values using a number line.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2_2",
+          "text": "For example, 0.5 is greater than 0.3 on the number line.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "kind": "practice",
+      "visualCue": "Adding Decimals Example",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s3_1",
+          "text": "Now, let's practice adding decimal numbers together.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s3_2",
+          "text": "Add 1.2 and 0.8 to find the sum.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "kind": "wrap",
+      "visualCue": "Summary Points Review",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s4_1",
+          "text": "Great job learning about decimals today! Keep practicing.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4_2",
+          "text": "Remember, decimals are used to represent parts of a whole.",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage learners to ask questions during each segment."
+}

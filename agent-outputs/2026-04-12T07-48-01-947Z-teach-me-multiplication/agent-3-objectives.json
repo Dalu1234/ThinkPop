@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "OBJ1",
+      "statement": "Identify factors and products in multiplication problems.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "OBJ2",
+      "statement": "Solve word problems using multiplication strategies.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

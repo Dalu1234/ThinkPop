@@ -1,0 +1,79 @@
+{
+  "title": "Counting to Five Fun",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook",
+      "kind": "hook",
+      "visualCue": "Exciting introduction",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we are going to learn how to count to five!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2",
+          "text": "Counting is super fun and very important in math!",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "kind": "model",
+      "visualCue": "Counting demonstration",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let’s count together from one to five: one, two, three, four, five!",
+          "durationSeconds": 6
+        },
+        {
+          "id": "s4",
+          "text": "Can you hear how each number is one after the other?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "kind": "practice",
+      "visualCue": "Hands-on counting",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, let’s count these five apples together: one, two, three, four, five.",
+          "durationSeconds": 6
+        },
+        {
+          "id": "s6",
+          "text": "Great job! Now let’s find five objects around you.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "kind": "wrap",
+      "visualCue": "Celebratory conclusion",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "You did an amazing job counting to five today!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Keep practicing your counting, and have fun!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to engage and interact with their counting practice."
+}

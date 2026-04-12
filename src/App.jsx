@@ -6,68 +6,53 @@ import ChatPanel from './components/ChatPanel'
 import HistorySidebar from './components/HistorySidebar'
 import AIStatus from './components/AIStatus'
 import PipelineProgress from './components/PipelineProgress'
-import Skyline from './components/Skyline'
+import AiAudioBackdropSync from './components/AiAudioBackdropSync'
 import { textToSpeechBlob, playAudioBlob, getBlobDurationMs } from './lib/elevenlabs'
 import {
   streamLessonPipeline,
   formatLessonPlanMessage,
   flattenSentences,
   emojiForTopic,
+  extractVisualization,
 } from './lib/lessonApi'
+import { enrichVisualizationForClient } from './lib/vizVisualItem'
 import {
   requestMotion,
   DEFAULT_TEACHING_MOTION_PROMPT,
   SAMPLE_MDM_TEST_PROMPTS,
   restHoldFrames,
+  onRigReady,
 } from './lib/motionApi'
+import { ANIMATION_NAMES } from './lib/boneAnimations'
 import { saveSession, createSession } from './lib/sessions'
+import {
+  predictPerformance,
+  recordPredictionResult,
+  recordLessonOutcome,
+  normalizeTopicKey,
+} from './lib/userModel'
+import { BaymaxVoiceFirstExperience } from './AppVoice2'
 
-const MDM_TEST_ACTIONS = SAMPLE_MDM_TEST_PROMPTS
+/** Dev animation picker — set `true` to show again. */
+const SHOW_ANIMATION_PANEL = false
 
-function MDMTestPanel({ onFrames, disabled }) {
-  const [busy, setBusy] = useState(null)   // label of running action
-  const [lastMode, setLastMode] = useState(null)
-
-  async function run(label, prompt) {
-    if (busy) return
-    setBusy(label)
-    try {
-      const data = await requestMotion(prompt, 80)
-      setLastMode(data.mode)
-      onFrames(data.frames)
-    } catch (e) {
-      console.error('[MDM test]', e)
-      setLastMode('error')
-      onFrames(restHoldFrames(80).frames)
-    } finally {
-      setBusy(null)
-    }
-  }
-
+function AnimationPanel({ current, onSelect, disabled }) {
   return (
     <div className="mdm-test-panel">
-      <p className="mdm-test-title">MDM Test</p>
+      <p className="mdm-test-title">Animations</p>
       <div className="mdm-test-grid">
-        {MDM_TEST_ACTIONS.map(({ label, prompt }) => (
+        {ANIMATION_NAMES.map(name => (
           <button
-            key={label}
-            className={`mdm-test-btn${busy === label ? ' mdm-test-btn--busy' : ''}`}
-            disabled={!!busy || disabled}
-            onClick={() => run(label, prompt)}
+            key={name}
+            className={`mdm-test-btn${current === name ? ' mdm-test-btn--busy' : ''}`}
+            disabled={disabled}
+            onClick={() => onSelect(name)}
           >
-            {busy === label ? '...' : label}
+            {name}
           </button>
         ))}
       </div>
-      {lastMode && (
-        <p className="mdm-test-mode">
-          {lastMode.includes('stub') || lastMode.includes('client-dev')
-            ? 'dev stub (not MDM)'
-            : lastMode === 'rest-hold'
-              ? 'rest hold'
-              : 'motion gateway / MDM'}
-        </p>
-      )}
+      {current && <p className="mdm-test-mode">Playing: {current}</p>}
     </div>
   )
 }
@@ -95,8 +80,8 @@ function BaymaxExperience() {
   const [topicDisplay, setTopicDisplay] = useState(INITIAL_TOPIC)
   useEffect(() => { topicDisplayRef.current = topicDisplay }, [topicDisplay])
   const [playGesture, setPlayGesture] = useState(REST_GESTURE)
-  // Looping wave on load — verifies retarget + FBX without running the lesson pipeline
-  const [currentMotionFrames, setCurrentMotionFrames] = useState(() => restHoldFrames(96).frames)
+  const [currentMotionFrames, setCurrentMotionFrames] = useState(null)
+  const [currentAnimation, setCurrentAnimation] = useState('idle')
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -106,15 +91,19 @@ function BaymaxExperience() {
   ])
   const pipelineResultRef  = useRef(null)
   const topicDisplayRef    = useRef(INITIAL_TOPIC)
+  const pendingLessonPredictionRef = useRef(null)
   // Stores pre-generated MDM frames per sentence: { [sentenceId]: frames[] }
   const sentenceMotionsRef = useRef({})
   /** Actual TTS clip length — gesture steps are spaced to finish with the audio. */
   const lessonAudioDurationMsRef = useRef(0)
 
+  const [userModelHint, setUserModelHint] = useState(null)
   const [neonXVisible, setNeonXVisible] = useState(false)
   const [neonTickVisible, setNeonTickVisible] = useState(false)
   /** Set from AI later; Alt+M toggles a demo string in dev. */
   const [mathExpression3d, setMathExpression3d] = useState(null)
+  const [currentVisualization, setCurrentVisualization] = useState(null)
+  const [visualizationStepIndex, setVisualizationStepIndex] = useState(0)
   useEffect(() => {
     const toggler = (e) => {
       const el = e.target
@@ -137,6 +126,30 @@ function BaymaxExperience() {
     window.addEventListener('keydown', toggler)
     return () => window.removeEventListener('keydown', toggler)
   }, [])
+
+  const nextVisualizationStep = useCallback(() => {
+    setVisualizationStepIndex(prev => prev + 1)
+  }, [])
+
+  useEffect(() => {
+    const lessonSpeaking = aiState === 'speaking'
+    if (!lessonSpeaking || !currentVisualization?.steps) return
+
+    const stageCounts = {
+      addition: 3,
+      subtraction: 4,
+      multiplication: 2,
+      division: 4,
+    }
+    const maxSteps = stageCounts[currentVisualization.type] || 1
+    if (visualizationStepIndex >= maxSteps - 1) return
+
+    const timerId = setTimeout(() => {
+      setVisualizationStepIndex(prev => Math.min(prev + 1, maxSteps - 1))
+    }, 1400)
+
+    return () => clearTimeout(timerId)
+  }, [aiState, currentVisualization, visualizationStepIndex])
 
   const speakAiText = useCallback(async (text) => {
     const spokenText = String(text || '').trim()
@@ -246,21 +259,12 @@ function BaymaxExperience() {
       if (cancelled.v) return
       if (idx >= sentences.length) {
         setPlayGesture(REST_GESTURE)
-        setCurrentMotionFrames([])
+        setCurrentAnimation('idle')
         return
       }
       const sent = sentences[idx]
       setPlayGesture(SPEAKING_GESTURE)
-
-      const key = sentenceMotionKey(sent, idx)
-      let frames = sentenceMotionsRef.current[key]
-      if (!frames?.length) {
-        frames = sentenceMotionsRef.current[String(sent.id)]
-      }
-      if (!frames?.length) {
-        frames = restHoldFrames(80).frames
-      }
-      setCurrentMotionFrames(frames)
+      setCurrentAnimation('explain')
 
       const audioMs = lessonAudioDurationMsRef.current
       const n = sentences.length
@@ -294,6 +298,10 @@ function BaymaxExperience() {
       setMessages(prev => [...prev, userMsg])
 
       pipelineResultRef.current = null
+      pendingLessonPredictionRef.current = null
+      setUserModelHint(null)
+      setCurrentVisualization(null)
+      setVisualizationStepIndex(0)
       setAiState('intake')
 
       let result
@@ -332,7 +340,11 @@ function BaymaxExperience() {
             text: `Pipeline error: ${friendly}`,
           },
         ])
+        setCurrentVisualization(null)
+        setVisualizationStepIndex(0)
         setAiState(null)
+        pendingLessonPredictionRef.current = null
+        setUserModelHint(null)
         await delay(4000)
         setAiError('')
         return
@@ -347,12 +359,32 @@ function BaymaxExperience() {
             text: 'Lesson pipeline finished without a result. Is the dev server running?',
           },
         ])
+        setCurrentVisualization(null)
+        setVisualizationStepIndex(0)
         setAiState(null)
+        pendingLessonPredictionRef.current = null
+        setUserModelHint(null)
         return
       }
 
       setAiState('building')
       pipelineResultRef.current = result
+      setCurrentVisualization(enrichVisualizationForClient(extractVisualization(result)))
+      setVisualizationStepIndex(0)
+
+      const topicKey = normalizeTopicKey(
+        result.topic?.topicTitle || topicDisplayRef.current?.label || ''
+      )
+      const pred = predictPerformance(topicKey || topicDisplayRef.current?.label || 'lesson', 'lesson')
+      pendingLessonPredictionRef.current = {
+        predicted: pred.predicted_score,
+        features: pred.features,
+        topicKey,
+      }
+      setUserModelHint({
+        predictedPct: Math.round(pred.predicted_score * 100),
+        confidencePct: Math.round(pred.confidence * 100),
+      })
 
       // Must finish before "speaking" — otherwise the speaking effect reads empty sentenceMotionsRef.
       await generateSentenceMotions(result)
@@ -365,6 +397,8 @@ function BaymaxExperience() {
       } catch (e) {
         console.error('Lesson TTS prefetch failed:', e)
         lessonAudioDurationMsRef.current = 0
+        setCurrentVisualization(null)
+        setVisualizationStepIndex(0)
         setAiState(null)
         const detail = e instanceof Error ? e.message : String(e)
         setAiError(detail || 'Text-to-speech failed.')
@@ -372,15 +406,52 @@ function BaymaxExperience() {
           ...prev,
           { id: Date.now() + 1, from: 'ai', text: `Could not read the lesson aloud: ${detail}` },
         ])
+        const pend = pendingLessonPredictionRef.current
+        if (pend) {
+          recordPredictionResult(pend.predicted, 0, pend.features, pend.topicKey)
+          recordLessonOutcome(pend.topicKey, false)
+          pendingLessonPredictionRef.current = null
+        }
+        setUserModelHint(null)
         await delay(3200)
         setAiError('')
         return
       }
 
       setAiState('speaking')
-      await deliverAiMessage(body, { preloadedBlob: audioBlob })
-      setCurrentMotionFrames(restHoldFrames(96).frames)
+      try {
+        await deliverAiMessage(body, { preloadedBlob: audioBlob })
+      } catch (e) {
+        console.error('Lesson playback failed:', e)
+        const detail = e instanceof Error ? e.message : String(e)
+        setAiError(detail || 'Playback failed.')
+        const pendPlay = pendingLessonPredictionRef.current
+        if (pendPlay) {
+          recordPredictionResult(pendPlay.predicted, 0, pendPlay.features, pendPlay.topicKey)
+          recordLessonOutcome(pendPlay.topicKey, false)
+          pendingLessonPredictionRef.current = null
+        }
+        setUserModelHint(null)
+        setCurrentAnimation('idle')
+        setCurrentVisualization(null)
+        setVisualizationStepIndex(0)
+        setAiState(null)
+        await delay(3200)
+        setAiError('')
+        return
+      }
+      setCurrentAnimation('idle')
+      setCurrentVisualization(null)
+      setVisualizationStepIndex(0)
       setAiState(null)
+
+      const pendOk = pendingLessonPredictionRef.current
+      if (pendOk) {
+        recordPredictionResult(pendOk.predicted, 1, pendOk.features, pendOk.topicKey)
+        recordLessonOutcome(pendOk.topicKey, true)
+        pendingLessonPredictionRef.current = null
+      }
+      setUserModelHint(null)
 
       // ── Persist this session so the sidebar can restore it ───────────────
       setMessages(prev => {
@@ -406,15 +477,13 @@ function BaymaxExperience() {
     const result = session.lessonResult
     if (result) {
       pipelineResultRef.current = result
-      setCurrentMotionFrames(restHoldFrames(96).frames)
-      generateSentenceMotions(result).then(() => {
-        const sents = flattenSentences(result.lessonPlan)
-        if (sents.length > 0) {
-          const key = String(sents[0]?.id ?? 'sent-0')
-          const frames = sentenceMotionsRef.current[key]
-          if (frames?.length) setCurrentMotionFrames(frames)
-        }
-      })
+      setCurrentVisualization(enrichVisualizationForClient(extractVisualization(result)))
+      setVisualizationStepIndex(0)
+      setCurrentAnimation('idle')
+    } else {
+      pipelineResultRef.current = null
+      setCurrentVisualization(null)
+      setVisualizationStepIndex(0)
     }
   }, [aiState, generateSentenceMotions])
 
@@ -423,23 +492,39 @@ function BaymaxExperience() {
       <CharacterScene
         aiState={aiState}
         motionFrames={currentMotionFrames}
-        audioLevelsRef={aiAudioLevelsRef}
-        audioActive={aiAudioActive || aiState === 'speaking'}
+        animation={currentAnimation}
         showNeonX={neonXVisible}
         showNeonTick={neonTickVisible}
         mathExpression={mathExpression3d}
+        visualization={currentVisualization}
+        visualizationStepIndex={visualizationStepIndex}
       />
 
+      <AiAudioBackdropSync
+        levelsRef={aiAudioLevelsRef}
+        active={aiAudioActive}
+      />
       <div className="edge-bloom edge-bloom-left" />
       <div className="edge-bloom edge-bloom-right" />
 
-      <Skyline />
       <HistorySidebar onLoadSession={loadSession} />
 
       <AIStatus state={aiError ? 'error' : aiState} message={aiError} />
       <PipelineProgress state={aiError ? null : aiState} />
-      <MDMTestPanel onFrames={frames => setCurrentMotionFrames(frames)} disabled={aiState !== null} />
-      <TopicCard topic={topicDisplay} />
+      {currentVisualization?.steps && (
+        <button
+          type="button"
+          className="viz-step-btn"
+          onClick={nextVisualizationStep}
+          disabled={!(aiState === 'speaking' || aiState === 'awaiting_user')}
+        >
+          Next step
+        </button>
+      )}
+      {SHOW_ANIMATION_PANEL && (
+        <AnimationPanel current={currentAnimation} onSelect={setCurrentAnimation} disabled={aiState !== null} />
+      )}
+      <TopicCard topic={topicDisplay} userModelHint={userModelHint} />
       <ChatPanel messages={messages} onSend={sendMessage} aiState={aiState} />
     </div>
   )
@@ -454,8 +539,8 @@ export default function App() {
     return () => window.removeEventListener('hashchange', syncRoute)
   }, [])
 
-  if (route === '#/baymax') {
-    return <BaymaxExperience />
+  if (route === '#/baymax-voice2' || route === '#/baymax') {
+    return <BaymaxVoiceFirstExperience />
   }
 
   return <LandingPage />

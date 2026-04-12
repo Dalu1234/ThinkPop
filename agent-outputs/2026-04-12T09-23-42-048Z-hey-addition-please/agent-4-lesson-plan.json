@@ -1,0 +1,79 @@
+{
+  "title": "Understanding Addition Concepts",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "exciting visuals of numbers",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we will explore the exciting world of addition!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Addition helps us combine numbers to find out how many we have!",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "number line demonstration",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "When we add two numbers, we can use a number line to help us.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "For example, let's add 2 and 3 using the number line.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "students solving problems",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now it's your turn! What is 4 plus 1 on the number line?",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "Try to solve this: 3 plus 5 equals what?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "celebratory animation",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job today learning about addition with a number line!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Remember, addition is fun and helpful in everyday life!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to share their thoughts and solutions during practice."
+}

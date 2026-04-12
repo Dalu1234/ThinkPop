@@ -1,0 +1,89 @@
+{
+  "title": "Adding Five Plus Five",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook",
+      "kind": "hook",
+      "visualCue": "Two hands showing five fingers",
+      "sceneHint": "finger_showing",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we will learn about adding five plus five!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Can you show me five fingers on each hand?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "kind": "model",
+      "visualCue": "Numbers on a number line",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "First, we start with five.",
+          "durationSeconds": 3
+        },
+        {
+          "id": "s4",
+          "text": "Now, let's add another five to it.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s5",
+          "text": "What do we get when we add these together?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "kind": "practice",
+      "visualCue": "Using blocks to add",
+      "sceneHint": "hands_on_activity",
+      "sentences": [
+        {
+          "id": "s6",
+          "text": "Now, let's use blocks to see five plus five.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s7",
+          "text": "Count out five blocks and then five more.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "How many blocks do you have in total?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "kind": "wrap",
+      "visualCue": "Excited thumbs up",
+      "sceneHint": "celebration",
+      "sentences": [
+        {
+          "id": "s9",
+          "text": "Great job! Five plus five equals ten!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s10",
+          "text": "Adding numbers can be fun and exciting!",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to use their fingers or blocks for hands-on practice."
+}

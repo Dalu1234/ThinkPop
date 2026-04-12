@@ -1,5 +1,38 @@
 const MATH_EMOJIS = ['🔢', '📐', '📊', '🍕', '🧮', '🎯', '✨']
 
+const NUMBER_WORDS = {
+  zero: 0,
+  one: 1,
+  two: 2,
+  three: 3,
+  four: 4,
+  five: 5,
+  six: 6,
+  seven: 7,
+  eight: 8,
+  nine: 9,
+  ten: 10,
+  eleven: 11,
+  twelve: 12,
+}
+
+function normalizeSpokenMath(text) {
+  let s = String(text || '').toLowerCase()
+  s = s
+    .replace(/\bwhat\s+is\b/g, ' ')
+    .replace(/\bteach\s+me\b/g, ' ')
+    .replace(/\bshow\s+me\b/g, ' ')
+    .replace(/\bplus\b/g, ' + ')
+    .replace(/\bminus\b/g, ' - ')
+    .replace(/\btimes\b/g, ' x ')
+    .replace(/\bdivided\s+by\b/g, ' / ')
+  s = s.replace(
+    /\b(zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\b/g,
+    match => String(NUMBER_WORDS[match] ?? match)
+  )
+  return s.replace(/\s+/g, '')
+}
+
 export function emojiForTopic(text) {
   if (!text) return '🔢'
   let h = 0
@@ -7,6 +40,96 @@ export function emojiForTopic(text) {
     h = (h + text.charCodeAt(i) * (i + 1)) % MATH_EMOJIS.length
   }
   return MATH_EMOJIS[h]
+}
+
+/** Stable seed so different problems rotate among multiple matching GLBs. */
+function hashProblemSeed(text) {
+  let h = 2166136261
+  const s = String(text || '')
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i)
+    h = Math.imul(h, 16777619)
+  }
+  return h >>> 0
+}
+
+/** Pass-through from Agent 6 visual model → 3D scene (object tokens + caption). */
+function agentVisualHints(visualModel) {
+  const vm = visualModel && typeof visualModel === 'object' ? visualModel : {}
+  const out = {}
+  if (typeof vm.itemShape === 'string' && vm.itemShape.trim()) {
+    out.itemShape = vm.itemShape.trim()
+  }
+  if (typeof vm.itemColor === 'string' && vm.itemColor.startsWith('#')) {
+    out.itemColor = vm.itemColor
+  }
+  if (typeof vm.itemLabel === 'string' && vm.itemLabel.trim()) {
+    out.itemLabel = vm.itemLabel.trim()
+  } else if (typeof vm.caption === 'string' && vm.caption.trim()) {
+    out.itemLabel = vm.caption.trim()
+  }
+  return out
+}
+
+/** @param {Record<string, unknown>} result */
+export function extractVisualization(result) {
+  if (result?.visualization && typeof result.visualization === 'object') {
+    return result.visualization
+  }
+
+  const rawProblem = String(result?.problem || result?.intake?.normalizedProblem || '')
+  const problemText = normalizeSpokenMath(rawProblem)
+  const assetVariant = hashProblemSeed(rawProblem)
+  const visualModel = result?.visualModel
+  if (!visualModel || typeof visualModel !== 'object') return null
+
+  if (visualModel.kind === 'addition_rows' && Array.isArray(visualModel.rowCounts) && visualModel.rowCounts.length >= 2) {
+    const subtractionMatch = problemText.match(/(\d{1,2})\s*-\s*(\d{1,2})/)
+    if (subtractionMatch) {
+      return {
+        type: 'subtraction',
+        a: Number(subtractionMatch[1]) || Number(visualModel.rowCounts[0]) || 0,
+        b: Number(subtractionMatch[2]) || Number(visualModel.rowCounts[1]) || 0,
+        steps: true,
+        assetVariant,
+        ...agentVisualHints(visualModel),
+      }
+    }
+    return {
+      type: 'addition',
+      a: Number(visualModel.rowCounts[0]) || 0,
+      b: Number(visualModel.rowCounts[1]) || 0,
+      steps: true,
+      assetVariant,
+      ...agentVisualHints(visualModel),
+    }
+  }
+
+  if (visualModel.kind === 'grid' && visualModel.rows > 0 && visualModel.cols > 0) {
+    return {
+      type: 'multiplication',
+      a: Number(visualModel.cols) || 0,
+      b: Number(visualModel.rows) || 0,
+      steps: true,
+      assetVariant,
+      ...agentVisualHints(visualModel),
+    }
+  }
+
+  if (visualModel.kind === 'division_groups' && visualModel.total > 0 && visualModel.groupSize > 0) {
+    return {
+      type: 'division',
+      total: Number(visualModel.total) || 0,
+      groupSize: Number(visualModel.groupSize) || 0,
+      quotient: Number(visualModel.quotient) || 0,
+      remainder: Number(visualModel.remainder) || 0,
+      steps: true,
+      assetVariant,
+      ...agentVisualHints(visualModel),
+    }
+  }
+
+  return null
 }
 
 /** @param {Record<string, unknown>} result */
@@ -39,6 +162,51 @@ export function flattenSentences(lessonPlan) {
     }
   }
   return out
+}
+
+const CONCEPT_SEGMENT_KINDS = new Set(['hook', 'model'])
+
+function pushSegmentSentences(seg, out) {
+  if (seg.sentences?.length) {
+    for (const s of seg.sentences) out.push(s)
+  } else if (seg.narration) {
+    out.push({
+      id: `${seg.id}-s0`,
+      text: seg.narration.trim(),
+      durationSeconds: seg.durationSeconds || 5,
+    })
+  }
+}
+
+/**
+ * Split lesson narration: **topic teaching** (hook + model) vs **reinforcement** (practice, wrap, …).
+ * Topic phase is where 3D visual explanations run; the rest is for after hands-on tools.
+ * If segments omit `kind`, falls back to first half / second half of all sentences.
+ *
+ * @param {object | null | undefined} lessonPlan
+ * @returns {{ concept: object[], rest: object[] }}
+ */
+export function getConceptAndRestSentences(lessonPlan) {
+  const segs = lessonPlan?.segments || []
+  const concept = []
+  const rest = []
+  for (const seg of segs) {
+    const kind = String(seg.kind || '').toLowerCase()
+    if (CONCEPT_SEGMENT_KINDS.has(kind)) {
+      pushSegmentSentences(seg, concept)
+    } else {
+      pushSegmentSentences(seg, rest)
+    }
+  }
+  if (concept.length > 0) {
+    return { concept, rest }
+  }
+  const all = flattenSentences(lessonPlan)
+  if (all.length <= 1) {
+    return { concept: all, rest: [] }
+  }
+  const mid = Math.ceil(all.length / 2)
+  return { concept: all.slice(0, mid), rest: all.slice(mid) }
 }
 
 /**

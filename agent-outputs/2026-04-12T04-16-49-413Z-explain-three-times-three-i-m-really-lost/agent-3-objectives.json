@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "objective1",
+      "statement": "Explain what 3 times 3 means using repeated addition.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "objective2",
+      "statement": "Create an array to visualize the multiplication of 3 times 3.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

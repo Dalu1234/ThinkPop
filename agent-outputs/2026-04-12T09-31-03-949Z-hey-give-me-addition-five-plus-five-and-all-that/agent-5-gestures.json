@@ -1,0 +1,40 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1a",
+      "mdmPrompt": "a tutor steps forward with excitement, opens arms wide, and smiles while introducing the fun world of addition"
+    },
+    {
+      "sentenceId": "s1b",
+      "mdmPrompt": "a person tilts their head slightly, raises a finger to their chin, and looks thoughtfully as they ask about putting together 5 and 5"
+    },
+    {
+      "sentenceId": "s2a",
+      "mdmPrompt": "a tutor holds up both hands, spreading fingers wide, while showing how to add 5 and 5 using their fingers"
+    },
+    {
+      "sentenceId": "s2b",
+      "mdmPrompt": "a person raises one hand with fingers outstretched, slowly counting each finger aloud while smiling encouragingly"
+    },
+    {
+      "sentenceId": "s2c",
+      "mdmPrompt": "a tutor adds another hand with fingers raised high, enthusiastically inviting the learners to count five more fingers"
+    },
+    {
+      "sentenceId": "s3a",
+      "mdmPrompt": "a person steps to the side, gestures toward the classroom objects with both hands, and invites the class to add together"
+    },
+    {
+      "sentenceId": "s3b",
+      "mdmPrompt": "a tutor bends slightly forward, encouragingly points toward the area with blocks, and asks everyone to find 5 blocks to add"
+    },
+    {
+      "sentenceId": "s4a",
+      "mdmPrompt": "a person spreads their arms wide, smiles broadly, and nods while celebrating the amazing job done in adding today"
+    },
+    {
+      "sentenceId": "s4b",
+      "mdmPrompt": "a tutor raises both arms excitedly, moves slightly forward, and joyfully announces that 5 plus 5 equals 10"
+    }
+  ]
+}

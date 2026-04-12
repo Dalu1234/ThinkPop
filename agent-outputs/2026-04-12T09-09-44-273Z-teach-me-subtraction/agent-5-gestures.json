@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1a",
+      "mdmPrompt": "a tutor stands confidently, spreading arms wide to welcome the class while smiling brightly as they announce the topic."
+    },
+    {
+      "sentenceId": "s1b",
+      "mdmPrompt": "a person leans slightly forward, using hands to mimic taking away items from an imaginary group while explaining subtraction."
+    },
+    {
+      "sentenceId": "s2a",
+      "mdmPrompt": "a tutor gestures toward an imaginary number line in the air, tracing it with a finger while introducing the concept."
+    },
+    {
+      "sentenceId": "s2b",
+      "mdmPrompt": "a person steps back and raises the right arm, moving it to the left to illustrate the action of taking away as they speak."
+    },
+    {
+      "sentenceId": "s3a",
+      "mdmPrompt": "a tutor claps hands together enthusiastically and invites the class to join them, with an encouraging smile on their face."
+    },
+    {
+      "sentenceId": "s3b",
+      "mdmPrompt": "a person points both hands forward, excitedly shifting weight from one foot to the other, as they pose the subtraction question."
+    },
+    {
+      "sentenceId": "s4a",
+      "mdmPrompt": "a tutor raises both arms above their head, doing a little jump with joy, while celebrating the class's learning achievements."
+    },
+    {
+      "sentenceId": "s4b",
+      "mdmPrompt": "a person gestures invitingly with open arms, encouraging the class to practice at home while smiling warmly."
+    }
+  ]
+}

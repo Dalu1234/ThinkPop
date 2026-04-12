@@ -1,0 +1,89 @@
+{
+  "title": "Exploring Simple Addition",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "Showing 7 apples",
+      "sceneHint": "counting_apples",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these seven apples on the table.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "What happens if I add three more apples?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "Using a number line",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let’s use a number line to see 7 plus 3.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4",
+          "text": "Starting at 7, we jump three spaces forward.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s5",
+          "text": "Now we land on the number 10.",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "Counting fingers",
+      "sceneHint": "counting_fingers",
+      "sentences": [
+        {
+          "id": "s6",
+          "text": "Can you show me 7 fingers?",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s7",
+          "text": "Now, add 3 more fingers.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "How many fingers do you have now?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "Summing it up",
+      "sceneHint": "smiling_students",
+      "sentences": [
+        {
+          "id": "s9",
+          "text": "Great job with addition, friends!",
+          "durationSeconds": 3
+        },
+        {
+          "id": "s10",
+          "text": "Remember, 7 plus 3 equals 10!",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to use visual aids like fingers or drawings to understand addition."
+}

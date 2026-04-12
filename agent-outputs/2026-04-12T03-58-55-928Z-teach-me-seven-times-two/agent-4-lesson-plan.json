@@ -1,0 +1,79 @@
+{
+  "title": "Multiplying by Seven",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "Counting with fingers",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we'll learn how to multiply using the number seven!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2",
+          "text": "Can you think of a time you used multiplication in real life?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "Using an array",
+      "sceneHint": "array_visual",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Multiplying seven by two means we have seven groups of two.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "Let's create an array to show seven times two visually!",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "Hands-on activity",
+      "sceneHint": "array_visual",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, try creating your own array for seven times two!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "Count the total number of items in your array!",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "Reviewing together",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job multiplying with the number seven today!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Remember, practice helps us get better at multiplication!",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to share their arrays with the class."
+}

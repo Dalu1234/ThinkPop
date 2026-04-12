@@ -1,0 +1,79 @@
+{
+  "title": "Understanding Basic Addition",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "Counting on fingers",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Let's begin by learning together how to add numbers.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2",
+          "text": "Who can show me five fingers on one hand?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "Displaying five and five",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Here we have the number five, represented twice.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4",
+          "text": "When we combine five plus five, what do we get?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "Using counting blocks",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, let's count to find the sum of five and five together.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "Can you count with me? One, two, three, four, five, six, seven, eight, nine, ten!",
+          "durationSeconds": 6
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "Summing up",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job! We found that five plus five equals ten.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Remember, adding numbers is fun and helps us learn!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to use their fingers or blocks for hands-on practice."
+}

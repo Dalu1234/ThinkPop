@@ -1,0 +1,79 @@
+{
+  "title": "Adding 5 and 5 Together",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "segment1",
+      "kind": "hook",
+      "visualCue": "exciting numbers",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Let's explore what happens when we add 5 and 5!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2",
+          "text": "Can anyone guess the answer to 5 plus 5?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "segment2",
+      "kind": "model",
+      "visualCue": "number line",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "We can use a number line to find the sum of 5 and 5.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "Starting at 5, we jump forward 5 more spaces.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "segment3",
+      "kind": "practice",
+      "visualCue": "counters and drawing",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, let's use counters to find 5 plus 5!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s6",
+          "text": "Count your 5 counters, then add 5 more counters.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "segment4",
+      "kind": "wrap",
+      "visualCue": "happy conclusion",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job learning how to add 5 and 5 together!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Remember, addition means putting groups together.",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Ensure students engage with the counting and jumping activities for better understanding."
+}

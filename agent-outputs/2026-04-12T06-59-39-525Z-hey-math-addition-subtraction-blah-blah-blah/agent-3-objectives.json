@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Identify and define addition and subtraction terms.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "2",
+      "statement": "Use a number line to represent and solve simple addition and subtraction problems.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

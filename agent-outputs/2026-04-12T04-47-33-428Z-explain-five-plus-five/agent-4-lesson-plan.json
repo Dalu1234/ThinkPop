@@ -1,0 +1,79 @@
+{
+  "title": "Understanding Addition with Five",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook",
+      "kind": "hook",
+      "visualCue": "Holding up fingers",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we are discovering how to add five plus five together!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Can you show me five fingers on one hand?",
+          "durationSeconds": 3
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "kind": "model",
+      "visualCue": "Using counting blocks",
+      "sceneHint": "visual_counters",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let's use counters to add five and five together.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4",
+          "text": "Count five counters and then add five more counters.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "kind": "practice",
+      "visualCue": "Number line demonstration",
+      "sceneHint": "number_line_addition",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, let's use a number line to add five plus five.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s6",
+          "text": "Start at five and move forward five spaces to find the answer.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "kind": "wrap",
+      "visualCue": "Celebrating learning",
+      "sceneHint": "congratulations",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job! Five plus five equals ten!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "Now you can add using many fun methods!",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to share their own examples of addition."
+}

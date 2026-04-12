@@ -1,0 +1,89 @@
+{
+  "title": "Understanding Addition and Subtraction",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook",
+      "kind": "hook",
+      "visualCue": "number line",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we will explore the exciting world of addition and subtraction!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Can you think of something you add or take away every day?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "kind": "model",
+      "visualCue": "adding apples",
+      "sceneHint": "addition_visual",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "First, let's look at addition. Adding means bringing two numbers together.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "For example, if we have two apples and add three more, how many do we have?",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s5",
+          "text": "That's right, we have five apples in total!",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "kind": "practice",
+      "visualCue": "subtraction on board",
+      "sceneHint": "subtraction_visual",
+      "sentences": [
+        {
+          "id": "s6",
+          "text": "Now, let’s discuss subtraction. Subtracting means taking away from a number.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s7",
+          "text": "If we have five apples and take away two, how many are left?",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Exactly, we have three apples left!",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "kind": "wrap",
+      "visualCue": "number line recap",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s9",
+          "text": "Remember, addition combines numbers while subtraction takes them away.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s10",
+          "text": "Great job today exploring addition and subtraction concepts!",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Reinforce concepts with hands-on activities using physical objects like blocks or fruits."
+}

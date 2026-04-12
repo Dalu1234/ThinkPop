@@ -1,0 +1,40 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor stands confidently, smiles, and gestures with arms wide open to welcome learners as they introduce the topic."
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person leans slightly forward, tilts their head with curiosity, and scans the room to invite responses from the learners."
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor steps to the side, points toward a visual display while explaining the importance of arrays in understanding multiplication."
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person gestures toward the array with both hands, highlighting the rows and emphasizing their arrangement while speaking."
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor moves closer to the objects, spreads arms out, and encourages the group to join in counting them together."
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person claps hands together gently, smiles brightly, and invites the class to join in counting the objects as a team."
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor raises both arms in celebration, happily pointing out the total number of objects as they cheerfully confirm it's six."
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person stands tall, lifts one hand in a victorious gesture while sharing the exciting conclusion that two times three equals six."
+    },
+    {
+      "sentenceId": "s9",
+      "mdmPrompt": "a tutor moves in a slight circular motion, uses hands to illustrate grouping, and explains how multiplication simplifies addition."
+    }
+  ]
+}

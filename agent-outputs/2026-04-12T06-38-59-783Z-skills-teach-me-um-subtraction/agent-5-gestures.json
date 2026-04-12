@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor stands with arms open wide, gently stepping toward the class while enthusiastically introducing subtraction with the minus sign"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person tilts their head slightly and gestures with one hand, as if showing a number fading away while explaining the minus sign"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor crouches down, mimicking picking up three imaginary apples and then moves one hand outward, simulating giving one apple away"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person turns to the side, raising both arms in a questioning gesture while inviting the learners to think about how many apples are left"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor steps back excitedly, extending both arms as if presenting five blocks while encouraging everyone to start their subtraction practice"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person claps their hands together and points forward, encouraging learners to count the remaining blocks after their subtraction"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor raises both arms high, smiling broadly while celebrating the students' progress in learning subtraction and reminding them of the minus sign"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person gestures enthusiastically toward a model of different objects, inviting everyone to keep practicing subtraction at home with various items"
+    }
+  ]
+}
