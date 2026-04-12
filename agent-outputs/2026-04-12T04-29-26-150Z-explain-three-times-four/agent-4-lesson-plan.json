@@ -1,0 +1,39 @@
+{
+  "title": "3 times 4 as equal groups",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "seg-hook",
+      "kind": "hook",
+      "durationSeconds": 6,
+      "narration": "Here are 4 rows with 3 apples in each row.",
+      "visualCue": "Array of 4 rows Ã— 3 apples",
+      "sceneHint": "array_hook"
+    },
+    {
+      "id": "seg-model",
+      "kind": "model",
+      "durationSeconds": 7,
+      "narration": "3 times 4 means 4 equal groups of 3, giving us 12 total.",
+      "visualCue": "Rows labeled, total shown",
+      "sceneHint": "array_model"
+    },
+    {
+      "id": "seg-practice",
+      "kind": "practice",
+      "durationSeconds": 6,
+      "narration": "Count the rows with me: 4 rows of 3 equals 12.",
+      "visualCue": "Each row pulses in turn",
+      "sceneHint": "array_count_practice"
+    },
+    {
+      "id": "seg-wrap",
+      "kind": "wrap",
+      "durationSeconds": 5,
+      "narration": "3 times 4 equals 12 â€” remember that!",
+      "visualCue": "Equation 3 Ã— 4 = 12",
+      "sceneHint": "multiplication_wrap"
+    }
+  ],
+  "teacherNotes": "Connect each row to one equal group."
+}

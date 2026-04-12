@@ -29,7 +29,7 @@ const MAX_OBJECTS_PER_ROW = 10
 const MAX_OBJECT_COLUMNS = 5
 const VISUAL_MAX_WIDTH = 2.9
 const VISUAL_MAX_HEIGHT = 2.1
-const TOKEN_FOOTPRINT = 0.2
+const TOKEN_FOOTPRINT = 0.28
 const COUNTING_ASSET_IDS = new Set([
   'model_01', // Apple
   'model_02', // Avocado
@@ -47,6 +47,8 @@ function createGlowMaterial(color) {
     metalness: 0.18,
     transparent: true,
     opacity: 1,
+    depthTest: false,
+    depthWrite: false,
   })
 }
 
@@ -75,6 +77,7 @@ function createSpriteLabel(text, color, scale = [0.95, 0.38, 1]) {
     map: texture,
     transparent: true,
     depthWrite: false,
+    depthTest: false,
   })
   const sprite = new THREE.Sprite(material)
   const aspect = canvas.width / canvas.height
@@ -83,16 +86,16 @@ function createSpriteLabel(text, color, scale = [0.95, 0.38, 1]) {
 }
 
 function createSphere(color) {
-  return new THREE.Mesh(new THREE.SphereGeometry(0.13, 20, 20), createGlowMaterial(color))
+  return new THREE.Mesh(new THREE.SphereGeometry(0.16, 24, 24), createGlowMaterial(color))
 }
 
 function createCube(color) {
-  return new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.22, 0.22), createGlowMaterial(color))
+  return new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.26, 0.26), createGlowMaterial(color))
 }
 
 function createTokenBase(color) {
   const mesh = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.12, 0.12, 0.028, 24),
+    new THREE.CylinderGeometry(0.16, 0.16, 0.036, 28),
     new THREE.MeshStandardMaterial({
       color,
       emissive: color,
@@ -101,10 +104,43 @@ function createTokenBase(color) {
       metalness: 0.1,
       transparent: true,
       opacity: 0.95,
+      depthTest: false,
+      depthWrite: false,
     })
   )
-  mesh.position.y = 0.014
+  mesh.position.y = 0.018
   return mesh
+}
+
+function createVisualizationPlate() {
+  const group = new THREE.Group()
+
+  const back = new THREE.Mesh(
+    new THREE.PlaneGeometry(3.55, 2.75),
+    new THREE.MeshBasicMaterial({
+      color: '#0a1422',
+      transparent: true,
+      opacity: 0.18,
+      depthWrite: false,
+      depthTest: false,
+    })
+  )
+  back.position.set(0, 0.05, -0.28)
+
+  const frame = new THREE.LineSegments(
+    new THREE.EdgesGeometry(new THREE.PlaneGeometry(3.58, 2.78)),
+    new THREE.LineBasicMaterial({
+      color: CYAN,
+      transparent: true,
+      opacity: 0.42,
+      depthTest: false,
+    })
+  )
+  frame.position.copy(back.position)
+
+  group.add(back)
+  group.add(frame)
+  return group
 }
 
 function applyTintToObject(object, color) {
@@ -143,14 +179,14 @@ function createColumnOutline(height, color) {
   )
 }
 
-function computeLinearGap(count, maxWidth = VISUAL_MAX_WIDTH, defaultGap = 0.4) {
-  if (count <= 1) return defaultGap
-  return Math.min(defaultGap, maxWidth / Math.max(1, count - 1))
+function computeAxisGap(count, maxSpan, preferredGap) {
+  if (count <= 1) return preferredGap
+  return Math.min(preferredGap, maxSpan / Math.max(1, count - 1))
 }
 
 function computeTokenGap(count, footprint, maxWidth = VISUAL_MAX_WIDTH, defaultGap = 0.4) {
-  const linear = computeLinearGap(count, maxWidth, defaultGap)
-  return Math.max(linear, footprint * 1.9)
+  const preferredGap = Math.max(defaultGap, footprint * 1.3)
+  return computeAxisGap(count, maxWidth, preferredGap)
 }
 
 function fitsLinearLayout(count) {
@@ -310,7 +346,7 @@ function FBXCharacter({ motionFrames }) {
 
 function LoadingStand() {
   const meshRef = useRef()
-  useFrame(({ clock }) => {
+  useFrame(({ clock }, delta) => {
     if (meshRef.current) meshRef.current.rotation.y = clock.getElapsedTime() * 0.5
   })
   return (
@@ -392,6 +428,13 @@ function MathVisualization({ visualization, stepIndex }) {
           scene.scale.setScalar(scale)
           scene.position.set(-center.x * scale, -box.min.y * scale, -center.z * scale)
           scene.updateMatrixWorld(true)
+          scene.traverse(child => {
+            if (child.isMesh || child.isSkinnedMesh) {
+              child.frustumCulled = false
+              child.castShadow = true
+              child.receiveShadow = false
+            }
+          })
           return {
             id: assetPaths[index] || `asset-${index}`,
             scene,
@@ -424,22 +467,41 @@ function MathVisualization({ visualization, stepIndex }) {
   function createAssetToken(color) {
     if (!assetTemplates.length) {
       const group = new THREE.Group()
+      const base = createTokenBase(color)
       const token = createSphere(color)
       token.position.y = 0.14
+      group.add(base)
       group.add(token)
-      return { mesh: group, materials: [token.material], footprint: 0.3 }
+      return { mesh: group, materials: [base.material, token.material], footprint: 0.24 }
     }
     const template = assetTemplates[vizStateRef.current.assetIndex % assetTemplates.length]
     const asset = clone(template.scene)
     const materials = applyTintToObject(asset, color)
     const group = new THREE.Group()
+    const base = createTokenBase(color)
     asset.position.y = 0.045
+    group.add(base)
     group.add(asset)
-    return { mesh: group, materials: [...materials], footprint: Math.max(template.footprint || TOKEN_FOOTPRINT, 0.3) }
+    return {
+      mesh: group,
+      materials: [base.material, ...materials],
+      footprint: Math.max(template.footprint || TOKEN_FOOTPRINT, 0.24),
+    }
   }
 
   function addObject(object) {
     if (!rootRef.current) return
+    object.mesh.renderOrder = 30
+    object.mesh.traverse?.(child => {
+      child.frustumCulled = false
+      child.renderOrder = 30
+      const materialList = Array.isArray(child.material) ? child.material : [child.material]
+      materialList.filter(Boolean).forEach(material => {
+        if ('depthTest' in material) material.depthTest = false
+        if ('depthWrite' in material) material.depthWrite = false
+        material.needsUpdate = true
+      })
+    })
     rootRef.current.add(object.mesh)
     vizObjectsRef.current.push(object)
   }
@@ -660,8 +722,8 @@ function MathVisualization({ visualization, stepIndex }) {
     }
 
     const referenceFootprint = assetTemplates[vizStateRef.current.assetIndex]?.footprint || 0.26
-    const colGap = Math.max(referenceFootprint * 1.9, Math.min(0.52, VISUAL_MAX_WIDTH / Math.max(1, a - 1 || 1)))
-    const rowGap = Math.max(referenceFootprint * 1.7, Math.min(0.32, VISUAL_MAX_HEIGHT / Math.max(1, b - 1 || 1)))
+    const colGap = computeAxisGap(a, VISUAL_MAX_WIDTH, Math.max(0.34, referenceFootprint * 1.35))
+    const rowGap = computeAxisGap(b, VISUAL_MAX_HEIGHT, Math.max(0.28, referenceFootprint * 1.2))
 
     for (let col = 0; col < a; col++) {
       const colColor = new THREE.Color(CYAN).lerp(new THREE.Color(PINK), a <= 1 ? 0 : col / (a - 1))
@@ -756,7 +818,7 @@ function MathVisualization({ visualization, stepIndex }) {
     const palette = [CYAN, PINK, '#8cff66', '#b794ff', '#ff9f68', '#7bdff2']
     const referenceFootprint = assetTemplates[vizStateRef.current.assetIndex]?.footprint || 0.26
     const initialGap = computeTokenGap(total, referenceFootprint, VISUAL_MAX_WIDTH, 0.28)
-    const groupedGap = Math.max(referenceFootprint * 1.75, Math.min(0.24, VISUAL_MAX_WIDTH / Math.max(1, groupSize)))
+    const groupedGap = computeAxisGap(groupSize, Math.min(1.15, VISUAL_MAX_WIDTH * 0.38), Math.max(0.2, referenceFootprint * 1.1))
     const groupGap = 0.18
     const startX = -((total - 1) * initialGap) / 2
     const visibleGroups = Math.max(1, quotient + (remainder > 0 ? 1 : 0))
@@ -834,6 +896,17 @@ function MathVisualization({ visualization, stepIndex }) {
     let spec = null
     vizStateRef.current.assetIndex = chooseAssetIndex(viz)
 
+    addObject({
+      mesh: createVisualizationPlate(),
+      role: 'plate',
+      appearAt: now,
+      targetScale: 1,
+      basePosition: new THREE.Vector3(0, 0, -0.1),
+      stagePositions: { 0: new THREE.Vector3(0, 0, -0.1) },
+      visibleFromStage: 0,
+      bobPhase: 0,
+    })
+
     if (viz.type === 'addition') spec = createAddition(Number(viz.a) || 0, Number(viz.b) || 0, now)
     if (viz.type === 'subtraction') spec = createSubtraction(Number(viz.a) || 0, Number(viz.b) || 0, now)
     if (viz.type === 'multiplication') spec = createMultiplication(Number(viz.a) || 0, Number(viz.b) || 0, now)
@@ -857,7 +930,7 @@ function MathVisualization({ visualization, stepIndex }) {
   }
 
   useEffect(() => {
-    const key = visualization ? JSON.stringify(visualization) : null
+    const key = visualization ? `${JSON.stringify(visualization)}::${assetTemplates.length > 0 ? 'assets' : 'fallback'}` : null
     if (vizStateRef.current.key === key) return
     vizStateRef.current.key = key
 
@@ -873,9 +946,9 @@ function MathVisualization({ visualization, stepIndex }) {
     } else {
       spawnVisualization(visualization)
     }
-  }, [visualization, stepIndex])
+  }, [visualization, stepIndex, assetTemplates.length])
 
-  useFrame(({ clock }) => {
+  useFrame((_, delta) => {
     const now = performance.now() / 1000
     const vizState = vizStateRef.current
 
@@ -958,8 +1031,17 @@ function MathVisualization({ visualization, stepIndex }) {
         pos.x += Math.sin(now * 38 + obj.bobPhase) * 0.03
       }
 
-      const bob = Math.sin(now * 2.2 + obj.bobPhase) * 0.045
-      mesh.position.set(pos.x, pos.y + bob, pos.z)
+      mesh.position.set(pos.x, pos.y, pos.z)
+
+      if (
+        obj.role === 'token' ||
+        obj.role === 'cube' ||
+        obj.role === 'remaining' ||
+        obj.role === 'remainder' ||
+        obj.role === 'removed'
+      ) {
+        mesh.rotation.y += delta * 0.55
+      }
 
       const targetColor = obj.colors?.[vizState.stage]
       if (targetColor) {
@@ -982,7 +1064,7 @@ function MathVisualization({ visualization, stepIndex }) {
     vizObjectsRef.current = survivors
   })
 
-  return <group ref={rootRef} position={[1.95, 0.45, 0]} />
+  return <group ref={rootRef} position={[1.45, 0.3, 0.65]} />
 }
 
 function SceneContent({ motionFrames, aiState, visualization, visualizationStepIndex }) {

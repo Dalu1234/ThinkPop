@@ -1,0 +1,19 @@
+{
+  "objectives": [
+    {
+      "id": "obj-1",
+      "statement": "Describe multiplication as equal groups of the same size.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "obj-2",
+      "statement": "Build or read an array for 3 x 3.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "obj-3",
+      "statement": "Find the product of 3 x 3 = 9.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

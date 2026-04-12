@@ -20,6 +20,7 @@ export default function SolarSystem({ aiState }) {
   const [targetPlanetIndex, setTargetPlanetIndex] = useState(null)
   const [hoveredPlanetIndex, setHoveredPlanetIndex] = useState(null)
   const prevAiState = useRef(aiState)
+  const lastTargetPlanetIndexRef = useRef(null)
   const spinBoostRef = useRef(Array(PLANET_DEFS.length).fill(0))
   
   const planetRefs = useRef([])
@@ -68,15 +69,19 @@ export default function SolarSystem({ aiState }) {
   const Y_IDLE = 1.65
   const Z_IDLE = -0.5
   
-  const Y_FOCUS = -1.92
-  const Z_FOCUS = -0.62
-  const FOCUS_PLATFORM_SCALE = 0.82
+  const Y_FOCUS = 0.22
+  const Z_FOCUS = -2.35
+  const FOCUS_PLATFORM_SCALE = 1.18
 
   useEffect(() => {
     // Detect transition from null to non-null
     if (prevAiState.current === null && aiState !== null) {
-      const rand = Math.floor(Math.random() * PLANET_DEFS.length)
-      setTargetPlanetIndex(rand)
+      let nextIndex = Math.floor(Math.random() * PLANET_DEFS.length)
+      if (PLANET_DEFS.length > 1 && nextIndex === lastTargetPlanetIndexRef.current) {
+        nextIndex = (nextIndex + 1 + Math.floor(Math.random() * (PLANET_DEFS.length - 1))) % PLANET_DEFS.length
+      }
+      lastTargetPlanetIndexRef.current = nextIndex
+      setTargetPlanetIndex(nextIndex)
     } 
     // Detect return to null
     else if (prevAiState.current !== null && aiState === null) {
@@ -127,17 +132,15 @@ export default function SolarSystem({ aiState }) {
       const nextScale = currentScale + (tScale - currentScale) * k
       pMesh.scale.setScalar(Math.max(0.0001, nextScale))
 
-      // Spin and bobbing animations
+      // Spin animation only; keep planets steady on the screen.
       const baseSpin = isTarget ? 0.2 : 0.4
       const hoverSpin = isHovered ? 0.45 : 0
       const clickSpin = spinBoost * 2.2
       const spinRate = baseSpin + hoverSpin + clickSpin
       if (isIdle) {
         pMesh.rotation.y += delta * spinRate
-        pMesh.position.y += Math.sin(t * 1.5 + i) * 0.001
       } else if (isTarget) {
         pMesh.rotation.y += delta * spinRate
-        pMesh.position.y += Math.sin(t * 1.0) * 0.002
       } else {
         pMesh.rotation.y += delta * (0.16 + clickSpin * 0.5)
       }

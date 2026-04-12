@@ -1,0 +1,19 @@
+{
+  "objectives": [
+    {
+      "id": "obj-1",
+      "statement": "Count two groups of objects and tell how many there are altogether.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "obj-2",
+      "statement": "Add 2 and 1 to find a total of 3.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "obj-3",
+      "statement": "Write the equation 2 + 1 = 3 to match a visual model.",
+      "bloomLevel": "apply"
+    }
+  ]
+}
