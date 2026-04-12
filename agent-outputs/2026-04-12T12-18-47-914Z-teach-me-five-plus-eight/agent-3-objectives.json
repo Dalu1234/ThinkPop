@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "objective1",
+      "statement": "Combine five objects with eight objects to find a total.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "objective2",
+      "statement": "Count a group of thirteen objects after combining two groups.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

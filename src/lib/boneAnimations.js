@@ -67,6 +67,83 @@ const POINT_LEFT_QUATS = {
   'mixamorigRightFoot': [0.448146, 0.016587, -0.026302, 0.893419],
 }
 
+// Sampled via: node scripts/sample-wave.mjs public/assets/Waving.fbx
+// Two extremes of the waving cycle (forearm straight vs forearm bent)
+const WAVE_A = {
+  'mixamorigHips': [0.033764, 0.0065, -0.001593, 0.999407],
+  'mixamorigSpine': [-0.005019, -0.000099, -0.001841, 0.999986],
+  'mixamorigSpine1': [-0.024481, -0.000219, -0.005053, 0.999687],
+  'mixamorigSpine2': [-0.024481, -0.000219, -0.005053, 0.999687],
+  'mixamorigNeck': [0.0518, 0.020732, -0.033986, 0.997864],
+  'mixamorigHead': [-0.103567, -0.072007, 0.07193, 0.989401],
+  'mixamorigLeftShoulder': [0.479842, 0.545164, -0.459746, 0.511059],
+  'mixamorigLeftArm': [-0.373643, -0.299418, 0.311572, 0.82077],
+  'mixamorigLeftForeArm': [0.000034, -0.047933, 0.000002, 0.998851],
+  'mixamorigLeftHand': [-0.27699, -0.120881, 0.015169, 0.953118],
+  'mixamorigRightShoulder': [0.477111, -0.568352, 0.400791, 0.537315],
+  'mixamorigRightArm': [-0.325741, 0.188981, -0.191858, 0.906294],
+  'mixamorigRightForeArm': [0.000034, 0.098537, -0.000005, 0.995133],
+  'mixamorigRightHand': [-0.324071, 0.368792, 0.060839, 0.869062],
+  'mixamorigRightHandIndex1': [0.219395, -0.028425, -0.041237, 0.97435],
+  'mixamorigLeftUpLeg': [0.081484, 0.026182, -0.994831, 0.054645],
+  'mixamorigLeftLeg': [-0.02623, 0.007801, 0.029596, 0.999187],
+  'mixamorigLeftFoot': [0.414141, -0.16837, 0.051418, 0.893026],
+  'mixamorigRightUpLeg': [-0.16518, 0.045465, 0.985174, 0.008961],
+  'mixamorigRightLeg': [-0.112732, -0.000546, -0.028875, 0.993206],
+  'mixamorigRightFoot': [0.453629, -0.001364, -0.058497, 0.889267],
+}
+
+const WAVE_B = {
+  'mixamorigHips': [0.039785, 0.008122, 0.017613, 0.99902],
+  'mixamorigSpine': [-0.001968, 0.001997, 0.003692, 0.999989],
+  'mixamorigSpine1': [-0.018377, 0.003937, 0.001245, 0.999823],
+  'mixamorigSpine2': [-0.018377, 0.003937, 0.001245, 0.999823],
+  'mixamorigNeck': [0.103489, 0.020405, -0.016802, 0.994279],
+  'mixamorigHead': [-0.138476, -0.067306, 0.025508, 0.987747],
+  'mixamorigLeftShoulder': [0.507191, 0.527435, -0.453089, 0.509195],
+  'mixamorigLeftArm': [0.245411, -0.126321, 0.110086, 0.954829],
+  'mixamorigLeftForeArm': [-0.031699, -0.045769, 0.585643, 0.808655],
+  'mixamorigLeftHand': [-0.115556, 0.223367, 0.00782, 0.967829],
+  'mixamorigRightShoulder': [0.512139, -0.540641, 0.401389, 0.533206],
+  'mixamorigRightArm': [0.147002, -0.056747, -0.130688, 0.978821],
+  'mixamorigRightForeArm': [-0.079628, 0.083574, -0.597736, 0.793339],
+  'mixamorigRightHand': [-0.022538, 0.072083, 0.033687, 0.996575],
+  'mixamorigRightHandIndex1': [0.153258, -0.05227, -0.083034, 0.983303],
+  'mixamorigLeftUpLeg': [0.016676, -0.033629, -0.998378, 0.042803],
+  'mixamorigLeftLeg': [-0.089085, 0.011215, 0.028131, 0.995564],
+  'mixamorigLeftFoot': [0.404859, -0.094303, 0.043546, 0.90846],
+  'mixamorigRightUpLeg': [-0.176837, 0.098485, 0.979103, 0.019659],
+  'mixamorigRightLeg': [-0.188314, -0.00225, -0.026082, 0.98176],
+  'mixamorigRightFoot': [0.485124, -0.018826, -0.072709, 0.871214],
+}
+
+// Sampled via: node scripts/sample-fbx-quats.mjs public/assets/Thinking.fbx
+// Frame at 50% — hand on chin thinking pose
+const THINK_QUATS = {
+  'mixamorigHips': [-0.037667, 0.040138, -0.065771, 0.996315],
+  'mixamorigSpine': [0.028642, 0.035848, 0.023186, 0.998678],
+  'mixamorigSpine1': [0.007459, 0.001676, -0.031019, 0.99949],
+  'mixamorigSpine2': [0.008772, 0.000657, -0.030783, 0.999487],
+  'mixamorigNeck': [0.0466, -0.032599, 0.050048, 0.997126],
+  'mixamorigHead': [0.012588, -0.259755, 0.2499, 0.932694],
+  'mixamorigLeftShoulder': [0.596354, 0.436577, -0.431849, 0.516981],
+  'mixamorigLeftArm': [0.411884, 0.51508, -0.091523, 0.746102],
+  'mixamorigLeftForeArm': [-0.00955, 0.000009, 0.729048, 0.684396],
+  'mixamorigLeftHand': [-0.392897, 0.405341, 0.087343, 0.820794],
+  'mixamorigRightShoulder': [0.678565, -0.323378, 0.474747, 0.457812],
+  'mixamorigRightArm': [0.387817, 0.062416, -0.041147, 0.9187],
+  'mixamorigRightForeArm': [-0.012892, -0.000019, -0.96504, 0.261786],
+  'mixamorigRightHand': [0.238662, 0.174974, -0.051871, 0.9538],
+  'mixamorigRightHandIndex1': [0.143991, -0.139625, -0.006835, 0.979655],
+  'mixamorigRightHandIndex2': [0.658239, 0.005334, -0.096246, 0.746612],
+  'mixamorigLeftUpLeg': [0.263305, -0.169886, -0.942707, 0.114512],
+  'mixamorigLeftLeg': [-0.477416, 0.054729, 0.035452, 0.876254],
+  'mixamorigLeftFoot': [0.50132, -0.045411, -0.031771, 0.863485],
+  'mixamorigRightUpLeg': [0.001658, 0.075261, -0.984101, 0.160865],
+  'mixamorigRightLeg': [-0.030715, 0.023041, 0.022027, 0.99902],
+  'mixamorigRightFoot': [0.423343, 0.0387, -0.23697, 0.873572],
+}
+
 /**
  * Slerp all bones from their rest quaternion toward baked target quaternions.
  * @param {number} blend 0→rest, 1→full baked pose
@@ -83,6 +160,22 @@ function setBoneQuats(boneMap, restQuats, bakedQuats, blend) {
     } else {
       bone.quaternion.copy(rq).slerp(_q, blend)
     }
+  }
+}
+
+/**
+ * Slerp all bones between two baked poses.
+ * @param {number} blend 0→quatsA, 1→quatsB
+ */
+function slerpBetween(boneMap, quatsA, quatsB, blend) {
+  for (const [name, arrA] of Object.entries(quatsA)) {
+    const bone = boneMap[name]
+    if (!bone) continue
+    const arrB = quatsB[name]
+    if (!arrB) continue
+    _q.set(arrA[0], arrA[1], arrA[2], arrA[3])
+    _q2.set(arrB[0], arrB[1], arrB[2], arrB[3])
+    bone.quaternion.copy(_q).slerp(_q2, blend)
   }
 }
 
@@ -192,21 +285,16 @@ function idle(B, R, t) {
 }
 
 function wave(B, R, t) {
-  applyBreathing(B, R, t)
-  applyIdleLegs(B, R, t)
-
-  const sway = sin(t * 0.8) * 2 * DEG
-  rotBone(B, R, 'mixamorig:LeftArm', 0, 0, 15 * DEG + sway)
-  rotBone(B, R, 'mixamorig:LeftForeArm', 0, 0, 8 * DEG)
-
   const ease = smoothstep(Math.min(t * 2, 1))
-  const waveOsc = sin(t * 4.5) * 25 * DEG
-  rotBone(B, R, 'mixamorig:RightShoulder', 0, 0, ease * -8 * DEG)
-  rotBone(B, R, 'mixamorig:RightArm', ease * -15 * DEG, 0, ease * -120 * DEG)
-  rotBone(B, R, 'mixamorig:RightForeArm', 0, ease * waveOsc * 0.5, -45 * DEG * ease + waveOsc)
-  rotBone(B, R, 'mixamorig:RightHand', 0, waveOsc * 0.4, 0)
-
-  rotBone(B, R, 'mixamorig:Head', -5 * DEG, ease * -8 * DEG + sin(t * 0.5) * 1 * DEG, ease * 5 * DEG)
+  const osc = sin(t * 4.5) * 0.5 + 0.5 // 0→1 oscillation for the wave cycle
+  // Ease into the wave pose, then oscillate between the two extremes
+  if (ease < 0.999) {
+    // Blending from rest to the midpoint of the wave
+    setBoneQuats(B, R, WAVE_A, ease)
+    if (ease > 0.01) slerpBetween(B, WAVE_A, WAVE_B, osc * ease)
+  } else {
+    slerpBetween(B, WAVE_A, WAVE_B, osc)
+  }
 }
 
 function explain(B, R, t) {
@@ -240,58 +328,10 @@ function point(B, R, t) {
 }
 
 function think(B, R, t) {
-  applyBreathing(B, R, t)
-  applyIdleLegs(B, R, t)
-
-  rotBone(B, R, 'mixamorig:LeftArm', 0, 0, 15 * DEG + sin(t * 0.8) * 2 * DEG)
-  rotBone(B, R, 'mixamorig:LeftForeArm', 0, 0, 8 * DEG)
-
   const ease = smoothstep(Math.min(t * 2, 1))
-  rotBone(B, R, 'mixamorig:RightShoulder', 0, 0, ease * -8 * DEG)
-  rotBone(B, R, 'mixamorig:RightArm', ease * -55 * DEG, ease * 30 * DEG, ease * -50 * DEG)
-  rotBone(B, R, 'mixamorig:RightForeArm', ease * 15 * DEG, 0, ease * -95 * DEG)
-  rotBone(B, R, 'mixamorig:RightHand', ease * 10 * DEG, 0, ease * 5 * DEG)
-
-  const headBob = sin(t * 0.6) * 2 * DEG
-  rotBone(B, R, 'mixamorig:Head', -5 * DEG + ease * -5 * DEG + headBob, ease * 10 * DEG + sin(t * 0.4) * 3 * DEG, ease * 8 * DEG)
+  setBoneQuats(B, R, THINK_QUATS, ease)
 }
 
-function celebrate(B, R, t, opts) {
-  const hips = getBone(B, 'mixamorig:Hips')
-  const rest = opts?.hipsRestPos
-  // Continuous vertical hop: peaks line up with arm pump
-  const phase = t * 6.5
-  const hop = Math.abs(sin(phase))
-  const air = hop * hop
-  if (hips && rest) {
-    hips.position.copy(rest)
-    hips.position.y += air * 28
-  }
-
-  // Light spine counter so the jump reads in the torso
-  rotBone(B, R, 'mixamorig:Spine', air * 4 * DEG, sin(t * 3) * 2 * DEG, 0)
-  rotBone(B, R, 'mixamorig:Spine1', air * 2 * DEG, 0, 0)
-
-  const legB = (1 - air) * 12 * DEG
-  rotBone(B, R, 'mixamorig:LeftUpLeg', legB * 0.4, 0, 2 * DEG)
-  rotBone(B, R, 'mixamorig:RightUpLeg', legB * 0.4, 0, -2 * DEG)
-  rotBone(B, R, 'mixamorig:LeftLeg', legB * 0.8, 0, 0)
-  rotBone(B, R, 'mixamorig:RightLeg', legB * 0.8, 0, 0)
-
-  const pump = sin(phase)
-  const raise = -100 - pump * 22
-
-  rotBone(B, R, 'mixamorig:LeftShoulder', 0, 0, 10 * DEG)
-  rotBone(B, R, 'mixamorig:LeftArm', -12 * DEG, 0, -raise * DEG)
-  rotBone(B, R, 'mixamorig:LeftForeArm', 0, 0, (42 + pump * 18) * DEG)
-
-  rotBone(B, R, 'mixamorig:RightShoulder', 0, 0, -10 * DEG)
-  rotBone(B, R, 'mixamorig:RightArm', -12 * DEG, 0, raise * DEG)
-  rotBone(B, R, 'mixamorig:RightForeArm', 0, 0, -(42 + pump * 18) * DEG)
-
-  rotBone(B, R, 'mixamorig:Neck', air * -3 * DEG, 0, 0)
-  rotBone(B, R, 'mixamorig:Head', -5 * DEG + air * 5 * DEG + pump * 4 * DEG, sin(t * 1.8) * 6 * DEG, 0)
-}
 
 function walk(B, R, t) {
   applyBreathing(B, R, t)
@@ -341,9 +381,48 @@ function present(B, R, t) {
   rotBone(B, R, 'mixamorig:Head', -5 * DEG + hold, ease * 10 * DEG, ease * -3 * DEG)
 }
 
+function breathe(B, R, t) {
+  const rate = t * 1.05
+  const inhale = sin(rate)
+  const exhale = sin(rate * 2 + 0.5) * 0.35
+
+  // Chest rises and expands on inhale
+  const chest = inhale * 0.022 + exhale * 0.008
+  rotBone(B, R, 'mixamorig:Spine', chest + 1.5 * DEG, 0, 0)
+  rotBone(B, R, 'mixamorig:Spine1', chest * 0.8 + 1 * DEG, 0, 0)
+  rotBone(B, R, 'mixamorig:Spine2', chest * 0.5, 0, 0)
+
+  // Shoulders lift slightly on inhale
+  const shLift = inhale * 1.2 * DEG
+  rotBone(B, R, 'mixamorig:LeftShoulder', shLift, 0, shLift * 0.6)
+  rotBone(B, R, 'mixamorig:RightShoulder', shLift, 0, -shLift * 0.6)
+
+  // Arms hang down, just breathing drift
+  rotBone(B, R, 'mixamorig:LeftArm', inhale * 0.5 * DEG, 0, inhale * 0.8 * DEG)
+  rotBone(B, R, 'mixamorig:LeftForeArm', 0, 0, inhale * 0.4 * DEG)
+  rotBone(B, R, 'mixamorig:RightArm', inhale * 0.5 * DEG, 0, -inhale * 0.8 * DEG)
+  rotBone(B, R, 'mixamorig:RightForeArm', 0, 0, -inhale * 0.4 * DEG)
+  rotBone(B, R, 'mixamorig:LeftHand', sin(t * 0.6) * 0.5 * DEG, 0, 0)
+  rotBone(B, R, 'mixamorig:RightHand', sin(t * 0.65) * 0.5 * DEG, 0, 0)
+
+  // Hips stay planted, slight weight shift
+  const shift = sin(t * 0.22) * 1 * DEG
+  rotBone(B, R, 'mixamorig:Hips', 0, shift, 0)
+
+  // Legs stable
+  rotBone(B, R, 'mixamorig:LeftUpLeg', shift * 0.3, 0, 2 * DEG)
+  rotBone(B, R, 'mixamorig:RightUpLeg', -shift * 0.3, 0, -2 * DEG)
+  rotBone(B, R, 'mixamorig:LeftLeg', 2 * DEG, 0, 0)
+  rotBone(B, R, 'mixamorig:RightLeg', 2 * DEG, 0, 0)
+
+  // Head drifts gently — slow, decoupled from breath
+  rotBone(B, R, 'mixamorig:Neck', -6 * DEG + inhale * 1 * DEG, sin(t * 0.35) * 1.5 * DEG, 0)
+  rotBone(B, R, 'mixamorig:Head', -3 * DEG + sin(t * 0.28) * 1.5 * DEG, sin(t * 0.19) * 2 * DEG, sin(t * 0.24) * 0.8 * DEG)
+}
+
 // ─── Registry ──────────────────────────────────────────────────────────────
 
-const ANIMATIONS = { idle, wave, explain, point, pointLeft, think, celebrate, walk, present }
+const ANIMATIONS = { idle, wave, explain, point, pointLeft, think, walk, present, breathe }
 
 export const ANIMATION_NAMES = Object.keys(ANIMATIONS)
 

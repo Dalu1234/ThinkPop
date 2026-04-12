@@ -37,7 +37,15 @@ input[type="button"], select, label[for],
   position: fixed;
   inset: 0;
   overflow: hidden;
-  background: linear-gradient(-45deg, #0d0d1a, #1a0d2e, #0d1220, #110d22, #0d0d1a);
+  /* Stronger cyan / pink-magenta hues (still dark for contrast with scene). */
+  background: linear-gradient(
+    -45deg,
+    #061a28,
+    #12081e,
+    #042a32,
+    #1a0822,
+    #061a28
+  );
   background-size: calc(500% + var(--ai-bg-spread) * 180%) calc(500% + var(--ai-bg-spread) * 180%);
   animation: gradientDrift 14s ease infinite;
 }
@@ -83,8 +91,8 @@ input[type="button"], select, label[for],
   width: calc(220px + var(--ai-bg-spread) * 200px);
   background: linear-gradient(
     to right,
-    rgba(255, 110, 180, calc(0.05 + var(--ai-bloom-pink) * 0.34)) 0%,
-    rgba(255, 110, 180, calc(0.02 + var(--ai-bloom-pink) * 0.14)) 42%,
+    rgba(255, 110, 180, calc(0.1 + var(--ai-bloom-pink) * 0.48)) 0%,
+    rgba(255, 130, 200, calc(0.05 + var(--ai-bloom-pink) * 0.22)) 42%,
     transparent 100%
   );
   transition: width 0.12s ease-out;
@@ -95,8 +103,8 @@ input[type="button"], select, label[for],
   width: calc(220px + var(--ai-bg-spread) * 200px);
   background: linear-gradient(
     to left,
-    rgba(0, 229, 255, calc(0.05 + var(--ai-bloom-blue) * 0.34)) 0%,
-    rgba(0, 229, 255, calc(0.02 + var(--ai-bloom-blue) * 0.14)) 42%,
+    rgba(0, 229, 255, calc(0.1 + var(--ai-bloom-blue) * 0.48)) 0%,
+    rgba(80, 240, 255, calc(0.05 + var(--ai-bloom-blue) * 0.22)) 42%,
     transparent 100%
   );
   transition: width 0.12s ease-out;

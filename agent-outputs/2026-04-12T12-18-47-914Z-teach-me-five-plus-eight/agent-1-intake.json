@@ -1,0 +1,7 @@
+{
+  "normalizedProblem": "5 + 8",
+  "gradeBand": "K-2",
+  "mathDomain": "Addition within 20",
+  "ambiguities": [],
+  "learnerIntent": "Learn how to add 5 and 8"
+}

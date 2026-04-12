@@ -71,7 +71,7 @@ const COUNTING_ACTIVITY_INITIAL = {
 }
 
 /** Dev animation picker — set `true` to show again. */
-const SHOW_ANIMATION_PANEL = true
+const SHOW_ANIMATION_PANEL = false
 
 function AnimationPanel({ current, onSelect, disabled }) {
   return (
@@ -260,6 +260,9 @@ export function BaymaxVoiceFirstExperience() {
   const [currentMotionFrames, setCurrentMotionFrames] = useState(null)
   /** When dev panel is on, optional clip override while not speaking. Otherwise: speaking → explain, else idle. */
   const [panelAnimOverride, setPanelAnimOverride] = useState(null)
+  /** Temporary animation override for reactions (e.g. wave on correct answer). Auto-clears. */
+  const [reactAnimation, setReactAnimation] = useState(null)
+  const reactTimerRef = useRef(null)
   const [countingActivity, setCountingActivity] = useState(COUNTING_ACTIVITY_INITIAL)
   const [fingerToolVisible, setFingerToolVisible] = useState(false)
   /** 3D token viz from lesson pipeline (addition / subtraction / multiplication / division) */
@@ -344,6 +347,15 @@ export function BaymaxVoiceFirstExperience() {
     },
     [deliverAiMessage]
   )
+
+  const playReaction = useCallback((animName, durationMs = 3500) => {
+    if (reactTimerRef.current) clearTimeout(reactTimerRef.current)
+    setReactAnimation(animName)
+    reactTimerRef.current = setTimeout(() => {
+      setReactAnimation(null)
+      reactTimerRef.current = null
+    }, durationMs)
+  }, [])
 
   const updateCountingActivity = useCallback((patch) => {
     setCountingActivity(prev => ({ ...prev, ...patch }))
@@ -468,6 +480,7 @@ export function BaymaxVoiceFirstExperience() {
         await speakSegment(segmentId, attempt === 1 ? question : `Try again: ${question}`)
         const answer = await waitForUserAnswer()
         if (answersMatch(answer, expectedAnswer)) {
+          playReaction('wave', 4000)
           await speakSegment(segmentId, successMessage || 'Correct. Nice job.')
           return true
         }
@@ -488,7 +501,7 @@ export function BaymaxVoiceFirstExperience() {
 
       return false
     },
-    [speakSegment, waitForUserAnswer]
+    [speakSegment, waitForUserAnswer, playReaction]
   )
 
   const runCountingSession = useCallback(
@@ -1007,13 +1020,15 @@ export function BaymaxVoiceFirstExperience() {
     aiError || aiState === 'awaiting_user' ? null : aiState
 
   const sceneAnimation =
-    aiState === 'presenting'
-      ? 'present'
-      : aiState === 'speaking'
-        ? 'explain'
-        : SHOW_ANIMATION_PANEL && panelAnimOverride != null
-          ? panelAnimOverride
-          : 'idle'
+    reactAnimation != null
+      ? reactAnimation
+      : aiState === 'presenting'
+        ? 'present'
+        : aiState === 'speaking'
+          ? 'explain'
+          : SHOW_ANIMATION_PANEL && panelAnimOverride != null
+            ? panelAnimOverride
+            : 'idle'
 
   return (
     <div className="app-root">

@@ -1,0 +1,79 @@
+{
+  "title": "Adding Five and Eight Together",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "Five and eight objects",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these five colorful blocks on the screen.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Now, let’s see eight more blocks joining them!",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "Combining groups visually",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "We can combine these groups to find the total number of blocks.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "Let's count all the blocks together and see what we get.",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "Count together happily",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Can you count the total number of blocks with me out loud?",
+          "durationSeconds": 6
+        },
+        {
+          "id": "s6",
+          "text": "Now let’s celebrate our answer together!",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "Reviewing total",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job adding five and eight blocks today!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "You are getting better at addition every time!",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to physically combine objects when possible to reinforce learning."
+}

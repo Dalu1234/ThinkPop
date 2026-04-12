@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor stands in front of the class, gestures toward the colorful blocks on the screen, and smiles while inviting attention"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a tutor raises both arms slightly, moving them outward in excitement as if welcoming eight new blocks to the group"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor steps forward, spreading arms wide to demonstrate the combining of groups while encouraging everyone to watch closely"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person leans slightly forward, using one hand to mimic counting the blocks in the air while inviting the class to count together"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor nods with enthusiasm, motions to the imaginary blocks, and invites students to count the total with him out loud"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person claps hands together and jumps slightly, celebrating the answer with the class and encouraging everyone to join in"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor smiles warmly, extends both hands outward as if applauding the students, and praises their effort in combining blocks"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person nods proudly, points to the class, and gestures as if marking each improvement while encouraging continued practice"
+    }
+  ]
+}
