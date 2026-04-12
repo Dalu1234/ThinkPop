@@ -6,3 +6,7 @@ dist
 
 # 3D binaries — catalog lives in src/data/assetsDatabase.json; add .glb files locally if needed
 public/models/*.glb
+
+# Python
+__pycache__/
+*.py[cod]
