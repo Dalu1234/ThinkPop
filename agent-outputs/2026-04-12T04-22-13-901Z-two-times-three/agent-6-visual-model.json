@@ -1,0 +1,8 @@
+{
+  "kind": "grid",
+  "rows": 3,
+  "cols": 2,
+  "itemShape": "apple",
+  "itemColor": "#e84b3c",
+  "caption": "2 Ã— 3 = 6 (2 per row Ã— 3 rows)"
+}

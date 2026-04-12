@@ -1,0 +1,39 @@
+{
+  "title": "4 times 5 as equal groups",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "seg-hook",
+      "kind": "hook",
+      "durationSeconds": 6,
+      "narration": "Here are 5 rows with 4 apples in each row.",
+      "visualCue": "Array of 5 rows Ã— 4 apples",
+      "sceneHint": "array_hook"
+    },
+    {
+      "id": "seg-model",
+      "kind": "model",
+      "durationSeconds": 7,
+      "narration": "4 times 5 means 5 equal groups of 4, giving us 20 total.",
+      "visualCue": "Rows labeled, total shown",
+      "sceneHint": "array_model"
+    },
+    {
+      "id": "seg-practice",
+      "kind": "practice",
+      "durationSeconds": 6,
+      "narration": "Count the rows with me: 5 rows of 4 equals 20.",
+      "visualCue": "Each row pulses in turn",
+      "sceneHint": "array_count_practice"
+    },
+    {
+      "id": "seg-wrap",
+      "kind": "wrap",
+      "durationSeconds": 5,
+      "narration": "4 times 5 equals 20 â€” remember that!",
+      "visualCue": "Equation 4 Ã— 5 = 20",
+      "sceneHint": "multiplication_wrap"
+    }
+  ],
+  "teacherNotes": "Connect each row to one equal group."
+}

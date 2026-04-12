@@ -17,6 +17,7 @@ import { clone } from 'three/examples/jsm/utils/SkeletonUtils.js'
 
 import { createRetargeter } from '../lib/retarget'
 import assetsDatabase from '../data/assetsDatabase.json'
+import SolarSystem from './SolarSystem'
 
 const PARTICLE_COUNT = 130
 const FRAME_MS = 50
@@ -990,6 +991,7 @@ function SceneContent({ motionFrames, aiState, visualization, visualizationStepI
       <Lighting />
       <Particles />
       <NeonGrid />
+      <SolarSystem aiState={aiState} />
       <Suspense fallback={null}>
         <MathVisualization visualization={visualization} stepIndex={visualizationStepIndex} />
       </Suspense>

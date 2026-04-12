@@ -1,0 +1,39 @@
+{
+  "title": "4 times 2 as equal groups",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "seg-hook",
+      "kind": "hook",
+      "durationSeconds": 6,
+      "narration": "Here are 2 rows with 4 apples in each row.",
+      "visualCue": "Array of 2 rows Ã— 4 apples",
+      "sceneHint": "array_hook"
+    },
+    {
+      "id": "seg-model",
+      "kind": "model",
+      "durationSeconds": 7,
+      "narration": "4 times 2 means 2 equal groups of 4, giving us 8 total.",
+      "visualCue": "Rows labeled, total shown",
+      "sceneHint": "array_model"
+    },
+    {
+      "id": "seg-practice",
+      "kind": "practice",
+      "durationSeconds": 6,
+      "narration": "Count the rows with me: 2 rows of 4 equals 8.",
+      "visualCue": "Each row pulses in turn",
+      "sceneHint": "array_count_practice"
+    },
+    {
+      "id": "seg-wrap",
+      "kind": "wrap",
+      "durationSeconds": 5,
+      "narration": "4 times 2 equals 8 â€” remember that!",
+      "visualCue": "Equation 4 Ã— 2 = 8",
+      "sceneHint": "multiplication_wrap"
+    }
+  ],
+  "teacherNotes": "Connect each row to one equal group."
+}
