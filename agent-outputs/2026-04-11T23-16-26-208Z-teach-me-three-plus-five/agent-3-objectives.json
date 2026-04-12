@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Add 3 and 5 using objects or drawings.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "obj2",
+      "statement": "Explain the process of adding 3 and 5 using a number line.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

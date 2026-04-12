@@ -1,0 +1,39 @@
+{
+  "title": "Adding T-Shirts Together",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "durationSeconds": 6,
+      "narration": "Let's count how many T-shirts we have when we add one more!",
+      "visualCue": "Colorful T-shirts",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "durationSeconds": 8,
+      "narration": "Here are 1 T-shirt, and now we add another one for a total of 2.",
+      "visualCue": "T-shirt addition",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "durationSeconds": 7,
+      "narration": "Now, can you try adding 3 T-shirts and 1 more together?",
+      "visualCue": "Interactive T-shirt image",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "durationSeconds": 5,
+      "narration": "Great job adding! We learned adding makes more together.",
+      "visualCue": "Smiling children",
+      "sceneHint": "number_line_jump"
+    }
+  ],
+  "teacherNotes": "Encourage students to visualize the addition with physical objects or drawings."
+}

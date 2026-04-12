@@ -1,0 +1,9 @@
+{
+  "kind": "grid",
+  "rows": 5,
+  "cols": 5,
+  "rowCounts": [],
+  "itemShape": "apple",
+  "itemColor": "#FF0000",
+  "caption": "Here is a 5x5 array to visualize 5 times 5!"
+}

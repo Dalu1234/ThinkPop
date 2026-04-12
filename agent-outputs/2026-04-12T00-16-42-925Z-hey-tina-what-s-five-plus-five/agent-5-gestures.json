@@ -1,0 +1,28 @@
+{
+  "gestures": [
+    {
+      "segmentId": "segment1",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "a person stands tall, opens both arms wide, and smiles invitingly while introducing colorful counters"
+    },
+    {
+      "segmentId": "segment2",
+      "hand": "right",
+      "motion": "count",
+      "mdmPrompt": "a tutor shifts weight to one side, raises their right hand to emphasize, and counts each counter aloud"
+    },
+    {
+      "segmentId": "segment3",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "a teacher leans forward slightly, with both hands gesturing toward an imaginary board while writing an addition sentence"
+    },
+    {
+      "segmentId": "segment4",
+      "hand": "both",
+      "motion": "wave",
+      "mdmPrompt": "a person stands confidently, waves both hands enthusiastically while celebrating the success of adding five plus five"
+    }
+  ]
+}

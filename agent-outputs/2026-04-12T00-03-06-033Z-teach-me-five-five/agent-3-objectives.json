@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Multiply five by five to find the product.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "2",
+      "statement": "Explain why multiplying five by five equals twenty-five.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "gestures": [
+    {
+      "segmentId": "hook1",
+      "hand": "both",
+      "motion": "wave",
+      "mdmPrompt": "The tutor raises both arms in a waving motion, inviting students' attention while asking about adding five."
+    },
+    {
+      "segmentId": "model1",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "The tutor points to an imaginary array in front, demonstrating the concept of five times five."
+    },
+    {
+      "segmentId": "practice1",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "The tutor holds up both hands and counts out five fingers on each, encouraging students to create an array."
+    },
+    {
+      "segmentId": "wrap1",
+      "hand": "left",
+      "motion": "emphasize",
+      "mdmPrompt": "The tutor emphasizes with the left hand while recalling that five times five equals twenty-five."
+    }
+  ]
+}

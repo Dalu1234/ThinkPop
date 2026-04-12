@@ -1,0 +1,28 @@
+{
+  "gestures": [
+    {
+      "segmentId": "hook1",
+      "hand": "both",
+      "motion": "wave",
+      "mdmPrompt": "The tutor happily waves both arms while inviting students to join in discovering addition."
+    },
+    {
+      "segmentId": "model1",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "The tutor points to an illustration of apples while explaining the addition of 3 and 5."
+    },
+    {
+      "segmentId": "practice1",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "The tutor uses both hands to demonstrate counting fingers for 3 plus 5 as students practice."
+    },
+    {
+      "segmentId": "wrap1",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "The tutor raises both arms in celebration, emphasizing the sum of 3 and 5 as 8."
+    }
+  ]
+}

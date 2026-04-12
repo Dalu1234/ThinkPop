@@ -1,0 +1,28 @@
+{
+  "gestures": [
+    {
+      "segmentId": "hook1",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "The tutor jumps slightly and simultaneously raises both hands while counting from one to ten."
+    },
+    {
+      "segmentId": "model1",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "The tutor steps closer to the number blocks and points with their right hand, inviting students to join in."
+    },
+    {
+      "segmentId": "practice1",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "The tutor opens both arms wide, encouragingly, while explaining how to write the numbers."
+    },
+    {
+      "segmentId": "wrap1",
+      "hand": "left",
+      "motion": "emphasize",
+      "mdmPrompt": "The tutor gives a thumbs up with their left hand and emphasizes their praise while smiling."
+    }
+  ]
+}

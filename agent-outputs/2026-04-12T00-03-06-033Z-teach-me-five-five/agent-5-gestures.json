@@ -1,0 +1,28 @@
+{
+  "gestures": [
+    {
+      "segmentId": "hook",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "the teacher steps forward slightly, opens arms wide while inviting curiosity about five groups of five objects"
+    },
+    {
+      "segmentId": "model",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "leaning slightly forward, the teacher points to the number twenty-five, emphasizing the multiplication concept clearly"
+    },
+    {
+      "segmentId": "practice",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "the teacher raises both hands, counting out loud while forming an imaginary array of five rows and five columns"
+    },
+    {
+      "segmentId": "wrap",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "standing tall, the teacher confidently emphasizes the conclusion that five times five equals twenty-five with a nod"
+    }
+  ]
+}

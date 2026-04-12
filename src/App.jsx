@@ -20,7 +20,7 @@ const MDM_TEST_ACTIONS = [
   { label: 'Point',     prompt: MOTION_PROMPTS.point },
   { label: 'Open',      prompt: MOTION_PROMPTS.open },
   { label: 'Emphasize', prompt: MOTION_PROMPTS.emphasize },
-  { label: 'Count',     prompt: MOTION_PROMPTS.count },
+  { label: 'Jump',      prompt: 'a person bends their knees and jumps up into the air and lands back down' },
   { label: 'Rest',      prompt: MOTION_PROMPTS.rest },
 ]
 
@@ -77,34 +77,10 @@ function delay(ms) {
 
 const REST_GESTURE = { motion: 'rest', hand: 'both' }
 
-function BaymaxSpeakingBars({ levels, active }) {
-  const bars = levels?.length ? levels : new Array(32).fill(0.04)
-
-  return (
-    <div className={`baymax-speaking-overlay ${active ? 'is-active' : ''}`}>
-      <div className="baymax-speaking-line" aria-hidden="true">
-        {bars.map((level, index) => {
-          const normalized = Math.max(active ? 0.16 : 0.08, Math.min(1, level || 0))
-          return (
-            <span
-              key={index}
-              className="baymax-speaking-bar"
-              style={{
-                height: `${16 + normalized * 46}px`,
-                opacity: active ? 1 : 0.38,
-              }}
-            />
-          )
-        })}
-      </div>
-    </div>
-  )
-}
-
 function BaymaxExperience() {
   const [aiState, setAiState] = useState(null)
   const [aiError, setAiError] = useState('')
-  const [aiAudioLevels, setAiAudioLevels] = useState([])
+  const aiAudioLevelsRef = useRef([])
   const [aiAudioActive, setAiAudioActive] = useState(false)
   const [topicDisplay, setTopicDisplay] = useState(INITIAL_TOPIC)
   const [playGesture, setPlayGesture] = useState(REST_GESTURE)
@@ -129,15 +105,16 @@ function BaymaxExperience() {
     const audioBlob = await textToSpeechBlob(spokenText)
     await playAudioBlob(audioBlob, {
       onStart: () => {
+        aiAudioLevelsRef.current = []
         setAiAudioActive(true)
-        setAiAudioLevels([])
       },
       onLevels: (levels) => {
-        setAiAudioLevels(Array.isArray(levels) ? levels : [])
+        if (Array.isArray(levels)) aiAudioLevelsRef.current = levels
+        else aiAudioLevelsRef.current = []
       },
       onEnd: () => {
+        aiAudioLevelsRef.current = []
         setAiAudioActive(false)
-        setAiAudioLevels([])
       },
     })
   }, [])
@@ -327,18 +304,18 @@ function BaymaxExperience() {
 
   return (
     <div className="app-root">
-      <CharacterScene aiState={aiState} motionFrames={currentMotionFrames} />
+      <CharacterScene
+        aiState={aiState}
+        motionFrames={currentMotionFrames}
+        audioLevelsRef={aiAudioLevelsRef}
+        audioActive={aiAudioActive || aiState === 'speaking'}
+      />
 
       <div className="edge-bloom edge-bloom-left" />
       <div className="edge-bloom edge-bloom-right" />
 
       <Skyline />
       <HistorySidebar />
-
-      <BaymaxSpeakingBars
-        levels={aiAudioLevels}
-        active={aiAudioActive || aiState === 'speaking'}
-      />
 
       <AIStatus state={aiError ? 'error' : aiState} message={aiError} />
       <PipelineProgress state={aiError ? null : aiState} />

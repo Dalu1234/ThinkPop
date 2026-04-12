@@ -1,0 +1,39 @@
+{
+  "title": "Fun with Numbers 1 to 10",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "durationSeconds": 6,
+      "narration": "Let's start by counting together from one to ten, ready?",
+      "visualCue": "Number Chart",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "durationSeconds": 5,
+      "narration": "Here are the numbers one through ten; can you say them with me?",
+      "visualCue": "Number Blocks",
+      "sceneHint": "number_chart"
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "durationSeconds": 5,
+      "narration": "Now try writing the numbers 1 to 10 on your paper; great job!",
+      "visualCue": "Writing Numbers",
+      "sceneHint": "writing_numerals"
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "durationSeconds": 4,
+      "narration": "You did amazing today while counting and writing numbers; keep practicing!",
+      "visualCue": "Happy Faces",
+      "sceneHint": "celebration"
+    }
+  ],
+  "teacherNotes": "Encourage students to practice counting and writing numbers daily for reinforcement."
+}

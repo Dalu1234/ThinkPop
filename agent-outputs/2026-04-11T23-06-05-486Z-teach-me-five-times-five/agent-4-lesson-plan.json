@@ -1,0 +1,39 @@
+{
+  "title": "Multiplying with Five",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "durationSeconds": 5,
+      "narration": "What happens when we add five, five times? Let's find out!",
+      "visualCue": "number five",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "durationSeconds": 6,
+      "narration": "Multiplication is like repeated addition, and five times five equals twenty-five.",
+      "visualCue": "array display",
+      "sceneHint": "array_visualization"
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "durationSeconds": 6,
+      "narration": "Now, can you create your own array to show five groups of five?",
+      "visualCue": "draw array",
+      "sceneHint": "array_creation"
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "durationSeconds": 5,
+      "narration": "Remember, five times five is twenty-five, and arrays help us see multiplication!",
+      "visualCue": "number chart",
+      "sceneHint": "multiplication_summary"
+    }
+  ],
+  "teacherNotes": "Encourage students to visualize arrays as a way to better understand multiplication."
+}

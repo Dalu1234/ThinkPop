@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Count from 1 to 20 with accuracy.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "obj2",
+      "statement": "Identify even and odd numbers up to 20.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

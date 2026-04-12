@@ -65,6 +65,7 @@ export function createRetargeter(character) {
   const restLocalQ   = {}   // local quat at rest per bone
   const restWorldQ   = {}   // world quat at rest per bone
   const restBoneDir  = {}   // world direction parent→bone at rest
+  let   restHipsLocalY = null  // local Y of hips bone at rest (for root translation)
 
   // Scratch (reused every frame — avoids GC pressure)
   const _wq  = new THREE.Quaternion()
@@ -85,13 +86,18 @@ export function createRetargeter(character) {
 
   // ── Private ─────────────────────────────────────────────────────────────────
   function _collectBones() {
+    // Pass 1 — skeleton.bones are what the SkinnedMesh renderer actually reads.
+    // These MUST win; collect them first so pass 2 cannot overwrite them.
     character.traverse(child => {
       if (child.isSkinnedMesh) {
         child.frustumCulled = false
-        // Also pull from skeleton.bones — more reliable than isBone for some exports
         child.skeleton?.bones.forEach(b => { boneMap[b.name] = b })
       }
-      if (child.isBone) boneMap[child.name] = child
+    })
+    // Pass 2 — isBone nodes (may be clone nodes when fbx.clone(true) is used).
+    // Only add if not already present — skeleton.bones take priority.
+    character.traverse(child => {
+      if (child.isBone && !boneMap[child.name]) boneMap[child.name] = child
     })
   }
 
@@ -111,6 +117,9 @@ export function createRetargeter(character) {
       const b = boneMap[mn]
       if (b) restLocalQ[mn] = b.quaternion.clone()
     }
+    // Capture hips rest local Y so we can translate root for jumps/crouches
+    const hb = boneMap[mixamoMap['pelvis']]
+    if (hb) restHipsLocalY = hb.position.y
   }
 
   function _captureRestWorldQ() {
@@ -156,9 +165,25 @@ export function createRetargeter(character) {
   }
 
   function _maxSwing(p) {
-    if (p === 3 || p === 6 || p === 9) return THREE.MathUtils.degToRad(70)
-    if (p === 12) return THREE.MathUtils.degToRad(60)
-    return Math.PI
+    // Spine chain — moderate limits to avoid pretzel torso
+    if (p === 3 || p === 6 || p === 9) return THREE.MathUtils.degToRad(45)
+    // Neck
+    if (p === 12) return THREE.MathUtils.degToRad(40)
+    // Collars (shoulders) — prevent arms swinging through torso
+    if (p === 13 || p === 14) return THREE.MathUtils.degToRad(60)
+    // Upper arms
+    if (p === 16 || p === 17) return THREE.MathUtils.degToRad(80)
+    // Elbows — natural hinge, shouldn't hyperextend
+    if (p === 18 || p === 19) return THREE.MathUtils.degToRad(90)
+    // Wrists
+    if (p === 20 || p === 21) return THREE.MathUtils.degToRad(60)
+    // Hips
+    if (p === 1 || p === 2) return THREE.MathUtils.degToRad(70)
+    // Knees
+    if (p === 4 || p === 5) return THREE.MathUtils.degToRad(90)
+    // Ankles/feet
+    if (p >= 7 && p <= 11) return THREE.MathUtils.degToRad(45)
+    return THREE.MathUtils.degToRad(90)
   }
 
   function _clampDir(rest, desired, maxRad) {
@@ -191,6 +216,8 @@ export function createRetargeter(character) {
       const b = boneMap[mn], rq = restLocalQ[mn]
       if (b && rq) b.quaternion.copy(rq)
     }
+    const hb = boneMap[mixamoMap['pelvis']]
+    if (hb && restHipsLocalY !== null) hb.position.y = restHipsLocalY
     character.updateMatrixWorld(true)
   }
 
@@ -215,6 +242,23 @@ export function createRetargeter(character) {
         _clampDir(_va, _vb, THREE.MathUtils.degToRad(58))
         _applyBone(hipsBone, hipsRestWQ, _vb)
       }
+    }
+
+    // ── Root Y translation — makes jumps and crouches visible ────────────────
+    // Scale the HumanML3D pelvis delta into the rig's own local units by using
+    // the rest hip height as the reference. This is unit-agnostic: it works
+    // whether the FBX skeleton is in cm, m, or any other scale.
+    // Guard: only apply if rest height is meaningful (non-zero rig).
+    if (hipsBone && restHipsLocalY !== null && Math.abs(restHipsLocalY) > 1e-3) {
+      const HML_REST_Y = 0.94
+      const rigUnitsPerMetre = restHipsLocalY / HML_REST_Y
+      const dy = THREE.MathUtils.clamp(
+        (pts[0].y - HML_REST_Y) * rigUnitsPerMetre,
+        -restHipsLocalY * 0.40,  // max crouch: 40 % of rest height
+        restHipsLocalY * 0.25    // max jump:   25 % of rest height
+      )
+      hipsBone.position.y = restHipsLocalY + dy
+      hipsBone.updateMatrixWorld(true)
     }
 
     // ── Rest of skeleton (depth-first so parents precede children) ───────────

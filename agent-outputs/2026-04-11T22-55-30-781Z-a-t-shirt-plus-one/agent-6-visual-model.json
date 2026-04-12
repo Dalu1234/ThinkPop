@@ -1,0 +1,12 @@
+{
+  "kind": "addition_rows",
+  "rows": 0,
+  "cols": 0,
+  "rowCounts": [
+    3,
+    1
+  ],
+  "itemShape": "apple",
+  "itemColor": "#FF0000",
+  "caption": "Let's add 3 T-shirts and 1 more together!"
+}

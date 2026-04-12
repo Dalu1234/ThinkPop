@@ -1,0 +1,28 @@
+{
+  "gestures": [
+    {
+      "segmentId": "hook",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "The tutor stands tall, using both hands to count up to twenty while encouraging participation."
+    },
+    {
+      "segmentId": "model",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "The tutor points to the even and odd chart with their right hand, demonstrating the distinction between the numbers."
+    },
+    {
+      "segmentId": "practice",
+      "hand": "left",
+      "motion": "count",
+      "mdmPrompt": "The tutor raises their left hand with fingers showing eight, counting aloud while engaging the students."
+    },
+    {
+      "segmentId": "wrap",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "The tutor spreads their arms wide, smiling warmly while emphasizing the importance of practicing counting."
+    }
+  ]
+}

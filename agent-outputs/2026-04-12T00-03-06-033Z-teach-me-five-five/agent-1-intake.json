@@ -1,0 +1,7 @@
+{
+  "normalizedProblem": "Teach me the concept of five times five.",
+  "gradeBand": "3-5",
+  "mathDomain": "Multiplication",
+  "ambiguities": [],
+  "learnerIntent": "Learn about multiplying the number five by itself."
+}

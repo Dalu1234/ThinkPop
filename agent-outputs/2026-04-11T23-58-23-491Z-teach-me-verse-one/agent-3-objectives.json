@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Recognize and write numbers up to 10.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "obj2",
+      "statement": "Solve simple addition problems using single-digit numbers.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

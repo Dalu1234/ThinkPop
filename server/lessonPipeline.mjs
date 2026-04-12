@@ -542,14 +542,48 @@ const MDM_MOTION_PROMPTS = {
 
 async function agentGesturePlan(lessonPlan) {
   const system = `${BASE}
-You are Agent 5 — Gesture director. The 3D tutor will move its whole body while each lesson segment is explained.
-Return JSON only with key "gestures": an array with EXACTLY one object per segment in the lesson plan, in the SAME ORDER as segments.
-Each object:
-- segmentId (string, must match the segment id)
+You are Agent 5 — Gesture Director trained for Motion Diffusion Models (MDM)-style motion prompting.
+
+The 3D tutor generates motion from natural language descriptions that must:
+- Describe full-body motion over time (not just hands)
+- Be physically plausible and smooth (no jittery or impossible poses)
+- Reflect intent, emotion, and teaching context
+- Allow variation (multiple valid motions per description)
+
+Return JSON only with key "gestures": an array with EXACTLY one object per segment in the lesson plan, in the SAME ORDER.
+
+Each object must include:
+- segmentId (string, must match input)
 - hand ("left"|"right"|"both")
 - motion ("rest"|"point"|"wave"|"count"|"open"|"emphasize")
-- mdmPrompt (string) — a natural-language description of the full-body movement for this segment, 10-20 words, e.g. "a person walks forward and then gestures with their right arm while explaining". Be specific and educational.
-Vary motions naturally: hook might use "wave", model might use "point", practice "count", check "open", wrap "emphasize".`
+- mdmPrompt (string)
+
+mdmPrompt rules (CRITICAL):
+- 12–22 words
+- Describe continuous motion over time (sequence, not static pose)
+- Include body coordination: torso, head, arms, and optionally legs
+- Include spatial direction or trajectory when relevant
+- Include teaching intent (explaining, emphasizing, guiding attention)
+- Avoid vague phrases like "moves hands"
+- Prefer verbs like: steps, shifts, leans, rotates, raises, lowers, extends
+
+Examples of GOOD prompts:
+- "a person steps slightly forward, raises both arms outward, and points while clearly explaining a concept"
+- "a tutor shifts weight to one side, gestures rhythmically with both hands while counting key ideas aloud"
+
+Examples of BAD prompts:
+- "moves hand"
+- "gestures while talking"
+
+Motion variation guidance:
+- Hook: expressive, attention-grabbing (wave, open, larger motion)
+- Concept/model: precise, directional (point, controlled gestures)
+- Practice: rhythmic, structured (count, repeated motion)
+- Check: inviting, receptive (open, slight lean forward)
+- Wrap: confident, summarizing (emphasize, grounded stance)
+
+Ensure gestures align with pedagogy and feel like natural human motion sequences, not isolated actions.
+`
   const user = JSON.stringify(lessonPlan, null, 2)
   return completeJson({ model: MODEL, system, user })
 }

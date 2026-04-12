@@ -1,0 +1,28 @@
+{
+  "gestures": [
+    {
+      "segmentId": "1",
+      "hand": "both",
+      "motion": "wave",
+      "mdmPrompt": "The tutor steps forward, waves both hands enthusiastically, and smiles while inviting students to learn about numbers."
+    },
+    {
+      "segmentId": "2",
+      "hand": "both",
+      "motion": "point",
+      "mdmPrompt": "The tutor shifts weight slightly, points towards the number line display, and encourages everyone to say the numbers together."
+    },
+    {
+      "segmentId": "3",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "The tutor bends slightly forward, counts aloud with fingers extended, and invites students to observe the counting objects."
+    },
+    {
+      "segmentId": "4",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "The tutor stands tall, raises both arms confidently and emphasizes the students' success in counting and recognizing numbers."
+    }
+  ]
+}

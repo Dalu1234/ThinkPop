@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "objective1",
+      "statement": "Count T-shirts to find the total.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "objective2",
+      "statement": "Solve simple word problems using addition.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

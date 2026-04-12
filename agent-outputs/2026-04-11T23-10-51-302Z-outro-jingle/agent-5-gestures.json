@@ -1,0 +1,28 @@
+{
+  "gestures": [
+    {
+      "segmentId": "hook1",
+      "hand": "both",
+      "motion": "wave",
+      "mdmPrompt": "The tutor raises both arms and waves while inviting students to explore the concept of number lines."
+    },
+    {
+      "segmentId": "model1",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "The tutor points to specific numbers on the number line to show their positions while explaining."
+    },
+    {
+      "segmentId": "practice1",
+      "hand": "left",
+      "motion": "count",
+      "mdmPrompt": "The tutor holds up fingers on the left hand to count as they guide students on adding 2 and 3."
+    },
+    {
+      "segmentId": "wrap1",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "The tutor extends both arms wide in a celebratory manner to emphasize the importance of number lines in math."
+    }
+  ]
+}

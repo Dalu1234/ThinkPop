@@ -1,0 +1,39 @@
+{
+  "title": "Understanding Five Times Five",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook",
+      "kind": "hook",
+      "durationSeconds": 6,
+      "narration": "Have you ever wondered what five groups of five objects look like?",
+      "visualCue": "five groups displayed",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "model",
+      "kind": "model",
+      "durationSeconds": 7,
+      "narration": "When we multiply five by five, we find that the answer is twenty-five.",
+      "visualCue": "25 as a product",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "practice",
+      "kind": "practice",
+      "durationSeconds": 6,
+      "narration": "Let’s create an array with five rows and five columns together.",
+      "visualCue": "array formation",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "wrap",
+      "kind": "wrap",
+      "durationSeconds": 5,
+      "narration": "Now you can confidently say five times five equals twenty-five!",
+      "visualCue": "confident student",
+      "sceneHint": "number_line_jump"
+    }
+  ],
+  "teacherNotes": "Encourage students to visualize multiplication through arrays to deepen their understanding."
+}

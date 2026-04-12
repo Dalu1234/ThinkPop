@@ -114,52 +114,6 @@ body {
     0 8px 30px rgba(0, 0, 0, 0.4);
 }
 
-.baymax-speaking-overlay {
-  position: fixed;
-  left: 50%;
-  top: calc(50% - 266px);
-  transform: translateX(-50%);
-  width: min(92vw, 1200px);
-  z-index: 32;
-  pointer-events: none;
-  display: flex;
-  justify-content: center;
-  opacity: 0.88;
-}
-
-.baymax-speaking-overlay.is-active {
-  opacity: 1;
-}
-
-.baymax-speaking-line {
-  width: 100%;
-  height: 72px;
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 0;
-  padding: 10px 8px;
-  border-radius: 999px;
-  background: linear-gradient(180deg, rgba(12, 16, 34, 0.24), rgba(12, 16, 34, 0.5));
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow:
-    0 14px 30px rgba(0, 0, 0, 0.18),
-    inset 0 0 20px rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.baymax-speaking-bar {
-  width: clamp(6px, 1.5vw, 22px);
-  min-height: 12px;
-  border-radius: 999px;
-  background: linear-gradient(180deg, rgba(255, 110, 180, 0.96), rgba(0, 229, 255, 0.96));
-  box-shadow:
-    0 0 16px rgba(0, 229, 255, 0.22),
-    0 0 10px rgba(255, 110, 180, 0.18);
-  transition: height 0.08s linear, opacity 0.12s ease;
-}
-
 /* ============================================================
    AI STATUS INDICATOR (top-right)
    ============================================================ */
@@ -685,7 +639,7 @@ body {
   30%            { transform: translateY(-6px); opacity: 1; }
 }
 
-/* Input row */
+/* Mic recording waveform (live input) — above bottom mic */
 .chat-visualizer-shell {
   position: relative;
   height: 72px;
@@ -711,6 +665,7 @@ body {
   height: 100%;
 }
 
+/* Input row */
 .chat-input-row {
   display: flex;
   align-items: center;
@@ -822,7 +777,8 @@ body {
    ============================================================ */
 .big-center-mic {
   position: fixed;
-  top: calc(82% - 48px);
+  top: auto;
+  bottom: calc(max(12px, env(safe-area-inset-bottom, 0px)) - 12px);
   left: calc(50% - 48px);
   width: 96px;
   height: 96px;

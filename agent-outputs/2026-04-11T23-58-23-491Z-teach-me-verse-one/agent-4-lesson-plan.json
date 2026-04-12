@@ -1,0 +1,39 @@
+{
+  "title": "Introduction to Addition",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "durationSeconds": 5,
+      "narration": "Let's start exploring the magical world of addition with numbers!",
+      "visualCue": "colorful numbers",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "durationSeconds": 6,
+      "narration": "When we add, we put numbers together to find a total, like 2 plus 3 equals 5.",
+      "visualCue": "number line example",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "durationSeconds": 6,
+      "narration": "Now, let's try adding numbers together using fingers or counters, like 1 and 4.",
+      "visualCue": "fingers and counters",
+      "sceneHint": "hands_on_activity"
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "durationSeconds": 5,
+      "narration": "Great job, everyone! Let's keep practicing addition to become experts!",
+      "visualCue": "happy faces",
+      "sceneHint": "celebration"
+    }
+  ],
+  "teacherNotes": "Encourage students to use physical objects to visualize addition."
+}

@@ -1,0 +1,28 @@
+{
+  "gestures": [
+    {
+      "segmentId": "hook1",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "The tutor stands with arms extended, counting on fingers while showcasing bright T-shirts."
+    },
+    {
+      "segmentId": "model1",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "The tutor points to the first T-shirt, then to the second T-shirt, while announcing the total."
+    },
+    {
+      "segmentId": "practice1",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "The tutor raises both hands, counting up to 4 while encouraging students to add."
+    },
+    {
+      "segmentId": "wrap1",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "The tutor spreads arms wide, smiling, to celebrate students' success in learning addition."
+    }
+  ]
+}

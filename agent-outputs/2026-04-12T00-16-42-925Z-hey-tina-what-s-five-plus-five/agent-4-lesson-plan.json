@@ -1,0 +1,39 @@
+{
+  "title": "Adding Five Plus Five Together",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "segment1",
+      "kind": "hook",
+      "durationSeconds": 6,
+      "narration": "Let's explore how we can add five and five together using counters!",
+      "visualCue": "Colorful counters",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "segment2",
+      "kind": "model",
+      "durationSeconds": 7,
+      "narration": "If we have five counters and add five more, we count them all as ten.",
+      "visualCue": "Counting to ten",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "segment3",
+      "kind": "practice",
+      "durationSeconds": 6,
+      "narration": "Now, let's write an addition sentence for five plus five together.",
+      "visualCue": "Addition sentence",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "segment4",
+      "kind": "wrap",
+      "durationSeconds": 5,
+      "narration": "Great job adding! Five plus five equals ten, and that’s fantastic!",
+      "visualCue": "Celebration",
+      "sceneHint": "number_line_jump"
+    }
+  ],
+  "teacherNotes": "Encourage students to use counters at home for additional practice."
+}

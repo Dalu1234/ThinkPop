@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Demonstrate how to find the sum of five and five using counters.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "obj2",
+      "statement": "Write an addition sentence representing the sum of five plus five.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

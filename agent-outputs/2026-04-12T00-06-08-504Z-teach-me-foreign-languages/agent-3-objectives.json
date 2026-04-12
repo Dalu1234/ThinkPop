@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Count from 1 to 10 accurately.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "2",
+      "statement": "Identify and name numbers from 1 to 10.",
+      "bloomLevel": "remember"
+    }
+  ]
+}

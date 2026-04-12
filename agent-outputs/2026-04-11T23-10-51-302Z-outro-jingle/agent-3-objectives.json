@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Identify the position of numbers on a number line.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "2",
+      "statement": "Add and subtract numbers using a number line.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

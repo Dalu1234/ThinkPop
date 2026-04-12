@@ -90,73 +90,76 @@ export default function ChatPanel({ messages, onSend, aiState }) {
     stopVisualizer()
   }, [stopVisualizer])
 
-  const startVisualizer = useCallback(async (stream) => {
-    stopVisualizer()
+  const startVisualizer = useCallback(
+    async (stream) => {
+      stopVisualizer()
 
-    const canvas = visualizerCanvasRef.current
-    if (!canvas) return
+      const canvas = visualizerCanvasRef.current
+      if (!canvas) return
 
-    const rect = canvas.getBoundingClientRect()
-    const dpr = window.devicePixelRatio || 1
-    canvas.width = Math.max(1, Math.floor(rect.width * dpr))
-    canvas.height = Math.max(1, Math.floor(rect.height * dpr))
+      const rect = canvas.getBoundingClientRect()
+      const dpr = window.devicePixelRatio || 1
+      canvas.width = Math.max(1, Math.floor(rect.width * dpr))
+      canvas.height = Math.max(1, Math.floor(rect.height * dpr))
 
-    const AC = window.AudioContext || window.webkitAudioContext
-    const audioContext = new AC()
-    if (audioContext.state === 'suspended') {
-      await audioContext.resume()
-    }
-
-    const source = audioContext.createMediaStreamSource(stream)
-    const analyser = audioContext.createAnalyser()
-    analyser.fftSize = 256
-    analyser.smoothingTimeConstant = 0.82
-    source.connect(analyser)
-
-    const dataArray = new Uint8Array(analyser.frequencyBinCount)
-    visualizerAudioContextRef.current = audioContext
-    visualizerSourceRef.current = source
-    visualizerAnalyserRef.current = analyser
-    visualizerDataRef.current = dataArray
-
-    const draw = () => {
-      const ctx = canvas.getContext('2d')
-      const analyserNode = visualizerAnalyserRef.current
-      const buffer = visualizerDataRef.current
-      if (!ctx || !analyserNode || !buffer) return
-
-      analyserNode.getByteFrequencyData(buffer)
-      const { width, height } = canvas
-      ctx.clearRect(0, 0, width, height)
-
-      const gradient = ctx.createLinearGradient(0, 0, width, 0)
-      gradient.addColorStop(0, 'rgba(255, 110, 180, 0.95)')
-      gradient.addColorStop(0.5, 'rgba(255, 209, 102, 0.95)')
-      gradient.addColorStop(1, 'rgba(0, 229, 255, 0.95)')
-
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.05)'
-      ctx.fillRect(0, 0, width, height)
-
-      const barCount = 32
-      const gap = width * 0.008
-      const barWidth = (width - gap * (barCount - 1)) / barCount
-      for (let i = 0; i < barCount; i++) {
-        const value = buffer[Math.min(buffer.length - 1, Math.floor((i / barCount) * buffer.length))]
-        const normalized = value / 255
-        const barHeight = Math.max(height * 0.12, normalized * height * 0.92)
-        const x = i * (barWidth + gap)
-        const y = (height - barHeight) / 2
-        ctx.fillStyle = gradient
-        ctx.beginPath()
-        ctx.roundRect(x, y, barWidth, barHeight, barWidth / 2)
-        ctx.fill()
+      const AC = window.AudioContext || window.webkitAudioContext
+      const audioContext = new AC()
+      if (audioContext.state === 'suspended') {
+        await audioContext.resume()
       }
 
-      visualizerFrameRef.current = window.requestAnimationFrame(draw)
-    }
+      const source = audioContext.createMediaStreamSource(stream)
+      const analyser = audioContext.createAnalyser()
+      analyser.fftSize = 256
+      analyser.smoothingTimeConstant = 0.82
+      source.connect(analyser)
 
-    draw()
-  }, [stopVisualizer])
+      const dataArray = new Uint8Array(analyser.frequencyBinCount)
+      visualizerAudioContextRef.current = audioContext
+      visualizerSourceRef.current = source
+      visualizerAnalyserRef.current = analyser
+      visualizerDataRef.current = dataArray
+
+      const draw = () => {
+        const ctx = canvas.getContext('2d')
+        const analyserNode = visualizerAnalyserRef.current
+        const buffer = visualizerDataRef.current
+        if (!ctx || !analyserNode || !buffer) return
+
+        analyserNode.getByteFrequencyData(buffer)
+        const { width, height } = canvas
+        ctx.clearRect(0, 0, width, height)
+
+        const gradient = ctx.createLinearGradient(0, 0, width, 0)
+        gradient.addColorStop(0, 'rgba(255, 110, 180, 0.95)')
+        gradient.addColorStop(0.5, 'rgba(255, 209, 102, 0.95)')
+        gradient.addColorStop(1, 'rgba(0, 229, 255, 0.95)')
+
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.05)'
+        ctx.fillRect(0, 0, width, height)
+
+        const barCount = 32
+        const gap = width * 0.008
+        const barWidth = (width - gap * (barCount - 1)) / barCount
+        for (let i = 0; i < barCount; i++) {
+          const value = buffer[Math.min(buffer.length - 1, Math.floor((i / barCount) * buffer.length))]
+          const normalized = value / 255
+          const barHeight = Math.max(height * 0.12, normalized * height * 0.92)
+          const x = i * (barWidth + gap)
+          const y = (height - barHeight) / 2
+          ctx.fillStyle = gradient
+          ctx.beginPath()
+          ctx.roundRect(x, y, barWidth, barHeight, barWidth / 2)
+          ctx.fill()
+        }
+
+        visualizerFrameRef.current = window.requestAnimationFrame(draw)
+      }
+
+      draw()
+    },
+    [stopVisualizer]
+  )
 
   const startRecording = useCallback(async () => {
     if (isDisabled || sttBusy) return
@@ -292,24 +295,20 @@ export default function ChatPanel({ messages, onSend, aiState }) {
           </svg>
         )}
       </motion.button>
-      <div 
+      <div
         className={`chat-visualizer-shell ${recording ? 'is-live' : ''}`}
         style={{
           position: 'fixed',
-          top: 'calc(82% + 56px)', 
+          top: 'calc(82% + 56px)',
           left: '50%',
           transform: 'translateX(-50%)',
           width: '280px',
           opacity: recording ? 1 : 0,
           pointerEvents: 'none',
-          zIndex: 14
+          zIndex: 14,
         }}
       >
-        <canvas
-          ref={visualizerCanvasRef}
-          className="chat-visualizer-canvas"
-          aria-hidden="true"
-        />
+        <canvas ref={visualizerCanvasRef} className="chat-visualizer-canvas" aria-hidden="true" />
       </div>
     <motion.div
       className="chat-panel"

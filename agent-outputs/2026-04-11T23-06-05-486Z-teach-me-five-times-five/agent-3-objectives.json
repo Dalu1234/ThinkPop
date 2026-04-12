@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Solve multiplication problems involving the number five.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "2",
+      "statement": "Describe the concept of multiplication using arrays.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

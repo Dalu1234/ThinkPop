@@ -1,0 +1,39 @@
+{
+  "title": "Counting and Recognizing Numbers",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "1",
+      "kind": "hook",
+      "durationSeconds": 6,
+      "narration": "Let's explore the exciting world of numbers from one to ten together!",
+      "visualCue": "Colorful number cards",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "2",
+      "kind": "model",
+      "durationSeconds": 6,
+      "narration": "Here are the numbers one through ten; can you say them with me?",
+      "visualCue": "Number line display",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "3",
+      "kind": "practice",
+      "durationSeconds": 6,
+      "narration": "Now, let’s count items together; how many do you see?",
+      "visualCue": "Counting objects",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "4",
+      "kind": "wrap",
+      "durationSeconds": 5,
+      "narration": "Wonderful job! You've learned to count and recognize numbers!",
+      "visualCue": "Happy children",
+      "sceneHint": "number_line_jump"
+    }
+  ],
+  "teacherNotes": "Encourage participation and celebrate each student's efforts during activities."
+}

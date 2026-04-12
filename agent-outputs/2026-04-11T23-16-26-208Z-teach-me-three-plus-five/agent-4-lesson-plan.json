@@ -1,0 +1,39 @@
+{
+  "title": "Adding 3 and 5 Together",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "durationSeconds": 6,
+      "narration": "Let's discover how to add the numbers 3 and 5 together today!",
+      "visualCue": "cheerful character",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "durationSeconds": 7,
+      "narration": "Imagine 3 apples and then add 5 more apples; how many do we have now?",
+      "visualCue": "apples illustration",
+      "sceneHint": "counting_objects"
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "durationSeconds": 6,
+      "narration": "Now, let's practice adding: can you show 3 plus 5 using your fingers?",
+      "visualCue": "fingers counting",
+      "sceneHint": "hands_on_activity"
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "durationSeconds": 5,
+      "narration": "Great job! You added 3 and 5 to find the total of 8!",
+      "visualCue": "celebration",
+      "sceneHint": "number_line_jump"
+    }
+  ],
+  "teacherNotes": "Encourage students to use visual aids, like fingers or drawings, to support their addition."
+}
