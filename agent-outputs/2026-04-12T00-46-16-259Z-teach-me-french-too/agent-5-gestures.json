@@ -1,0 +1,28 @@
+{
+  "gestures": [
+    {
+      "segmentId": "hook",
+      "hand": "both",
+      "motion": "wave",
+      "mdmPrompt": "a person steps forward, waves both arms enthusiastically, and invites students to explore addition together"
+    },
+    {
+      "segmentId": "model",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "a tutor leans slightly forward, points to a number line, and explains how to add numbers visually"
+    },
+    {
+      "segmentId": "practice",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "a teacher moves hands rhythmically, counting together while engaging students in addition problems"
+    },
+    {
+      "segmentId": "wrap",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "a person stands tall, extends arms outward confidently, and summarizes the key idea of combining numbers"
+    }
+  ]
+}

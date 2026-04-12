@@ -8,7 +8,9 @@
     "dev:api": "node server/index.mjs",
     "dev:split": "concurrently -k \"vite\" \"node server/index.mjs\"",
     "dev:motion": "cd motion-server && python -m uvicorn app:app --host 127.0.0.1 --port 8000 --reload",
+    "dev:motion:brainpop": "cross-env MDM_SERVICE_URL=http://127.0.0.1:8001 MOTION_DEV_STUB=0 npm run dev:motion",
     "dev:full": "concurrently -k \"npm run dev\" \"npm run dev:motion\"",
+    "dev:full:brainpop": "concurrently -k \"npm run dev\" \"npm run dev:motion:brainpop\"",
     "build": "vite build",
     "preview": "vite preview"
   },
@@ -26,6 +28,7 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.1",
     "concurrently": "^9.1.0",
+    "cross-env": "^7.0.3",
     "vite": "^5.3.4"
   }
 }

@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "K2_COUNT_01",
+      "statement": "Count aloud from one to five.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "K2_COUNT_02",
+      "statement": "Recognize and identify the numbers 1, 2, 3, 4, and 5.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

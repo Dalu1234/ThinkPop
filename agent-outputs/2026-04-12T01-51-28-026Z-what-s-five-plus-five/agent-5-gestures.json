@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor bends forward slightly, looks at the apples, and gestures wide with both arms to invite curiosity."
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person claps their hands together, smiles, and steps forward enthusiastically while encouraging the class to participate."
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor stands tall and gestures overhead with one arm while introducing the number line from zero to ten."
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person moves their right hand outward as if tracing the number line and walks right while counting five more steps."
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor turns to face the students, points animatedly at the invisible number line, and invites them to answer excitedly."
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person leans in slightly, gestures with both hands to the side, and encourages everyone to count up from five together."
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor jumps lightly on the balls of their feet, raises both arms high, and beams with excitement after celebrating the students' success."
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person steps back with a smile, motions with both hands invitingly, and encourages the students to keep practicing addition."
+    }
+  ]
+}

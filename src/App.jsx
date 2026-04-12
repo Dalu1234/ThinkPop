@@ -7,22 +7,22 @@ import HistorySidebar from './components/HistorySidebar'
 import AIStatus from './components/AIStatus'
 import PipelineProgress from './components/PipelineProgress'
 import Skyline from './components/Skyline'
-import { textToSpeechBlob, playAudioBlob } from './lib/elevenlabs'
+import { textToSpeechBlob, playAudioBlob, getBlobDurationMs } from './lib/elevenlabs'
 import {
   streamLessonPipeline,
   formatLessonPlanMessage,
+  flattenSentences,
   emojiForTopic,
 } from './lib/lessonApi'
-import { requestMotion, MOTION_PROMPTS, generateProceduralMotion } from './lib/motionApi'
+import {
+  requestMotion,
+  DEFAULT_TEACHING_MOTION_PROMPT,
+  SAMPLE_MDM_TEST_PROMPTS,
+  restHoldFrames,
+} from './lib/motionApi'
+import { saveSession, createSession } from './lib/sessions'
 
-const MDM_TEST_ACTIONS = [
-  { label: 'Wave',      prompt: MOTION_PROMPTS.wave },
-  { label: 'Point',     prompt: MOTION_PROMPTS.point },
-  { label: 'Open',      prompt: MOTION_PROMPTS.open },
-  { label: 'Emphasize', prompt: MOTION_PROMPTS.emphasize },
-  { label: 'Jump',      prompt: 'a person bends their knees and jumps up into the air and lands back down' },
-  { label: 'Rest',      prompt: MOTION_PROMPTS.rest },
-]
+const MDM_TEST_ACTIONS = SAMPLE_MDM_TEST_PROMPTS
 
 function MDMTestPanel({ onFrames, disabled }) {
   const [busy, setBusy] = useState(null)   // label of running action
@@ -35,6 +35,10 @@ function MDMTestPanel({ onFrames, disabled }) {
       const data = await requestMotion(prompt, 80)
       setLastMode(data.mode)
       onFrames(data.frames)
+    } catch (e) {
+      console.error('[MDM test]', e)
+      setLastMode('error')
+      onFrames(restHoldFrames(80).frames)
     } finally {
       setBusy(null)
     }
@@ -57,16 +61,20 @@ function MDMTestPanel({ onFrames, disabled }) {
       </div>
       {lastMode && (
         <p className="mdm-test-mode">
-          {lastMode.startsWith('procedural') ? 'local fallback' : 'MDM server'}
+          {lastMode.includes('stub') || lastMode.includes('client-dev')
+            ? 'dev stub (not MDM)'
+            : lastMode === 'rest-hold'
+              ? 'rest hold'
+              : 'motion gateway / MDM'}
         </p>
       )}
     </div>
   )
 }
 
-/** Stable key for segment motion map (ids from LLM are strings; avoid ref misses). */
-function segmentMotionKey(seg, index) {
-  return String(seg?.id != null ? seg.id : `segment-${index}`)
+/** Stable key for sentence motion map (ids from LLM are strings; avoid ref misses). */
+function sentenceMotionKey(sent, index) {
+  return String(sent?.id != null ? sent.id : `sent-${index}`)
 }
 
 const INITIAL_TOPIC = { label: 'Elementary math', emoji: '🔢' }
@@ -76,6 +84,8 @@ function delay(ms) {
 }
 
 const REST_GESTURE = { motion: 'rest', hand: 'both' }
+/** 2D background character while the 3D tutor is driven by MDM — not tied to motion labels. */
+const SPEAKING_GESTURE = { motion: 'expressive', hand: 'both' }
 
 function BaymaxExperience() {
   const [aiState, setAiState] = useState(null)
@@ -83,11 +93,10 @@ function BaymaxExperience() {
   const aiAudioLevelsRef = useRef([])
   const [aiAudioActive, setAiAudioActive] = useState(false)
   const [topicDisplay, setTopicDisplay] = useState(INITIAL_TOPIC)
+  useEffect(() => { topicDisplayRef.current = topicDisplay }, [topicDisplay])
   const [playGesture, setPlayGesture] = useState(REST_GESTURE)
   // Looping wave on load — verifies retarget + FBX without running the lesson pipeline
-  const [currentMotionFrames, setCurrentMotionFrames] = useState(() =>
-    generateProceduralMotion(MOTION_PROMPTS.wave, 96).frames
-  )
+  const [currentMotionFrames, setCurrentMotionFrames] = useState(() => restHoldFrames(96).frames)
   const [messages, setMessages] = useState([
     {
       id: 1,
@@ -96,8 +105,38 @@ function BaymaxExperience() {
     },
   ])
   const pipelineResultRef  = useRef(null)
-  // Stores pre-generated MDM frames per segment: { [segmentId]: frames[] }
-  const segmentMotionsRef  = useRef({})
+  const topicDisplayRef    = useRef(INITIAL_TOPIC)
+  // Stores pre-generated MDM frames per sentence: { [sentenceId]: frames[] }
+  const sentenceMotionsRef = useRef({})
+  /** Actual TTS clip length — gesture steps are spaced to finish with the audio. */
+  const lessonAudioDurationMsRef = useRef(0)
+
+  const [neonXVisible, setNeonXVisible] = useState(false)
+  const [neonTickVisible, setNeonTickVisible] = useState(false)
+  /** Set from AI later; Alt+M toggles a demo string in dev. */
+  const [mathExpression3d, setMathExpression3d] = useState(null)
+  useEffect(() => {
+    const toggler = (e) => {
+      const el = e.target
+      if (el instanceof HTMLElement && el.closest('input, textarea, [contenteditable="true"]')) return
+      if (e.code === 'F9' || (e.altKey && e.code === 'KeyX')) {
+        e.preventDefault()
+        setNeonXVisible((v) => !v)
+        return
+      }
+      if (e.code === 'F10' || (e.altKey && e.code === 'KeyT')) {
+        e.preventDefault()
+        setNeonTickVisible((v) => !v)
+        return
+      }
+      if (e.altKey && e.code === 'KeyM') {
+        e.preventDefault()
+        setMathExpression3d((prev) => (prev ? null : '9 - 10 = -1'))
+      }
+    }
+    window.addEventListener('keydown', toggler)
+    return () => window.removeEventListener('keydown', toggler)
+  }, [])
 
   const speakAiText = useCallback(async (text) => {
     const spokenText = String(text || '').trim()
@@ -119,16 +158,36 @@ function BaymaxExperience() {
     })
   }, [])
 
-  const deliverAiMessage = useCallback(async (text) => {
+  const deliverAiMessage = useCallback(async (text, opts = {}) => {
     const spokenText = String(text || '').trim()
     if (!spokenText) return
+    const { preloadedBlob } = opts
 
     const aiMsg = { id: Date.now() + 1, from: 'ai', text: spokenText }
     setMessages(prev => [...prev, aiMsg])
     setAiError('')
 
+    const playOpts = {
+      onStart: () => {
+        aiAudioLevelsRef.current = []
+        setAiAudioActive(true)
+      },
+      onLevels: (levels) => {
+        if (Array.isArray(levels)) aiAudioLevelsRef.current = levels
+        else aiAudioLevelsRef.current = []
+      },
+      onEnd: () => {
+        aiAudioLevelsRef.current = []
+        setAiAudioActive(false)
+      },
+    }
+
     try {
-      await speakAiText(spokenText)
+      if (preloadedBlob) {
+        await playAudioBlob(preloadedBlob, playOpts)
+      } else {
+        await speakAiText(spokenText)
+      }
     } catch (error) {
       console.error('ElevenLabs text-to-speech failed:', error)
       const detail = error instanceof Error ? error.message : String(error)
@@ -142,27 +201,28 @@ function BaymaxExperience() {
     }
   }, [speakAiText])
 
-  // Pre-generate MDM motion clips for every lesson segment.
-  // Runs sequentially (one GPU at a time) in the background — doesn't block TTS.
-  const generateSegmentMotions = useCallback(async (result) => {
-    const segments = result?.lessonPlan?.segments || []
+  // Pre-generate MDM motion clips for every sentence in the lesson.
+  const generateSentenceMotions = useCallback(async (result) => {
+    const sentences = flattenSentences(result?.lessonPlan)
     const gestures = result?.gesturePlan?.gestures || []
-    segmentMotionsRef.current = {}
+    sentenceMotionsRef.current = {}
 
-    for (let i = 0; i < segments.length; i++) {
-      const seg = segments[i]
-      const key = segmentMotionKey(seg, i)
+    for (let i = 0; i < sentences.length; i++) {
+      const sent = sentences[i]
+      const key = sentenceMotionKey(sent, i)
       const g =
-        gestures.find(x => String(x.segmentId) === String(seg.id)) || gestures[i]
-      const prompt = g?.mdmPrompt || MOTION_PROMPTS[g?.motion] || MOTION_PROMPTS.rest
+        gestures.find(x => String(x.sentenceId) === String(sent.id)) || gestures[i]
+      const raw = typeof g?.mdmPrompt === 'string' ? g.mdmPrompt.trim() : ''
+      const prompt = raw.length >= 12 ? raw : DEFAULT_TEACHING_MOTION_PROMPT
       try {
-        console.log(`[motion] Generating segment ${i + 1}/${segments.length} [${key}]: "${prompt}"`)
+        console.log(`[motion] MDM sentence ${i + 1}/${sentences.length} [${key}]: "${prompt}"`)
         const data = await requestMotion(prompt, 80)
-        segmentMotionsRef.current[key] = data.frames
-        console.log(`[motion] Segment ${i + 1} ready (${data.frames.length} frames, ${data.mode})`)
+        sentenceMotionsRef.current[key] = data.frames
+        console.log(`[motion] Sentence ${i + 1} ready (${data.frames.length} frames, ${data.mode})`)
       } catch (e) {
-        console.warn(`[motion] Segment ${i + 1} failed:`, e.message)
-        segmentMotionsRef.current[key] = generateProceduralMotion(prompt, 80).frames
+        const msg = e instanceof Error ? e.message : String(e)
+        console.warn(`[motion] Sentence ${i + 1} MDM failed, holding rest:`, msg)
+        sentenceMotionsRef.current[key] = restHoldFrames(80).frames
       }
     }
   }, [])
@@ -174,8 +234,9 @@ function BaymaxExperience() {
     }
 
     const result = pipelineResultRef.current
-    const segments = result?.lessonPlan?.segments
-    if (!segments?.length) return
+    const sentences = flattenSentences(result?.lessonPlan)
+    const gestures = result?.gesturePlan?.gestures || []
+    if (!sentences.length) return
 
     let idx = 0
     let timerId
@@ -183,33 +244,35 @@ function BaymaxExperience() {
 
     const step = () => {
       if (cancelled.v) return
-      if (idx >= segments.length) {
+      if (idx >= sentences.length) {
         setPlayGesture(REST_GESTURE)
         setCurrentMotionFrames([])
         return
       }
-      const seg = segments[idx]
-      const g =
-        result.gesturePlan?.gestures?.find(x => String(x.segmentId) === String(seg.id)) ||
-        result.gesturePlan?.gestures?.[idx]
+      const sent = sentences[idx]
+      setPlayGesture(SPEAKING_GESTURE)
 
-      setPlayGesture({
-        motion: g?.motion || 'emphasize',
-        hand: g?.hand || 'right',
-      })
-
-      const key = segmentMotionKey(seg, idx)
-      let frames = segmentMotionsRef.current[key]
+      const key = sentenceMotionKey(sent, idx)
+      let frames = sentenceMotionsRef.current[key]
       if (!frames?.length) {
-        frames = segmentMotionsRef.current[String(seg.id)]
+        frames = sentenceMotionsRef.current[String(sent.id)]
       }
       if (!frames?.length) {
-        const prompt = g?.mdmPrompt || MOTION_PROMPTS[g?.motion] || MOTION_PROMPTS.rest
-        frames = generateProceduralMotion(prompt, 80).frames
+        frames = restHoldFrames(80).frames
       }
       setCurrentMotionFrames(frames)
 
-      const ms = Math.min(60000, Math.max(600, (seg.durationSeconds || 5) * 1000))
+      const audioMs = lessonAudioDurationMsRef.current
+      const n = sentences.length
+      let ms
+      if (audioMs >= 800 && n > 0) {
+        const weights = sentences.map(s => Math.max(1, String(s.text || '').trim().length))
+        const tw = weights.reduce((a, b) => a + b, 0)
+        const w = Math.max(1, weights[idx])
+        ms = Math.max(450, Math.round((w / tw) * audioMs))
+      } else {
+        ms = Math.min(60000, Math.max(600, (sent.durationSeconds || 4) * 1000))
+      }
       idx += 1
       timerId = setTimeout(step, ms)
     }
@@ -218,6 +281,7 @@ function BaymaxExperience() {
     return () => {
       cancelled.v = true
       clearTimeout(timerId)
+      lessonAudioDurationMsRef.current = 0
     }
   }, [aiState])
 
@@ -290,17 +354,69 @@ function BaymaxExperience() {
       setAiState('building')
       pipelineResultRef.current = result
 
-      // Must finish before "speaking" — otherwise the speaking effect reads empty segmentMotionsRef.
-      await generateSegmentMotions(result)
+      // Must finish before "speaking" — otherwise the speaking effect reads empty sentenceMotionsRef.
+      await generateSentenceMotions(result)
+
+      const body = formatLessonPlanMessage(result)
+      let audioBlob
+      try {
+        audioBlob = await textToSpeechBlob(body)
+        lessonAudioDurationMsRef.current = await getBlobDurationMs(audioBlob)
+      } catch (e) {
+        console.error('Lesson TTS prefetch failed:', e)
+        lessonAudioDurationMsRef.current = 0
+        setAiState(null)
+        const detail = e instanceof Error ? e.message : String(e)
+        setAiError(detail || 'Text-to-speech failed.')
+        setMessages(prev => [
+          ...prev,
+          { id: Date.now() + 1, from: 'ai', text: `Could not read the lesson aloud: ${detail}` },
+        ])
+        await delay(3200)
+        setAiError('')
+        return
+      }
 
       setAiState('speaking')
-      const body = formatLessonPlanMessage(result)
-      await deliverAiMessage(body)
-      setCurrentMotionFrames(generateProceduralMotion(MOTION_PROMPTS.wave, 96).frames)
+      await deliverAiMessage(body, { preloadedBlob: audioBlob })
+      setCurrentMotionFrames(restHoldFrames(96).frames)
       setAiState(null)
+
+      // ── Persist this session so the sidebar can restore it ───────────────
+      setMessages(prev => {
+        const session = createSession({
+          topic: topicDisplayRef.current,
+          messages: prev,
+          lessonResult: result,
+        })
+        saveSession(session)
+        window.dispatchEvent(new Event('thinkpop:session-saved'))
+        return prev
+      })
     },
-    [aiState, deliverAiMessage, generateSegmentMotions]
+    [aiState, deliverAiMessage, generateSentenceMotions]
   )
+
+  // ── Restore a saved session from the sidebar ─────────────────────────────
+  const loadSession = useCallback((session) => {
+    if (aiState !== null) return   // don't interrupt an active lesson
+    setMessages(session.messages || [])
+    if (session.topic) setTopicDisplay(session.topic)
+    // Regenerate motions from stored gesture plan in the background
+    const result = session.lessonResult
+    if (result) {
+      pipelineResultRef.current = result
+      setCurrentMotionFrames(restHoldFrames(96).frames)
+      generateSentenceMotions(result).then(() => {
+        const sents = flattenSentences(result.lessonPlan)
+        if (sents.length > 0) {
+          const key = String(sents[0]?.id ?? 'sent-0')
+          const frames = sentenceMotionsRef.current[key]
+          if (frames?.length) setCurrentMotionFrames(frames)
+        }
+      })
+    }
+  }, [aiState, generateSentenceMotions])
 
   return (
     <div className="app-root">
@@ -309,13 +425,16 @@ function BaymaxExperience() {
         motionFrames={currentMotionFrames}
         audioLevelsRef={aiAudioLevelsRef}
         audioActive={aiAudioActive || aiState === 'speaking'}
+        showNeonX={neonXVisible}
+        showNeonTick={neonTickVisible}
+        mathExpression={mathExpression3d}
       />
 
       <div className="edge-bloom edge-bloom-left" />
       <div className="edge-bloom edge-bloom-right" />
 
       <Skyline />
-      <HistorySidebar />
+      <HistorySidebar onLoadSession={loadSession} />
 
       <AIStatus state={aiError ? 'error' : aiState} message={aiError} />
       <PipelineProgress state={aiError ? null : aiState} />

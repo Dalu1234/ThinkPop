@@ -1,0 +1,79 @@
+{
+  "title": "Understanding Feet in Measurement",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "Show a ruler",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we will learn what a foot means in measurement!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Have you seen a ruler or measuring tape before?",
+          "durationSeconds": 3
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "Demonstrate measuring",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "One foot is about the length of a big shoe!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4",
+          "text": "When we measure with feet, we count how many feet long an object is.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "Involve students in measuring",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, let’s measure something together using feet!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s6",
+          "text": "Find an object and count how many feet long it is.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "Summarize the lesson",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job today learning about feet in measurement!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "Remember, a foot helps us measure lengths accurately!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to share their measuring experiences using feet."
+}

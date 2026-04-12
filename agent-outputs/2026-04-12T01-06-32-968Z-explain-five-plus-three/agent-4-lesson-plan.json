@@ -1,0 +1,79 @@
+{
+  "title": "Understanding Addition with 5 and 3",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook",
+      "kind": "hook",
+      "visualCue": "Show fingers counting",
+      "sceneHint": "fingers_showing",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Let’s learn how to add 5 and 3 together.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Can you show me 5 fingers on one hand?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "kind": "model",
+      "visualCue": "Draw on number line",
+      "sceneHint": "number_line_addition",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Here’s a number line starting at zero.",
+          "durationSeconds": 3
+        },
+        {
+          "id": "s4",
+          "text": "We can jump to 5, and then add 3 more.",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "kind": "practice",
+      "visualCue": "Count objects with children",
+      "sceneHint": "counting_objects",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Let’s use 5 blocks and add 3 more blocks.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s6",
+          "text": "Can you count all the blocks with me?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "kind": "wrap",
+      "visualCue": "Review number line addition",
+      "sceneHint": "number_line_summary",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job! 5 plus 3 equals 8.",
+          "durationSeconds": 3
+        },
+        {
+          "id": "s8",
+          "text": "Remember how the number line helped us add.",
+          "durationSeconds": 3
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to use their fingers and blocks for better understanding."
+}

@@ -14,6 +14,40 @@ function sttModelId() {
   return import.meta.env.VITE_ELEVENLABS_STT_MODEL || 'scribe_v2'
 }
 
+/** Decode MP3 blob duration in milliseconds (0 if unknown). */
+export function getBlobDurationMs(blob) {
+  return new Promise((resolve) => {
+    const url = URL.createObjectURL(blob)
+    const audio = new Audio()
+    const cleanup = () => {
+      try {
+        URL.revokeObjectURL(url)
+      } catch {
+        /* ignore */
+      }
+    }
+    audio.addEventListener(
+      'loadedmetadata',
+      () => {
+        const d = audio.duration
+        cleanup()
+        resolve(Number.isFinite(d) && d > 0 ? Math.round(d * 1000) : 0)
+      },
+      { once: true }
+    )
+    audio.addEventListener(
+      'error',
+      () => {
+        cleanup()
+        resolve(0)
+      },
+      { once: true }
+    )
+    audio.src = url
+    audio.load()
+  })
+}
+
 export async function textToSpeechBlob(text) {
   const id = voiceId()
   const res = await fetch(`${API_PREFIX}/v1/text-to-speech/${id}`, {

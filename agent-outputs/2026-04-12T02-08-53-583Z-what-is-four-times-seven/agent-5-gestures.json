@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor leans forward slightly and gestures with both hands as if inviting the class to consider the question"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person raises both arms with excitement and smiles broadly while encouraging everyone to join in the discovery"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor steps to the side and uses hands to create a visual barrier, illustrating four distinct groups with clear movements"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person tilts their head slightly and raises a hand to their chin in thought while asking about the sums of the groups"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor enthusiastically extends their arms forward, encouraging students to participate as they ask for the answer"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person gestures invitingly with both palms up while explaining how to use arrays or addition for the multiplication"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor claps their hands together and smiles widely as they announce that four times seven equals twenty-eight"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person nods appreciatively while spreading their hands outward to emphasize the concept of groups being added together"
+    }
+  ]
+}

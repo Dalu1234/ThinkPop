@@ -1,0 +1,79 @@
+{
+  "title": "Learning Addition with Number Lines",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "Show two groups of apples",
+      "sceneHint": "fruit_counts",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these apples! How many do we have together?",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2",
+          "text": "Let’s find out by adding them up!",
+          "durationSeconds": 3
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "Draw a number line",
+      "sceneHint": "number_line_draw",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Here is a number line from zero to ten.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4",
+          "text": "Let’s start at 5 and then move right 5 more steps.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "Interactive counting game",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, you try! What is 5 plus 5?",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s6",
+          "text": "Use the number line to count up from 5.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "Cheer for students",
+      "sceneHint": "celebrate_success",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job! We learned how to add using a number line.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "Keep practicing addition with more numbers!",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to use visual aids for better understanding."
+}

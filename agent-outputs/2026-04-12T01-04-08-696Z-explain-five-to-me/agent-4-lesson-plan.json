@@ -1,0 +1,79 @@
+{
+  "title": "Understanding the Number Five",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook",
+      "kind": "hook",
+      "visualCue": "counting fingers",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we will learn all about the number five!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Can you show me five fingers on your hand?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "kind": "model",
+      "visualCue": "displaying number 5",
+      "sceneHint": "number_identification",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "This is the number 5, look how it looks!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4",
+          "text": "The number five comes after four and before six.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "kind": "practice",
+      "visualCue": "finding number 5",
+      "sceneHint": "object_identification",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Can you find five objects around you right now?",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "Great job counting to five with those objects!",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "kind": "wrap",
+      "visualCue": "celebrating number five",
+      "sceneHint": "group_high_five",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "You've learned about the number five today!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "Let's give five high fives to celebrate!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to share their examples of the number five."
+}

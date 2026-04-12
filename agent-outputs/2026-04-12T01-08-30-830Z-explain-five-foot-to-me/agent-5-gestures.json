@@ -1,0 +1,52 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "hand": "both",
+      "motion": "walk",
+      "mdmPrompt": "the tutor steps forward, smiling broadly, while raising both hands to create excitement about learning measurement"
+    },
+    {
+      "sentenceId": "s2",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "the tutor tilts slightly to the right, extending the right arm to point at imaginary rulers in the air, engaging the students"
+    },
+    {
+      "sentenceId": "s3",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "the tutor stands tall, spreads both arms wide while explaining the size of a foot as it relates to big shoes"
+    },
+    {
+      "sentenceId": "s4",
+      "hand": "left",
+      "motion": "count",
+      "mdmPrompt": "the tutor shifts weight to one side, raises the left hand with fingers extended to count feet aloud while maintaining eye contact"
+    },
+    {
+      "sentenceId": "s5",
+      "hand": "both",
+      "motion": "walk",
+      "mdmPrompt": "the tutor takes a step forward with eagerness, gestures with both hands to encourage participation in measuring together"
+    },
+    {
+      "sentenceId": "s6",
+      "hand": "right",
+      "motion": "count",
+      "mdmPrompt": "the tutor leans slightly forward, extending the right hand to gesture counting feet while prompting students to find an object"
+    },
+    {
+      "sentenceId": "s7",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "the tutor stands confidently, raises both arms slightly while nodding to commend students on learning about feet in measurement"
+    },
+    {
+      "sentenceId": "s8",
+      "hand": "left",
+      "motion": "emphasize",
+      "mdmPrompt": "the tutor leans forward slightly, lowering the right hand, while raising the left hand to highlight the importance of feet in measuring lengths"
+    }
+  ]
+}

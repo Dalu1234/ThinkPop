@@ -108,14 +108,15 @@ function gestureTargets(g, t) {
   } else if (motion === 'count') {
     if (right) o.rhy = Math.sin(t * 8) * 0.09
     if (left) o.lhy = Math.sin(t * 8 + 0.5) * 0.09
-  } else if (motion === 'open') {
+  } else if (motion === 'walk') {
+    const stride = Math.sin(t * 4)
     if (right) {
-      o.rx = -0.28
-      o.rz = -0.55
+      o.rx = stride * 0.15
+      o.rz = -0.12
     }
     if (left) {
-      o.lx = -0.28
-      o.lz = 0.55
+      o.lx = -stride * 0.15
+      o.lz = 0.12
     }
   } else if (motion === 'emphasize') {
     const p = Math.sin(t * 5) * 0.2
@@ -126,6 +127,17 @@ function gestureTargets(g, t) {
     if (left) {
       o.lz = 0.35 + p
       o.lx = -0.15
+    }
+  } else if (motion === 'expressive') {
+    // Background Baymax: generic teaching energy while the FBX character is driven by MDM prompts.
+    const p = Math.sin(t * 4.5) * 0.14
+    if (right) {
+      o.rz = -0.28 - p
+      o.rx = -0.12 + Math.sin(t * 3) * 0.06
+    }
+    if (left) {
+      o.lz = 0.28 + p
+      o.lx = -0.12 + Math.sin(t * 3 + 0.8) * 0.06
     }
   }
 
@@ -162,7 +174,7 @@ function BaymaxCharacter({ aiState, gesture }) {
 
   useEffect(() => {
     gestureTime.current = 0
-  }, [gesture?.motion, gesture?.hand])
+  }, [gesture?.motion])
 
   const isSpeaking   = aiState === 'speaking'
   const isGenerating = aiState === 'building'

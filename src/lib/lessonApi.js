@@ -1,4 +1,4 @@
-﻿const MATH_EMOJIS = ['🔢', '📐', '📊', '🍕', '🧮', '🎯', '✨']
+const MATH_EMOJIS = ['🔢', '📐', '📊', '🍕', '🧮', '🎯', '✨']
 
 export function emojiForTopic(text) {
   if (!text) return '🔢'
@@ -13,11 +13,32 @@ export function emojiForTopic(text) {
 export function formatLessonPlanMessage(result) {
   const { lessonPlan } = result
   const segs = lessonPlan?.segments || []
-  // Speak only the narration lines — one sentence each, back to back.
-  return segs
-    .map(s => (s.narration || '').trim())
-    .filter(Boolean)
-    .join(' ')
+  const lines = []
+  for (const seg of segs) {
+    if (seg.sentences?.length) {
+      for (const s of seg.sentences) lines.push((s.text || '').trim())
+    } else if (seg.narration) {
+      lines.push(seg.narration.trim())
+    }
+  }
+  return lines.filter(Boolean).join(' ')
+}
+
+/** Flatten all sentences from all segments into a single ordered array. */
+export function flattenSentences(lessonPlan) {
+  const out = []
+  for (const seg of (lessonPlan?.segments || [])) {
+    if (seg.sentences?.length) {
+      for (const s of seg.sentences) out.push(s)
+    } else if (seg.narration) {
+      out.push({
+        id: `${seg.id}-s0`,
+        text: seg.narration.trim(),
+        durationSeconds: seg.durationSeconds || 5,
+      })
+    }
+  }
+  return out
 }
 
 /**

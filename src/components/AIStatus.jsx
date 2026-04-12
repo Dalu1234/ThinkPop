@@ -38,7 +38,7 @@ const STATUS_CONFIG = {
     dot: '#ffd166',
   },
   gestures: {
-    label: 'Agent 5 — Planning hand motions...',
+    label: 'Agent 5 — Writing MDM motion prompts...',
     color: '#f472b6',
     glow: 'rgba(244, 114, 182, 0.55)',
     dot: '#f472b6',

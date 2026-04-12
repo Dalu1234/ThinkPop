@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "objective1",
+      "statement": "Identify and use mental math techniques in real-life situations.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "objective2",
+      "statement": "Estimate the result of addition and subtraction problems.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

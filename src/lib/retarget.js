@@ -62,10 +62,10 @@ export const DEFAULT_MIXAMO_MAP = {
 export function createRetargeter(character) {
   const mixamoMap    = { ...DEFAULT_MIXAMO_MAP }
   const boneMap      = {}
-  const restLocalQ   = {}   // local quat at rest per bone
-  const restWorldQ   = {}   // world quat at rest per bone
-  const restBoneDir  = {}   // world direction parent→bone at rest
-  let   restHipsLocalY = null  // local Y of hips bone at rest (for root translation)
+  const restLocalQ   = {}
+  const restWorldQ   = {}
+  const restBoneDir  = {}   // DIRECT mapped-parent → mapped-child world direction at rest
+  let   restHipsLocalY = null
 
   // Scratch (reused every frame — avoids GC pressure)
   const _wq  = new THREE.Quaternion()
@@ -73,9 +73,12 @@ export function createRetargeter(character) {
   const _va  = new THREE.Vector3()
   const _vb  = new THREE.Vector3()
   const _vc  = new THREE.Vector3()
+  const _vd  = new THREE.Vector3()
+  const _ve  = new THREE.Vector3()
   const _dq  = new THREE.Quaternion()
 
   let retargetOrder = null
+  let rigRestPose = null
 
   // ── Boot ────────────────────────────────────────────────────────────────────
   _collectBones()
@@ -83,19 +86,16 @@ export function createRetargeter(character) {
   _captureRestLocalQ()
   _captureRestWorldQ()
   _buildOrder()
+  rigRestPose = _computeRigRestPose()
 
   // ── Private ─────────────────────────────────────────────────────────────────
   function _collectBones() {
-    // Pass 1 — skeleton.bones are what the SkinnedMesh renderer actually reads.
-    // These MUST win; collect them first so pass 2 cannot overwrite them.
     character.traverse(child => {
       if (child.isSkinnedMesh) {
         child.frustumCulled = false
         child.skeleton?.bones.forEach(b => { boneMap[b.name] = b })
       }
     })
-    // Pass 2 — isBone nodes (may be clone nodes when fbx.clone(true) is used).
-    // Only add if not already present — skeleton.bones take priority.
     character.traverse(child => {
       if (child.isBone && !boneMap[child.name]) boneMap[child.name] = child
     })
@@ -117,27 +117,60 @@ export function createRetargeter(character) {
       const b = boneMap[mn]
       if (b) restLocalQ[mn] = b.quaternion.clone()
     }
-    // Capture hips rest local Y so we can translate root for jumps/crouches
     const hb = boneMap[mixamoMap['pelvis']]
     if (hb) restHipsLocalY = hb.position.y
   }
 
+  /**
+   * Capture rest-pose world quaternions and bone directions.
+   * Uses HML_PRIMARY_CHILD to compute DIRECT mapped-parent → mapped-child
+   * directions (skipping twist/helper bones), matching brainpop's approach.
+   */
   function _captureRestWorldQ() {
     character.updateMatrixWorld(true)
     const wp = new THREE.Vector3(), wc = new THREE.Vector3()
+
+    // First pass: capture world quaternions and set default direction
     for (const mn of Object.values(mixamoMap)) {
       const bone = boneMap[mn]
       if (!bone) continue
       restWorldQ[mn] = new THREE.Quaternion()
       bone.getWorldQuaternion(restWorldQ[mn])
-      if (bone.parent) {
-        bone.parent.getWorldPosition(wp)
-        bone.getWorldPosition(wc)
-        const dir = wc.clone().sub(wp)
-        restBoneDir[mn] = dir.length() > 1e-5 ? dir.normalize() : new THREE.Vector3(0, 1, 0)
-      } else {
-        restBoneDir[mn] = new THREE.Vector3(0, 1, 0)
-      }
+      restBoneDir[mn] = new THREE.Vector3(0, 1, 0)
+    }
+
+    // Second pass: overwrite with DIRECT mapped-parent → mapped-child directions.
+    // This skips intermediate twist/helper bones so directions match the
+    // full anatomical segments MDM uses.
+    for (const [pIdx, cIdx] of Object.entries(HML_PRIMARY_CHILD)) {
+      const pMn = mixamoMap[HML_JOINT_NAMES[pIdx]]
+      const cMn = mixamoMap[HML_JOINT_NAMES[cIdx]]
+      const pBone = pMn && boneMap[pMn]
+      const cBone = cMn && boneMap[cMn]
+      if (!pBone || !cBone) continue
+      pBone.getWorldPosition(wp)
+      cBone.getWorldPosition(wc)
+      const d = wc.clone().sub(wp)
+      if (d.length() > 1e-5) restBoneDir[cMn] = d.normalize()
+    }
+
+    // Head: neck → head (direct)
+    const neckBone = boneMap[mixamoMap.neck]
+    const headBone = boneMap[mixamoMap.head]
+    if (neckBone && headBone) {
+      neckBone.getWorldPosition(wp)
+      headBone.getWorldPosition(wc)
+      const d = wc.clone().sub(wp)
+      if (d.length() > 1e-5) restBoneDir[mixamoMap.head] = d.normalize()
+    }
+
+    // Log arm diagnostics
+    const armChainHml = ['left_collar','left_shoulder','left_elbow','left_wrist',
+                          'right_collar','right_shoulder','right_elbow','right_wrist']
+    for (const hml of armChainHml) {
+      const mn = mixamoMap[hml]
+      const rd = mn && restBoneDir[mn]
+      console.log(`[retarget-arm] ${hml} → "${mn}" restDir=${rd ? rd.toArray().map(v => v.toFixed(3)) : 'MISSING'}`)
     }
   }
 
@@ -164,26 +197,17 @@ export function createRetargeter(character) {
     return out
   }
 
+  /**
+   * Swing limits matching brainpop: spine/neck capped, limbs uncapped (Math.PI).
+   * This gives arms and legs full range of motion while preventing spine hyperextension.
+   */
   function _maxSwing(p) {
-    // Spine chain — moderate limits to avoid pretzel torso
-    if (p === 3 || p === 6 || p === 9) return THREE.MathUtils.degToRad(45)
-    // Neck
-    if (p === 12) return THREE.MathUtils.degToRad(40)
-    // Collars (shoulders) — prevent arms swinging through torso
-    if (p === 13 || p === 14) return THREE.MathUtils.degToRad(60)
-    // Upper arms
-    if (p === 16 || p === 17) return THREE.MathUtils.degToRad(80)
-    // Elbows — natural hinge, shouldn't hyperextend
-    if (p === 18 || p === 19) return THREE.MathUtils.degToRad(90)
-    // Wrists
-    if (p === 20 || p === 21) return THREE.MathUtils.degToRad(60)
-    // Hips
-    if (p === 1 || p === 2) return THREE.MathUtils.degToRad(70)
-    // Knees
-    if (p === 4 || p === 5) return THREE.MathUtils.degToRad(90)
-    // Ankles/feet
-    if (p >= 7 && p <= 11) return THREE.MathUtils.degToRad(45)
-    return THREE.MathUtils.degToRad(90)
+    if (p === 3) return THREE.MathUtils.degToRad(35)   // spine1 (waist)
+    if (p === 6) return THREE.MathUtils.degToRad(45)   // spine2
+    if (p === 9) return THREE.MathUtils.degToRad(55)   // spine3
+    if (p === 12) return THREE.MathUtils.degToRad(15)  // neck
+    if (p === 13 || p === 14) return THREE.MathUtils.degToRad(40) // collars
+    return Math.PI                                      // all limbs: uncapped
   }
 
   function _clampDir(rest, desired, maxRad) {
@@ -197,8 +221,34 @@ export function createRetargeter(character) {
       .normalize()
   }
 
+  /** Prevent upper arms from clipping through body (min abduction from spine axis). */
+  function _enforceMinAbduction(p, desired, pts) {
+    if (p !== 16 && p !== 17) return
+    _vd.subVectors(pts[0], pts[3])
+    if (_vd.lengthSq() < 1e-8) return
+    _vd.normalize()
+    const cosAngle = desired.dot(_vd)
+    const cosLimit = Math.cos(THREE.MathUtils.degToRad(12))
+    if (cosAngle > cosLimit) {
+      _ve.copy(desired).addScaledVector(_vd, -cosAngle)
+      if (_ve.lengthSq() < 1e-8) {
+        const childMn = mixamoMap[HML_JOINT_NAMES[(p === 16) ? 18 : 19]]
+        const rest = restBoneDir[childMn]
+        if (rest) _ve.copy(rest); else return
+      }
+      _ve.normalize()
+      const sinLimit = Math.sin(THREE.MathUtils.degToRad(12))
+      desired.copy(_vd).multiplyScalar(cosLimit).addScaledVector(_ve, sinLimit).normalize()
+    }
+  }
+
+  /**
+   * Core bone rotation: compute delta quaternion from rest direction to desired
+   * direction, apply on top of rest world quaternion, convert to local space.
+   * _va must contain the rest direction before this call.
+   */
   function _applyBone(bone, restWQ, desiredDir) {
-    _dq.setFromUnitVectors(_va, desiredDir)   // _va = rest dir (set by caller)
+    _dq.setFromUnitVectors(_va, desiredDir)
     _wq.multiplyQuaternions(_dq, restWQ)
     if (bone.parent) {
       bone.parent.getWorldQuaternion(_wqi).invert()
@@ -230,7 +280,7 @@ export function createRetargeter(character) {
 
     resetPose()
 
-    // ── Pelvis: full 3-axis basis (recovers yaw) ─────────────────────────────
+    // ── Pelvis: simple direction-based (spine direction) ──────────────────
     const hipsMn  = mixamoMap['pelvis']
     const spineMn = mixamoMap['spine1']
     const hipsBone = boneMap[hipsMn]
@@ -244,24 +294,20 @@ export function createRetargeter(character) {
       }
     }
 
-    // ── Root Y translation — makes jumps and crouches visible ────────────────
-    // Scale the HumanML3D pelvis delta into the rig's own local units by using
-    // the rest hip height as the reference. This is unit-agnostic: it works
-    // whether the FBX skeleton is in cm, m, or any other scale.
-    // Guard: only apply if rest height is meaningful (non-zero rig).
+    // ── Root Y translation — makes jumps and crouches visible ─────────────
     if (hipsBone && restHipsLocalY !== null && Math.abs(restHipsLocalY) > 1e-3) {
       const HML_REST_Y = 0.94
       const rigUnitsPerMetre = restHipsLocalY / HML_REST_Y
       const dy = THREE.MathUtils.clamp(
         (pts[0].y - HML_REST_Y) * rigUnitsPerMetre,
-        -restHipsLocalY * 0.40,  // max crouch: 40 % of rest height
-        restHipsLocalY * 0.25    // max jump:   25 % of rest height
+        -restHipsLocalY * 0.40,
+        restHipsLocalY * 0.25
       )
       hipsBone.position.y = restHipsLocalY + dy
       hipsBone.updateMatrixWorld(true)
     }
 
-    // ── Rest of skeleton (depth-first so parents precede children) ───────────
+    // ── Rest of skeleton (depth-first so parents precede children) ────────
     const order = retargetOrder || [...Array(21)].map((_, i) => i + 1)
     for (const p of order) {
       const childJ = HML_PRIMARY_CHILD[p]
@@ -278,10 +324,71 @@ export function createRetargeter(character) {
       _vb.subVectors(pts[childJ], pts[p])
       if (_vb.length() < 1e-5 || _va.dot(_vb) < -0.9999) continue
       _vb.normalize()
+
+      _enforceMinAbduction(p, _vb, pts)
       _clampDir(_va, _vb, _maxSwing(p))
       _applyBone(bone, restWQ, _vb)
     }
   }
 
-  return { applyFrame, resetPose, boneMap, mixamoMap }
+  /**
+   * Read the FBX rest-pose world positions and convert them into HumanML3D-coordinate
+   * positions scaled to match standard HumanML3D proportions (pelvis ≈ 0.94m).
+   */
+  function _computeRigRestPose() {
+    character.updateMatrixWorld(true)
+    const wp = new THREE.Vector3()
+    const raw = []
+    for (let j = 0; j < 22; j++) {
+      const mn = mixamoMap[HML_JOINT_NAMES[j]]
+      const bone = boneMap[mn]
+      if (bone) {
+        bone.getWorldPosition(wp)
+        raw.push([wp.x, wp.y, wp.z])
+      } else {
+        raw.push(null)
+      }
+    }
+    if (!raw[0] || !raw[15]) return null
+
+    const pelvis = raw[0]
+    const head   = raw[15]
+    const rigH = Math.sqrt(
+      (head[0] - pelvis[0]) ** 2 +
+      (head[1] - pelvis[1]) ** 2 +
+      (head[2] - pelvis[2]) ** 2
+    )
+    const HML_PELVIS_Y = 0.94
+    const HML_HEAD_Y   = 1.72
+    const hmlH = HML_HEAD_Y - HML_PELVIS_Y
+    const s = rigH > 1e-6 ? hmlH / rigH : 1.0
+
+    const pose = []
+    for (let j = 0; j < 22; j++) {
+      const r = raw[j]
+      if (!r) { pose.push([0, HML_PELVIS_Y, 0]); continue }
+      const x =  (r[0] - pelvis[0]) * s
+      const y =  (r[1] - pelvis[1]) * s + HML_PELVIS_Y
+      const z = -(r[2] - pelvis[2]) * s   // Three.js Z → HumanML3D Z: negate
+      pose.push([+x.toFixed(4) * 1, +y.toFixed(4) * 1, +z.toFixed(4) * 1])
+    }
+    console.log('[retarget] Rig rest pose (HumanML3D coords):', JSON.stringify(pose))
+    return pose
+  }
+
+  function debugDump() {
+    character.updateMatrixWorld(true)
+    const wp = new THREE.Vector3()
+    const info = {}
+    for (const [hml, mn] of Object.entries(mixamoMap)) {
+      const bone = boneMap[mn]
+      if (!bone) { info[hml] = 'MISSING'; continue }
+      bone.getWorldPosition(wp)
+      info[hml] = { bone: mn, world: [+wp.x.toFixed(4), +wp.y.toFixed(4), +wp.z.toFixed(4)] }
+    }
+    console.table(info)
+    return info
+  }
+
+  return { applyFrame, resetPose, boneMap, mixamoMap, debugDump, rigRestPose }
 }

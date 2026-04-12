@@ -1,0 +1,9 @@
+{
+  "normalizedProblem": "Explain the number 555.",
+  "gradeBand": "unspecified",
+  "mathDomain": "Number Recognition",
+  "ambiguities": [
+    "What specific aspects of '555' need to be explained?"
+  ],
+  "learnerIntent": "To understand the number 555."
+}

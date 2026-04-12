@@ -1,0 +1,89 @@
+{
+  "title": "Understanding the Number 555",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook",
+      "kind": "hook",
+      "visualCue": "Exciting introduction gesture",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we are going to explore the number 555 together!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Can you think of what 555 looks like in your mind?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "kind": "model",
+      "visualCue": "Show place values",
+      "sceneHint": "place_value_chart",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "In 555, the first digit is five in the hundreds place.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "The second digit is five in the tens place.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s5",
+          "text": "Finally, the last digit is five in the ones place.",
+          "durationSeconds": 6
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "kind": "practice",
+      "visualCue": "Engaging practice gestures",
+      "sceneHint": "comparison_activity",
+      "sentences": [
+        {
+          "id": "s6",
+          "text": "Let’s compare 555 to a smaller number like 222.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s7",
+          "text": "Is 555 bigger or smaller than 222?",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "Great! 555 is definitely bigger than 222!",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "kind": "wrap",
+      "visualCue": "Encouraging wrap-up gesture",
+      "sceneHint": "summary_overview",
+      "sentences": [
+        {
+          "id": "s9",
+          "text": "So remember, 555 has five hundreds, five tens, and five ones!",
+          "durationSeconds": 6
+        },
+        {
+          "id": "s10",
+          "text": "You did a fantastic job learning about 555 today!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to ask questions and share their understanding of numbers."
+}

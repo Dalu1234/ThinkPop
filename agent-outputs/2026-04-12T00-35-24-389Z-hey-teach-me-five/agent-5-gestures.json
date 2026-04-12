@@ -1,0 +1,28 @@
+{
+  "gestures": [
+    {
+      "segmentId": "hook",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "a person steps forward with enthusiasm, opens arms wide, and invites everyone to join in counting."
+    },
+    {
+      "segmentId": "model",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "the tutor leans slightly forward, points to the colorful objects, and emphasizes counting each one."
+    },
+    {
+      "segmentId": "practice",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "the teacher extends fingers while rhythmically counting, shifting weight between feet to engage everyone."
+    },
+    {
+      "segmentId": "wrap",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "the person stands confidently, smiles, and raises both hands to encourage daily counting practice."
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "title": "Learning to Add with 5 + 5",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "Excited hand wave",
+      "sceneHint": "number_line_jump",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we will learn how to add numbers together!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Let's start by exploring what 5 plus 5 equals.",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "Showing fingers",
+      "sceneHint": "using_fingers",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "When we add 5 and 5, we can use our fingers for help.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "Count out five fingers on one hand and five on the other.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s5",
+          "text": "Now, let's count all the fingers together!",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "Encouraging thumbs up",
+      "sceneHint": "number_line_addition",
+      "sentences": [
+        {
+          "id": "s6",
+          "text": "Let's practice adding! What is 5 plus 5?",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s7",
+          "text": "Think about the fingers or objects you can count.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "That's right, it equals 10! Amazing job!",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "Big smile and wave",
+      "sceneHint": "number_line_summary",
+      "sentences": [
+        {
+          "id": "s9",
+          "text": "Today we learned that 5 plus 5 equals 10.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s10",
+          "text": "Great work practicing addition, everyone!",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to visualize numbers using fingers or objects during the lesson."
+}

@@ -1,0 +1,39 @@
+{
+  "title": "Counting from One to Five",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook",
+      "kind": "hook",
+      "durationSeconds": 5,
+      "narration": "Let's begin by saying the numbers one to five together!",
+      "visualCue": "number cards",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "model",
+      "kind": "model",
+      "durationSeconds": 6,
+      "narration": "Look at these five colorful objects as we count them one by one.",
+      "visualCue": "colorful objects",
+      "sceneHint": "counting_objects"
+    },
+    {
+      "id": "practice",
+      "kind": "practice",
+      "durationSeconds": 7,
+      "narration": "Now, let's count to five together—ready? One, two, three, four, five!",
+      "visualCue": "counting fingers",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "wrap",
+      "kind": "wrap",
+      "durationSeconds": 5,
+      "narration": "Great job! Keep practicing counting to five every day!",
+      "visualCue": "smiling faces",
+      "sceneHint": "celebration"
+    }
+  ],
+  "teacherNotes": "Encourage student participation and provide praise throughout the lesson."
+}

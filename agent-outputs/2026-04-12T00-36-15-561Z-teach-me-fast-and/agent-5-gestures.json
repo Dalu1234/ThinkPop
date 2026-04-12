@@ -1,0 +1,28 @@
+{
+  "gestures": [
+    {
+      "segmentId": "hook1",
+      "hand": "both",
+      "motion": "wave",
+      "mdmPrompt": "a person steps slightly back, raises both arms up and out wide while smiling broadly, engaging the students' excitement"
+    },
+    {
+      "segmentId": "model1",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "a tutor leans forward slightly, points confidently to an imaginary number line while explaining rounding with enthusiasm"
+    },
+    {
+      "segmentId": "practice1",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "a teacher stands tall, counts on fingers while encouraging students to solve by lifting each finger for emphasis"
+    },
+    {
+      "segmentId": "wrap1",
+      "hand": "right",
+      "motion": "emphasize",
+      "mdmPrompt": "a person leans slightly forward with a warm smile, raises a hand confidently and nods, reinforcing the daily practice of techniques"
+    }
+  ]
+}

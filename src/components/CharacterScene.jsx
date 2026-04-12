@@ -6,16 +6,22 @@
  *  aiState       — string pipeline state
  *  audioLevelsRef — ref to latest TTS analyser buckets (playAudioBlob, e.g. 28 bins), updated every frame
  *  audioActive   — whether AI speech / pipeline speaking is driving the meter
+ *  mathExpression — optional string (e.g. "9 - 10 = -1") shown as extruded 3D text in front of the scene
  */
 
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import { Suspense, useEffect, useLayoutEffect, useRef, useMemo } from 'react'
-import { useFBX } from '@react-three/drei'
+import { useFBX, Text3D, Center } from '@react-three/drei'
 import * as THREE from 'three'
 
 import { createRetargeter } from '../lib/retarget'
+import { setRigRestPose } from '../lib/motionApi'
 
 const SPEAKING_BAR_COUNT = 32
+
+/** Distant “mountain” ridge: far on Z, wide on X, sits on horizon (fog silhouettes it). */
+const SPEAKING_RIDGE_WORLD = { x: 0, y: -1.02, z: -6.4 }
+const SPEAKING_RIDGE_TOTAL_WIDTH = 19.5
 
 /** ElevenLabs playAudioBlob emits 28 buckets; map any length to bar count. */
 function resampleLevels(raw, count) {
@@ -36,7 +42,18 @@ function resampleLevels(raw, count) {
   return out
 }
 
-/** TTS level meters in world space — slightly past the character toward the back wall so the mesh occludes them. */
+/** Organic ridge outline so idle still reads as distant peaks (not a flat line). */
+function mountainSilhouette(i, count) {
+  const u = i / Math.max(1, count - 1)
+  return (
+    0.38 +
+    0.34 * Math.sin(u * Math.PI * 3.1 + 0.7) +
+    0.22 * Math.sin(u * Math.PI * 6.4 + 2.1) +
+    0.14 * Math.sin(i * 0.52 + 0.3)
+  )
+}
+
+/** Distant neon ridge: wide horizon **rectangular** bars + silhouette + audio height; fog sells depth. */
 function SpeakingVisualizer3D({ levelsRef, active }) {
   const meshes = useRef([])
   const activeRef = useRef(active)
@@ -45,32 +62,31 @@ function SpeakingVisualizer3D({ levelsRef, active }) {
   }, [active])
 
   const fallback = useMemo(() => new Array(SPEAKING_BAR_COUNT).fill(0.04), [])
-  const { camera } = useThree()
 
-  const groupPosition = useMemo(() => {
-    const mid = new THREE.Vector3(0, -0.28, 0)
-    const dir = new THREE.Vector3().subVectors(mid, camera.position).normalize()
-    return mid.clone().addScaledVector(dir, 0.28)
-  }, [camera])
+  const groupPosition = useMemo(
+    () => [SPEAKING_RIDGE_WORLD.x, SPEAKING_RIDGE_WORLD.y, SPEAKING_RIDGE_WORLD.z],
+    []
+  )
 
-  /** Symmetric neon: same hue at equal distance from center (edges vivid, center pair hot). */
+  const distantTint = useMemo(() => new THREE.Color('#1e3a5c'), [])
   const palette = useMemo(
     () =>
       Array.from({ length: SPEAKING_BAR_COUNT }, (_, i) => {
         const half = SPEAKING_BAR_COUNT / 2
         const dist = Math.min(i, SPEAKING_BAR_COUNT - 1 - i)
         const t = half > 1 ? dist / (half - 1) : 0
-        const hue = 0.86 + t * 0.78
-        return new THREE.Color().setHSL(hue % 1, 0.97, 0.52)
+        const hue = 0.78 + t * 0.72
+        const c = new THREE.Color().setHSL(hue % 1, 0.72, 0.48)
+        return c.lerp(distantTint, 0.38)
       }),
-    []
+    [distantTint]
   )
 
   const colorScratch = useRef(new THREE.Color())
 
   const layout = useMemo(() => {
-    const totalW = 2.85
-    const gap = 0.012
+    const totalW = SPEAKING_RIDGE_TOTAL_WIDTH
+    const gap = 0.06
     const barW = (totalW - gap * (SPEAKING_BAR_COUNT - 1)) / SPEAKING_BAR_COUNT
     const half = SPEAKING_BAR_COUNT / 2
     const step = barW + gap
@@ -83,16 +99,19 @@ function SpeakingVisualizer3D({ levelsRef, active }) {
     const isActive = activeRef.current
     const data = resampleLevels(raw, SPEAKING_BAR_COUNT) ?? fallback
     const { barW, half, step, halfSpan } = layout
-    const dim = isActive ? 1 : 0.42
-    const punch = isActive ? 1.75 : 0.38
+    const dim = isActive ? 1 : 0.48
+    const punch = isActive ? 1.55 : 0.5
     for (let i = 0; i < SPEAKING_BAR_COUNT; i++) {
       const mesh = meshes.current[i]
       if (!mesh) continue
       const rawLevel = data[i] ?? 0.04
-      const boosted = Math.min(1, Number(rawLevel) * (isActive ? 1.45 : 1))
-      const normalized = Math.max(isActive ? 0.16 : 0.08, Math.min(1, boosted))
-      const h = 0.065 + normalized * 0.42
-      mesh.scale.set(barW * 0.88, h, 1)
+      const boosted = Math.min(1, Number(rawLevel) * (isActive ? 1.35 : 1))
+      const normalized = Math.max(isActive ? 0.12 : 0.06, Math.min(1, boosted))
+      const ridge = mountainSilhouette(i, SPEAKING_BAR_COUNT)
+      const peakH = 0.55 + ridge * 1.05 + normalized * (isActive ? 1.85 : 0.55)
+      const baseW = barW * 0.92
+      const barDepth = 0.22
+      mesh.scale.set(baseW, peakH, barDepth)
       if (i < half) {
         const depth = half - 1 - i
         mesh.position.x = -halfSpan - depth * step
@@ -100,16 +119,16 @@ function SpeakingVisualizer3D({ levelsRef, active }) {
         const depth = i - half
         mesh.position.x = halfSpan + depth * step
       }
-      mesh.position.y = h / 2
+      mesh.position.y = peakH * 0.5
       mesh.position.z = 0
       const mat = mesh.material
       const c = colorScratch.current.copy(palette[i])
-      c.offsetHSL(0, 0, (normalized - 0.45) * 0.14)
-      mat.color.copy(c).multiplyScalar(0.28 + 0.62 * normalized * dim)
+      c.offsetHSL(0, isActive ? 0.04 : -0.06, (normalized - 0.4) * 0.1)
+      mat.color.copy(c).multiplyScalar(0.35 + 0.45 * normalized * dim)
       mat.emissive.copy(palette[i])
-      const emMul = punch * dim * (0.55 + 0.55 * normalized)
+      const emMul = punch * dim * (0.4 + 0.6 * normalized)
       mat.emissive.multiplyScalar(emMul)
-      mat.emissiveIntensity = isActive ? 1.15 + normalized * 0.95 : 0.32
+      mat.emissiveIntensity = isActive ? 0.85 + normalized * 0.75 : 0.28
     }
   })
 
@@ -122,13 +141,13 @@ function SpeakingVisualizer3D({ levelsRef, active }) {
             meshes.current[i] = el
           }}
         >
-          <boxGeometry args={[1, 1, 0.035]} />
+          <boxGeometry args={[1, 1, 1]} />
           <meshStandardMaterial
             color={col}
             emissive={col}
-            emissiveIntensity={1.25}
-            roughness={0.22}
-            metalness={0.28}
+            emissiveIntensity={0.9}
+            roughness={0.42}
+            metalness={0.12}
             toneMapped
           />
         </mesh>
@@ -225,6 +244,11 @@ function FBXCharacter({ motionFrames }) {
       const n = Object.keys(r.boneMap).length
       console.log('[CharacterScene] Retargeter ready —', n, 'bones mapped')
       if (n === 0) console.warn('[CharacterScene] 0 bones — check FBX export includes skeleton')
+      if (r.rigRestPose) {
+        setRigRestPose(r.rigRestPose)
+        console.log('[CharacterScene] Rig rest pose applied to motion system')
+      }
+      r.debugDump()
     } catch (e) {
       console.error('[CharacterScene] Retargeter setup failed:', e)
     }
@@ -277,6 +301,236 @@ function LoadingStand() {
   )
 }
 
+/** Large neon red X overlay — toggled from app (e.g. Alt+X). Additive glow + point light for red halo. */
+function NeonXTool({ visible }) {
+  if (!visible) return null
+  const arm = 4.2
+  const thick = 0.2
+  const depth = 0.06
+  const matProps = {
+    color: '#9c0000',
+    emissive: '#ff0000',
+    emissiveIntensity: 3.35,
+    roughness: 0.2,
+    metalness: 0.1,
+    toneMapped: true,
+    depthTest: false,
+    depthWrite: false,
+  }
+  const glow = {
+    inner: { opacity: 0.42, color: '#ff1a1a' },
+    outer: { opacity: 0.14, color: '#ff3030' },
+  }
+  return (
+    <group position={[0, 0.12, 2.2]}>
+      <pointLight color="#ff0a0a" intensity={10} distance={20} decay={1.85} position={[0, 0, 0.25]} />
+      <mesh rotation={[0, 0, Math.PI / 4]} renderOrder={1998}>
+        <boxGeometry args={[arm * 1.28, thick * 2.4, depth * 2.2]} />
+        <meshBasicMaterial
+          color={glow.inner.color}
+          transparent
+          opacity={glow.inner.opacity}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          depthTest={false}
+          toneMapped={false}
+        />
+      </mesh>
+      <mesh rotation={[0, 0, -Math.PI / 4]} renderOrder={1998}>
+        <boxGeometry args={[arm * 1.28, thick * 2.4, depth * 2.2]} />
+        <meshBasicMaterial
+          color={glow.inner.color}
+          transparent
+          opacity={0.32}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          depthTest={false}
+          toneMapped={false}
+        />
+      </mesh>
+      <mesh rotation={[0, 0, Math.PI / 4]} renderOrder={1997}>
+        <boxGeometry args={[arm * 1.55, thick * 3.2, depth * 2.8]} />
+        <meshBasicMaterial
+          color={glow.outer.color}
+          transparent
+          opacity={glow.outer.opacity}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          depthTest={false}
+          toneMapped={false}
+        />
+      </mesh>
+      <mesh rotation={[0, 0, -Math.PI / 4]} renderOrder={1997}>
+        <boxGeometry args={[arm * 1.55, thick * 3.2, depth * 2.8]} />
+        <meshBasicMaterial
+          color={glow.outer.color}
+          transparent
+          opacity={glow.outer.opacity}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          depthTest={false}
+          toneMapped={false}
+        />
+      </mesh>
+      <mesh rotation={[0, 0, Math.PI / 4]} renderOrder={2000}>
+        <boxGeometry args={[arm, thick, depth]} />
+        <meshStandardMaterial {...matProps} />
+      </mesh>
+      <mesh rotation={[0, 0, -Math.PI / 4]} renderOrder={2000}>
+        <boxGeometry args={[arm, thick, depth]} />
+        <meshStandardMaterial {...matProps} />
+      </mesh>
+    </group>
+  )
+}
+
+/**
+ * Green ✓: both arms share one **bottom vertex** (classic check), not two crossing diagonals.
+ * Short stroke up-left, longer stroke up-right from the same joint.
+ */
+function NeonTickTool({ visible }) {
+  if (!visible) return null
+  const thick = 0.2
+  const depth = 0.06
+  const shortL = 1.75
+  const longL = 4.05
+  const joint = { x: 0, y: -0.44, z: 0 }
+  const angShort = 2.42
+  const angLong = 0.52
+  const cs = Math.cos(angShort)
+  const ss = Math.sin(angShort)
+  const cl = Math.cos(angLong)
+  const sl = Math.sin(angLong)
+  const shortPos = [joint.x + cs * (shortL * 0.5), joint.y + ss * (shortL * 0.5), joint.z]
+  const longPos = [joint.x + cl * (longL * 0.5), joint.y + sl * (longL * 0.5), joint.z]
+  const shortRot = angShort
+  const longRot = angLong
+
+  const matProps = {
+    color: '#006b2e',
+    emissive: '#00ff66',
+    emissiveIntensity: 3.2,
+    roughness: 0.2,
+    metalness: 0.1,
+    toneMapped: true,
+    depthTest: false,
+    depthWrite: false,
+  }
+  const glow = {
+    inner: { opacity: 0.4, color: '#33ff99' },
+    outer: { opacity: 0.13, color: '#66ffbb' },
+  }
+  const shortInner = [shortL * 1.28, thick * 2.4, depth * 2.2]
+  const longInner = [longL * 1.28, thick * 2.4, depth * 2.2]
+  const shortOuter = [shortL * 1.55, thick * 3.2, depth * 2.8]
+  const longOuter = [longL * 1.55, thick * 3.2, depth * 2.8]
+
+  return (
+    <group position={[0, 0.12, 2.2]}>
+      <pointLight color="#00ff88" intensity={9} distance={20} decay={1.85} position={[0.1, -0.15, 0.25]} />
+      <mesh position={shortPos} rotation={[0, 0, shortRot]} renderOrder={1998}>
+        <boxGeometry args={shortInner} />
+        <meshBasicMaterial
+          color={glow.inner.color}
+          transparent
+          opacity={glow.inner.opacity}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          depthTest={false}
+          toneMapped={false}
+        />
+      </mesh>
+      <mesh position={longPos} rotation={[0, 0, longRot]} renderOrder={1998}>
+        <boxGeometry args={longInner} />
+        <meshBasicMaterial
+          color={glow.inner.color}
+          transparent
+          opacity={0.3}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          depthTest={false}
+          toneMapped={false}
+        />
+      </mesh>
+      <mesh position={shortPos} rotation={[0, 0, shortRot]} renderOrder={1997}>
+        <boxGeometry args={shortOuter} />
+        <meshBasicMaterial
+          color={glow.outer.color}
+          transparent
+          opacity={glow.outer.opacity}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          depthTest={false}
+          toneMapped={false}
+        />
+      </mesh>
+      <mesh position={longPos} rotation={[0, 0, longRot]} renderOrder={1997}>
+        <boxGeometry args={longOuter} />
+        <meshBasicMaterial
+          color={glow.outer.color}
+          transparent
+          opacity={glow.outer.opacity}
+          blending={THREE.AdditiveBlending}
+          depthWrite={false}
+          depthTest={false}
+          toneMapped={false}
+        />
+      </mesh>
+      <mesh position={shortPos} rotation={[0, 0, shortRot]} renderOrder={2000}>
+        <boxGeometry args={[shortL, thick, depth]} />
+        <meshStandardMaterial {...matProps} />
+      </mesh>
+      <mesh position={longPos} rotation={[0, 0, longRot]} renderOrder={2000}>
+        <boxGeometry args={[longL, thick, depth]} />
+        <meshStandardMaterial {...matProps} />
+      </mesh>
+    </group>
+  )
+}
+
+const MATH_FONT_URL = '/fonts/helvetiker_bold.typeface.json'
+
+/** Extruded equation text; place above the character, facing camera. */
+function MathExpression3D({ expression }) {
+  const text = String(expression ?? '').trim()
+  const size = useMemo(() => {
+    const n = text.length
+    if (n > 24) return 0.14
+    if (n > 14) return 0.18
+    return 0.24
+  }, [text])
+
+  if (!text) return null
+
+  return (
+    <group position={[0, 1.05, 1.35]}>
+      <Suspense fallback={null}>
+        <Center top>
+          <Text3D
+            font={MATH_FONT_URL}
+            size={size}
+            height={0.045}
+            curveSegments={10}
+            bevelEnabled
+            bevelThickness={0.008}
+            bevelSize={0.006}
+            bevelSegments={2}
+          >
+            {text}
+            <meshStandardMaterial
+              color="#7af0ff"
+              emissive="#003848"
+              emissiveIntensity={0.55}
+              metalness={0.25}
+              roughness={0.4}
+            />
+          </Text3D>
+        </Center>
+      </Suspense>
+    </group>
+  )
+}
+
 function Lighting() {
   return (
     <>
@@ -293,7 +547,7 @@ function Lighting() {
   )
 }
 
-function SceneContent({ motionFrames, aiState, audioLevelsRef, audioActive }) {
+function SceneContent({ motionFrames, aiState, audioLevelsRef, audioActive, showNeonX, showNeonTick, mathExpression }) {
   return (
     <>
       <Lighting />
@@ -303,11 +557,14 @@ function SceneContent({ motionFrames, aiState, audioLevelsRef, audioActive }) {
       <Suspense fallback={<LoadingStand />}>
         <FBXCharacter motionFrames={motionFrames} aiState={aiState} />
       </Suspense>
+      <MathExpression3D expression={mathExpression} />
+      <NeonXTool visible={showNeonX} />
+      <NeonTickTool visible={showNeonTick} />
     </>
   )
 }
 
-export default function CharacterScene({ motionFrames, aiState, audioLevelsRef, audioActive }) {
+export default function CharacterScene({ motionFrames, aiState, audioLevelsRef, audioActive, showNeonX, showNeonTick, mathExpression }) {
   return (
     <Canvas
       style={{ position: 'fixed', inset: 0, zIndex: 0 }}
@@ -322,6 +579,9 @@ export default function CharacterScene({ motionFrames, aiState, audioLevelsRef, 
         aiState={aiState}
         audioLevelsRef={audioLevelsRef}
         audioActive={audioActive}
+        showNeonX={showNeonX}
+        showNeonTick={showNeonTick}
+        mathExpression={mathExpression}
       />
     </Canvas>
   )

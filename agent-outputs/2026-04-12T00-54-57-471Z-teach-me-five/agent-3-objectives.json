@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "objective1",
+      "statement": "Count to five using fingers or objects.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "objective2",
+      "statement": "Identify groups of five items in a picture or a collection.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

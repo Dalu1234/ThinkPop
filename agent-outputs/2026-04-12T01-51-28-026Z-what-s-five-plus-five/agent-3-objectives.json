@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Students will solve simple addition problems using numbers up to 20.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "2",
+      "statement": "Students will demonstrate understanding of the concept of addition using number lines.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

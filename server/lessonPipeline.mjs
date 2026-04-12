@@ -98,41 +98,50 @@ function mockPipeline(problem) {
         {
           id: 'seg-hook',
           kind: 'hook',
-          durationSeconds: 6,
-          narration: `We have ${a} stars and ${b} more — let's count them all together.`,
           visualCue: `Two groups of stars`,
           sceneHint: 'count_groups_hook',
+          sentences: [
+            { id: 's1', text: `Hey there! Today we're going to learn about addition.`, durationSeconds: 4 },
+            { id: 's2', text: `We have ${a} stars and ${b} more — let's count them all together.`, durationSeconds: 5 },
+          ],
         },
         {
           id: 'seg-model',
           kind: 'model',
-          durationSeconds: 7,
-          narration: `Start at ${a} and count on ${b} more to get ${sum}.`,
           visualCue: `Stars combine into one group`,
           sceneHint: 'count_on_addition',
+          sentences: [
+            { id: 's3', text: `Start at ${a} and count on ${b} more.`, durationSeconds: 4 },
+            { id: 's4', text: `That gives us ${sum} altogether!`, durationSeconds: 4 },
+          ],
         },
         {
           id: 'seg-practice',
           kind: 'practice',
-          durationSeconds: 6,
-          narration: `Say it with me: ${a} plus ${b} equals ${sum}.`,
           visualCue: `Equation ${a} + ${b} = ${sum}`,
           sceneHint: 'guided_addition_practice',
+          sentences: [
+            { id: 's5', text: `Say it with me: ${a} plus ${b} equals ${sum}.`, durationSeconds: 4 },
+            { id: 's6', text: `Now you try — count on from ${a}.`, durationSeconds: 4 },
+          ],
         },
         {
           id: 'seg-wrap',
           kind: 'wrap',
-          durationSeconds: 5,
-          narration: `Great work — ${a} plus ${b} always equals ${sum}.`,
           visualCue: `Final equation highlighted`,
           sceneHint: 'addition_wrap',
+          sentences: [
+            { id: 's7', text: `Great work — ${a} plus ${b} always equals ${sum}.`, durationSeconds: 4 },
+            { id: 's8', text: `You did an awesome job today!`, durationSeconds: 3 },
+          ],
         },
       ],
       teacherNotes: 'Have students point to each object while counting on.',
     }
-    const gesturePlan = mockGesturePlan(lessonPlan)
-    const visualModel = mockVisualModel(problem, intake, topic, lessonPlan)
-    return { intake, topic, objectives, lessonPlan, gesturePlan, visualModel }
+    const lessonPlanNorm = normalizeLessonPlan(lessonPlan)
+    const gesturePlan = normalizeGesturePlan(lessonPlanNorm, mockGesturePlan(lessonPlanNorm))
+    const visualModel = mockVisualModel(problem, intake, topic, lessonPlanNorm)
+    return { intake, topic, objectives, lessonPlan: lessonPlanNorm, gesturePlan, visualModel }
   }
 
   if (multiplication) {
@@ -178,41 +187,50 @@ function mockPipeline(problem) {
         {
           id: 'seg-hook',
           kind: 'hook',
-          durationSeconds: 6,
-          narration: `Here are ${b} rows with ${a} apples in each row.`,
           visualCue: `Array of ${b} rows × ${a} apples`,
           sceneHint: 'array_hook',
+          sentences: [
+            { id: 's1', text: `Let's learn about multiplication today!`, durationSeconds: 4 },
+            { id: 's2', text: `Here are ${b} rows with ${a} apples in each row.`, durationSeconds: 5 },
+          ],
         },
         {
           id: 'seg-model',
           kind: 'model',
-          durationSeconds: 7,
-          narration: `${a} times ${b} means ${b} equal groups of ${a}, giving us ${product} total.`,
           visualCue: `Rows labeled, total shown`,
           sceneHint: 'array_model',
+          sentences: [
+            { id: 's3', text: `${a} times ${b} means ${b} equal groups of ${a}.`, durationSeconds: 5 },
+            { id: 's4', text: `That gives us ${product} total!`, durationSeconds: 3 },
+          ],
         },
         {
           id: 'seg-practice',
           kind: 'practice',
-          durationSeconds: 6,
-          narration: `Count the rows with me: ${b} rows of ${a} equals ${product}.`,
           visualCue: `Each row pulses in turn`,
           sceneHint: 'array_count_practice',
+          sentences: [
+            { id: 's5', text: `Count the rows with me: ${b} rows of ${a}.`, durationSeconds: 4 },
+            { id: 's6', text: `That equals ${product} altogether!`, durationSeconds: 4 },
+          ],
         },
         {
           id: 'seg-wrap',
           kind: 'wrap',
-          durationSeconds: 5,
-          narration: `${a} times ${b} equals ${product} — remember that!`,
           visualCue: `Equation ${a} × ${b} = ${product}`,
           sceneHint: 'multiplication_wrap',
+          sentences: [
+            { id: 's7', text: `${a} times ${b} equals ${product} — remember that!`, durationSeconds: 4 },
+            { id: 's8', text: `Great job learning multiplication!`, durationSeconds: 3 },
+          ],
         },
       ],
       teacherNotes: 'Connect each row to one equal group.',
     }
-    const gesturePlan = mockGesturePlan(lessonPlan)
-    const visualModel = mockVisualModel(problem, intake, topic, lessonPlan)
-    return { intake, topic, objectives, lessonPlan, gesturePlan, visualModel }
+    const lessonPlanNorm = normalizeLessonPlan(lessonPlan)
+    const gesturePlan = normalizeGesturePlan(lessonPlanNorm, mockGesturePlan(lessonPlanNorm))
+    const visualModel = mockVisualModel(problem, intake, topic, lessonPlanNorm)
+    return { intake, topic, objectives, lessonPlan: lessonPlanNorm, gesturePlan, visualModel }
   }
 
   if (division) {
@@ -261,43 +279,52 @@ function mockPipeline(problem) {
         {
           id: 'seg-hook',
           kind: 'hook',
-          durationSeconds: 6,
-          narration: `We have ${total} apples to split into equal groups of ${groupSize}.`,
           visualCue: `${total} apples in one pile`,
           sceneHint: 'division_total_hook',
+          sentences: [
+            { id: 's1', text: `Today we're learning about division!`, durationSeconds: 4 },
+            { id: 's2', text: `We have ${total} apples to split into equal groups of ${groupSize}.`, durationSeconds: 5 },
+          ],
         },
         {
           id: 'seg-model',
           kind: 'model',
-          durationSeconds: 7,
-          narration: `We keep making groups of ${groupSize} until we run out — that gives us ${quotient} groups.`,
           visualCue: `Apples move into groups of ${groupSize}`,
           sceneHint: 'division_group_model',
+          sentences: [
+            { id: 's3', text: `We keep making groups of ${groupSize} until we run out.`, durationSeconds: 5 },
+            { id: 's4', text: `That gives us ${quotient} groups!`, durationSeconds: 3 },
+          ],
         },
         {
           id: 'seg-practice',
           kind: 'practice',
-          durationSeconds: 6,
-          narration: remainder
-            ? `${total} divided by ${groupSize} equals ${quotient} with ${remainder} left over.`
-            : `${total} divided by ${groupSize} equals ${quotient}.`,
           visualCue: `Groups highlighted with answer`,
           sceneHint: 'division_group_practice',
+          sentences: [
+            { id: 's5', text: remainder
+                ? `${total} divided by ${groupSize} equals ${quotient} with ${remainder} left over.`
+                : `${total} divided by ${groupSize} equals ${quotient}.`, durationSeconds: 5 },
+            { id: 's6', text: `Can you say the equation with me?`, durationSeconds: 3 },
+          ],
         },
         {
           id: 'seg-wrap',
           kind: 'wrap',
-          durationSeconds: 5,
-          narration: `Division splits a total into equal groups — nice work today!`,
           visualCue: `Final equation displayed`,
           sceneHint: 'division_wrap',
+          sentences: [
+            { id: 's7', text: `Division splits a total into equal groups.`, durationSeconds: 4 },
+            { id: 's8', text: `Nice work today!`, durationSeconds: 3 },
+          ],
         },
       ],
       teacherNotes: 'Have students count each completed group aloud.',
     }
-    const gesturePlan = mockGesturePlan(lessonPlan)
-    const visualModel = mockVisualModel(problem, intake, topic, lessonPlan)
-    return { intake, topic, objectives, lessonPlan, gesturePlan, visualModel }
+    const lessonPlanNorm = normalizeLessonPlan(lessonPlan)
+    const gesturePlan = normalizeGesturePlan(lessonPlanNorm, mockGesturePlan(lessonPlanNorm))
+    const visualModel = mockVisualModel(problem, intake, topic, lessonPlanNorm)
+    return { intake, topic, objectives, lessonPlan: lessonPlanNorm, gesturePlan, visualModel }
   }
 
   const intake = {
@@ -342,53 +369,143 @@ function mockPipeline(problem) {
       {
         id: 'seg-hook',
         kind: 'hook',
-        durationSeconds: 6,
-        narration: 'To add fractions, the pieces need to be the same size first.',
         visualCue: 'Bar split into equal parts',
         sceneHint: 'area_model_rectangle',
+        sentences: [
+          { id: 's1', text: 'Let\'s explore how to add fractions!', durationSeconds: 4 },
+          { id: 's2', text: 'To add fractions, the pieces need to be the same size first.', durationSeconds: 5 },
+        ],
       },
       {
         id: 'seg-model',
         kind: 'model',
-        durationSeconds: 7,
-        narration: 'When denominators match, just add the numerators and keep the denominator.',
         visualCue: '1/4 + 2/4 combined on bar',
         sceneHint: 'fraction_bar_add_like',
+        sentences: [
+          { id: 's3', text: 'When denominators match, just add the numerators.', durationSeconds: 4 },
+          { id: 's4', text: 'Keep the denominator the same — easy!', durationSeconds: 4 },
+        ],
       },
       {
         id: 'seg-practice',
         kind: 'practice',
-        durationSeconds: 6,
-        narration: 'Try it: one half plus one fourth — convert halves to fourths, then add.',
         visualCue: '1/2 → 2/4, then 2/4 + 1/4 = 3/4',
         sceneHint: 'equivalent_fraction_transform',
+        sentences: [
+          { id: 's5', text: 'Try it: one half plus one fourth.', durationSeconds: 4 },
+          { id: 's6', text: 'Convert halves to fourths, then add them together.', durationSeconds: 4 },
+        ],
       },
       {
         id: 'seg-wrap',
         kind: 'wrap',
-        durationSeconds: 5,
-        narration: 'Same-sized pieces let us add fractions safely — great work!',
         visualCue: 'Final fraction highlighted',
         sceneHint: 'celebration',
+        sentences: [
+          { id: 's7', text: 'Same-sized pieces let us add fractions safely.', durationSeconds: 4 },
+          { id: 's8', text: 'Great work today!', durationSeconds: 3 },
+        ],
       },
     ],
     teacherNotes: 'Stress equal piece size before combining numerators.',
   }
-  const gesturePlan = mockGesturePlan(lessonPlan)
-  const visualModel = mockVisualModel(problem, intake, topic, lessonPlan)
-  return { intake, topic, objectives, lessonPlan, gesturePlan, visualModel }
+  const lessonPlanNorm = normalizeLessonPlan(lessonPlan)
+  const gesturePlan = normalizeGesturePlan(lessonPlanNorm, mockGesturePlan(lessonPlanNorm))
+  const visualModel = mockVisualModel(problem, intake, topic, lessonPlanNorm)
+  return { intake, topic, objectives, lessonPlan: lessonPlanNorm, gesturePlan, visualModel }
 }
 
+const MOCK_MDM_PROMPTS = [
+  'a tutor steps forward warmly and raises one hand in a friendly wave toward the students',
+  'a person opens both palms outward at chest height while leaning slightly toward the audience',
+  'a tutor raises the right arm and points forward steadily as if tracing a number in the air',
+  'a person shifts weight side to side and nods with an encouraging smile toward the class',
+  'a tutor gestures with both hands in a small rhythmic motion as if counting beats aloud',
+  'a person takes a short confident step forward and relaxes the shoulders while explaining',
+  'a tutor lifts both hands briefly upward in a small celebratory motion then lowers them smoothly',
+  'a person stands tall, exhales, and gives a calm closing nod while facing the learners',
+]
+
 function mockGesturePlan(lessonPlan) {
-  const segments = lessonPlan?.segments || []
-  const motions = ['wave', 'point', 'count', 'emphasize', 'open', 'point', 'wave']
-  const hands = ['right', 'left', 'right', 'both', 'right', 'left', 'both']
-  const gestures = segments.map((seg, i) => ({
-    segmentId: seg.id,
-    hand: hands[i % hands.length],
-    motion: motions[i % motions.length],
-  }))
+  const gestures = []
+  let i = 0
+  for (const { sent } of enumerateLessonSentences(lessonPlan)) {
+    gestures.push({
+      sentenceId: sent.id,
+      mdmPrompt: MOCK_MDM_PROMPTS[i % MOCK_MDM_PROMPTS.length],
+    })
+    i++
+  }
   return { gestures }
+}
+
+/** Clamp per-sentence display duration (seconds). */
+function clampSentenceDurationSeconds(v) {
+  const n = Number(v)
+  if (!Number.isFinite(n)) return 4
+  return Math.min(12, Math.max(2, Math.round(n)))
+}
+
+/**
+ * Ensure every segment has a `sentences` array so Agent 5 and the client agree on ids.
+ * Migrates legacy `narration` + `durationSeconds` into a single sentence per segment.
+ */
+function normalizeLessonPlan(raw) {
+  const base = raw && typeof raw === 'object' ? raw : {}
+  const segments = Array.isArray(base.segments) ? base.segments : []
+  return {
+    ...base,
+    segments: segments.map((seg) => {
+      const sid = String(seg.id ?? 'seg')
+      if (Array.isArray(seg.sentences) && seg.sentences.length > 0) {
+        return {
+          ...seg,
+          sentences: seg.sentences
+            .map((s, j) => {
+              const text = String(s.text ?? s.narration ?? '').trim()
+              if (!text) return null
+              return {
+                id: String(s.id ?? `${sid}-s${j}`),
+                text,
+                durationSeconds: clampSentenceDurationSeconds(
+                  s.durationSeconds ?? seg.durationSeconds
+                ),
+              }
+            })
+            .filter(Boolean),
+        }
+      }
+      const narr = typeof seg.narration === 'string' ? seg.narration.trim() : ''
+      if (narr) {
+        return {
+          ...seg,
+          sentences: [
+            {
+              id: `${sid}-s0`,
+              text: narr,
+              durationSeconds: clampSentenceDurationSeconds(seg.durationSeconds),
+            },
+          ],
+        }
+      }
+      return { ...seg, sentences: [] }
+    }),
+  }
+}
+
+/** Ordered (segment, sentence) pairs — single source of truth for gesture + client flatten. */
+function enumerateLessonSentences(lessonPlan) {
+  const rows = []
+  for (const seg of lessonPlan?.segments || []) {
+    const list = seg.sentences
+    if (!Array.isArray(list)) continue
+    for (const s of list) {
+      const text = String(s.text ?? '').trim()
+      if (!text) continue
+      rows.push({ seg, sent: s })
+    }
+  }
+  return rows
 }
 
 function parseAddition(problem) {
@@ -523,66 +640,50 @@ Return JSON only with keys:
 - title (string, 4–7 words)
 - estimatedMinutes (number, 3–8)
 - segments (ordered array, exactly 3–4 items)
-Each segment: id (string), kind (one of: hook, model, practice, wrap), durationSeconds (number, 4–8), narration (string, ONE sentence of 10–18 words — this is spoken aloud, keep it tight), visualCue (string, 3–5 words), sceneHint (short token like "number_line_jump")
+Each segment: id (string), kind (one of: hook, model, practice, wrap), visualCue (string, 3–5 words), sceneHint (short token like "number_line_jump"), sentences (array of 2–3 objects)
+Each sentence object: id (string, globally unique like "s1","s2"…), text (string, ONE spoken sentence of 8–16 words), durationSeconds (number, 3–6)
+The robot will perform a distinct gesture for EVERY sentence, so each sentence should be a complete thought.
 - teacherNotes (string, one sentence)`
   const user = `Intake:\n${JSON.stringify(intake, null, 2)}\n\nTopic:\n${JSON.stringify(topic, null, 2)}\n\nObjectives:\n${JSON.stringify(objectives, null, 2)}`
   return completeJson({ model: MODEL, system, user })
 }
 
-// MDM motion prompts — text fed directly into the Human Motion Diffusion Model.
-// Phrasing follows HumanML3D training conventions ("a person...").
-const MDM_MOTION_PROMPTS = {
-  wave:      'a person waves their right hand warmly at the audience',
-  point:     'a person raises their right arm and points forward with their finger',
-  count:     'a person counts on their fingers, raising one hand in front of their body',
-  emphasize: 'a person gestures expressively with both hands while explaining something',
-  open:      'a person opens both arms wide to their sides in a welcoming gesture',
-  rest:      'a person stands in a relaxed neutral position with arms at their sides',
-}
+// Single fallback if the model omits text — same semantics as DEFAULT_TEACHING_MOTION_PROMPT in motionApi.js
+const DEFAULT_MDM_PROMPT_FALLBACK =
+  'a person stands naturally and gestures smoothly with their whole body while explaining an idea clearly to students'
 
 async function agentGesturePlan(lessonPlan) {
   const system = `${BASE}
-You are Agent 5 — Gesture Director trained for Motion Diffusion Models (MDM)-style motion prompting.
+You are Agent 5 — Motion prompt author for a Human Motion Diffusion Model (MDM).
 
-The 3D tutor generates motion from natural language descriptions that must:
-- Describe full-body motion over time (not just hands)
-- Be physically plausible and smooth (no jittery or impossible poses)
-- Reflect intent, emotion, and teaching context
-- Allow variation (multiple valid motions per description)
+The 3D tutor's skeleton is driven ONLY by your natural-language motion prompts (no discrete action labels on the client).
+Each prompt is sent to the MDM as-is to synthesize HumanML3D joint trajectories.
 
-Return JSON only with key "gestures": an array with EXACTLY one object per segment in the lesson plan, in the SAME ORDER.
+The lesson plan has segments with a "sentences" array. Produce EXACTLY ONE motion prompt per sentence, same order.
 
-Each object must include:
-- segmentId (string, must match input)
-- hand ("left"|"right"|"both")
-- motion ("rest"|"point"|"wave"|"count"|"open"|"emphasize")
-- mdmPrompt (string)
+Return JSON only with key "gestures": an array of objects, each with:
+- sentenceId (string, must match the sentence id from the lesson plan)
+- mdmPrompt (string) — the ONLY field that controls motion; make it specific to that sentence's teaching beat
 
 mdmPrompt rules (CRITICAL):
 - 12–22 words
-- Describe continuous motion over time (sequence, not static pose)
-- Include body coordination: torso, head, arms, and optionally legs
-- Include spatial direction or trajectory when relevant
-- Include teaching intent (explaining, emphasizing, guiding attention)
-- Avoid vague phrases like "moves hands"
-- Prefer verbs like: steps, shifts, leans, rotates, raises, lowers, extends
+- Start with "a person" or "a tutor" (HumanML3D-style)
+- Describe continuous motion over time (a short sequence, not a frozen pose)
+- Full body: torso, head, arms; add legs when walking, stepping, or shifting weight
+- Include direction or trajectory when it matters (forward, toward the learner, to the side)
+- Tie motion to teaching intent (welcoming, pointing at an idea, celebrating, inviting practice)
+- Do NOT output enums, tags, or shorthand like "wave" or "point" alone — always a full phrase
+- Avoid vague lines like "moves hands" or "gestures while talking"
 
-Examples of GOOD prompts:
-- "a person steps slightly forward, raises both arms outward, and points while clearly explaining a concept"
-- "a tutor shifts weight to one side, gestures rhythmically with both hands while counting key ideas aloud"
+Good examples:
+- "a tutor steps slightly forward, opens both palms toward the class, and nods while introducing the new topic"
+- "a person raises the right arm and traces a steady pointing motion forward as if highlighting a number on a board"
 
-Examples of BAD prompts:
-- "moves hand"
-- "gestures while talking"
+Bad examples:
+- "waves"
+- "hand gesture"
 
-Motion variation guidance:
-- Hook: expressive, attention-grabbing (wave, open, larger motion)
-- Concept/model: precise, directional (point, controlled gestures)
-- Practice: rhythmic, structured (count, repeated motion)
-- Check: inviting, receptive (open, slight lean forward)
-- Wrap: confident, summarizing (emphasize, grounded stance)
-
-Ensure gestures align with pedagogy and feel like natural human motion sequences, not isolated actions.
+Vary prompts across sentences so the character feels alive and aligned with each line of dialogue.
 `
   const user = JSON.stringify(lessonPlan, null, 2)
   return completeJson({ model: MODEL, system, user })
@@ -607,23 +708,27 @@ If the lesson is purely symbolic with no discrete model, use kind "none" with ro
 }
 
 function normalizeGesturePlan(lessonPlan, raw) {
-  const segments = lessonPlan?.segments || []
   const list = Array.isArray(raw?.gestures) ? raw.gestures : []
-  const byId = new Map(list.map(g => [g.segmentId, g]))
-  const motions = ['rest', 'point', 'wave', 'count', 'open', 'emphasize']
-  const hands = ['right', 'left', 'both']
-  return {
-    gestures: segments.map((seg, i) => {
-      const g = byId.get(seg.id) || list[i] || {}
-      const motion = motions.includes(g.motion) ? g.motion : motions[i % motions.length]
-      const hand = hands.includes(g.hand) ? g.hand : hands[i % hands.length]
-      // mdmPrompt: use the AI-generated one if valid, else fall back to the default map
-      const mdmPrompt = (typeof g.mdmPrompt === 'string' && g.mdmPrompt.length > 8)
-        ? g.mdmPrompt
-        : MDM_MOTION_PROMPTS[motion]
-      return { segmentId: seg.id, hand, motion, mdmPrompt }
-    }),
+  const bySentenceId = new Map()
+  const bySegmentId = new Map()
+  for (const g of list) {
+    if (g.sentenceId != null) bySentenceId.set(String(g.sentenceId), g)
+    if (g.segmentId != null) bySegmentId.set(String(g.segmentId), g)
   }
+  const gestures = []
+  let i = 0
+  for (const { seg, sent } of enumerateLessonSentences(lessonPlan)) {
+    const g =
+      bySentenceId.get(String(sent.id)) ||
+      bySegmentId.get(String(seg.id)) ||
+      list[i] ||
+      {}
+    let mdmPrompt = typeof g.mdmPrompt === 'string' ? g.mdmPrompt.trim() : ''
+    if (mdmPrompt.length < 12) mdmPrompt = DEFAULT_MDM_PROMPT_FALLBACK
+    gestures.push({ sentenceId: sent.id, mdmPrompt })
+    i++
+  }
+  return { gestures }
 }
 
 function normalizeVisualModel(raw) {
@@ -709,7 +814,8 @@ export async function* runLessonPipelineStream(input) {
     const objectives = await agentObjectives(intake, topic)
     yield { stage: 'objectives', agent: 'Agent 3 — Objectives', data: objectives }
 
-    const lessonPlan = await agentLessonPlan(intake, topic, objectives)
+    const lessonPlanRaw = await agentLessonPlan(intake, topic, objectives)
+    const lessonPlan = normalizeLessonPlan(lessonPlanRaw)
     yield { stage: 'lessonPlan', agent: 'Agent 4 — Lesson plan', data: lessonPlan }
 
     const gestureRaw = await agentGesturePlan(lessonPlan)

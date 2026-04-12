@@ -1,0 +1,39 @@
+{
+  "title": "Quick Math Strategies for Kids",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "durationSeconds": 6,
+      "narration": "Can you solve problems faster with just your mind? Let's find out!",
+      "visualCue": "excited children",
+      "sceneHint": "happy_classroom"
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "durationSeconds": 8,
+      "narration": "Using rounding to estimate makes calculations easier and quicker!",
+      "visualCue": "rounding numbers",
+      "sceneHint": "number_line_jump"
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "durationSeconds": 6,
+      "narration": "Try estimating 49 plus 28 by rounding to 50 and 30 first.",
+      "visualCue": "calculation example",
+      "sceneHint": "hands-on_activity"
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "durationSeconds": 5,
+      "narration": "Great job! Remember to use these techniques every day to get faster!",
+      "visualCue": "thumbs up",
+      "sceneHint": "celebration"
+    }
+  ],
+  "teacherNotes": "Encourage students to share their experiences using estimation in everyday tasks."
+}

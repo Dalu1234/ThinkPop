@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Identify what one foot represents as a measurement.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "obj2",
+      "statement": "Demonstrate how to measure objects using feet.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

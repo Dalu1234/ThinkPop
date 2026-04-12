@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "objective1",
+      "statement": "Identify the value of each digit in the number 555.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "objective2",
+      "statement": "Compare the number 555 to other three-digit numbers.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

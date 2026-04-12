@@ -1,0 +1,79 @@
+{
+  "title": "Exploring the Number Five",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "show fingers",
+      "sceneHint": "number_five_intro",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Today, we will learn about the number five!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Can we count to five together using our fingers?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "five in groups",
+      "sceneHint": "group_items",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Look at these objects; can you find five of them?",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "One, two, three, four, five! Great job counting!",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "add numbers",
+      "sceneHint": "addition_with_five",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "If I have two apples and you give me three, how many do we have?",
+          "durationSeconds": 6
+        },
+        {
+          "id": "s6",
+          "text": "That's right, we have five apples altogether!",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "recap five",
+      "sceneHint": "summary_of_five",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "You've done amazing work learning about the number five!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "Remember, five is a special number for counting and adding.",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Engage students with hands-on activities to reinforce counting to five."
+}

@@ -1,0 +1,44 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor excitedly moves both arms up and down while smiling, expressing enthusiasm about today's lesson"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person leans slightly forward, extending both hands in a welcoming gesture toward the learners"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor raises both hands to show five fingers on one side, then five fingers on the other while explaining"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person bends down slightly, uses one hand to display five fingers, then raises the other hand to show five more"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor brings both hands together, moving them in a counting motion as if combining the fingers while encouraging applause"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person stretches both arms outward, smiling and encouraging the class to think about the addition problem at hand"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor points thoughtfully to the class, moving hands back and forth as if illustrating fingers or objects to count"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person raises both arms high with excitement, nodding and smiling broadly while celebrating the correct answer"
+    },
+    {
+      "sentenceId": "s9",
+      "mdmPrompt": "a tutor stands tall, extending both arms wide while announcing the conclusion of the lesson with a big smile"
+    },
+    {
+      "sentenceId": "s10",
+      "mdmPrompt": "a person claps hands together joyfully, moving side to side while praising the students for their great work"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "OBJ-1",
+      "statement": "Solve multiplication problems using basic multiplication facts.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "OBJ-2",
+      "statement": "Explain the relationship between multiplication and addition.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

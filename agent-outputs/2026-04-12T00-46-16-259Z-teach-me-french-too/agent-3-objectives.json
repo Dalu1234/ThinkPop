@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Recognize numbers in a set to prepare for addition.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "2",
+      "statement": "Use a number line to solve simple addition problems.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

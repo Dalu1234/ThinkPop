@@ -1,0 +1,44 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor steps forward with excitement, opens both arms wide, and smiles while announcing the topic of 555"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person tilts their head slightly, raises a hand to their chin, and looks upward as if pondering the number 555"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor points at an imaginary chart with their right hand, emphasizing the hundreds place while highlighting the first digit"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person sways gently to the side, placing their left hand on their hip and raising the right hand to show the tens place"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor gestures with both hands open, moving them downwards to show the ones place, while explaining the last digit"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person steps back slightly, crossing their arms and nodding while inviting the class to compare 555 with 222"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor leans forward, points first at 555 and then at 222, while asking if one number is bigger than the other"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person raises both hands into the air joyfully, clapping once while celebrating that 555 is bigger than 222"
+    },
+    {
+      "sentenceId": "s9",
+      "mdmPrompt": "a tutor stands tall, spreading their arms apart, and smiles while summarizing the components of the number 555"
+    },
+    {
+      "sentenceId": "s10",
+      "mdmPrompt": "a person claps both hands together, nods enthusiastically, and smiles brightly while praising the students' progress"
+    }
+  ]
+}

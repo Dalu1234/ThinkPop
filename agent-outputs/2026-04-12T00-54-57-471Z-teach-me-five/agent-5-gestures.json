@@ -1,0 +1,52 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "hand": "both",
+      "motion": "wave",
+      "mdmPrompt": "a tutor steps slightly forward, waves both arms excitedly while announcing learning about the number five"
+    },
+    {
+      "sentenceId": "s2",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "the tutor raises both hands, extends fingers as they count aloud to five, encouraging students to do the same"
+    },
+    {
+      "sentenceId": "s3",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "the tutor shifts weight to one side, points to various objects while asking students to find five among them"
+    },
+    {
+      "sentenceId": "s4",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "the tutor stands tall, raises fingers one by one while counting to five, celebrating with clear enthusiasm"
+    },
+    {
+      "sentenceId": "s5",
+      "hand": "left",
+      "motion": "emphasize",
+      "mdmPrompt": "the tutor leans slightly forward, animatedly emphasizes with one hand while asking about the apples and counting"
+    },
+    {
+      "sentenceId": "s6",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "the tutor firmly plants feet, raises both arms and presents a beaming smile while confirming five apples altogether"
+    },
+    {
+      "sentenceId": "s7",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "the tutor stands grounded, raises both arms confidently while praising student's amazing work on the number five"
+    },
+    {
+      "sentenceId": "s8",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "the tutor leans slightly and points forward, reinforcing the special role of five in counting and adding"
+    }
+  ]
+}

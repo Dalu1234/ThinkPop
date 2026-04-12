@@ -1,0 +1,52 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "hand": "both",
+      "motion": "walk",
+      "mdmPrompt": "a tutor steps forward confidently, raising both hands open as if inviting everyone to learn together"
+    },
+    {
+      "sentenceId": "s2",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "the tutor points to their right hand, extending fingers to show five while encouraging students to join in"
+    },
+    {
+      "sentenceId": "s3",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "the tutor leans slightly forward, raising both arms wide to illustrate the number line starting at zero"
+    },
+    {
+      "sentenceId": "s4",
+      "hand": "right",
+      "motion": "count",
+      "mdmPrompt": "the tutor moves their right hand to visually jump to number five on an imaginary line, reenacting the addition motion"
+    },
+    {
+      "sentenceId": "s5",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "the tutor holds up five fingers and then adds three more, counting rhythmically with both hands while engaging students"
+    },
+    {
+      "sentenceId": "s6",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "the tutor stands tall, smiling as they encourage everyone to count together, keeping hands extended to guide attentively"
+    },
+    {
+      "sentenceId": "s7",
+      "hand": "both",
+      "motion": "wave",
+      "mdmPrompt": "the tutor waves arms excitedly while celebrating the success of adding five and three, showing enthusiasm and positivity"
+    },
+    {
+      "sentenceId": "s8",
+      "hand": "left",
+      "motion": "point",
+      "mdmPrompt": "the tutor points firmly to an imaginary number line, recalling how it helped add numbers and reinforcing the learning visually"
+    }
+  ]
+}

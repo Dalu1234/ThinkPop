@@ -1,0 +1,52 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "hand": "both",
+      "motion": "walk",
+      "mdmPrompt": "the tutor takes a few steps forward, raises both arms energetically while announcing today's lesson about the number five"
+    },
+    {
+      "sentenceId": "s2",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "the tutor holds up both hands showing five fingers, smiling and encouraging students to join in to show their fingers"
+    },
+    {
+      "sentenceId": "s3",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "the tutor points confidently at a big display of the number 5 while explaining how it looks with enthusiasm"
+    },
+    {
+      "sentenceId": "s4",
+      "hand": "left",
+      "motion": "count",
+      "mdmPrompt": "the tutor extends their left arm while counting numbers from four to six, clearly illustrating the position of five in the sequence"
+    },
+    {
+      "sentenceId": "s5",
+      "hand": "both",
+      "motion": "walk",
+      "mdmPrompt": "the tutor walks around the space while encouraging students to look for five various objects they can find nearby"
+    },
+    {
+      "sentenceId": "s6",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "the tutor raises both hands in a thumbs-up gesture, clapping slightly as they celebrate finding five objects with the students"
+    },
+    {
+      "sentenceId": "s7",
+      "hand": "both",
+      "motion": "wave",
+      "mdmPrompt": "the tutor waves both hands enthusiastically while declaring that today they've learned all about the number five"
+    },
+    {
+      "sentenceId": "s8",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "the tutor extends both arms forward and counts while enthusiastically leading the group in five high fives with smiles"
+    }
+  ]
+}

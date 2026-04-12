@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "objective1",
+      "statement": "Calculate the sum of two single-digit numbers.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "objective2",
+      "statement": "Identify the addition symbol and its meaning.",
+      "bloomLevel": "remember"
+    }
+  ]
+}

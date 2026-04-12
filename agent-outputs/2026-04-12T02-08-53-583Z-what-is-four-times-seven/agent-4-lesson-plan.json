@@ -1,0 +1,79 @@
+{
+  "title": "Finding the Product of Four and Seven",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook",
+      "kind": "hook",
+      "visualCue": "Exciting multiplication example",
+      "sceneHint": "multiplication_draw",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "What happens when we multiply four by seven?",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Let's discover the answer together with a fun multiplication method!",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "kind": "model",
+      "visualCue": "Using arrays to visualize",
+      "sceneHint": "array_visualization",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "First, let's arrange four groups of seven objects each.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "When we add these groups together, what do we get?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "practice",
+      "kind": "practice",
+      "visualCue": "Interactive multiplication",
+      "sceneHint": "interactive_exercise",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now it's your turn! What is four times seven?",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "Use arrays or repeated addition to find the answer!",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "wrap",
+      "kind": "wrap",
+      "visualCue": "Quick review",
+      "sceneHint": "summary_flash",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job! Four times seven equals twenty-eight.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "Remember, multiplication is like adding groups together.",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to use different methods for understanding multiplication."
+}
