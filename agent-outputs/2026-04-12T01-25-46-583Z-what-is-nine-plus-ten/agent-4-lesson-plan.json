@@ -1,0 +1,39 @@
+{
+  "title": "Adding 9 and 10",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "seg-hook",
+      "kind": "hook",
+      "durationSeconds": 6,
+      "narration": "We have 9 stars and 10 more â€” let's count them all together.",
+      "visualCue": "Two groups of stars",
+      "sceneHint": "count_groups_hook"
+    },
+    {
+      "id": "seg-model",
+      "kind": "model",
+      "durationSeconds": 7,
+      "narration": "Start at 9 and count on 10 more to get 19.",
+      "visualCue": "Stars combine into one group",
+      "sceneHint": "count_on_addition"
+    },
+    {
+      "id": "seg-practice",
+      "kind": "practice",
+      "durationSeconds": 6,
+      "narration": "Say it with me: 9 plus 10 equals 19.",
+      "visualCue": "Equation 9 + 10 = 19",
+      "sceneHint": "guided_addition_practice"
+    },
+    {
+      "id": "seg-wrap",
+      "kind": "wrap",
+      "durationSeconds": 5,
+      "narration": "Great work â€” 9 plus 10 always equals 19.",
+      "visualCue": "Final equation highlighted",
+      "sceneHint": "addition_wrap"
+    }
+  ],
+  "teacherNotes": "Have students point to each object while counting on."
+}

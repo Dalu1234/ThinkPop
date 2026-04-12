@@ -1,11 +1,11 @@
-import { completeJson, getOpenAI } from './openaiClient.mjs'
+﻿import { completeJson, getOpenAI } from './openaiClient.mjs'
 import { mkdir, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 
 const MODEL = process.env.OPENAI_MODEL || 'gpt-4o-mini'
 const AGENT_OUTPUTS_DIR = path.resolve(process.cwd(), 'agent-outputs')
 
-const BASE = `You are one stage in a multi-agent system that builds elementary mathematics lessons (grades K–5).
+const BASE = `You are one stage in a multi-agent system that builds elementary mathematics lessons (grades Kâ€“5).
 Use clear, encouraging language. Stay strictly within school mathematics. No unrelated topics.`
 
 function delay(ms) {
@@ -52,6 +52,7 @@ async function writeAgentOutputs(problem, outputs) {
 
 function mockPipeline(problem) {
   const addition = parseAddition(problem)
+  const subtraction = parseSubtraction(problem)
   const division = parseDivision(problem)
   const multiplication = parseMultiplication(problem)
 
@@ -99,7 +100,7 @@ function mockPipeline(problem) {
           id: 'seg-hook',
           kind: 'hook',
           durationSeconds: 6,
-          narration: `We have ${a} stars and ${b} more — let's count them all together.`,
+          narration: `We have ${a} stars and ${b} more â€” let's count them all together.`,
           visualCue: `Two groups of stars`,
           sceneHint: 'count_groups_hook',
         },
@@ -123,12 +124,92 @@ function mockPipeline(problem) {
           id: 'seg-wrap',
           kind: 'wrap',
           durationSeconds: 5,
-          narration: `Great work — ${a} plus ${b} always equals ${sum}.`,
+          narration: `Great work â€” ${a} plus ${b} always equals ${sum}.`,
           visualCue: `Final equation highlighted`,
           sceneHint: 'addition_wrap',
         },
       ],
       teacherNotes: 'Have students point to each object while counting on.',
+    }
+    const gesturePlan = mockGesturePlan(lessonPlan)
+    const visualModel = mockVisualModel(problem, intake, topic, lessonPlan)
+    return { intake, topic, objectives, lessonPlan, gesturePlan, visualModel }
+  }
+
+  if (subtraction) {
+    const { a, b } = subtraction
+    const difference = Math.max(0, a - b)
+    const intake = {
+      normalizedProblem: problem?.trim() || `What is ${a} - ${b}?`,
+      gradeBand: 'K-2',
+      mathDomain: 'Subtraction within 20',
+      ambiguities: [],
+      learnerIntent: 'Understand subtraction as taking away from a starting amount to find what remains.',
+    }
+    const topic = {
+      topicTitle: 'Subtracting by taking away',
+      subtopics: ['Starting amount', 'Taking away', 'How many are left'],
+      briefSummary:
+        'Learners begin with a total, take some away, and count what remains to match a subtraction equation.',
+      relatedPrerequisites: ['Counting objects to 20', 'Recognizing numerals', 'Addition within 20'],
+    }
+    const objectives = {
+      objectives: [
+        {
+          id: 'obj-1',
+          statement: 'Show a starting group and identify how many are taken away.',
+          bloomLevel: 'understand',
+        },
+        {
+          id: 'obj-2',
+          statement: `Subtract ${b} from ${a} to find ${difference}.`,
+          bloomLevel: 'apply',
+        },
+        {
+          id: 'obj-3',
+          statement: `Write the equation ${a} - ${b} = ${difference} to match a take-away model.`,
+          bloomLevel: 'apply',
+        },
+      ],
+    }
+    const lessonPlan = {
+      title: `Subtracting ${b} from ${a}`,
+      estimatedMinutes: 5,
+      segments: [
+        {
+          id: 'seg-hook',
+          kind: 'hook',
+          durationSeconds: 6,
+          narration: `We start with ${a} blocks and plan to take away ${b} of them.`,
+          visualCue: `${a} blocks with ${b} highlighted`,
+          sceneHint: 'subtraction_takeaway_hook',
+        },
+        {
+          id: 'seg-model',
+          kind: 'model',
+          durationSeconds: 7,
+          narration: `Watch ${b} blocks move away, leaving ${difference} blocks behind.`,
+          visualCue: `Highlighted blocks slide away`,
+          sceneHint: 'subtraction_takeaway_model',
+        },
+        {
+          id: 'seg-practice',
+          kind: 'practice',
+          durationSeconds: 6,
+          narration: `Say it with me: ${a} minus ${b} equals ${difference}.`,
+          visualCue: `Equation ${a} - ${b} = ${difference}`,
+          sceneHint: 'guided_subtraction_practice',
+        },
+        {
+          id: 'seg-wrap',
+          kind: 'wrap',
+          durationSeconds: 5,
+          narration: `Great job noticing what stays after we take ${b} away from ${a}.`,
+          visualCue: `Remaining blocks glow`,
+          sceneHint: 'subtraction_wrap',
+        },
+      ],
+      teacherNotes: 'Have students touch the highlighted objects first, then count the remaining ones.',
     }
     const gesturePlan = mockGesturePlan(lessonPlan)
     const visualModel = mockVisualModel(problem, intake, topic, lessonPlan)
@@ -180,7 +261,7 @@ function mockPipeline(problem) {
           kind: 'hook',
           durationSeconds: 6,
           narration: `Here are ${b} rows with ${a} apples in each row.`,
-          visualCue: `Array of ${b} rows × ${a} apples`,
+          visualCue: `Array of ${b} rows Ã— ${a} apples`,
           sceneHint: 'array_hook',
         },
         {
@@ -203,8 +284,8 @@ function mockPipeline(problem) {
           id: 'seg-wrap',
           kind: 'wrap',
           durationSeconds: 5,
-          narration: `${a} times ${b} equals ${product} — remember that!`,
-          visualCue: `Equation ${a} × ${b} = ${product}`,
+          narration: `${a} times ${b} equals ${product} â€” remember that!`,
+          visualCue: `Equation ${a} Ã— ${b} = ${product}`,
           sceneHint: 'multiplication_wrap',
         },
       ],
@@ -270,7 +351,7 @@ function mockPipeline(problem) {
           id: 'seg-model',
           kind: 'model',
           durationSeconds: 7,
-          narration: `We keep making groups of ${groupSize} until we run out — that gives us ${quotient} groups.`,
+          narration: `We keep making groups of ${groupSize} until we run out â€” that gives us ${quotient} groups.`,
           visualCue: `Apples move into groups of ${groupSize}`,
           sceneHint: 'division_group_model',
         },
@@ -288,7 +369,7 @@ function mockPipeline(problem) {
           id: 'seg-wrap',
           kind: 'wrap',
           durationSeconds: 5,
-          narration: `Division splits a total into equal groups — nice work today!`,
+          narration: `Division splits a total into equal groups â€” nice work today!`,
           visualCue: `Final equation displayed`,
           sceneHint: 'division_wrap',
         },
@@ -305,7 +386,7 @@ function mockPipeline(problem) {
       problem?.trim() ||
       'The learner asked for help with a fraction addition exercise.',
     gradeBand: '3-5',
-    mathDomain: 'Fractions — adding with like/unlike denominators',
+    mathDomain: 'Fractions â€” adding with like/unlike denominators',
     ambiguities: [],
     learnerIntent: 'Understand how to add fractions and visualize parts of a whole.',
   }
@@ -359,15 +440,15 @@ function mockPipeline(problem) {
         id: 'seg-practice',
         kind: 'practice',
         durationSeconds: 6,
-        narration: 'Try it: one half plus one fourth — convert halves to fourths, then add.',
-        visualCue: '1/2 → 2/4, then 2/4 + 1/4 = 3/4',
+        narration: 'Try it: one half plus one fourth â€” convert halves to fourths, then add.',
+        visualCue: '1/2 â†’ 2/4, then 2/4 + 1/4 = 3/4',
         sceneHint: 'equivalent_fraction_transform',
       },
       {
         id: 'seg-wrap',
         kind: 'wrap',
         durationSeconds: 5,
-        narration: 'Same-sized pieces let us add fractions safely — great work!',
+        narration: 'Same-sized pieces let us add fractions safely â€” great work!',
         visualCue: 'Final fraction highlighted',
         sceneHint: 'celebration',
       },
@@ -391,8 +472,51 @@ function mockGesturePlan(lessonPlan) {
   return { gestures }
 }
 
+const NUMBER_WORDS = {
+  zero: 0,
+  one: 1,
+  two: 2,
+  three: 3,
+  four: 4,
+  five: 5,
+  six: 6,
+  seven: 7,
+  eight: 8,
+  nine: 9,
+  ten: 10,
+  eleven: 11,
+  twelve: 12,
+}
+
+function normalizeSpokenMath(problem) {
+  let s = String(problem || '').toLowerCase().trim()
+  if (!s) return ''
+
+  s = s
+    .replace(/\?/g, ' ')
+    .replace(/\bwhat\s+is\b/g, ' ')
+    .replace(/\bcan\s+you\s+teach\s+me\b/g, ' ')
+    .replace(/\bteach\s+me\b/g, ' ')
+    .replace(/\bshow\s+me\b/g, ' ')
+    .replace(/\bplease\b/g, ' ')
+    .replace(/\bmultiplied\s+by\b/g, ' times ')
+    .replace(/\bdivide(?:d)?\s+by\b/g, ' divided by ')
+    .replace(/\bplus\b/g, ' + ')
+    .replace(/\bminus\b/g, ' - ')
+    .replace(/\btimes\b/g, ' x ')
+    .replace(/\bx\b/g, ' x ')
+    .replace(/\bdivided\s+by\b/g, ' / ')
+
+  s = s.replace(
+    /\b(zero|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)\b/g,
+    match => String(NUMBER_WORDS[match] ?? match)
+  )
+
+  return s.replace(/\s+/g, '')
+}
+
 function parseAddition(problem) {
-  const s = (problem || '').replace(/\s+/g, '')
+  const s = normalizeSpokenMath(problem)
   const m = s.match(/(\d{1,2})\s*\+\s*(\d{1,2})/)
   if (!m) return null
   const a = Math.max(0, parseInt(m[1], 10))
@@ -400,9 +524,18 @@ function parseAddition(problem) {
   return { a, b }
 }
 
+function parseSubtraction(problem) {
+  const s = normalizeSpokenMath(problem)
+  const m = s.match(/(\d{1,2})\s*-\s*(\d{1,2})/)
+  if (!m) return null
+  const a = Math.max(0, parseInt(m[1], 10))
+  const b = Math.max(0, parseInt(m[2], 10))
+  return { a, b }
+}
+
 function parseMultiplication(problem) {
-  const s = (problem || '').replace(/\s+/g, '')
-  const m = s.match(/(\d{1,2})\s*[x×*]\s*(\d{1,2})/i) || s.match(/(\d{1,2})\s*times\s*(\d{1,2})/i)
+  const s = normalizeSpokenMath(problem)
+  const m = s.match(/(\d{1,2})\s*[xÃ—*]\s*(\d{1,2})/i)
   if (!m) return null
   const a = Math.min(12, Math.max(1, parseInt(m[1], 10)))
   const b = Math.min(12, Math.max(1, parseInt(m[2], 10)))
@@ -410,10 +543,8 @@ function parseMultiplication(problem) {
 }
 
 function parseDivision(problem) {
-  const s = (problem || '').replace(/\s+/g, '')
-  const m =
-    s.match(/(\d{1,2})\s*[\/÷]\s*(\d{1,2})/i) ||
-    s.match(/(\d{1,2})\s*dividedby\s*(\d{1,2})/i)
+  const s = normalizeSpokenMath(problem)
+  const m = s.match(/(\d{1,2})\s*[\/Ã·]\s*(\d{1,2})/i)
   if (!m) return null
   const total = Math.min(36, Math.max(1, parseInt(m[1], 10)))
   const groupSize = Math.min(12, Math.max(1, parseInt(m[2], 10)))
@@ -431,6 +562,16 @@ function mockVisualModel(problem, intake, topic, lessonPlan) {
       caption: `${addition.a} + ${addition.b} = ${addition.a + addition.b}`,
     }
   }
+  const subtraction = parseSubtraction(problem)
+  if (subtraction) {
+    return {
+      kind: 'addition_rows',
+      rowCounts: [subtraction.a, subtraction.b],
+      itemShape: 'block',
+      itemColor: '#00e5ff',
+      caption: `${subtraction.a} - ${subtraction.b} = ${Math.max(0, subtraction.a - subtraction.b)}`,
+    }
+  }
   const div = parseDivision(problem)
   if (div) {
     const quotient = Math.floor(div.total / div.groupSize)
@@ -444,8 +585,8 @@ function mockVisualModel(problem, intake, topic, lessonPlan) {
       itemShape: 'apple',
       itemColor: '#e84b3c',
       caption: remainder
-        ? `${div.total} ÷ ${div.groupSize} = ${quotient} remainder ${remainder}`
-        : `${div.total} ÷ ${div.groupSize} = ${quotient} (${quotient} groups of ${div.groupSize})`,
+        ? `${div.total} Ã· ${div.groupSize} = ${quotient} remainder ${remainder}`
+        : `${div.total} Ã· ${div.groupSize} = ${quotient} (${quotient} groups of ${div.groupSize})`,
     }
   }
   const mult = parseMultiplication(problem)
@@ -458,7 +599,7 @@ function mockVisualModel(problem, intake, topic, lessonPlan) {
       cols,
       itemShape: 'apple',
       itemColor: '#e84b3c',
-      caption: `${mult.a} × ${mult.b} = ${mult.a * mult.b} (${cols} per row × ${rows} rows)`,
+      caption: `${mult.a} Ã— ${mult.b} = ${mult.a * mult.b} (${cols} per row Ã— ${rows} rows)`,
     }
   }
   if (/fraction|half|third|fourth|quarter|denominator/i.test(problem + (topic?.topicTitle || ''))) {
@@ -468,7 +609,7 @@ function mockVisualModel(problem, intake, topic, lessonPlan) {
       cols: 4,
       itemShape: 'block',
       itemColor: '#ff6eb4',
-      caption: 'Four equal parts — one whole split into fourths',
+      caption: 'Four equal parts â€” one whole split into fourths',
     }
   }
   return {
@@ -483,7 +624,7 @@ function mockVisualModel(problem, intake, topic, lessonPlan) {
 
 async function agentIntake(rawProblem) {
   const system = `${BASE}
-You are Agent 1 — Intake. Read the learner or teacher message and extract structured context for a math lesson.
+You are Agent 1 â€” Intake. Read the learner or teacher message and extract structured context for a math lesson.
 Return JSON only with keys:
 - normalizedProblem (string)
 - gradeBand (one of: "K-2", "3-5", "6+", "unspecified")
@@ -496,19 +637,19 @@ Return JSON only with keys:
 
 async function agentTopic(intake) {
   const system = `${BASE}
-You are Agent 2 — Topic designer. Given intake JSON, propose the focused instructional topic.
+You are Agent 2 â€” Topic designer. Given intake JSON, propose the focused instructional topic.
 Return JSON only with keys:
-- topicTitle (string, 3–6 words)
-- subtopics (array of strings, 2–3 items)
+- topicTitle (string, 3â€“6 words)
+- subtopics (array of strings, 2â€“3 items)
 - briefSummary (string, ONE sentence only)
-- relatedPrerequisites (array of strings, 1–2 items)`
+- relatedPrerequisites (array of strings, 1â€“2 items)`
   const user = JSON.stringify(intake, null, 2)
   return completeJson({ model: MODEL, system, user })
 }
 
 async function agentObjectives(intake, topic) {
   const system = `${BASE}
-You are Agent 3 — Objectives. Write measurable outcomes for elementary students.
+You are Agent 3 â€” Objectives. Write measurable outcomes for elementary students.
 Return JSON only with keys:
 - objectives (array of exactly 2 objects)
 Each objective object: id (string), statement (string, one short sentence starting with a student action verb), bloomLevel (one of: remember, understand, apply, analyze).`
@@ -518,18 +659,18 @@ Each objective object: id (string), statement (string, one short sentence starti
 
 async function agentLessonPlan(intake, topic, objectives) {
   const system = `${BASE}
-You are Agent 4 — Lesson plan. Build a short lesson a 3D visual tutor speaks aloud.
+You are Agent 4 â€” Lesson plan. Build a short lesson a 3D visual tutor speaks aloud.
 Return JSON only with keys:
-- title (string, 4–7 words)
-- estimatedMinutes (number, 3–8)
-- segments (ordered array, exactly 3–4 items)
-Each segment: id (string), kind (one of: hook, model, practice, wrap), durationSeconds (number, 4–8), narration (string, ONE sentence of 10–18 words — this is spoken aloud, keep it tight), visualCue (string, 3–5 words), sceneHint (short token like "number_line_jump")
+- title (string, 4â€“7 words)
+- estimatedMinutes (number, 3â€“8)
+- segments (ordered array, exactly 3â€“4 items)
+Each segment: id (string), kind (one of: hook, model, practice, wrap), durationSeconds (number, 4â€“8), narration (string, ONE sentence of 10â€“18 words â€” this is spoken aloud, keep it tight), visualCue (string, 3â€“5 words), sceneHint (short token like "number_line_jump")
 - teacherNotes (string, one sentence)`
   const user = `Intake:\n${JSON.stringify(intake, null, 2)}\n\nTopic:\n${JSON.stringify(topic, null, 2)}\n\nObjectives:\n${JSON.stringify(objectives, null, 2)}`
   return completeJson({ model: MODEL, system, user })
 }
 
-// MDM motion prompts — text fed directly into the Human Motion Diffusion Model.
+// MDM motion prompts â€” text fed directly into the Human Motion Diffusion Model.
 // Phrasing follows HumanML3D training conventions ("a person...").
 const MDM_MOTION_PROMPTS = {
   wave:      'a person waves their right hand warmly at the audience',
@@ -542,13 +683,13 @@ const MDM_MOTION_PROMPTS = {
 
 async function agentGesturePlan(lessonPlan) {
   const system = `${BASE}
-You are Agent 5 — Gesture director. The 3D tutor will move its whole body while each lesson segment is explained.
+You are Agent 5 â€” Gesture director. The 3D tutor will move its whole body while each lesson segment is explained.
 Return JSON only with key "gestures": an array with EXACTLY one object per segment in the lesson plan, in the SAME ORDER as segments.
 Each object:
 - segmentId (string, must match the segment id)
 - hand ("left"|"right"|"both")
 - motion ("rest"|"point"|"wave"|"count"|"open"|"emphasize")
-- mdmPrompt (string) — a natural-language description of the full-body movement for this segment, 10-20 words, e.g. "a person walks forward and then gestures with their right arm while explaining". Be specific and educational.
+- mdmPrompt (string) â€” a natural-language description of the full-body movement for this segment, 10-20 words, e.g. "a person walks forward and then gestures with their right arm while explaining". Be specific and educational.
 Vary motions naturally: hook might use "wave", model might use "point", practice "count", check "open", wrap "emphasize".`
   const user = JSON.stringify(lessonPlan, null, 2)
   return completeJson({ model: MODEL, system, user })
@@ -556,14 +697,20 @@ Vary motions naturally: hook might use "wave", model might use "point", practice
 
 async function agentVisualModel(intake, topic, lessonPlan) {
   const system = `${BASE}
-You are Agent 6 — Visual model director. Choose a concrete countable 3D arrangement for the MAIN mathematical idea.
+You are Agent 6 - Visual model director. Choose a concrete countable 3D arrangement for the MAIN mathematical idea.
 For whole-number addition (e.g., 3+4), use kind "addition_rows" with rowCounts array (e.g. [3, 4]) to show groups on separate rows. Use itemShape "apple" by default.
-For whole-number multiplication (e.g. 3×4), use kind "grid" with rows and cols so rows*cols equals the product; put the FIRST factor as cols (items per row) and SECOND as rows unless the problem wording clearly says otherwise (e.g. "3 apples in each of 4 rows" → cols 3, rows 4).
+For whole-number subtraction (e.g., 9-3), use kind "addition_rows" with rowCounts array [9, 3] so the frontend can show the starting set and the amount removed.
+For whole-number division (e.g., 8/2), use kind "division_groups" with total, groupSize, quotient, and remainder so the frontend can show the full set and then split it into equal groups.
+For whole-number multiplication (e.g. 3 x 4), use kind "grid" with rows and cols so rows*cols equals the product; put the first factor as cols (items per row) and second as rows unless the problem wording clearly says otherwise.
 Return JSON only:
-- kind: "grid"|"addition_rows"|"none"
-- rows: integer 1-12 (use 0 if kind is none or addition_rows)
-- cols: integer 1-12 (use 0 if kind is none or addition_rows)
+- kind: "grid"|"addition_rows"|"division_groups"|"none"
+- rows: integer 1-12 (use 0 if kind is none, addition_rows, or division_groups)
+- cols: integer 1-12 (use 0 if kind is none, addition_rows, or division_groups)
 - rowCounts: array of integers (e.g., [3, 4]) ONLY if kind is "addition_rows"
+- total: integer 1-36 ONLY if kind is "division_groups"
+- groupSize: integer 1-12 ONLY if kind is "division_groups"
+- quotient: integer 0-36 ONLY if kind is "division_groups"
+- remainder: integer 0-11 ONLY if kind is "division_groups"
 - itemShape: "apple"|"sphere"|"block"
 - itemColor: CSS hex color
 - caption: one short line for the learner
@@ -593,7 +740,7 @@ function normalizeGesturePlan(lessonPlan, raw) {
 }
 
 function normalizeVisualModel(raw) {
-  const validKinds = ['grid', 'addition_rows']
+  const validKinds = ['grid', 'addition_rows', 'division_groups']
   const kind = validKinds.includes(raw?.kind) ? raw.kind : 'none'
   let rows = Number(raw?.rows) || 0
   let cols = Number(raw?.cols) || 0
@@ -602,10 +749,18 @@ function normalizeVisualModel(raw) {
     cols = Math.min(12, Math.max(1, Math.round(cols)))
   }
   let rowCounts = []
-  if (kind === 'addition_rows') {
-    if (Array.isArray(raw?.rowCounts)) {
-      rowCounts = raw.rowCounts.map(n => Math.min(12, Math.max(0, Math.round(Number(n) || 0))))
-    }
+  if (kind === 'addition_rows' && Array.isArray(raw?.rowCounts)) {
+    rowCounts = raw.rowCounts.map(n => Math.min(12, Math.max(0, Math.round(Number(n) || 0))))
+  }
+  let total = 0
+  let groupSize = 0
+  let quotient = 0
+  let remainder = 0
+  if (kind === 'division_groups') {
+    total = Math.min(36, Math.max(1, Math.round(Number(raw?.total) || 0)))
+    groupSize = Math.min(12, Math.max(1, Math.round(Number(raw?.groupSize) || 0)))
+    quotient = Math.min(36, Math.max(0, Math.round(Number(raw?.quotient) || 0)))
+    remainder = Math.min(11, Math.max(0, Math.round(Number(raw?.remainder) || 0)))
   }
   const shapes = ['apple', 'sphere', 'block']
   const shape = shapes.includes(raw?.itemShape) ? raw.itemShape : 'sphere'
@@ -615,10 +770,60 @@ function normalizeVisualModel(raw) {
     rows,
     cols,
     rowCounts,
+    total,
+    groupSize,
+    quotient,
+    remainder,
     itemShape: shape,
     itemColor: color,
     caption: String(raw?.caption || ''),
   }
+}
+
+function buildVisualizationPayload(problem, visualModel) {
+  if (!visualModel || typeof visualModel !== 'object') return null
+
+  if (visualModel.kind === 'addition_rows' && Array.isArray(visualModel.rowCounts) && visualModel.rowCounts.length >= 2) {
+    const [first, second] = visualModel.rowCounts
+    const raw = normalizeSpokenMath(problem)
+    const subtractionMatch = raw.match(/(\d{1,2})\s*-\s*(\d{1,2})/)
+    if (subtractionMatch) {
+      return {
+        type: 'subtraction',
+        a: Number(subtractionMatch[1]) || Number(first) || 0,
+        b: Number(subtractionMatch[2]) || Number(second) || 0,
+        steps: true,
+      }
+    }
+    return {
+      type: 'addition',
+      a: Number(first) || 0,
+      b: Number(second) || 0,
+      steps: true,
+    }
+  }
+
+  if (visualModel.kind === 'grid' && visualModel.rows > 0 && visualModel.cols > 0) {
+    return {
+      type: 'multiplication',
+      a: Number(visualModel.cols) || 0,
+      b: Number(visualModel.rows) || 0,
+      steps: true,
+    }
+  }
+
+  if (visualModel.kind === 'division_groups' && visualModel.total > 0 && visualModel.groupSize > 0) {
+    return {
+      type: 'division',
+      total: Number(visualModel.total) || 0,
+      groupSize: Number(visualModel.groupSize) || 0,
+      quotient: Number(visualModel.quotient) || 0,
+      remainder: Number(visualModel.remainder) || 0,
+      steps: true,
+    }
+  }
+
+  return null
 }
 
 /**
@@ -636,18 +841,19 @@ export async function* runLessonPipelineStream(input) {
   if (useMock) {
     await delay(200)
     const m = mockPipeline(problem)
-    const artifacts = await writeAgentOutputs(problem, m)
-    yield { stage: 'intake', agent: 'Agent 1 — Intake', data: m.intake }
+    const visualization = buildVisualizationPayload(problem, m.visualModel)
+    const artifacts = await writeAgentOutputs(problem, { ...m, visualization })
+    yield { stage: 'intake', agent: 'Agent 1 â€” Intake', data: m.intake }
     await delay(280)
-    yield { stage: 'topic', agent: 'Agent 2 — Topic', data: m.topic }
+    yield { stage: 'topic', agent: 'Agent 2 â€” Topic', data: m.topic }
     await delay(280)
-    yield { stage: 'objectives', agent: 'Agent 3 — Objectives', data: m.objectives }
+    yield { stage: 'objectives', agent: 'Agent 3 â€” Objectives', data: m.objectives }
     await delay(280)
-    yield { stage: 'lessonPlan', agent: 'Agent 4 — Lesson plan', data: m.lessonPlan }
+    yield { stage: 'lessonPlan', agent: 'Agent 4 â€” Lesson plan', data: m.lessonPlan }
     await delay(260)
-    yield { stage: 'gestures', agent: 'Agent 5 — Gesture director', data: m.gesturePlan }
+    yield { stage: 'gestures', agent: 'Agent 5 â€” Gesture director', data: m.gesturePlan }
     await delay(260)
-    yield { stage: 'visualModel', agent: 'Agent 6 — Visual model', data: m.visualModel }
+    yield { stage: 'visualModel', agent: 'Agent 6 â€” Visual model', data: m.visualModel }
     yield {
       stage: 'complete',
       result: {
@@ -658,6 +864,7 @@ export async function* runLessonPipelineStream(input) {
         lessonPlan: m.lessonPlan,
         gesturePlan: m.gesturePlan,
         visualModel: m.visualModel,
+        visualization,
         artifacts,
         mock: true,
       },
@@ -667,23 +874,24 @@ export async function* runLessonPipelineStream(input) {
 
   try {
     const intake = await agentIntake(problem)
-    yield { stage: 'intake', agent: 'Agent 1 — Intake', data: intake }
+    yield { stage: 'intake', agent: 'Agent 1 â€” Intake', data: intake }
 
     const topic = await agentTopic(intake)
-    yield { stage: 'topic', agent: 'Agent 2 — Topic', data: topic }
+    yield { stage: 'topic', agent: 'Agent 2 â€” Topic', data: topic }
 
     const objectives = await agentObjectives(intake, topic)
-    yield { stage: 'objectives', agent: 'Agent 3 — Objectives', data: objectives }
+    yield { stage: 'objectives', agent: 'Agent 3 â€” Objectives', data: objectives }
 
     const lessonPlan = await agentLessonPlan(intake, topic, objectives)
-    yield { stage: 'lessonPlan', agent: 'Agent 4 — Lesson plan', data: lessonPlan }
+    yield { stage: 'lessonPlan', agent: 'Agent 4 â€” Lesson plan', data: lessonPlan }
 
     const gestureRaw = await agentGesturePlan(lessonPlan)
     const gesturePlan = normalizeGesturePlan(lessonPlan, gestureRaw)
-    yield { stage: 'gestures', agent: 'Agent 5 — Gesture director', data: gesturePlan }
+    yield { stage: 'gestures', agent: 'Agent 5 â€” Gesture director', data: gesturePlan }
 
     const visualRaw = await agentVisualModel(intake, topic, lessonPlan)
     const visualModel = normalizeVisualModel(visualRaw)
+    const visualization = buildVisualizationPayload(problem, visualModel)
     const artifacts = await writeAgentOutputs(problem, {
       intake,
       topic,
@@ -691,8 +899,9 @@ export async function* runLessonPipelineStream(input) {
       lessonPlan,
       gesturePlan,
       visualModel,
+      visualization,
     })
-    yield { stage: 'visualModel', agent: 'Agent 6 — Visual model', data: visualModel }
+    yield { stage: 'visualModel', agent: 'Agent 6 â€” Visual model', data: visualModel }
 
     yield {
       stage: 'complete',
@@ -704,6 +913,7 @@ export async function* runLessonPipelineStream(input) {
         lessonPlan,
         gesturePlan,
         visualModel,
+        visualization,
         artifacts,
         mock: false,
       },
@@ -713,3 +923,5 @@ export async function* runLessonPipelineStream(input) {
     yield { stage: 'error', error: message }
   }
 }
+
+

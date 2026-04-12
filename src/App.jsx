@@ -12,6 +12,7 @@ import {
   streamLessonPipeline,
   formatLessonPlanMessage,
   emojiForTopic,
+  extractVisualization,
 } from './lib/lessonApi'
 import { requestMotion, MOTION_PROMPTS, generateProceduralMotion } from './lib/motionApi'
 
@@ -108,6 +109,8 @@ function BaymaxExperience() {
   const [aiAudioActive, setAiAudioActive] = useState(false)
   const [topicDisplay, setTopicDisplay] = useState(INITIAL_TOPIC)
   const [playGesture, setPlayGesture] = useState(REST_GESTURE)
+  const [currentVisualization, setCurrentVisualization] = useState(null)
+  const [visualizationStepIndex, setVisualizationStepIndex] = useState(0)
   // Looping wave on load — verifies retarget + FBX without running the lesson pipeline
   const [currentMotionFrames, setCurrentMotionFrames] = useState(() =>
     generateProceduralMotion(MOTION_PROMPTS.wave, 96).frames
@@ -122,6 +125,10 @@ function BaymaxExperience() {
   const pipelineResultRef  = useRef(null)
   // Stores pre-generated MDM frames per segment: { [segmentId]: frames[] }
   const segmentMotionsRef  = useRef({})
+
+  const nextVisualizationStep = useCallback(() => {
+    setVisualizationStepIndex(prev => prev + 1)
+  }, [])
 
   const speakAiText = useCallback(async (text) => {
     const spokenText = String(text || '').trim()
@@ -244,6 +251,25 @@ function BaymaxExperience() {
     }
   }, [aiState])
 
+  useEffect(() => {
+    if (aiState !== 'speaking' || !currentVisualization?.steps) return
+
+    const stageCounts = {
+      addition: 3,
+      subtraction: 4,
+      multiplication: 3,
+      division: 4,
+    }
+    const maxSteps = stageCounts[currentVisualization.type] || 1
+    if (visualizationStepIndex >= maxSteps - 1) return
+
+    const timerId = setTimeout(() => {
+      setVisualizationStepIndex(prev => Math.min(prev + 1, maxSteps - 1))
+    }, 1400)
+
+    return () => clearTimeout(timerId)
+  }, [aiState, currentVisualization, visualizationStepIndex])
+
   const sendMessage = useCallback(
     async (text) => {
       if (aiState !== null) return
@@ -253,6 +279,8 @@ function BaymaxExperience() {
       setMessages(prev => [...prev, userMsg])
 
       pipelineResultRef.current = null
+      setCurrentVisualization(null)
+      setVisualizationStepIndex(0)
       setAiState('intake')
 
       let result
@@ -312,6 +340,8 @@ function BaymaxExperience() {
 
       setAiState('building')
       pipelineResultRef.current = result
+      setCurrentVisualization(extractVisualization(result))
+      setVisualizationStepIndex(0)
 
       // Must finish before "speaking" — otherwise the speaking effect reads empty segmentMotionsRef.
       await generateSegmentMotions(result)
@@ -320,6 +350,8 @@ function BaymaxExperience() {
       const body = formatLessonPlanMessage(result)
       await deliverAiMessage(body)
       setCurrentMotionFrames(generateProceduralMotion(MOTION_PROMPTS.wave, 96).frames)
+      setCurrentVisualization(null)
+      setVisualizationStepIndex(0)
       setAiState(null)
     },
     [aiState, deliverAiMessage, generateSegmentMotions]
@@ -327,7 +359,12 @@ function BaymaxExperience() {
 
   return (
     <div className="app-root">
-      <CharacterScene aiState={aiState} motionFrames={currentMotionFrames} />
+      <CharacterScene
+        aiState={aiState}
+        motionFrames={currentMotionFrames}
+        visualization={currentVisualization}
+        visualizationStepIndex={visualizationStepIndex}
+      />
 
       <div className="edge-bloom edge-bloom-left" />
       <div className="edge-bloom edge-bloom-right" />
@@ -342,6 +379,15 @@ function BaymaxExperience() {
 
       <AIStatus state={aiError ? 'error' : aiState} message={aiError} />
       <PipelineProgress state={aiError ? null : aiState} />
+      {currentVisualization?.steps && (
+        <button
+          className="viz-step-btn"
+          onClick={nextVisualizationStep}
+          disabled={aiState !== 'speaking'}
+        >
+          Next Step
+        </button>
+      )}
       <MDMTestPanel onFrames={frames => setCurrentMotionFrames(frames)} disabled={aiState !== null} />
       <TopicCard topic={topicDisplay} />
       <ChatPanel messages={messages} onSend={sendMessage} aiState={aiState} />

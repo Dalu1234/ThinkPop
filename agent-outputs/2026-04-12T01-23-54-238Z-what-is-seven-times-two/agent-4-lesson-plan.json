@@ -1,0 +1,39 @@
+{
+  "title": "7 times 2 as equal groups",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "seg-hook",
+      "kind": "hook",
+      "durationSeconds": 6,
+      "narration": "Here are 2 rows with 7 apples in each row.",
+      "visualCue": "Array of 2 rows Ã— 7 apples",
+      "sceneHint": "array_hook"
+    },
+    {
+      "id": "seg-model",
+      "kind": "model",
+      "durationSeconds": 7,
+      "narration": "7 times 2 means 2 equal groups of 7, giving us 14 total.",
+      "visualCue": "Rows labeled, total shown",
+      "sceneHint": "array_model"
+    },
+    {
+      "id": "seg-practice",
+      "kind": "practice",
+      "durationSeconds": 6,
+      "narration": "Count the rows with me: 2 rows of 7 equals 14.",
+      "visualCue": "Each row pulses in turn",
+      "sceneHint": "array_count_practice"
+    },
+    {
+      "id": "seg-wrap",
+      "kind": "wrap",
+      "durationSeconds": 5,
+      "narration": "7 times 2 equals 14 â€” remember that!",
+      "visualCue": "Equation 7 Ã— 2 = 14",
+      "sceneHint": "multiplication_wrap"
+    }
+  ],
+  "teacherNotes": "Connect each row to one equal group."
+}

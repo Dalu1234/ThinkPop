@@ -1,0 +1,10 @@
+{
+  "kind": "addition_rows",
+  "rowCounts": [
+    1,
+    2
+  ],
+  "itemShape": "apple",
+  "itemColor": "#e84b3c",
+  "caption": "1 + 2 = 3"
+}

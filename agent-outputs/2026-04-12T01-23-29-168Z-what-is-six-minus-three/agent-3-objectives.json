@@ -1,0 +1,19 @@
+{
+  "objectives": [
+    {
+      "id": "obj-1",
+      "statement": "Show a starting group and identify how many are taken away.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "obj-2",
+      "statement": "Subtract 3 from 6 to find 3.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "obj-3",
+      "statement": "Write the equation 6 - 3 = 3 to match a take-away model.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

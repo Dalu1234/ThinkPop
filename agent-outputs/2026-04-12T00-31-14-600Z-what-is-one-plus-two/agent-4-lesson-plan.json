@@ -1,0 +1,39 @@
+{
+  "title": "Adding 1 and 2",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "seg-hook",
+      "kind": "hook",
+      "durationSeconds": 6,
+      "narration": "We have 1 stars and 2 more â€” let's count them all together.",
+      "visualCue": "Two groups of stars",
+      "sceneHint": "count_groups_hook"
+    },
+    {
+      "id": "seg-model",
+      "kind": "model",
+      "durationSeconds": 7,
+      "narration": "Start at 1 and count on 2 more to get 3.",
+      "visualCue": "Stars combine into one group",
+      "sceneHint": "count_on_addition"
+    },
+    {
+      "id": "seg-practice",
+      "kind": "practice",
+      "durationSeconds": 6,
+      "narration": "Say it with me: 1 plus 2 equals 3.",
+      "visualCue": "Equation 1 + 2 = 3",
+      "sceneHint": "guided_addition_practice"
+    },
+    {
+      "id": "seg-wrap",
+      "kind": "wrap",
+      "durationSeconds": 5,
+      "narration": "Great work â€” 1 plus 2 always equals 3.",
+      "visualCue": "Final equation highlighted",
+      "sceneHint": "addition_wrap"
+    }
+  ],
+  "teacherNotes": "Have students point to each object while counting on."
+}

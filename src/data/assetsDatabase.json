@@ -1,73 +1,73 @@
 [
   {
     "id": "model_01",
-    "name": "Placeholder Character 1",
-    "path": "/models/placeholder_1.glb",
-    "category": "Characters",
-    "tags": ["sci-fi", "robot"]
+    "name": "Apple Photogrammetry",
+    "path": "/models/apple_photogrammetry.glb",
+    "category": "Food",
+    "tags": ["apple", "fruit", "food", "photogrammetry"]
   },
   {
     "id": "model_02",
-    "name": "Placeholder Environment 1",
-    "path": "/models/placeholder_2.glb",
-    "category": "Environment",
-    "tags": ["space", "station"]
+    "name": "Avocado",
+    "path": "/models/avocado.glb",
+    "category": "Food",
+    "tags": ["avocado", "fruit", "food", "scan"]
   },
   {
     "id": "model_03",
-    "name": "Cat Animation",
-    "path": "/models/cat_animation.glb",
-    "category": "Characters",
-    "tags": ["cat", "animation", "animal"]
-  },
-  {
-    "id": "model_04",
-    "name": "Colorful Balloons",
-    "path": "/models/colorful_balloons.glb",
-    "category": "Props",
-    "tags": ["balloons", "colorful", "party", "decoration"]
-  },
-  {
-    "id": "model_05",
-    "name": "FNAF Gift Box",
-    "path": "/models/fnaf_gift_box.glb",
-    "category": "Props",
-    "tags": ["fnaf", "gift", "box", "party"]
-  },
-  {
-    "id": "model_06",
-    "name": "FNAF Table New",
-    "path": "/models/fnaf_table_new.glb",
-    "category": "Environment",
-    "tags": ["fnaf", "table", "furniture", "party"]
-  },
-  {
-    "id": "model_07",
-    "name": "Party Hat",
-    "path": "/models/party_hat.glb",
-    "category": "Props",
-    "tags": ["party", "hat", "costume"]
-  },
-  {
-    "id": "model_08",
-    "name": "New Party Hat FNAF",
-    "path": "/models/new_party_hat__fnaf.glb",
-    "category": "Props",
-    "tags": ["fnaf", "party", "hat", "costume"]
-  },
-  {
-    "id": "model_09",
     "name": "Walnut",
     "path": "/models/a_walnut.glb",
     "category": "Food",
     "tags": ["walnut", "nut", "food", "scan"]
   },
   {
+    "id": "model_04",
+    "name": "Cat Animation",
+    "path": "/models/cat_animation.glb",
+    "category": "Characters",
+    "tags": ["cat", "animation", "animal"]
+  },
+  {
+    "id": "model_05",
+    "name": "Colorful Balloons",
+    "path": "/models/colorful_balloons.glb",
+    "category": "Props",
+    "tags": ["balloons", "colorful", "party", "decoration"]
+  },
+  {
+    "id": "model_06",
+    "name": "Dolphin",
+    "path": "/models/dolphin.glb",
+    "category": "Animals",
+    "tags": ["dolphin", "ocean", "marine", "animal"]
+  },
+  {
+    "id": "model_07",
+    "name": "Emperor Penguin",
+    "path": "/models/emperor_penguin.glb",
+    "category": "Animals",
+    "tags": ["penguin", "bird", "antarctic", "animal"]
+  },
+  {
+    "id": "model_08",
+    "name": "Fender Electric Guitar",
+    "path": "/models/fender_electric_guitar.glb",
+    "category": "Instruments",
+    "tags": ["guitar", "electric", "music", "instrument"]
+  },
+  {
+    "id": "model_09",
+    "name": "FNAF Gift Box",
+    "path": "/models/fnaf_gift_box.glb",
+    "category": "Props",
+    "tags": ["fnaf", "gift", "box", "party"]
+  },
+  {
     "id": "model_10",
-    "name": "Apple Photogrammetry",
-    "path": "/models/apple_photogrammetry.glb",
-    "category": "Food",
-    "tags": ["apple", "fruit", "food", "photogrammetry"]
+    "name": "FNAF Table New",
+    "path": "/models/fnaf_table_new.glb",
+    "category": "Environment",
+    "tags": ["fnaf", "table", "furniture", "party"]
   },
   {
     "id": "model_11",
@@ -78,23 +78,65 @@
   },
   {
     "id": "model_12",
-    "name": "Avocado",
-    "path": "/models/avocado.glb",
-    "category": "Food",
-    "tags": ["avocado", "fruit", "food", "scan"]
+    "name": "New Party Hat FNAF",
+    "path": "/models/new_party_hat__fnaf.glb",
+    "category": "Props",
+    "tags": ["fnaf", "party", "hat", "costume"]
   },
   {
     "id": "model_13",
+    "name": "Paprika",
+    "path": "/models/paprika.glb",
+    "category": "Food",
+    "tags": ["paprika", "pepper", "vegetable", "food"]
+  },
+  {
+    "id": "model_14",
+    "name": "Party Hat",
+    "path": "/models/party_hat.glb",
+    "category": "Props",
+    "tags": ["party", "hat", "costume"]
+  },
+  {
+    "id": "model_15",
     "name": "Peach",
     "path": "/models/peach_by_afinia_es360_3d_scanner.glb",
     "category": "Food",
     "tags": ["peach", "fruit", "food", "scanner"]
   },
   {
-    "id": "model_14",
-    "name": "Paprika",
-    "path": "/models/paprika.glb",
-    "category": "Food",
-    "tags": ["paprika", "pepper", "vegetable", "food"]
+    "id": "model_16",
+    "name": "Realistic Deer",
+    "path": "/models/realistic_deer_3d_model_2.0_demo_free_download.glb",
+    "category": "Animals",
+    "tags": ["deer", "forest", "mammal", "animal"]
+  },
+  {
+    "id": "model_17",
+    "name": "Saxophone",
+    "path": "/models/saxophone.glb",
+    "category": "Instruments",
+    "tags": ["saxophone", "music", "jazz", "instrument"]
+  },
+  {
+    "id": "model_18",
+    "name": "Shiny Fish",
+    "path": "/models/shiny_fish.glb",
+    "category": "Animals",
+    "tags": ["fish", "ocean", "marine", "animal"]
+  },
+  {
+    "id": "model_19",
+    "name": "Trumpet",
+    "path": "/models/trumpet.glb",
+    "category": "Instruments",
+    "tags": ["trumpet", "music", "brass", "instrument"]
+  },
+  {
+    "id": "model_20",
+    "name": "Violin",
+    "path": "/models/violin.glb",
+    "category": "Instruments",
+    "tags": ["violin", "music", "strings", "instrument"]
   }
 ]

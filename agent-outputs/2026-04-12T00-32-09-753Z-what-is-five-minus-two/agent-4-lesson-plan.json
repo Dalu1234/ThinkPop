@@ -1,0 +1,39 @@
+{
+  "title": "Adding fractions with like denominators",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "seg-hook",
+      "kind": "hook",
+      "durationSeconds": 6,
+      "narration": "To add fractions, the pieces need to be the same size first.",
+      "visualCue": "Bar split into equal parts",
+      "sceneHint": "area_model_rectangle"
+    },
+    {
+      "id": "seg-model",
+      "kind": "model",
+      "durationSeconds": 7,
+      "narration": "When denominators match, just add the numerators and keep the denominator.",
+      "visualCue": "1/4 + 2/4 combined on bar",
+      "sceneHint": "fraction_bar_add_like"
+    },
+    {
+      "id": "seg-practice",
+      "kind": "practice",
+      "durationSeconds": 6,
+      "narration": "Try it: one half plus one fourth â€” convert halves to fourths, then add.",
+      "visualCue": "1/2 â†’ 2/4, then 2/4 + 1/4 = 3/4",
+      "sceneHint": "equivalent_fraction_transform"
+    },
+    {
+      "id": "seg-wrap",
+      "kind": "wrap",
+      "durationSeconds": 5,
+      "narration": "Same-sized pieces let us add fractions safely â€” great work!",
+      "visualCue": "Final fraction highlighted",
+      "sceneHint": "celebration"
+    }
+  ],
+  "teacherNotes": "Stress equal piece size before combining numerators."
+}
