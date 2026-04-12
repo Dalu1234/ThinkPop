@@ -20,6 +20,7 @@ export default function SolarSystem({ aiState }) {
   const [targetPlanetIndex, setTargetPlanetIndex] = useState(null)
   const [hoveredPlanetIndex, setHoveredPlanetIndex] = useState(null)
   const prevAiState = useRef(aiState)
+  const lastPlanetIndexRef = useRef(null)
   const spinBoostRef = useRef(Array(PLANET_DEFS.length).fill(0))
   
   const planetRefs = useRef([])
@@ -67,17 +68,23 @@ export default function SolarSystem({ aiState }) {
   const LINE_WIDTH = 4.8
   const Y_IDLE = 1.65
   const Z_IDLE = -0.5
-  
-  const Y_FOCUS = -1.92
-  const Z_FOCUS = -0.62
-  const FOCUS_PLATFORM_SCALE = 0.82
+
+  // Behind Baymax: centered on his body (feet ~-1.1, head ~1.35 → center ~0.1)
+  // Z well behind Baymax (who sits at z≈-0.15)
+  const Y_FOCUS = 0.1
+  const Z_FOCUS = -2.5
+  const FOCUS_PLATFORM_SCALE = 1.3
 
   useEffect(() => {
     // Detect transition from null to non-null
     if (prevAiState.current === null && aiState !== null) {
-      const rand = Math.floor(Math.random() * PLANET_DEFS.length)
+      let rand
+      do {
+        rand = Math.floor(Math.random() * PLANET_DEFS.length)
+      } while (rand === lastPlanetIndexRef.current && PLANET_DEFS.length > 1)
+      lastPlanetIndexRef.current = rand
       setTargetPlanetIndex(rand)
-    } 
+    }
     // Detect return to null
     else if (prevAiState.current !== null && aiState === null) {
       setTargetPlanetIndex(null)
@@ -134,10 +141,8 @@ export default function SolarSystem({ aiState }) {
       const spinRate = baseSpin + hoverSpin + clickSpin
       if (isIdle) {
         pMesh.rotation.y += delta * spinRate
-        pMesh.position.y += Math.sin(t * 1.5 + i) * 0.001
       } else if (isTarget) {
         pMesh.rotation.y += delta * spinRate
-        pMesh.position.y += Math.sin(t * 1.0) * 0.002
       } else {
         pMesh.rotation.y += delta * (0.16 + clickSpin * 0.5)
       }

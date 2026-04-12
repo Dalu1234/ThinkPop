@@ -958,7 +958,7 @@ function MathVisualization({ visualization, stepIndex }) {
         pos.x += Math.sin(now * 38 + obj.bobPhase) * 0.03
       }
 
-      const bob = Math.sin(now * 2.2 + obj.bobPhase) * 0.045
+      const bob = 0
       mesh.position.set(pos.x, pos.y + bob, pos.z)
 
       const targetColor = obj.colors?.[vizState.stage]
@@ -972,8 +972,7 @@ function MathVisualization({ visualization, stepIndex }) {
       if (obj.role === 'outline' && primaryMaterial) primaryMaterial.opacity = vizState.stage >= 1 ? 0.9 : 0
 
       if ((obj.role === 'token' || obj.role === 'cube' || obj.role === 'remaining') && vizState.stage === vizState.maxStages - 1) {
-        const pulse = 1 + Math.sin(now * 5 + obj.bobPhase) * 0.08
-        mesh.scale.setScalar(baseScale * pulse)
+        // no pulse — keep consistent size
       }
 
       survivors.push(obj)
