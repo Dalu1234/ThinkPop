@@ -275,6 +275,31 @@ body {
   white-space: nowrap;
 }
 
+.viz-step-btn {
+  position: fixed;
+  right: 20px;
+  bottom: 140px;
+  z-index: 21;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 209, 102, 0.4);
+  background: rgba(255, 209, 102, 0.12);
+  color: #ffd166;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+.viz-step-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 /* ============================================================
    TOPIC CARD (top-center)
    ============================================================ */

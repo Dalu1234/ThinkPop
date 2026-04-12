@@ -1,0 +1,39 @@
+{
+  "title": "Subtracting 6 from 8",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "seg-hook",
+      "kind": "hook",
+      "durationSeconds": 6,
+      "narration": "We start with 8 blocks and plan to take away 6 of them.",
+      "visualCue": "8 blocks with 6 highlighted",
+      "sceneHint": "subtraction_takeaway_hook"
+    },
+    {
+      "id": "seg-model",
+      "kind": "model",
+      "durationSeconds": 7,
+      "narration": "Watch 6 blocks move away, leaving 2 blocks behind.",
+      "visualCue": "Highlighted blocks slide away",
+      "sceneHint": "subtraction_takeaway_model"
+    },
+    {
+      "id": "seg-practice",
+      "kind": "practice",
+      "durationSeconds": 6,
+      "narration": "Say it with me: 8 minus 6 equals 2.",
+      "visualCue": "Equation 8 - 6 = 2",
+      "sceneHint": "guided_subtraction_practice"
+    },
+    {
+      "id": "seg-wrap",
+      "kind": "wrap",
+      "durationSeconds": 5,
+      "narration": "Great job noticing what stays after we take 6 away from 8.",
+      "visualCue": "Remaining blocks glow",
+      "sceneHint": "subtraction_wrap"
+    }
+  ],
+  "teacherNotes": "Have students touch the highlighted objects first, then count the remaining ones."
+}
