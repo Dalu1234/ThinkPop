@@ -20,7 +20,11 @@ export default function SolarSystem({ aiState }) {
   const [targetPlanetIndex, setTargetPlanetIndex] = useState(null)
   const [hoveredPlanetIndex, setHoveredPlanetIndex] = useState(null)
   const prevAiState = useRef(aiState)
+<<<<<<< HEAD
   const lastPlanetIndexRef = useRef(null)
+=======
+  const lastTargetPlanetIndexRef = useRef(null)
+>>>>>>> 3008c40ad819aeead723e75992e011427edb0d3e
   const spinBoostRef = useRef(Array(PLANET_DEFS.length).fill(0))
   
   const planetRefs = useRef([])
@@ -68,16 +72,24 @@ export default function SolarSystem({ aiState }) {
   const LINE_WIDTH = 4.8
   const Y_IDLE = 1.65
   const Z_IDLE = -0.5
+<<<<<<< HEAD
 
   // Behind Baymax: centered on his body (feet ~-1.1, head ~1.35 → center ~0.1)
   // Z well behind Baymax (who sits at z≈-0.15)
   const Y_FOCUS = 0.1
   const Z_FOCUS = -2.5
   const FOCUS_PLATFORM_SCALE = 1.3
+=======
+  
+  const Y_FOCUS = 0.22
+  const Z_FOCUS = -2.35
+  const FOCUS_PLATFORM_SCALE = 1.18
+>>>>>>> 3008c40ad819aeead723e75992e011427edb0d3e
 
   useEffect(() => {
     // Detect transition from null to non-null
     if (prevAiState.current === null && aiState !== null) {
+<<<<<<< HEAD
       let rand
       do {
         rand = Math.floor(Math.random() * PLANET_DEFS.length)
@@ -85,6 +97,15 @@ export default function SolarSystem({ aiState }) {
       lastPlanetIndexRef.current = rand
       setTargetPlanetIndex(rand)
     }
+=======
+      let nextIndex = Math.floor(Math.random() * PLANET_DEFS.length)
+      if (PLANET_DEFS.length > 1 && nextIndex === lastTargetPlanetIndexRef.current) {
+        nextIndex = (nextIndex + 1 + Math.floor(Math.random() * (PLANET_DEFS.length - 1))) % PLANET_DEFS.length
+      }
+      lastTargetPlanetIndexRef.current = nextIndex
+      setTargetPlanetIndex(nextIndex)
+    } 
+>>>>>>> 3008c40ad819aeead723e75992e011427edb0d3e
     // Detect return to null
     else if (prevAiState.current !== null && aiState === null) {
       setTargetPlanetIndex(null)
@@ -134,7 +155,7 @@ export default function SolarSystem({ aiState }) {
       const nextScale = currentScale + (tScale - currentScale) * k
       pMesh.scale.setScalar(Math.max(0.0001, nextScale))
 
-      // Spin and bobbing animations
+      // Spin animation only; keep planets steady on the screen.
       const baseSpin = isTarget ? 0.2 : 0.4
       const hoverSpin = isHovered ? 0.45 : 0
       const clickSpin = spinBoost * 2.2
