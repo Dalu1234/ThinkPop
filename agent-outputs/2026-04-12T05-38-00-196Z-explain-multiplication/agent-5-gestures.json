@@ -1,0 +1,64 @@
+{
+  "gestures": [
+    {
+      "segmentId": "seg-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "The tutor stands tall, leans slightly forward, and opens both arms wide while explaining multiplication."
+    },
+    {
+      "segmentId": "seg-example",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "The tutor raises their right arm, points towards the problem on the board, and invites learners to participate."
+    },
+    {
+      "segmentId": "seg-checkpoint-1",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "The tutor shifts weight onto one leg, raising both hands to count groups while asking how many are being added."
+    },
+    {
+      "segmentId": "seg-checkpoint-2",
+      "hand": "left",
+      "motion": "count",
+      "mdmPrompt": "The tutor leans slightly to the left, using their left hand to count while clearly posing the question about addition."
+    },
+    {
+      "segmentId": "seg-final-question",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "The tutor stands confidently, opens arms wide, and emphasizes the question about multiplication with inviting gestures."
+    },
+    {
+      "segmentId": "seg-retry-intro",
+      "hand": "right",
+      "motion": "emphasize",
+      "mdmPrompt": "The tutor shifts to the right, raises their right hand with confidence, and re-explains multiplication through gestural emphasis."
+    },
+    {
+      "segmentId": "seg-retry-example",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "The tutor points with their right hand toward the new problem, encouraging learners to engage with excitement."
+    },
+    {
+      "segmentId": "seg-retry-checkpoint-1",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "The tutor uses both hands to count groups enthusiastically while asking how many groups learners should add."
+    },
+    {
+      "segmentId": "seg-retry-checkpoint-2",
+      "hand": "left",
+      "motion": "count",
+      "mdmPrompt": "The tutor leans forward slightly, using their left hand to count while asking about the addition of groups."
+    },
+    {
+      "segmentId": "seg-retry-final",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "The tutor stands firm, opens arms wide for emphasis, and invites learners to retry the original multiplication question."
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "title": "Understanding Addition Basics",
+  "estimatedMinutes": 5,
+  "conceptSummary": {
+    "restatedPrompt": "Let's learn about what addition means.",
+    "briefExplanation": "Addition is when we combine two or more groups to find a total. It's like putting things together!"
+  },
+  "workedExample": {
+    "problem": "If you have 3 apples and you get 2 more, how many apples do you have now?",
+    "steps": [
+      {
+        "id": "step1",
+        "explanation": "First, let's count the apples you start with, which is 3.",
+        "checkpoint": {
+          "id": "checkpoint-1",
+          "question": "How many apples do you start with?",
+          "expectedAnswer": "3",
+          "hint": "Remember the first group of apples.",
+          "successMessage": "That's correct! You start with 3 apples.",
+          "failureMessage": "Not quite. Try counting the apples again."
+        }
+      },
+      {
+        "id": "step2",
+        "explanation": "Next, we add the 2 more apples you get. So, 3 plus 2. Let's count them together: 3, 4, 5.",
+        "checkpoint": {
+          "id": "checkpoint-2",
+          "question": "What is 3 plus 2?",
+          "expectedAnswer": "5",
+          "hint": "Count all the apples including the new ones.",
+          "successMessage": "Excellent! 3 plus 2 equals 5.",
+          "failureMessage": "That's not right. Count the apples again to be sure."
+        }
+      }
+    ],
+    "answer": "You have 5 apples now."
+  },
+  "targetQuestion": {
+    "prompt": "How many apples do you have if you combine 3 apples and 2 more?",
+    "answer": "5",
+    "successMessage": "Great job! You got it right!",
+    "failureMessage": "Hmm, that's not correct. Let's try again."
+  },
+  "retryPlan": {
+    "alternateExplanation": "Addition can also be thought of as joining two groups together to make a larger group.",
+    "workedExample": {
+      "problem": "You have 4 cars and then you buy 3 more. How many cars do you have in total?",
+      "steps": [
+        {
+          "id": "step1",
+          "explanation": "Start by counting the cars you have, which is 4.",
+          "checkpoint": {
+            "id": "checkpoint-1",
+            "question": "How many cars do you have initially?",
+            "expectedAnswer": "4",
+            "hint": "Think about the first set of cars.",
+            "successMessage": "That's right! You have 4 cars.",
+            "failureMessage": "Not quite! Double-check your count."
+          }
+        },
+        {
+          "id": "step2",
+          "explanation": "Now add the 3 new cars. So, 4 plus 3. Count them together: 4, 5, 6, 7.",
+          "checkpoint": {
+            "id": "checkpoint-2",
+            "question": "What does 4 plus 3 equal?",
+            "expectedAnswer": "7",
+            "hint": "Try counting all the cars again.",
+            "successMessage": "Awesome! 4 plus 3 equals 7.",
+            "failureMessage": "Oops! That's not right. Count them again."
+          }
+        }
+      ],
+      "answer": "You have 7 cars now."
+    }
+  },
+  "teacherNotes": "Focus on using relatable examples and concrete objects for better understanding.",
+  "segments": [
+    {
+      "id": "seg-intro",
+      "kind": "hook",
+      "durationSeconds": 7,
+      "narration": "Let's learn about what addition means. Addition is when we combine two or more groups to find a total. It's like putting things together!",
+      "visualCue": "Topic restated clearly",
+      "sceneHint": "concept_intro"
+    },
+    {
+      "id": "seg-example",
+      "kind": "model",
+      "durationSeconds": 8,
+      "narration": "Let’s try If you have 3 apples and you get 2 more, how many apples do you have now? together.",
+      "visualCue": "Example problem shown",
+      "sceneHint": "worked_example_intro"
+    },
+    {
+      "id": "seg-checkpoint-1",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "How many apples do you start with?",
+      "visualCue": "Checkpoint 1",
+      "sceneHint": "checkpoint_prompt"
+    },
+    {
+      "id": "seg-checkpoint-2",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "What is 3 plus 2?",
+      "visualCue": "Checkpoint 2",
+      "sceneHint": "checkpoint_prompt"
+    },
+    {
+      "id": "seg-final-question",
+      "kind": "wrap",
+      "durationSeconds": 6,
+      "narration": "How many apples do you have if you combine 3 apples and 2 more?",
+      "visualCue": "Original problem asked",
+      "sceneHint": "final_question_prompt"
+    },
+    {
+      "id": "seg-retry-intro",
+      "kind": "model",
+      "durationSeconds": 8,
+      "narration": "Addition can also be thought of as joining two groups together to make a larger group.",
+      "visualCue": "Topic explained again",
+      "sceneHint": "retry_explanation"
+    },
+    {
+      "id": "seg-retry-example",
+      "kind": "practice",
+      "durationSeconds": 8,
+      "narration": "Now let’s try You have 4 cars and then you buy 3 more. How many cars do you have in total? together.",
+      "visualCue": "New example problem",
+      "sceneHint": "retry_example_intro"
+    },
+    {
+      "id": "seg-retry-checkpoint-1",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "How many cars do you have initially?",
+      "visualCue": "Retry checkpoint 1",
+      "sceneHint": "retry_checkpoint_prompt"
+    },
+    {
+      "id": "seg-retry-checkpoint-2",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "What does 4 plus 3 equal?",
+      "visualCue": "Retry checkpoint 2",
+      "sceneHint": "retry_checkpoint_prompt"
+    },
+    {
+      "id": "seg-retry-final",
+      "kind": "wrap",
+      "durationSeconds": 6,
+      "narration": "Try the original problem again: How many apples do you have if you combine 3 apples and 2 more?",
+      "visualCue": "Try original again",
+      "sceneHint": "retry_final_prompt"
+    }
+  ]
+}

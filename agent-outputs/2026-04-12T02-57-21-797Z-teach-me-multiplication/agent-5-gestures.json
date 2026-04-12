@@ -1,0 +1,46 @@
+{
+  "gestures": [
+    {
+      "segmentId": "seg-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "a person steps slightly forward, opens arms wide, and smiles while passionately explaining multiplication as repeated addition"
+    },
+    {
+      "segmentId": "seg-example",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "a tutor points forward with right hand and leans slightly while inviting students to solve 4 times 3 together"
+    },
+    {
+      "segmentId": "seg-checkpoint-1",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "a teacher leans forward slightly, opens both hands with palms up, encouraging students to think about 5 times 2"
+    },
+    {
+      "segmentId": "seg-final-question",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "a person lifts right hand to point upwards while confidently asking, what is 3 times 6?"
+    },
+    {
+      "segmentId": "seg-retry-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "a tutor stands tall, extends arms wide while reconnecting the idea of groups, explaining multiplication clearly"
+    },
+    {
+      "segmentId": "seg-retry-example",
+      "hand": "left",
+      "motion": "count",
+      "mdmPrompt": "a teacher raises left hand to count 3 times 4, moving fingers rhythmically while inviting students to join"
+    },
+    {
+      "segmentId": "seg-retry-final",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "a person shifts weight back, opens arms wide again to encourage students as they attempt to solve 3 times 6"
+    }
+  ]
+}

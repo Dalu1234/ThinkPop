@@ -1,0 +1,9 @@
+{
+  "kind": "grid",
+  "rows": 3,
+  "cols": 4,
+  "rowCounts": [],
+  "itemShape": "sphere",
+  "itemColor": "#FFA500",
+  "caption": "Here are 3 bags with 4 oranges in each bag."
+}

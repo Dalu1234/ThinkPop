@@ -1,0 +1,200 @@
+{
+  "title": "Introduction to Multiplication",
+  "estimatedMinutes": 6,
+  "conceptSummary": {
+    "restatedPrompt": "Explain the concept of multiplication.",
+    "briefExplanation": "Multiplication is a way to add the same number several times. It's like counting groups of the same size."
+  },
+  "workedExample": {
+    "problem": "What is 3 multiplied by 4?",
+    "steps": [
+      {
+        "id": "step1",
+        "explanation": "Think of multiplication as adding 3 together four times: 3 + 3 + 3 + 3.",
+        "checkpoint": {
+          "id": "checkpoint-1",
+          "question": "What is 3 plus 3?",
+          "expectedAnswer": "6",
+          "hint": "Add the first two groups of 3 together.",
+          "successMessage": "Exactly! 3 plus 3 is 6.",
+          "failureMessage": "Not quite! Try adding 3 and 3 again."
+        }
+      },
+      {
+        "id": "step2",
+        "explanation": "Now add another 3 to that total: 6 + 3.",
+        "checkpoint": {
+          "id": "checkpoint-2",
+          "question": "What is 6 plus 3?",
+          "expectedAnswer": "9",
+          "hint": "You're adding another group of 3.",
+          "successMessage": "Well done! 6 plus 3 is 9.",
+          "failureMessage": "Close, but try adding 6 and 3 again."
+        }
+      },
+      {
+        "id": "step3",
+        "explanation": "Finally, add one more 3 to your total: 9 + 3.",
+        "checkpoint": {
+          "id": "checkpoint-3",
+          "question": "What is 9 plus 3?",
+          "expectedAnswer": "12",
+          "hint": "That's the last group of 3 you're adding.",
+          "successMessage": "Great job! 9 plus 3 is 12.",
+          "failureMessage": "Not quite! Please add 9 and 3 once more."
+        }
+      }
+    ],
+    "answer": "12"
+  },
+  "targetQuestion": {
+    "prompt": "What is 3 times 4?",
+    "answer": "12",
+    "successMessage": "Awesome! You got it right, 3 times 4 is 12.",
+    "failureMessage": "That's not correct. Let's try to find the right answer."
+  },
+  "retryPlan": {
+    "alternateExplanation": "Multiplication is like making groups. For example, if you have 4 groups of 3 dots each, you can count all the dots to find the total.",
+    "workedExample": {
+      "problem": "How many dots are there in 4 groups of 3?",
+      "steps": [
+        {
+          "id": "step1",
+          "explanation": "Count the dots in the first group: 3.",
+          "checkpoint": {
+            "id": "checkpoint-1",
+            "question": "How many dots are in one group?",
+            "expectedAnswer": "3",
+            "hint": "Just count the dots in a single group.",
+            "successMessage": "That's right! There are 3 dots.",
+            "failureMessage": "Not quite! Count the dots in one group again."
+          }
+        },
+        {
+          "id": "step2",
+          "explanation": "There are 4 groups, so add together the dots: 3 + 3 + 3 + 3.",
+          "checkpoint": {
+            "id": "checkpoint-2",
+            "question": "What is 3 plus 3?",
+            "expectedAnswer": "6",
+            "hint": "This is the first two groups.",
+            "successMessage": "Exactly! 3 plus 3 is 6.",
+            "failureMessage": "Not quite! Review how to add 3 and 3."
+          }
+        },
+        {
+          "id": "step3",
+          "explanation": "Add the remaining groups: 6 + 3 + 3.",
+          "checkpoint": {
+            "id": "checkpoint-3",
+            "question": "What is 6 plus 3?",
+            "expectedAnswer": "9",
+            "hint": "Add another group of 3.",
+            "successMessage": "Well done! 6 plus 3 is 9.",
+            "failureMessage": "Not quite! Check how to add 6 and 3 again."
+          }
+        }
+      ],
+      "answer": "12"
+    }
+  },
+  "teacherNotes": "Encourage learners to visualize multiplication with real-life examples.",
+  "segments": [
+    {
+      "id": "seg-intro",
+      "kind": "hook",
+      "durationSeconds": 7,
+      "narration": "Explain the concept of multiplication. Multiplication is a way to add the same number several times. It's like counting groups of the same size.",
+      "visualCue": "Topic restated clearly",
+      "sceneHint": "concept_intro"
+    },
+    {
+      "id": "seg-example",
+      "kind": "model",
+      "durationSeconds": 8,
+      "narration": "Let’s try What is 3 multiplied by 4? together.",
+      "visualCue": "Example problem shown",
+      "sceneHint": "worked_example_intro"
+    },
+    {
+      "id": "seg-checkpoint-1",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "What is 3 plus 3?",
+      "visualCue": "Checkpoint 1",
+      "sceneHint": "checkpoint_prompt"
+    },
+    {
+      "id": "seg-checkpoint-2",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "What is 6 plus 3?",
+      "visualCue": "Checkpoint 2",
+      "sceneHint": "checkpoint_prompt"
+    },
+    {
+      "id": "seg-checkpoint-3",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "What is 9 plus 3?",
+      "visualCue": "Checkpoint 3",
+      "sceneHint": "checkpoint_prompt"
+    },
+    {
+      "id": "seg-final-question",
+      "kind": "wrap",
+      "durationSeconds": 6,
+      "narration": "What is 3 times 4?",
+      "visualCue": "Original problem asked",
+      "sceneHint": "final_question_prompt"
+    },
+    {
+      "id": "seg-retry-intro",
+      "kind": "model",
+      "durationSeconds": 8,
+      "narration": "Multiplication is like making groups. For example, if you have 4 groups of 3 dots each, you can count all the dots to find the total.",
+      "visualCue": "Topic explained again",
+      "sceneHint": "retry_explanation"
+    },
+    {
+      "id": "seg-retry-example",
+      "kind": "practice",
+      "durationSeconds": 8,
+      "narration": "Now let’s try How many dots are there in 4 groups of 3? together.",
+      "visualCue": "New example problem",
+      "sceneHint": "retry_example_intro"
+    },
+    {
+      "id": "seg-retry-checkpoint-1",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "How many dots are in one group?",
+      "visualCue": "Retry checkpoint 1",
+      "sceneHint": "retry_checkpoint_prompt"
+    },
+    {
+      "id": "seg-retry-checkpoint-2",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "What is 3 plus 3?",
+      "visualCue": "Retry checkpoint 2",
+      "sceneHint": "retry_checkpoint_prompt"
+    },
+    {
+      "id": "seg-retry-checkpoint-3",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "What is 6 plus 3?",
+      "visualCue": "Retry checkpoint 3",
+      "sceneHint": "retry_checkpoint_prompt"
+    },
+    {
+      "id": "seg-retry-final",
+      "kind": "wrap",
+      "durationSeconds": 6,
+      "narration": "Try the original problem again: What is 3 times 4?",
+      "visualCue": "Try original again",
+      "sceneHint": "retry_final_prompt"
+    }
+  ]
+}

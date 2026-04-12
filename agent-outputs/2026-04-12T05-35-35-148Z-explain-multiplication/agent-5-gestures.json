@@ -1,0 +1,76 @@
+{
+  "gestures": [
+    {
+      "segmentId": "seg-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "a person stands with a friendly posture, opens arms wide while explaining multiplication as adding groups"
+    },
+    {
+      "segmentId": "seg-example",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "a tutor leans slightly forward, points to the problem while inviting learners to try solving 3 multiplied by 4"
+    },
+    {
+      "segmentId": "seg-checkpoint-1",
+      "hand": "left",
+      "motion": "count",
+      "mdmPrompt": "a person raises their left hand, holds up fingers while counting and clearly asking what is 3 plus 3"
+    },
+    {
+      "segmentId": "seg-checkpoint-2",
+      "hand": "left",
+      "motion": "count",
+      "mdmPrompt": "a tutor shifts weight slightly, raises their left hand and fingers to count while asking about 6 plus 3"
+    },
+    {
+      "segmentId": "seg-checkpoint-3",
+      "hand": "left",
+      "motion": "count",
+      "mdmPrompt": "a person stands tall, extends their left arm with fingers raised while inquiring about what is 9 plus 3"
+    },
+    {
+      "segmentId": "seg-final-question",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "a tutor leans in slightly, raises both hands to shoulder level and clearly repeats the question about 3 times 4"
+    },
+    {
+      "segmentId": "seg-retry-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "a person stands confidently, opens arms wide while explaining multiplication using groups of dots to clarify"
+    },
+    {
+      "segmentId": "seg-retry-example",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "a tutor leans forward, points at the new example while enthusiastically inviting everyone to find how many dots there are"
+    },
+    {
+      "segmentId": "seg-retry-checkpoint-1",
+      "hand": "left",
+      "motion": "count",
+      "mdmPrompt": "a person raises their left hand, holds up fingers while directly asking how many dots are in one group"
+    },
+    {
+      "segmentId": "seg-retry-checkpoint-2",
+      "hand": "left",
+      "motion": "count",
+      "mdmPrompt": "a person shifts weight, extends their left hand with fingers up while clearly asking what is 3 plus 3"
+    },
+    {
+      "segmentId": "seg-retry-checkpoint-3",
+      "hand": "left",
+      "motion": "count",
+      "mdmPrompt": "a tutor stands confidently, raises their left hand and counts fingers while checking understanding of 6 plus 3"
+    },
+    {
+      "segmentId": "seg-retry-final",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "a person leans slightly forward, raises both hands in an inviting manner while asking to try the original problem again"
+    }
+  ]
+}

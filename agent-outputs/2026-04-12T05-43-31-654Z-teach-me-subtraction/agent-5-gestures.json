@@ -1,0 +1,64 @@
+{
+  "gestures": [
+    {
+      "segmentId": "seg-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "The person stands tall, opens both arms wide, and smiles while introducing subtraction confidently."
+    },
+    {
+      "segmentId": "seg-example",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "A tutor steps slightly forward, raises the right hand to point at an imaginary number of apples while explaining the example."
+    },
+    {
+      "segmentId": "seg-checkpoint-1",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "The tutor leans forward slightly, raises both hands with fingers poised to count, welcoming answers enthusiastically."
+    },
+    {
+      "segmentId": "seg-checkpoint-2",
+      "hand": "left",
+      "motion": "emphasize",
+      "mdmPrompt": "A person shifts weight to the left, uses the left hand to emphasize subtracting two as they explain."
+    },
+    {
+      "segmentId": "seg-final-question",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "The tutor stands tall, spreads both arms wide open, inviting responses and highlighting the final question clearly."
+    },
+    {
+      "segmentId": "seg-retry-intro",
+      "hand": "both",
+      "motion": "wave",
+      "mdmPrompt": "The person waves both hands gently, signaling to regroup and introducing subtraction in a calm, cheerful manner."
+    },
+    {
+      "segmentId": "seg-retry-example",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "The tutor steps forward again, points decisively with the right hand to emphasize the new example about the candies."
+    },
+    {
+      "segmentId": "seg-retry-checkpoint-1",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "The person leans forward eagerly, raising both hands with fingers extended as if inviting the students to count together."
+    },
+    {
+      "segmentId": "seg-retry-checkpoint-2",
+      "hand": "left",
+      "motion": "emphasize",
+      "mdmPrompt": "A person shifts to the left slightly, gesturing with the left hand to stress the importance of the subtraction in the question."
+    },
+    {
+      "segmentId": "seg-retry-final",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "The tutor stands confidently, arms crossed then opens both hands wide, reiterating the final problem with clear enthusiasm."
+    }
+  ]
+}

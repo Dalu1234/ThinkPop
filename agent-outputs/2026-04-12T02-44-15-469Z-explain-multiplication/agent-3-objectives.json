@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "objective1",
+      "statement": "Illustrate multiplication as repeated addition using objects or drawings.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "objective2",
+      "statement": "Explain how to use arrays or area models to represent multiplication.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

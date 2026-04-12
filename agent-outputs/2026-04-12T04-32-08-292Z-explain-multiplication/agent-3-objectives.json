@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Explain the concept of multiplication using real-life examples.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "obj2",
+      "statement": "Use arrays to visually represent multiplication facts.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

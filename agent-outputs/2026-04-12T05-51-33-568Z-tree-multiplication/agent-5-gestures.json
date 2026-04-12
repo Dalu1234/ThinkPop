@@ -1,0 +1,64 @@
+{
+  "gestures": [
+    {
+      "segmentId": "seg-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "A person stands with feet shoulder-width apart, opens arms wide while enthusiastically explaining tree diagrams."
+    },
+    {
+      "segmentId": "seg-example",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "A tutor leans slightly forward, raises hands with palms up to introduce the example of 2 times 3."
+    },
+    {
+      "segmentId": "seg-checkpoint-1",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "A teacher points to an imaginary board, tilting head slightly while asking how many groups we have."
+    },
+    {
+      "segmentId": "seg-checkpoint-2",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "A tutor points downwards with the right hand, nodding encouragingly while asking about the number under each group."
+    },
+    {
+      "segmentId": "seg-final-question",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "A person steps slightly forward, opens both hands invitingly while asking if students can use a tree diagram for 4 times 2."
+    },
+    {
+      "segmentId": "seg-retry-intro",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "A tutor stands confidently, moves both hands to the side, emphasizing clarity in organizing groups and items."
+    },
+    {
+      "segmentId": "seg-retry-example",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "A teacher steps forward slightly, raises both hands up with excitement while introducing the new example of 3 times 4."
+    },
+    {
+      "segmentId": "seg-retry-checkpoint-1",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "A tutor points forward with their right hand while actively engaging students, asking how many groups we have."
+    },
+    {
+      "segmentId": "seg-retry-checkpoint-2",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "A teacher points down with the right hand, looks at students encouragingly while asking for the number under each group."
+    },
+    {
+      "segmentId": "seg-retry-final",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "A person stands firmly, opens both hands wide, while inviting students to try the original problem about using a tree diagram."
+    }
+  ]
+}

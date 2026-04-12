@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Create tree diagrams to represent multiplication problems.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "2",
+      "statement": "Analyze the outcomes of multiplication using tree diagrams.",
+      "bloomLevel": "analyze"
+    }
+  ]
+}

@@ -18,7 +18,7 @@ function extensionForMime(mime) {
   return 'webm'
 }
 
-export default function ChatPanel({ messages, onSend, aiState }) {
+export default function ChatPanel({ messages, onSend, aiState, audioOnly = false, inputLocked = false }) {
   const [input, setInput]       = useState('')
   const [focused, setFocused]   = useState(false)
   const [recording, setRecording] = useState(false)
@@ -42,7 +42,7 @@ export default function ChatPanel({ messages, onSend, aiState }) {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
 
-  const isDisabled = aiState !== null
+  const isDisabled = inputLocked
 
   useEffect(() => {
     return () => {
@@ -308,7 +308,7 @@ export default function ChatPanel({ messages, onSend, aiState }) {
     >
 
       {/* Suggestion chips — show only when chat is fresh */}
-      {messages.length <= 1 && (
+      {!audioOnly && messages.length <= 1 && (
         <div className="suggestions">
           {SUGGESTIONS.map(s => (
             <button
@@ -364,8 +364,7 @@ export default function ChatPanel({ messages, onSend, aiState }) {
       </div>
 
       {/* Input row */}
-
-
+      {!audioOnly && (
       <div className="chat-input-row">
         <motion.button
           type="button"
@@ -407,7 +406,9 @@ export default function ChatPanel({ messages, onSend, aiState }) {
           ✨
         </motion.button>
       </div>
+      )}
 
+      {audioOnly && <div className="chat-inline-error">Use the mic for every answer.</div>}
       {sttError && <div className="chat-inline-error">{sttError}</div>}
     </motion.div>
     </>

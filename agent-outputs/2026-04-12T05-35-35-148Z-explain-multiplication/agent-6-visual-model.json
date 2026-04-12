@@ -1,0 +1,9 @@
+{
+  "kind": "grid",
+  "rows": 4,
+  "cols": 3,
+  "rowCounts": [],
+  "itemShape": "apple",
+  "itemColor": "#FF0000",
+  "caption": "3 times 4 means 3 apples in each of 4 rows."
+}

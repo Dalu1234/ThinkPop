@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Demonstrate multiplication as repeated addition using examples.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "2",
+      "statement": "Apply arrays to solve multiplication problems.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

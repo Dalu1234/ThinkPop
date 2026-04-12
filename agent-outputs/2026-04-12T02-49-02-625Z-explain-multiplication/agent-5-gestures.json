@@ -1,0 +1,52 @@
+{
+  "gestures": [
+    {
+      "segmentId": "seg-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "a person stands centered, opens arms wide while smiling, and leans slightly forward to engage listeners."
+    },
+    {
+      "segmentId": "seg-example",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "a tutor steps to the side, points towards an imaginary chart, while clearly stating the problem with enthusiasm."
+    },
+    {
+      "segmentId": "seg-checkpoint-1",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "the person leans forward slightly, raises both hands, and counts out loud while engaging the audience."
+    },
+    {
+      "segmentId": "seg-checkpoint-2",
+      "hand": "left",
+      "motion": "point",
+      "mdmPrompt": "a tutor shifts weight to one side, points clearly with the left hand while inviting answers with a smile."
+    },
+    {
+      "segmentId": "seg-final-question",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "the person stands tall, spreads arms outward, and emphasizes the question with a warm expression while looking around."
+    },
+    {
+      "segmentId": "seg-retry-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "the tutor steps back slightly, opens arms wide, and gestures toward an imaginary rectangle, smiling to clarify the concept."
+    },
+    {
+      "segmentId": "seg-retry-example",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "a person faces forward confidently, points to an imaginary board while enthusiastically introducing the new example."
+    },
+    {
+      "segmentId": "seg-retry-final",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "the person stands firmly, raises both hands slightly, and emphasizes the question with a relaxed smile and approachable stance."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "objective1",
+      "statement": "Students will explain multiplication as repeated addition.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "objective2",
+      "statement": "Students will solve multiplication problems using multiplication tables.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

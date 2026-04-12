@@ -1,0 +1,64 @@
+{
+  "gestures": [
+    {
+      "segmentId": "seg-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "A person smiles and opens arms wide, leaning slightly forward while explaining multiplication clearly and engagingly."
+    },
+    {
+      "segmentId": "seg-example",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "A tutor shifts weight to one side, extending both arms while counting on fingers as they explain the example of bags and oranges."
+    },
+    {
+      "segmentId": "seg-checkpoint-1",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "A tutor points to an imaginary bag, tilting their head slightly while asking how many bags there are, inviting responses."
+    },
+    {
+      "segmentId": "seg-checkpoint-2",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "A person gestures towards an invisible bag with emphasis, asking how many oranges are in it while leaning in slightly."
+    },
+    {
+      "segmentId": "seg-final-question",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "A tutor stands confidently, displaying both hands outward while clearly stating the total number of oranges, encouraging answers."
+    },
+    {
+      "segmentId": "seg-retry-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "A person opens arms wide, smiling, and leans slightly forward to re-explain multiplication in a supportive manner."
+    },
+    {
+      "segmentId": "seg-retry-example",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "A tutor shifts weight to one side again, counting with fingers while explaining the new example of packs and candies enthusiastically."
+    },
+    {
+      "segmentId": "seg-retry-checkpoint-1",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "A tutor points at an imaginary pack with a smile, tilting their head as they ask about the number of packs."
+    },
+    {
+      "segmentId": "seg-retry-checkpoint-2",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "A person gestures towards an imaginary candy pack, leaning forward slightly while inquiring about the number of candies inside."
+    },
+    {
+      "segmentId": "seg-retry-final",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "A tutor stands tall, using both hands to emphasize while inviting responses about the total number of oranges again."
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "title": "Learning Tree Diagrams for Multiplication",
+  "estimatedMinutes": 7,
+  "conceptSummary": {
+    "restatedPrompt": "Let's learn about tree diagrams for multiplication.",
+    "briefExplanation": "Tree diagrams help us visualize multiplication problems by breaking them into smaller parts."
+  },
+  "workedExample": {
+    "problem": "Create a tree diagram for 2 times 3.",
+    "steps": [
+      {
+        "id": "1",
+        "explanation": "Start with the first number, which is 2. This means we have 2 groups.",
+        "checkpoint": {
+          "id": "checkpoint-1",
+          "question": "How many groups do we have?",
+          "expectedAnswer": "2",
+          "hint": "Remember, the first number tells us the number of groups.",
+          "successMessage": "That's correct! We have 2 groups.",
+          "failureMessage": "Not quite, remember the first number tells us the number of groups."
+        }
+      },
+      {
+        "id": "2",
+        "explanation": "Now, for each group, we have 3. So, we draw 2 branches from each group showing 3 items.",
+        "checkpoint": {
+          "id": "checkpoint-2",
+          "question": "What do we write under each group?",
+          "expectedAnswer": "3",
+          "hint": "This is what we multiply by in our problem.",
+          "successMessage": "Great job! Each group has 3 items.",
+          "failureMessage": "That's not right. Each group should have the second number of 3 items."
+        }
+      }
+    ],
+    "answer": "The tree diagram shows 2 groups with 3 items each."
+  },
+  "targetQuestion": {
+    "prompt": "Now, can you use a tree diagram for 4 times 2?",
+    "answer": "The tree diagram will show 4 groups with 2 items each.",
+    "successMessage": "That's exactly right! Great work using your tree diagram.",
+    "failureMessage": "Not quite, remember you need to create 4 groups with 2 items in each."
+  },
+  "retryPlan": {
+    "alternateExplanation": "Think of tree diagrams as a way to organize your groups and items in a clear way, showing how multiplication works.",
+    "workedExample": {
+      "problem": "Create a tree diagram for 3 times 4.",
+      "steps": [
+        {
+          "id": "1",
+          "explanation": "Start with the first number, which is 3. This means we have 3 groups.",
+          "checkpoint": {
+            "id": "checkpoint-1",
+            "question": "How many groups do we have?",
+            "expectedAnswer": "3",
+            "hint": "The first number tells us how many groups.",
+            "successMessage": "Correct! We have 3 groups.",
+            "failureMessage": "Not quite, remember the first number indicates the groups."
+          }
+        },
+        {
+          "id": "2",
+          "explanation": "Next, each group has 4 items. Draw 4 branches under each group.",
+          "checkpoint": {
+            "id": "checkpoint-2",
+            "question": "What is the number under each group?",
+            "expectedAnswer": "4",
+            "hint": "This is the second number in the multiplication.",
+            "successMessage": "Excellent! Each group has 4 items.",
+            "failureMessage": "Not correct. Each group should show the second number of 4 items."
+          }
+        }
+      ],
+      "answer": "The tree diagram shows 3 groups with 4 items each."
+    }
+  },
+  "teacherNotes": "Encourage students to draw out tree diagrams for practice and visualize their multiplication problems.",
+  "segments": [
+    {
+      "id": "seg-intro",
+      "kind": "hook",
+      "durationSeconds": 7,
+      "narration": "Let's learn about tree diagrams for multiplication. Tree diagrams help us visualize multiplication problems by breaking them into smaller parts.",
+      "visualCue": "Topic restated clearly",
+      "sceneHint": "concept_intro"
+    },
+    {
+      "id": "seg-example",
+      "kind": "model",
+      "durationSeconds": 8,
+      "narration": "Let’s try Create a tree diagram for 2 times 3. together.",
+      "visualCue": "Example problem shown",
+      "sceneHint": "worked_example_intro"
+    },
+    {
+      "id": "seg-checkpoint-1",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "How many groups do we have?",
+      "visualCue": "Checkpoint 1",
+      "sceneHint": "checkpoint_prompt"
+    },
+    {
+      "id": "seg-checkpoint-2",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "What do we write under each group?",
+      "visualCue": "Checkpoint 2",
+      "sceneHint": "checkpoint_prompt"
+    },
+    {
+      "id": "seg-final-question",
+      "kind": "wrap",
+      "durationSeconds": 6,
+      "narration": "Now, can you use a tree diagram for 4 times 2?",
+      "visualCue": "Original problem asked",
+      "sceneHint": "final_question_prompt"
+    },
+    {
+      "id": "seg-retry-intro",
+      "kind": "model",
+      "durationSeconds": 8,
+      "narration": "Think of tree diagrams as a way to organize your groups and items in a clear way, showing how multiplication works.",
+      "visualCue": "Topic explained again",
+      "sceneHint": "retry_explanation"
+    },
+    {
+      "id": "seg-retry-example",
+      "kind": "practice",
+      "durationSeconds": 8,
+      "narration": "Now let’s try Create a tree diagram for 3 times 4. together.",
+      "visualCue": "New example problem",
+      "sceneHint": "retry_example_intro"
+    },
+    {
+      "id": "seg-retry-checkpoint-1",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "How many groups do we have?",
+      "visualCue": "Retry checkpoint 1",
+      "sceneHint": "retry_checkpoint_prompt"
+    },
+    {
+      "id": "seg-retry-checkpoint-2",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "What is the number under each group?",
+      "visualCue": "Retry checkpoint 2",
+      "sceneHint": "retry_checkpoint_prompt"
+    },
+    {
+      "id": "seg-retry-final",
+      "kind": "wrap",
+      "durationSeconds": 6,
+      "narration": "Try the original problem again: Now, can you use a tree diagram for 4 times 2?",
+      "visualCue": "Try original again",
+      "sceneHint": "retry_final_prompt"
+    }
+  ]
+}

@@ -255,6 +255,7 @@ body {
 }
 
 /* ============================================================
+<<<<<<< Updated upstream
    OBJECT STAGE (right)
    ============================================================ */
 .object-stage {
@@ -309,6 +310,212 @@ body {
   background: radial-gradient(ellipse at center, rgba(255,110,180,0.3), transparent 70%);
   pointer-events: none;
   z-index: 1;
+=======
+   COUNTING TOOL
+   ============================================================ */
+.counting-tool-shell {
+  position: fixed;
+  left: 32px;
+  top: 108px;
+  z-index: 18;
+  width: min(380px, calc(100vw - 64px));
+}
+
+.counting-tool-card {
+  padding: 18px 18px 16px;
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05)),
+    rgba(7, 10, 18, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 0 30px rgba(0, 229, 255, 0.08);
+}
+
+.counting-tool-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.counting-tool-kicker {
+  font-family: 'Nunito', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.52);
+  margin-bottom: 6px;
+}
+
+.counting-tool-title {
+  font-family: 'Fredoka One', cursive;
+  font-size: 23px;
+  line-height: 1.05;
+  color: #ffffff;
+  text-shadow: 0 0 18px rgba(0, 229, 255, 0.18);
+}
+
+.counting-tool-status {
+  min-width: 74px;
+  padding: 8px 10px;
+  border-radius: 16px;
+  text-align: right;
+  background: rgba(0, 229, 255, 0.08);
+  border: 1px solid rgba(0, 229, 255, 0.16);
+}
+
+.counting-tool-status-label {
+  display: block;
+  font-family: 'Nunito', sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.56);
+}
+
+.counting-tool-status-value {
+  display: block;
+  margin-top: 4px;
+  font-family: 'Fredoka One', cursive;
+  font-size: 18px;
+  color: #7cefff;
+}
+
+.counting-tool-copy {
+  margin-top: 14px;
+  color: rgba(255, 255, 255, 0.74);
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.counting-tool-stage {
+  position: relative;
+  min-height: 204px;
+  margin-top: 16px;
+  padding: 18px;
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at top, rgba(0, 229, 255, 0.14), transparent 55%),
+    linear-gradient(180deg, rgba(10, 16, 29, 0.92), rgba(7, 11, 21, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+  align-content: start;
+}
+
+.counting-tool-dot {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  justify-self: center;
+  background:
+    radial-gradient(circle at 32% 28%, #ffffff 0%, #d4fbff 18%, #5be7ff 46%, #0fd0ff 68%, #0377b3 100%);
+  box-shadow:
+    0 0 18px rgba(0, 229, 255, 0.3),
+    0 0 32px rgba(255, 110, 180, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+.counting-tool-dot--new {
+  background:
+    radial-gradient(circle at 32% 28%, #ffffff 0%, #fff4c2 18%, #ffd166 46%, #ff9f1c 68%, #c45e00 100%);
+  box-shadow:
+    0 0 18px rgba(255, 160, 30, 0.55),
+    0 0 32px rgba(255, 209, 102, 0.35),
+    inset 0 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+.counting-tool-empty {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 28px;
+  color: rgba(255, 255, 255, 0.44);
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+}
+
+.counting-tool-footer {
+  margin-top: 16px;
+}
+
+.counting-tool-prompt {
+  color: rgba(255, 255, 255, 0.84);
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.counting-tool-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.counting-tool-btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 11px 16px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+}
+
+.counting-tool-btn:hover {
+  transform: translateY(-1px);
+}
+
+.counting-tool-btn-primary {
+  color: #07111f;
+  background: linear-gradient(135deg, #8bf6ff, #3ed4ff);
+  box-shadow: 0 10px 24px rgba(0, 229, 255, 0.26);
+}
+
+.counting-tool-btn-secondary {
+  color: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+@media (max-width: 960px) {
+  .counting-tool-shell {
+    left: 16px;
+    right: 16px;
+    top: auto;
+    bottom: 240px;
+    width: auto;
+  }
+
+  .counting-tool-card {
+    padding: 16px;
+  }
+
+  .counting-tool-stage {
+    min-height: 176px;
+    gap: 12px;
+  }
+
+  .counting-tool-dot {
+    width: 34px;
+    height: 34px;
+  }
+>>>>>>> Stashed changes
 }
 
 /* ============================================================

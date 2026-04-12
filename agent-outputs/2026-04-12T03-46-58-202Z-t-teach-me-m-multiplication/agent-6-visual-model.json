@@ -1,0 +1,9 @@
+{
+  "kind": "grid",
+  "rows": 3,
+  "cols": 4,
+  "rowCounts": [],
+  "itemShape": "apple",
+  "itemColor": "#FF0000",
+  "caption": "3 bags with 4 apples each make 12 apples in total!"
+}

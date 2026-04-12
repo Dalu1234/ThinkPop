@@ -1,0 +1,64 @@
+{
+  "gestures": [
+    {
+      "segmentId": "seg-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "A person stands tall, opens both arms wide as they enthusiastically introduce multiplication to the class."
+    },
+    {
+      "segmentId": "seg-example",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "A tutor leans slightly forward, points to an imaginary bag while clearly presenting the example problem about apples."
+    },
+    {
+      "segmentId": "seg-checkpoint-1",
+      "hand": "left",
+      "motion": "emphasize",
+      "mdmPrompt": "A person shifts weight to one side and raises their left hand while inviting students to think about the number of bags."
+    },
+    {
+      "segmentId": "seg-checkpoint-2",
+      "hand": "right",
+      "motion": "count",
+      "mdmPrompt": "A tutor extends their right hand in front, using fingers to count as they ask, 'What is 4 times 3?'"
+    },
+    {
+      "segmentId": "seg-final-question",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "A person stands confidently, opens both arms as they present the final question about boxes and toys."
+    },
+    {
+      "segmentId": "seg-retry-intro",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "A tutor leans slightly forward, raises both arms with enthusiasm while explaining multiplication as repeated addition."
+    },
+    {
+      "segmentId": "seg-retry-example",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "A person steps forward, points with their right hand while presenting the new example about rows of chairs."
+    },
+    {
+      "segmentId": "seg-retry-checkpoint-1",
+      "hand": "left",
+      "motion": "emphasize",
+      "mdmPrompt": "A tutor shifts weight to one side, lifts their left hand slightly while inviting students to count the rows."
+    },
+    {
+      "segmentId": "seg-retry-checkpoint-2",
+      "hand": "right",
+      "motion": "count",
+      "mdmPrompt": "A person extends their right hand, using fingers to count as they ask, 'What is 6 times 2?'"
+    },
+    {
+      "segmentId": "seg-retry-final",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "A person stands firmly, opens both hands as they encourage students to try the original problem again about toys."
+    }
+  ]
+}

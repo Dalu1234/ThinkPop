@@ -1,0 +1,46 @@
+{
+  "gestures": [
+    {
+      "segmentId": "seg-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "a person stands tall, opens arms wide while explaining multiplication as adding equal groups, engaging the audience with enthusiasm"
+    },
+    {
+      "segmentId": "seg-example",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "a tutor points forward with their right hand, shifts weight slightly, and emphasizes the groups of apples as they guide through the example"
+    },
+    {
+      "segmentId": "seg-checkpoint-1",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "a person leans slightly forward, raises both hands to count off the numbers, inviting participation while asking about the multiplication"
+    },
+    {
+      "segmentId": "seg-final-question",
+      "hand": "right",
+      "motion": "emphasize",
+      "mdmPrompt": "a tutor steps confidently, raises their right hand slightly as they ask about the result of multiplication, indicating importance and encouraging answers"
+    },
+    {
+      "segmentId": "seg-retry-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "a person stands grounded, opens arms wide again as they reinstate the concept of multiplication as repeated addition, expressing clarity and support"
+    },
+    {
+      "segmentId": "seg-retry-example",
+      "hand": "left",
+      "motion": "point",
+      "mdmPrompt": "a tutor points with their left hand, stepping slightly forward, while emphasizing the new example of bags and oranges to guide understanding"
+    },
+    {
+      "segmentId": "seg-retry-final",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "a tutor stands firm, clasps both hands together as they encourage students to retry the original question about multiplication, showing confidence and support"
+    }
+  ]
+}

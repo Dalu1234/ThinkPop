@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "objective1",
+      "statement": "Identify and explain the sum of 5 plus 5.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "objective2",
+      "statement": "Create a visual representation that shows how 5 plus 5 equals 10.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

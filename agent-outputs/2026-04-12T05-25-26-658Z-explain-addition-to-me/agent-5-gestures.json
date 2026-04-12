@@ -1,0 +1,64 @@
+{
+  "gestures": [
+    {
+      "segmentId": "seg-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "A person steps slightly forward, opens arms wide, and smiles while warmly introducing the concept of addition."
+    },
+    {
+      "segmentId": "seg-example",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "The tutor stands tall, points to an imaginary number line in front, and explains the example clearly while engaging students."
+    },
+    {
+      "segmentId": "seg-checkpoint-1",
+      "hand": "left",
+      "motion": "count",
+      "mdmPrompt": "The person shifts weight slightly, lifts left hand and counts to three using fingers while inviting students to respond."
+    },
+    {
+      "segmentId": "seg-checkpoint-2",
+      "hand": "right",
+      "motion": "count",
+      "mdmPrompt": "The tutor leans slightly forward, extends right hand to count up to five, encouraging students to think through the problem."
+    },
+    {
+      "segmentId": "seg-final-question",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "The tutor stands confidently, raises both hands up slightly while emphasizing the importance of the final question to the class."
+    },
+    {
+      "segmentId": "seg-retry-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "A person gently opens arms wide again, with a friendly smile, preparing to explain addition in a different way."
+    },
+    {
+      "segmentId": "seg-retry-example",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "The tutor points towards an imaginary group of cars, enthusiastically outlining the new example as they explain it."
+    },
+    {
+      "segmentId": "seg-retry-checkpoint-1",
+      "hand": "left",
+      "motion": "count",
+      "mdmPrompt": "The person lightly sways from side to side, lifts left hand with fingers extended, counting as they engage students with the question."
+    },
+    {
+      "segmentId": "seg-retry-checkpoint-2",
+      "hand": "right",
+      "motion": "count",
+      "mdmPrompt": "The tutor confidently leans forward, raising the right hand to count aloud while prompting students to answer the next question."
+    },
+    {
+      "segmentId": "seg-retry-final",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "The person stands firm, raising both hands slightly to reinforce the importance of the original question while looking around the class."
+    }
+  ]
+}

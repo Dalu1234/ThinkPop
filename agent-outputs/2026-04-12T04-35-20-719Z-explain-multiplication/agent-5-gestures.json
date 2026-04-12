@@ -1,0 +1,52 @@
+{
+  "gestures": [
+    {
+      "segmentId": "seg-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "The tutor leans slightly forward, opens both arms to invite attention, and emphasizes the topic clearly."
+    },
+    {
+      "segmentId": "seg-example",
+      "hand": "both",
+      "motion": "point",
+      "mdmPrompt": "The tutor steps forward, points towards an imaginary example while clearly outlining the number of bags and apples."
+    },
+    {
+      "segmentId": "seg-checkpoint-1",
+      "hand": "right",
+      "motion": "count",
+      "mdmPrompt": "The tutor shifts weight, raises the right hand with fingers extended, counting off the operation decisions for engagement."
+    },
+    {
+      "segmentId": "seg-final-question",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "The tutor stands tall, gestures outward with both hands, and confidently asks the student to explain multiplication."
+    },
+    {
+      "segmentId": "seg-retry-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "The tutor leans in slightly, opens both hands towards the students, inviting them to rethink the concept clearly."
+    },
+    {
+      "segmentId": "seg-retry-example",
+      "hand": "both",
+      "motion": "wave",
+      "mdmPrompt": "The tutor steps back a little, waves both arms to gather interest, and presents the next problem enthusiastically."
+    },
+    {
+      "segmentId": "seg-retry-checkpoint-1",
+      "hand": "right",
+      "motion": "count",
+      "mdmPrompt": "The tutor shifts to one side, lifts the right hand with fingers extended, rhythmically counting the steps to solve the multiplication."
+    },
+    {
+      "segmentId": "seg-retry-final",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "The tutor stands confidently, gestures to both sides, and invites the student to explain multiplication once more."
+    }
+  ]
+}

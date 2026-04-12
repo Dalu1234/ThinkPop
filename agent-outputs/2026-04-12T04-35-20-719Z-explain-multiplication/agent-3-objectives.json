@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Explain the definition of multiplication.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "obj2",
+      "statement": "Use repeated addition to solve simple multiplication problems.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

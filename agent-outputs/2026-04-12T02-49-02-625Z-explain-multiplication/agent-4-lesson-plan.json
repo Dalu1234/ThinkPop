@@ -1,0 +1,116 @@
+{
+  "title": "Understanding Multiplication Concepts",
+  "estimatedMinutes": 5,
+  "conceptSummary": {
+    "restatedPrompt": "Let's explore what multiplication means.",
+    "briefExplanation": "Multiplication is a way to add equal groups together. It can also be thought of as finding the total of several groups of the same size."
+  },
+  "workedExample": {
+    "problem": "What is 4 times 3?",
+    "steps": [
+      "First, understand that 4 times 3 means you have 4 groups of 3.",
+      "Next, add 3 together four times: 3 + 3 + 3 + 3.",
+      "Now, calculate the total."
+    ],
+    "checkpoints": [
+      {
+        "id": "checkpoint1",
+        "question": "How many groups do we have?",
+        "expectedAnswer": "4 groups",
+        "hint": "Think about the first number."
+      },
+      {
+        "id": "checkpoint2",
+        "question": "What do we add together?",
+        "expectedAnswer": "3",
+        "hint": "Look at the second number."
+      }
+    ],
+    "answer": "The answer is 12."
+  },
+  "targetQuestion": {
+    "prompt": "Can you explain what multiplication is?",
+    "answer": "Multiplication is adding equal groups together.",
+    "successMessage": "Great job explaining multiplication!"
+  },
+  "retryPlan": {
+    "alternateExplanation": "Multiplication can be seen as finding the area of a rectangle, where one side is the first number and the other is the second.",
+    "workedExample": {
+      "problem": "How much is 5 times 2?",
+      "steps": [
+        "Think of it as having 5 groups with 2 in each.",
+        "Add 2 together five times: 2 + 2 + 2 + 2 + 2.",
+        "Then, find the total."
+      ],
+      "checkpoints": [],
+      "answer": "The answer is 10."
+    }
+  },
+  "teacherNotes": "Encourage students to think of practical examples when discussing multiplication.",
+  "segments": [
+    {
+      "id": "seg-intro",
+      "kind": "hook",
+      "durationSeconds": 7,
+      "narration": "Let's explore what multiplication means. Multiplication is a way to add equal groups together. It can also be thought of as finding the total of several groups of the same size.",
+      "visualCue": "Topic restated clearly",
+      "sceneHint": "concept_intro"
+    },
+    {
+      "id": "seg-example",
+      "kind": "model",
+      "durationSeconds": 8,
+      "narration": "Let’s try What is 4 times 3? together.",
+      "visualCue": "Example problem shown",
+      "sceneHint": "worked_example_intro"
+    },
+    {
+      "id": "seg-checkpoint-1",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "How many groups do we have?",
+      "visualCue": "Checkpoint 1",
+      "sceneHint": "checkpoint_prompt"
+    },
+    {
+      "id": "seg-checkpoint-2",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "What do we add together?",
+      "visualCue": "Checkpoint 2",
+      "sceneHint": "checkpoint_prompt"
+    },
+    {
+      "id": "seg-final-question",
+      "kind": "wrap",
+      "durationSeconds": 6,
+      "narration": "Can you explain what multiplication is?",
+      "visualCue": "Original problem asked",
+      "sceneHint": "final_question_prompt"
+    },
+    {
+      "id": "seg-retry-intro",
+      "kind": "model",
+      "durationSeconds": 8,
+      "narration": "Multiplication can be seen as finding the area of a rectangle, where one side is the first number and the other is the second.",
+      "visualCue": "Topic explained again",
+      "sceneHint": "retry_explanation"
+    },
+    {
+      "id": "seg-retry-example",
+      "kind": "practice",
+      "durationSeconds": 8,
+      "narration": "Now let’s try How much is 5 times 2? together.",
+      "visualCue": "New example problem",
+      "sceneHint": "retry_example_intro"
+    },
+    {
+      "id": "seg-retry-final",
+      "kind": "wrap",
+      "durationSeconds": 6,
+      "narration": "Try the original problem again: Can you explain what multiplication is?",
+      "visualCue": "Try original again",
+      "sceneHint": "retry_final_prompt"
+    }
+  ]
+}

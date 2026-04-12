@@ -1,0 +1,7 @@
+{
+  "normalizedProblem": "Five plus five",
+  "gradeBand": "K-2",
+  "mathDomain": "Addition within 20",
+  "ambiguities": [],
+  "learnerIntent": "Requesting an explanation of the addition problem 5 + 5"
+}

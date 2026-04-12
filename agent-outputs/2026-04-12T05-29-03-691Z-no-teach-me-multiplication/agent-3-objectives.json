@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "objective1",
+      "statement": "Recall the multiplication facts for numbers 1 through 10.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "objective2",
+      "statement": "Solve multiplication word problems using equations.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

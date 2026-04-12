@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "objective1",
+      "statement": "Solve multiplication problems using repeated addition.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "objective2",
+      "statement": "Identify and complete multiplication tables up to 10.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

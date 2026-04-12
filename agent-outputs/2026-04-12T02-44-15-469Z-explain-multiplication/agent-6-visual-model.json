@@ -1,0 +1,9 @@
+{
+  "kind": "grid",
+  "rows": 5,
+  "cols": 2,
+  "rowCounts": [],
+  "itemShape": "apple",
+  "itemColor": "#FF0000",
+  "caption": "5 groups of 2 apples each!"
+}

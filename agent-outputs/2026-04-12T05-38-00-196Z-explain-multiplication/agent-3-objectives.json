@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Demonstrate multiplication as repeated addition using visual aids.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "obj2",
+      "statement": "Identify and create arrays to represent multiplication facts.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

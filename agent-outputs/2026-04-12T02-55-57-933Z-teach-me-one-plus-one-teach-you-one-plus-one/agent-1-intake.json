@@ -1,0 +1,7 @@
+{
+  "normalizedProblem": "What is 1 plus 1?",
+  "gradeBand": "K-2",
+  "mathDomain": "Addition within 20",
+  "ambiguities": [],
+  "learnerIntent": "Learn about the concept of addition using the example of one plus one."
+}

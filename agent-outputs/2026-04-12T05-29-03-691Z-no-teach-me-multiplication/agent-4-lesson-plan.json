@@ -1,0 +1,160 @@
+{
+  "title": "Introduction to Multiplication Basics",
+  "estimatedMinutes": 5,
+  "conceptSummary": {
+    "restatedPrompt": "Teach me about multiplication.",
+    "briefExplanation": "Multiplication is a way to add equal groups together quickly. It is usually represented by the symbol '×'."
+  },
+  "workedExample": {
+    "problem": "If there are 4 bags, and each bag has 3 apples, how many apples are there in total?",
+    "steps": [
+      {
+        "id": "step1",
+        "explanation": "First, identify how many groups there are and how many items are in each group. We have 4 bags and 3 apples in each bag.",
+        "checkpoint": {
+          "id": "checkpoint-1",
+          "question": "How many bags do we have?",
+          "expectedAnswer": "4",
+          "hint": "Count the number of bags.",
+          "successMessage": "That's correct! We have 4 bags.",
+          "failureMessage": "That's not quite right. Remember, we have 4 bags."
+        }
+      },
+      {
+        "id": "step2",
+        "explanation": "Next, we will multiply the number of bags by the number of apples in each bag. That is 4 times 3.",
+        "checkpoint": {
+          "id": "checkpoint-2",
+          "question": "What is 4 times 3?",
+          "expectedAnswer": "12",
+          "hint": "Think of adding 4 groups of 3.",
+          "successMessage": "Excellent! 4 times 3 is 12.",
+          "failureMessage": "Not quite. Try calculating 4 groups of 3 apples again."
+        }
+      }
+    ],
+    "answer": "There are 12 apples in total."
+  },
+  "targetQuestion": {
+    "prompt": "If I have 5 boxes, and each box contains 2 toys, how many toys do I have in total?",
+    "answer": "10",
+    "successMessage": "Awesome! You figured it out correctly.",
+    "failureMessage": "That's not correct. Give it another try!"
+  },
+  "retryPlan": {
+    "alternateExplanation": "Multiplication is like repeated addition, where you can add the same number multiple times to find the total.",
+    "workedExample": {
+      "problem": "If there are 6 rows of chairs and 2 chairs in each row, how many chairs do we have?",
+      "steps": [
+        {
+          "id": "step1",
+          "explanation": "First, figure out how many rows we have and how many are in each row. We have 6 rows and 2 chairs per row.",
+          "checkpoint": {
+            "id": "checkpoint-1",
+            "question": "How many rows are there?",
+            "expectedAnswer": "6",
+            "hint": "Count the number of rows.",
+            "successMessage": "That's right! We have 6 rows.",
+            "failureMessage": "Not quite. We need to count the rows again."
+          }
+        },
+        {
+          "id": "step2",
+          "explanation": "Now, let's multiply the number of rows by the number of chairs in each row. That is 6 times 2.",
+          "checkpoint": {
+            "id": "checkpoint-2",
+            "question": "What is 6 times 2?",
+            "expectedAnswer": "12",
+            "hint": "Think about adding 6 groups of 2 together.",
+            "successMessage": "Fantastic! 6 times 2 is 12.",
+            "failureMessage": "Not quite. Try to think of it as adding 6 groups of 2."
+          }
+        }
+      ],
+      "answer": "There are 12 chairs in total."
+    }
+  },
+  "teacherNotes": "Ensure students understand multiplication as a method of repeated addition.",
+  "segments": [
+    {
+      "id": "seg-intro",
+      "kind": "hook",
+      "durationSeconds": 7,
+      "narration": "Teach me about multiplication. Multiplication is a way to add equal groups together quickly. It is usually represented by the symbol '×'.",
+      "visualCue": "Topic restated clearly",
+      "sceneHint": "concept_intro"
+    },
+    {
+      "id": "seg-example",
+      "kind": "model",
+      "durationSeconds": 8,
+      "narration": "Let’s try If there are 4 bags, and each bag has 3 apples, how many apples are there in total? together.",
+      "visualCue": "Example problem shown",
+      "sceneHint": "worked_example_intro"
+    },
+    {
+      "id": "seg-checkpoint-1",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "How many bags do we have?",
+      "visualCue": "Checkpoint 1",
+      "sceneHint": "checkpoint_prompt"
+    },
+    {
+      "id": "seg-checkpoint-2",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "What is 4 times 3?",
+      "visualCue": "Checkpoint 2",
+      "sceneHint": "checkpoint_prompt"
+    },
+    {
+      "id": "seg-final-question",
+      "kind": "wrap",
+      "durationSeconds": 6,
+      "narration": "If I have 5 boxes, and each box contains 2 toys, how many toys do I have in total?",
+      "visualCue": "Original problem asked",
+      "sceneHint": "final_question_prompt"
+    },
+    {
+      "id": "seg-retry-intro",
+      "kind": "model",
+      "durationSeconds": 8,
+      "narration": "Multiplication is like repeated addition, where you can add the same number multiple times to find the total.",
+      "visualCue": "Topic explained again",
+      "sceneHint": "retry_explanation"
+    },
+    {
+      "id": "seg-retry-example",
+      "kind": "practice",
+      "durationSeconds": 8,
+      "narration": "Now let’s try If there are 6 rows of chairs and 2 chairs in each row, how many chairs do we have? together.",
+      "visualCue": "New example problem",
+      "sceneHint": "retry_example_intro"
+    },
+    {
+      "id": "seg-retry-checkpoint-1",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "How many rows are there?",
+      "visualCue": "Retry checkpoint 1",
+      "sceneHint": "retry_checkpoint_prompt"
+    },
+    {
+      "id": "seg-retry-checkpoint-2",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "What is 6 times 2?",
+      "visualCue": "Retry checkpoint 2",
+      "sceneHint": "retry_checkpoint_prompt"
+    },
+    {
+      "id": "seg-retry-final",
+      "kind": "wrap",
+      "durationSeconds": 6,
+      "narration": "Try the original problem again: If I have 5 boxes, and each box contains 2 toys, how many toys do I have in total?",
+      "visualCue": "Try original again",
+      "sceneHint": "retry_final_prompt"
+    }
+  ]
+}

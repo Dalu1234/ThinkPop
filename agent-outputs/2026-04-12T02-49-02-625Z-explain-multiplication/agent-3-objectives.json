@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Describe the concept of multiplication as repeated addition.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "2",
+      "statement": "Use arrays to demonstrate multiplication of two numbers.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

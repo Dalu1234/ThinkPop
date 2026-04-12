@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "objective1",
+      "statement": "Recall the definition of multiplication.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "objective2",
+      "statement": "Demonstrate multiplication as repeated addition using examples.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

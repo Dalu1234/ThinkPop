@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Explain the concept of multiplication in their own words.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "2",
+      "statement": "Use repeated addition to demonstrate how multiplication works.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

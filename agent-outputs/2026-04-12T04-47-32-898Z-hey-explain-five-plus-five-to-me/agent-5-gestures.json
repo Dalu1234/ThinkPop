@@ -1,0 +1,64 @@
+{
+  "gestures": [
+    {
+      "segmentId": "seg-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "a person steps forward, opens both arms wide, and smiles while enthusiastically introducing addition"
+    },
+    {
+      "segmentId": "seg-example",
+      "hand": "both",
+      "motion": "point",
+      "mdmPrompt": "a tutor raises both hands forward, points to the air, and explains the example with clear excitement"
+    },
+    {
+      "segmentId": "seg-checkpoint-1",
+      "hand": "right",
+      "motion": "emphasize",
+      "mdmPrompt": "a person leans slightly forward, raises their right arm with a palm open while inviting answers with enthusiasm"
+    },
+    {
+      "segmentId": "seg-checkpoint-2",
+      "hand": "left",
+      "motion": "count",
+      "mdmPrompt": "a teacher shifts weight, lowers their left arm and counts slowly aloud while guiding the learners"
+    },
+    {
+      "segmentId": "seg-final-question",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "a person stands confidently, raises both hands slightly and gestures while asking the final question clearly"
+    },
+    {
+      "segmentId": "seg-retry-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "a tutor opens their arms wide again, tilts their head slightly and smiles while introducing apples for better understanding"
+    },
+    {
+      "segmentId": "seg-retry-example",
+      "hand": "both",
+      "motion": "point",
+      "mdmPrompt": "a person steps forward, points upward with both hands while suggesting trying another addition problem together"
+    },
+    {
+      "segmentId": "seg-retry-checkpoint-1",
+      "hand": "right",
+      "motion": "emphasize",
+      "mdmPrompt": "a person leans forward, lifts their right hand palm up, and encourages students to count up enthusiastically"
+    },
+    {
+      "segmentId": "seg-retry-checkpoint-2",
+      "hand": "left",
+      "motion": "count",
+      "mdmPrompt": "a teacher raises their left hand and counts rhythmically, looking at the learners while inviting responses"
+    },
+    {
+      "segmentId": "seg-retry-final",
+      "hand": "both",
+      "motion": "point",
+      "mdmPrompt": "a person stands tall, points gently at the learners, and encourages them to try the original question again"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Solve basic subtraction problems using objects.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "obj2",
+      "statement": "Explain the concept of subtraction using a number line.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

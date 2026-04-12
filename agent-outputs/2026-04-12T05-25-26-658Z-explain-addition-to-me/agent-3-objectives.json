@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "OBJ1",
+      "statement": "Identify and explain the concept of addition using everyday examples.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "OBJ2",
+      "statement": "Demonstrate addition by using objects and drawings to show total amounts.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

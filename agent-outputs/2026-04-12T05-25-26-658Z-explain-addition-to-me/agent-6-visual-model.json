@@ -1,0 +1,12 @@
+{
+  "kind": "addition_rows",
+  "rows": 2,
+  "cols": 0,
+  "rowCounts": [
+    3,
+    2
+  ],
+  "itemShape": "apple",
+  "itemColor": "#ff0000",
+  "caption": "Let's visualize adding 3 apples and 2 more!"
+}

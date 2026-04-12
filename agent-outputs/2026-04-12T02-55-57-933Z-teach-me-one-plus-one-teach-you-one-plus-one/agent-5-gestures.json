@@ -1,0 +1,52 @@
+{
+  "gestures": [
+    {
+      "segmentId": "seg-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "a person stands with both arms slightly raised, opens hands widely while inviting learners to explore addition"
+    },
+    {
+      "segmentId": "seg-example",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "a tutor steps forward, points to an imaginary board while clearly presenting the question about 2 plus 2"
+    },
+    {
+      "segmentId": "seg-checkpoint-1",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "a person leans slightly forward, raises both hands and counts imaginary items while engaging learners"
+    },
+    {
+      "segmentId": "seg-final-question",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "a tutor stands confidently, nods and raises both arms, emphasizing the importance of the final question about 1 plus 1"
+    },
+    {
+      "segmentId": "seg-retry-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "a tutor shifts weight side to side, opens arms wide, encouraging learners to think about addition in a new way"
+    },
+    {
+      "segmentId": "seg-retry-example",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "a person steps slightly back, points with right hand to an imaginary example while inviting collaboration on 3 plus 1"
+    },
+    {
+      "segmentId": "seg-retry-checkpoint-1",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "a tutor leans forward, raises both hands, counting together with learners to reinforce the addition concept"
+    },
+    {
+      "segmentId": "seg-retry-final",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "a person stands tall, gestures outward with both arms while encouraging learners to answer what 1 plus 1 is"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "gestures": [
+    {
+      "segmentId": "seg-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "The tutor leans slightly forward, opens arms wide and explains multiplication as a clearer, faster way to add."
+    },
+    {
+      "segmentId": "seg-example",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "The tutor steps closer to the students and points with their right hand at the example of 3 times 4."
+    },
+    {
+      "segmentId": "seg-checkpoint-1",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "The tutor shifts weight and raises both hands, counting up to 4 while prompting for the answer to 4 plus 4."
+    },
+    {
+      "segmentId": "seg-checkpoint-2",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "The tutor leans slightly forward, extends both hands, and counts to 8 while asking for the answer to 8 plus 4."
+    },
+    {
+      "segmentId": "seg-final-question",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "The tutor stands confidently and raises both hands as they ask the final question about 5 times 3."
+    },
+    {
+      "segmentId": "seg-retry-intro",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "The tutor emphasizes the concept by spreading arms wide, explaining groups and additions of 3 in a clear way."
+    },
+    {
+      "segmentId": "seg-retry-example",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "The tutor steps back slightly, points to the new example of 4 times 2, inviting everyone to join in."
+    },
+    {
+      "segmentId": "seg-retry-final",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "The tutor opens arms, leaning slightly forward, inviting students to try answering the original problem again."
+    }
+  ]
+}

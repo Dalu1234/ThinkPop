@@ -1,0 +1,9 @@
+{
+  "kind": "grid",
+  "rows": 4,
+  "cols": 3,
+  "rowCounts": [],
+  "itemShape": "apple",
+  "itemColor": "#FF0000",
+  "caption": "Let's find the total number of apples by arranging them in bags!"
+}

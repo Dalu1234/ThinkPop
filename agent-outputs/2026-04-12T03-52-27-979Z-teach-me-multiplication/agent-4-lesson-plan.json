@@ -1,0 +1,123 @@
+{
+  "title": "Introduction to Multiplication",
+  "estimatedMinutes": 5,
+  "conceptSummary": {
+    "restatedPrompt": "Let's learn about multiplication.",
+    "briefExplanation": "Multiplication is like adding the same number many times. It's a faster way to find the total."
+  },
+  "workedExample": {
+    "problem": "What is 3 times 4?",
+    "steps": [
+      "Remember that 3 times 4 means you add 4 three times.",
+      "Let's do the addition: 4 plus 4 is 8.",
+      "Now, add another 4: 8 plus 4 is 12.",
+      "So, 3 times 4 equals 12."
+    ],
+    "checkpoints": [
+      {
+        "id": "checkpoint1",
+        "question": "What is 4 plus 4?",
+        "expectedAnswer": "8",
+        "hint": "It's the same as adding two fours together.",
+        "successMessage": "Great job! 4 plus 4 is 8.",
+        "failureMessage": "Not quite, but keep trying! Remember, it's adding two fours."
+      },
+      {
+        "id": "checkpoint2",
+        "question": "What is 8 plus 4?",
+        "expectedAnswer": "12",
+        "hint": "You're adding one more group of 4.",
+        "successMessage": "Well done! 8 plus 4 is 12.",
+        "failureMessage": "That's okay! Just think about adding 4 more."
+      }
+    ],
+    "answer": "12"
+  },
+  "targetQuestion": {
+    "prompt": "What is 5 times 3?",
+    "answer": "15",
+    "successMessage": "You're correct! 5 times 3 is 15.",
+    "failureMessage": "Not this time! Remember to add 3 five times."
+  },
+  "retryPlan": {
+    "alternateExplanation": "Multiplication helps us count groups of the same size. If you have 5 groups of 3 apples, that's just like adding 3 a total of 5 times!",
+    "workedExample": {
+      "problem": "How much is 4 times 2?",
+      "steps": [
+        "First, think of it as 2 added 4 times.",
+        "2 plus 2 is 4.",
+        "Now add another 2: 4 plus 2 is 6.",
+        "And one last 2: 6 plus 2 is 8. Thus, 4 times 2 is 8."
+      ],
+      "checkpoints": [],
+      "answer": "8"
+    }
+  },
+  "teacherNotes": "Encourage students to visualize multiplication as groups of items.",
+  "segments": [
+    {
+      "id": "seg-intro",
+      "kind": "hook",
+      "durationSeconds": 7,
+      "narration": "Let's learn about multiplication. Multiplication is like adding the same number many times. It's a faster way to find the total.",
+      "visualCue": "Topic restated clearly",
+      "sceneHint": "concept_intro"
+    },
+    {
+      "id": "seg-example",
+      "kind": "model",
+      "durationSeconds": 8,
+      "narration": "Let’s try What is 3 times 4? together.",
+      "visualCue": "Example problem shown",
+      "sceneHint": "worked_example_intro"
+    },
+    {
+      "id": "seg-checkpoint-1",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "What is 4 plus 4?",
+      "visualCue": "Checkpoint 1",
+      "sceneHint": "checkpoint_prompt"
+    },
+    {
+      "id": "seg-checkpoint-2",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "What is 8 plus 4?",
+      "visualCue": "Checkpoint 2",
+      "sceneHint": "checkpoint_prompt"
+    },
+    {
+      "id": "seg-final-question",
+      "kind": "wrap",
+      "durationSeconds": 6,
+      "narration": "What is 5 times 3?",
+      "visualCue": "Original problem asked",
+      "sceneHint": "final_question_prompt"
+    },
+    {
+      "id": "seg-retry-intro",
+      "kind": "model",
+      "durationSeconds": 8,
+      "narration": "Multiplication helps us count groups of the same size. If you have 5 groups of 3 apples, that's just like adding 3 a total of 5 times!",
+      "visualCue": "Topic explained again",
+      "sceneHint": "retry_explanation"
+    },
+    {
+      "id": "seg-retry-example",
+      "kind": "practice",
+      "durationSeconds": 8,
+      "narration": "Now let’s try How much is 4 times 2? together.",
+      "visualCue": "New example problem",
+      "sceneHint": "retry_example_intro"
+    },
+    {
+      "id": "seg-retry-final",
+      "kind": "wrap",
+      "durationSeconds": 6,
+      "narration": "Try the original problem again: What is 5 times 3?",
+      "visualCue": "Try original again",
+      "sceneHint": "retry_final_prompt"
+    }
+  ]
+}

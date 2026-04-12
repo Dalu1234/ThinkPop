@@ -1,0 +1,124 @@
+{
+  "title": "Understanding Multiplication Basics",
+  "estimatedMinutes": 5,
+  "conceptSummary": {
+    "restatedPrompt": "Learn about the concept of multiplication.",
+    "briefExplanation": "Multiplication is a way to add the same number many times. It's like taking a shortcut to find out how many there are in total."
+  },
+  "workedExample": {
+    "problem": "How many total apples are there if you have 4 bags with 3 apples each?",
+    "steps": [
+      "First, identify the number of bags and apples in each bag.",
+      "Then, use multiplication to find the total: 4 bags times 3 apples.",
+      "Finally, calculate the answer to find the total number of apples."
+    ],
+    "checkpoints": [
+      {
+        "id": "checkpoint1",
+        "stepIndex": 1,
+        "question": "What operation will you use to find the total?",
+        "expectedAnswer": "Multiplication",
+        "hint": "Think about how many groups you have.",
+        "successMessage": "Great job! Multiplication is the right choice!",
+        "failureMessage": "That's not quite right. Remember, we're finding the total amount of groups."
+      }
+    ],
+    "answer": "There are 12 apples in total."
+  },
+  "targetQuestion": {
+    "prompt": "Explain multiplication.",
+    "answer": "Multiplication is adding a number to itself a certain number of times.",
+    "successMessage": "Excellent explanation! You really understand multiplication!",
+    "failureMessage": "That's not quite right. Let's think about adding groups together."
+  },
+  "retryPlan": {
+    "alternateExplanation": "Think of multiplication as a fast way to add equal groups together.",
+    "workedExample": {
+      "problem": "What is 5 times 2?",
+      "steps": [
+        "Recognize you want to add 5 together 2 times.",
+        "Think of it as 5 + 5.",
+        "Calculate the total for the answer."
+      ],
+      "checkpoints": [
+        {
+          "id": "checkpoint2",
+          "stepIndex": 1,
+          "question": "What is the first step to solve 5 times 2?",
+          "expectedAnswer": "Add 5 twice.",
+          "hint": "Think about the groups.",
+          "successMessage": "Exactly! Adding helps find the answer!",
+          "failureMessage": "Not this time. We need to think about how many times we add 5."
+        }
+      ],
+      "answer": "5 times 2 equals 10."
+    }
+  },
+  "teacherNotes": "Remember to encourage the student by validating their efforts!",
+  "segments": [
+    {
+      "id": "seg-intro",
+      "kind": "hook",
+      "durationSeconds": 7,
+      "narration": "Learn about the concept of multiplication. Multiplication is a way to add the same number many times. It's like taking a shortcut to find out how many there are in total.",
+      "visualCue": "Topic restated clearly",
+      "sceneHint": "concept_intro"
+    },
+    {
+      "id": "seg-example",
+      "kind": "model",
+      "durationSeconds": 8,
+      "narration": "Let’s try How many total apples are there if you have 4 bags with 3 apples each? together.",
+      "visualCue": "Example problem shown",
+      "sceneHint": "worked_example_intro"
+    },
+    {
+      "id": "seg-checkpoint-1",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "What operation will you use to find the total?",
+      "visualCue": "Checkpoint 1",
+      "sceneHint": "checkpoint_prompt"
+    },
+    {
+      "id": "seg-final-question",
+      "kind": "wrap",
+      "durationSeconds": 6,
+      "narration": "Explain multiplication.",
+      "visualCue": "Original problem asked",
+      "sceneHint": "final_question_prompt"
+    },
+    {
+      "id": "seg-retry-intro",
+      "kind": "model",
+      "durationSeconds": 8,
+      "narration": "Think of multiplication as a fast way to add equal groups together.",
+      "visualCue": "Topic explained again",
+      "sceneHint": "retry_explanation"
+    },
+    {
+      "id": "seg-retry-example",
+      "kind": "practice",
+      "durationSeconds": 8,
+      "narration": "Now let’s try What is 5 times 2? together.",
+      "visualCue": "New example problem",
+      "sceneHint": "retry_example_intro"
+    },
+    {
+      "id": "seg-retry-checkpoint-1",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "What is the first step to solve 5 times 2?",
+      "visualCue": "Retry checkpoint 1",
+      "sceneHint": "retry_checkpoint_prompt"
+    },
+    {
+      "id": "seg-retry-final",
+      "kind": "wrap",
+      "durationSeconds": 6,
+      "narration": "Try the original problem again: Explain multiplication.",
+      "visualCue": "Try original again",
+      "sceneHint": "retry_final_prompt"
+    }
+  ]
+}

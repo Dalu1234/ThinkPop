@@ -1,0 +1,107 @@
+{
+  "title": "Understanding Basic Multiplication",
+  "estimatedMinutes": 5,
+  "conceptSummary": {
+    "restatedPrompt": "Teach me about multiplication.",
+    "briefExplanation": "Multiplication is a quick way to add equal groups, helping us solve problems faster."
+  },
+  "workedExample": {
+    "problem": "If you have 3 bags with 4 apples in each bag, how many apples do you have in total?",
+    "steps": [
+      "First, think of the number of bags, which is 3.",
+      "Next, think about how many apples are in each bag, which is 4.",
+      "Now, we can multiply 3 bags by 4 apples in each bag, giving us 3 times 4.",
+      "So, 3 times 4 equals 12 apples in total."
+    ],
+    "checkpoints": [
+      {
+        "id": "checkpoint1",
+        "question": "What is 3 times 4?",
+        "expectedAnswer": "12",
+        "hint": "Remember, it’s like adding 4 three times.",
+        "successMessage": "Great job! You got it right!",
+        "failureMessage": "Almost there! Remember to add 4 three times."
+      }
+    ],
+    "answer": "12"
+  },
+  "targetQuestion": {
+    "prompt": "What is 3 times 4?",
+    "answer": "12",
+    "successMessage": "Fantastic! You understood multiplication!",
+    "failureMessage": "That's okay! Try thinking of it as adding 4 three times."
+  },
+  "retryPlan": {
+    "alternateExplanation": "You can also think of multiplication as groups of a certain number. For example, if you have 4 groups of 3, that’s like having 3 in each of the 4 groups.",
+    "workedExample": {
+      "problem": "If you have 4 groups of 3 oranges, how many oranges do you have altogether?",
+      "steps": [
+        "Identify the number of groups, which is 4.",
+        "Identify how many oranges in each group, which is 3.",
+        "Now, multiply 4 groups by 3 oranges, resulting in 4 times 3.",
+        "So, 4 times 3 equals 12 oranges."
+      ],
+      "checkpoints": [],
+      "answer": "12"
+    }
+  },
+  "teacherNotes": "Encourage students to visualize multiplication as groups or arrays to deepen their understanding.",
+  "segments": [
+    {
+      "id": "seg-intro",
+      "kind": "hook",
+      "durationSeconds": 7,
+      "narration": "Teach me about multiplication. Multiplication is a quick way to add equal groups, helping us solve problems faster.",
+      "visualCue": "Topic restated clearly",
+      "sceneHint": "concept_intro"
+    },
+    {
+      "id": "seg-example",
+      "kind": "model",
+      "durationSeconds": 8,
+      "narration": "Let’s try If you have 3 bags with 4 apples in each bag, how many apples do you have in total? together.",
+      "visualCue": "Example problem shown",
+      "sceneHint": "worked_example_intro"
+    },
+    {
+      "id": "seg-checkpoint-1",
+      "kind": "check",
+      "durationSeconds": 6,
+      "narration": "What is 3 times 4?",
+      "visualCue": "Checkpoint 1",
+      "sceneHint": "checkpoint_prompt"
+    },
+    {
+      "id": "seg-final-question",
+      "kind": "wrap",
+      "durationSeconds": 6,
+      "narration": "What is 3 times 4?",
+      "visualCue": "Original problem asked",
+      "sceneHint": "final_question_prompt"
+    },
+    {
+      "id": "seg-retry-intro",
+      "kind": "model",
+      "durationSeconds": 8,
+      "narration": "You can also think of multiplication as groups of a certain number. For example, if you have 4 groups of 3, that’s like having 3 in each of the 4 groups.",
+      "visualCue": "Topic explained again",
+      "sceneHint": "retry_explanation"
+    },
+    {
+      "id": "seg-retry-example",
+      "kind": "practice",
+      "durationSeconds": 8,
+      "narration": "Now let’s try If you have 4 groups of 3 oranges, how many oranges do you have altogether? together.",
+      "visualCue": "New example problem",
+      "sceneHint": "retry_example_intro"
+    },
+    {
+      "id": "seg-retry-final",
+      "kind": "wrap",
+      "durationSeconds": 6,
+      "narration": "Try the original problem again: What is 3 times 4?",
+      "visualCue": "Try original again",
+      "sceneHint": "retry_final_prompt"
+    }
+  ]
+}

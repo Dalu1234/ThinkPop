@@ -1,0 +1,52 @@
+{
+  "gestures": [
+    {
+      "segmentId": "seg-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "The tutor steps forward, extends both arms outward, and smiles while explaining multiplication as grouping."
+    },
+    {
+      "segmentId": "seg-example",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "The tutor leans slightly toward the audience, points to the problem, and invites everyone to try 4 multiplied by 3 together."
+    },
+    {
+      "segmentId": "seg-checkpoint-1",
+      "hand": "left",
+      "motion": "count",
+      "mdmPrompt": "The tutor raises the left hand, counts on fingers, and engages the audience by asking what is 4 plus 4."
+    },
+    {
+      "segmentId": "seg-checkpoint-2",
+      "hand": "right",
+      "motion": "count",
+      "mdmPrompt": "The tutor lifts the right hand, counts fingers, and warmly prompts the class with adding 8 and 4."
+    },
+    {
+      "segmentId": "seg-final-question",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "The tutor stands tall, opens both hands wide, and confidently asks the class, what is 5 multiplied by 2?"
+    },
+    {
+      "segmentId": "seg-retry-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "The tutor steps closer, spreads arms wide, and communicates the concept of multiplication as groups of items."
+    },
+    {
+      "segmentId": "seg-retry-example",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "The tutor shifts weight onto the right foot, points to the new example, and engages students in counting apples together."
+    },
+    {
+      "segmentId": "seg-retry-final",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "The tutor stands grounded, uses both hands to highlight the question, and encourages the class to try 5 multiplied by 2 again."
+    }
+  ]
+}

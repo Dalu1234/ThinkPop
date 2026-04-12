@@ -1,0 +1,46 @@
+{
+  "gestures": [
+    {
+      "segmentId": "seg-intro",
+      "hand": "both",
+      "motion": "open",
+      "mdmPrompt": "a tutor stands confidently, opens both arms wide to welcome students, explaining multiplication enthusiastically"
+    },
+    {
+      "segmentId": "seg-example",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "the tutor points forward while nodding, encouraging students to visualize the problem with 3 bags and 4 apples"
+    },
+    {
+      "segmentId": "seg-checkpoint-1",
+      "hand": "left",
+      "motion": "count",
+      "mdmPrompt": "the teacher leans slightly forward, extending the left hand and counting on fingers, asking the multiplication question"
+    },
+    {
+      "segmentId": "seg-final-question",
+      "hand": "both",
+      "motion": "emphasize",
+      "mdmPrompt": "the tutor stands tall, raises both hands slightly as if lifting a weight, emphasizing the final question with enthusiasm"
+    },
+    {
+      "segmentId": "seg-retry-intro",
+      "hand": "right",
+      "motion": "open",
+      "mdmPrompt": "the teacher shifts weight to one side, opens the right hand invitingly while describing multiplication groups clearly"
+    },
+    {
+      "segmentId": "seg-retry-example",
+      "hand": "both",
+      "motion": "count",
+      "mdmPrompt": "the tutor rhythmically raises both hands, counting groups as they introduce the new problem about oranges"
+    },
+    {
+      "segmentId": "seg-retry-final",
+      "hand": "right",
+      "motion": "point",
+      "mdmPrompt": "the tutor points forward with the right hand, inviting students to recall the original multiplication problem once more"
+    }
+  ]
+}

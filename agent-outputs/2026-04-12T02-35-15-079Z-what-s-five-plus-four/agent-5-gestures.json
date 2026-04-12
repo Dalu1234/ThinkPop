@@ -1,0 +1,44 @@
+{
+  "gestures": [
+    {
+      "segmentId": "seg-intro",
+      "hand": "right",
+      "motion": "wave"
+    },
+    {
+      "segmentId": "seg-example",
+      "hand": "left",
+      "motion": "point"
+    },
+    {
+      "segmentId": "seg-checkpoint-1",
+      "hand": "right",
+      "motion": "count"
+    },
+    {
+      "segmentId": "seg-final-question",
+      "hand": "both",
+      "motion": "emphasize"
+    },
+    {
+      "segmentId": "seg-retry-intro",
+      "hand": "right",
+      "motion": "open"
+    },
+    {
+      "segmentId": "seg-retry-example",
+      "hand": "left",
+      "motion": "point"
+    },
+    {
+      "segmentId": "seg-retry-checkpoint-1",
+      "hand": "both",
+      "motion": "wave"
+    },
+    {
+      "segmentId": "seg-retry-final",
+      "hand": "right",
+      "motion": "wave"
+    }
+  ]
+}
