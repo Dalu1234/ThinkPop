@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor stands tall, gently angles the torso toward the colorful objects, and sweeps both arms outward to show the groups."
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person steps forward slightly, opens hands wide and smiles, as if inviting learners to join in the exciting learning ahead."
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor points toward the imaginary group of three red blocks and then shifts to the side to indicate the two blue blocks nearby."
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person brings both hands together in front, as if merging the groups, and leans slightly forward while encouraging participation."
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor extends both arms outward and gently sways side to side, inviting learners to count together in an engaging manner."
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person enthusiastically raises both arms upward and counts aloud, emphasizing each number with engaging motions and a big smile."
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor claps hands together in celebration and nods, conveying excitement about the lesson learned with a cheerful expression."
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person gestures forward with open hands while speaking, reinforcing the idea of joining groups as an important part of learning addition."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor steps slightly forward, smiles warmly, and gestures with open arms toward the colorful objects on the screen"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person leans slightly forward, tilts their head, and raises one hand as if inquiring about removing objects from the group"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor stands tall, gently waves both hands toward the objects, and encourages the class to count together with enthusiasm"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person moves their hands apart, mimicking the action of taking away two objects while looking engagingly at the learners"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor points with one hand to the two groups of objects, eyes sparkling, while inviting the class to notice their amounts"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person steps closer to the learner, gestures between the two groups with both hands, and encourages students to find the difference"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor brings both hands together enthusiastically, nodding while summarizing what the class learned about taking away objects"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person claps their hands together lightly, beams with pride, and encourages everyone for doing a great job exploring subtraction"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Count and group objects to show total quantities.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "2",
+      "statement": "Combine two groups of objects and find the new total.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "title": "Understanding Addition with Objects",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "two groups of objects",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these two groups of colorful objects on the screen.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Can you guess how many objects there are when we combine them?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "combining groups visually",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "We will combine these two groups together to find the total.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "Let’s count all the objects in the combined group.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "counting grouped objects",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now it’s your turn! Count the objects in the new group.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "How many objects do we have after combining the groups?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "final count of objects",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job! You have learned how to add by combining groups.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Remember, addition is all about bringing groups together!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Ensure learners engage and count the objects actively during practice."
+}

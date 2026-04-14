@@ -1,0 +1,84 @@
+{
+  "title": "Exploring Addition with Objects",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook_1",
+      "kind": "hook",
+      "visualCue": "two groups of apples",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these two groups of apples on the screen.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "How many apples do we have in total when we combine them?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model_2",
+      "kind": "model",
+      "visualCue": "combining apples in rows",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let's count the apples in each group carefully.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4",
+          "text": "One group has three apples and the other has two apples.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s5",
+          "text": "When we put them together, we find their total.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice_3",
+      "kind": "practice",
+      "visualCue": "counting grouped blocks",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s6",
+          "text": "Now, let’s try counting these four blocks and three blocks.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s7",
+          "text": "How many blocks do we have when we add them together?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap_4",
+      "kind": "wrap",
+      "visualCue": "all objects combined",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s8",
+          "text": "Great job combining the groups of objects today!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s9",
+          "text": "Remember, addition helps us find how many objects we have altogether.",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "This lesson focuses on using objects to illustrate addition through grouping."
+}

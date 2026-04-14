@@ -1,0 +1,10 @@
+{
+  "kind": "grid",
+  "rows": 4,
+  "cols": 2,
+  "rowCounts": [],
+  "itemShape": "blocks",
+  "itemColor": "#ffcc33",
+  "itemLabel": "Four rows of two blocks each",
+  "caption": "Counting groups of blocks shows multiplication."
+}

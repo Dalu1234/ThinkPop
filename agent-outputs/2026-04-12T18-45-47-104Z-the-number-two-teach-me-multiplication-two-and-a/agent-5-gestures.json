@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1_1",
+      "mdmPrompt": "a tutor stands with arms open wide, smiling and nodding while inviting learners to look at the colorful objects"
+    },
+    {
+      "sentenceId": "s1_2",
+      "mdmPrompt": "a person shifts weight slightly to the side, tilting their head and pointing toward the rows of objects as they ask a question"
+    },
+    {
+      "sentenceId": "s2_1",
+      "mdmPrompt": "a tutor bends forward slightly, extending both hands outward as if demonstrating the action of grouping objects in twos"
+    },
+    {
+      "sentenceId": "s2_2",
+      "mdmPrompt": "a person raises one finger energetically while turning to the learners and counting out loud as if including them in the total"
+    },
+    {
+      "sentenceId": "s3_1",
+      "mdmPrompt": "a tutor claps hands together gently and moves from side to side while inviting the class to count pairs of objects"
+    },
+    {
+      "sentenceId": "s3_2",
+      "mdmPrompt": "a person steps closer, pointing at the screen and encouraging learners to actively find and count the groups of two"
+    },
+    {
+      "sentenceId": "s4_1",
+      "mdmPrompt": "a tutor stands tall, spreading arms wide with enthusiasm as they recap the lesson about multiplying by two with groups"
+    },
+    {
+      "sentenceId": "s4_2",
+      "mdmPrompt": "a person gives a thumbs up and nods appreciatively while smiling at the learners to celebrate their counting and grouping"
+    }
+  ]
+}

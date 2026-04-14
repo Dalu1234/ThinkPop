@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Count and group objects to show repeated addition.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "2",
+      "statement": "Create arrays of objects to demonstrate multiplication facts.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Count objects in a group and identify how many are left after removing some.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "2",
+      "statement": "Compare two groups of objects to determine the difference in quantity.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

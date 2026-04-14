@@ -1,0 +1,40 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor steps forward with a big smile, spreading arms wide to showcase the colorful objects on the screen"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person leans slightly forward, tilting the head inquisitively while raising one hand to invite guesses about the number of objects"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor gestures with both hands, moving them together in a sweeping motion to represent the combining of the two groups"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person raises one finger to indicate the first group and then holds up another finger for the second group, smiling as they point out the objects"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor counts on fingers and then opens both arms wide, inviting everyone to join in as they ask how many objects are present"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person stands with feet slightly apart, moving hands as they count aloud, emphasizing each number with a cheerful gesture"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor raises both arms playfully, smiling as they encourage students to think about the total from adding two and one"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person claps hands together excitedly, then gestures outward to celebrate the group work in learning about addition"
+    },
+    {
+      "sentenceId": "s9",
+      "mdmPrompt": "a tutor nods with enthusiasm, moving one hand up and down as they reinforce the importance of counting to find totals in addition"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "kind": "addition_rows",
+  "rows": 2,
+  "cols": 0,
+  "rowCounts": [
+    3,
+    4
+  ],
+  "itemShape": "colorful blocks",
+  "itemColor": "#ff4d4d",
+  "itemLabel": "Three colorful blocks plus four colorful blocks",
+  "caption": "Let's combine these groups of colorful blocks!"
+}

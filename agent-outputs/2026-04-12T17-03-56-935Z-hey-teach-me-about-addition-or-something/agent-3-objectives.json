@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "K2-Addition-001",
+      "statement": "Count and group objects to represent numbers up to 20.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "K2-Addition-002",
+      "statement": "Combine different groups of objects to find the total amount.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

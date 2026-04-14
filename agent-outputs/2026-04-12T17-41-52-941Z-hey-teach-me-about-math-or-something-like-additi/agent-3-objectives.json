@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "objective1",
+      "statement": "Count a group of objects and then add another group to find the total.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "objective2",
+      "statement": "Combine two sets of everyday items and determine how many there are altogether.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

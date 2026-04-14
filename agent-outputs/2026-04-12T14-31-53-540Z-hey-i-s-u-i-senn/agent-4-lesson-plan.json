@@ -1,0 +1,79 @@
+{
+  "title": "Understanding Basic Addition",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "colorful groups of blocks",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these colorful groups of blocks on the screen.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2",
+          "text": "Can you guess how many blocks there are in total?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "combining two groups",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let’s combine these two groups of blocks together.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "Now, let’s count all the blocks we have.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "students counting blocks",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Count the total number of blocks with me, ready?",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s6",
+          "text": "One, two, three, four! How many do we have?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "visible sum of blocks",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job! We added the blocks together to find the total.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Remember, combining groups helps us understand addition!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to interact with the objects as they combine and count."
+}

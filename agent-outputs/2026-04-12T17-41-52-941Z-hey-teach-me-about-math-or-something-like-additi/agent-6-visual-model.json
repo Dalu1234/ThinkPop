@@ -1,0 +1,13 @@
+{
+  "kind": "addition_rows",
+  "rows": 2,
+  "cols": 0,
+  "rowCounts": [
+    3,
+    2
+  ],
+  "itemShape": "snacks",
+  "itemColor": "#ffcc00",
+  "itemLabel": "Three snacks plus two snacks",
+  "caption": "Let's find the total number of snacks!"
+}

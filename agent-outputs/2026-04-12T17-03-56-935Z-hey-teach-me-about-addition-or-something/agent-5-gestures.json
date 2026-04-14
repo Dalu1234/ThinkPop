@@ -1,0 +1,44 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor smiles brightly, moves both arms outward with a welcoming gesture, and encourages excitement about colorful objects."
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person leans slightly forward, points both hands to the imagined groups in front, and emphasizes the importance of adding."
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor raises one hand with fingers extended to show three while using the other hand to show two, describing the blocks."
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person steps closer to the screen, encourages combined action by gesturing toward the groups with both hands, signaling the total."
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor raises both arms high while bringing them together in a sweeping motion, celebrating the total of five blocks."
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a tutor gestures with both hands outstretched, inviting the students to join in counting and emphasizing the fun of participation."
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a person points at the imaginary stars, lifting each hand to represent four yellow stars and three green stars distinctly."
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a tutor shifts weight from one foot to the other while looking at the audience, encouraging them to think about the addition."
+    },
+    {
+      "sentenceId": "s9",
+      "mdmPrompt": "a person claps hands together and nods enthusiastically, praising the students for learning how to add with objects."
+    },
+    {
+      "sentenceId": "s10",
+      "mdmPrompt": "a tutor waves both arms in an inviting manner, encouraging continued practice, and smiles with encouragement for becoming an expert."
+    }
+  ]
+}

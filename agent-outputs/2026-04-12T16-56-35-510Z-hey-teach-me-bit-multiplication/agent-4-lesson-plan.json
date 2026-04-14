@@ -1,0 +1,79 @@
+{
+  "title": "Introduction to Multiplication Concepts",
+  "estimatedMinutes": 6,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "groups of colorful blocks",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these colorful blocks arranged in groups on the screen.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2",
+          "text": "Can you count how many blocks are in each group?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "grouping blocks in rows",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "If we have three groups with four blocks each, let's find the total.",
+          "durationSeconds": 6
+        },
+        {
+          "id": "s4",
+          "text": "We can add four plus four plus four to get our answer.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "a mix of groups and totals",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, let's try grouping together five groups of three blocks.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "Count how many blocks you have in total as you combine the groups.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "reviewing total blocks",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job! You learned how to multiply by grouping objects.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Keep practicing with different groups to become a multiplication expert!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Focus on helping students understand how to group and count objects effectively."
+}

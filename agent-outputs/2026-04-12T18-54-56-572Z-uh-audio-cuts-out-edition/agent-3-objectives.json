@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "objective_1",
+      "statement": "Count and group objects to demonstrate the concept of addition.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "objective_2",
+      "statement": "Combine two groups of objects and find the total number of items.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

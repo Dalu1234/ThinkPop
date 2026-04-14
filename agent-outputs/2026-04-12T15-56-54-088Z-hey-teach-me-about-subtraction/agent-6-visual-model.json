@@ -1,0 +1,13 @@
+{
+  "kind": "addition_rows",
+  "rows": 2,
+  "cols": 0,
+  "rowCounts": [
+    5,
+    0
+  ],
+  "itemShape": "colorful objects",
+  "itemColor": "#ffcc00",
+  "itemLabel": "Five colorful objects",
+  "caption": "Let's start with five colorful objects!"
+}

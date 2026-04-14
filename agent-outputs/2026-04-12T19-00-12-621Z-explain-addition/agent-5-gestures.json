@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor motions toward the screen with both hands spread wide, inviting attention to the colorful objects displayed"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person leans slightly forward, tilting their head, and smiles while encouraging guesses about the total number of objects"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor steps closer to the groups, extends a hand outward, and demonstrates the motion of combining with smooth, sweeping gestures"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person stands upright, counts aloud with open palms facing the objects, making inviting gestures to include the viewers in the counting"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor enthusiastically raises both arms and gestures toward the new group of objects, encouraging learners to count actively"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person shifts weight slightly, tilts their head, and extends a hand out as if prompting learners to share the total after combining"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor claps hands together joyfully, steps back a little, and beams with pride in celebrating the learners' achievement in adding"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person holds both hands palm-up, gestures in a moving arc to emphasize bringing groups together, and smiles warmly"
+    }
+  ]
+}

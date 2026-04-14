@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor steps closer to the screen, smiles, and gestures toward the two groups of colorful blocks with open hands"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person tilts their head slightly, glances toward the blocks, and raises both arms invitingly while asking about combining the groups"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor leans forward, nods encouragingly, and traces a path in the air as if counting all the blocks after combining"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person stands tall, holds up five fingers from one hand, and points toward the imaginary total while celebrating the result"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor claps their hands together in excitement, then stretches both arms wide to encourage combining new groups of blocks"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person steps back slightly, opens their arms wide as if inviting participation, and enthusiastically asks for the total number of blocks"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor raises both hands in a celebratory gesture, smiles widely, and nods to acknowledge the learning of adding groups together"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person leans forward with a warm smile, motions invitingly with both hands, and encourages ongoing practice with a confident tone"
+    }
+  ]
+}

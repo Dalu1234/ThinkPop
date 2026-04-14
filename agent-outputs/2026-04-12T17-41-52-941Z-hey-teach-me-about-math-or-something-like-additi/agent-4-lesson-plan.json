@@ -1,0 +1,84 @@
+{
+  "title": "Understanding Addition with Objects",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "Two groups of objects",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these two groups of colorful objects on the screen.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2",
+          "text": "How many objects do we have in each group?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "Combining objects visually",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let's count the first group together: one, two, three.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "Now, we'll add the second group: four, five.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s5",
+          "text": "So, how many objects are there altogether?",
+          "durationSeconds": 3
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "Counting sets together",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s6",
+          "text": "Try combining these two groups of objects on the screen.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s7",
+          "text": "Count them aloud and find out how many there are.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "Total number of objects",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s8",
+          "text": "Great job today learning about addition with objects!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s9",
+          "text": "Remember, combining groups helps us find totals easily.",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Use real objects or images to demonstrate addition by combining groups."
+}

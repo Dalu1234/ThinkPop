@@ -1,0 +1,79 @@
+{
+  "title": "Introduction to Addition with Objects",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "Colorful groups of items",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these colorful objects on the screen!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Can you count how many groups of objects we have?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "Combining two groups",
+      "sceneHint": "combine_groups_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Now, let's combine these two groups together.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4",
+          "text": "One group has three objects and the other has two.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "Count the total objects",
+      "sceneHint": "count_total_practice",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Can you find the total number of objects now?",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s6",
+          "text": "Count all the objects in the new group.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "Happy objects celebration",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job adding those groups together!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "You are really becoming an addition expert!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to count and physically combine groups of objects for better understanding."
+}

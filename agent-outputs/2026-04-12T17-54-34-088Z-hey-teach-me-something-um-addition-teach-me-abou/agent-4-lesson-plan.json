@@ -1,0 +1,79 @@
+{
+  "title": "Understanding Basic Addition",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "Counting colorful blocks",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these colorful blocks on the screen!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Let's count them together to see how many we have.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "Adding two groups",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Here are two groups of blocks, one with three and another with two.",
+          "durationSeconds": 6
+        },
+        {
+          "id": "s4",
+          "text": "Let's combine them and find out the total number of blocks.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "Count together with blocks",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, count how many blocks are in this new group!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "What is the total when we add these blocks?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "Reviewing addition concepts",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job learning how to add groups of blocks together today!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Remember, adding means finding the total of two or more groups.",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to actively count the objects shown throughout the lesson."
+}

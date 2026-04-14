@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Count the total number of objects in equal groups.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "2",
+      "statement": "Create arrays to represent and solve multiplication problems.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

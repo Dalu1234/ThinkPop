@@ -20,6 +20,7 @@ import { applyBoneAnimation } from '../lib/boneAnimations'
 import { readGamepad } from '../lib/gamepad'
 import { solveArm, getArmLengths } from '../lib/armIK'
 import MathVisualization from './MathVisualization'
+import SpatialViz from './SpatialViz'
 import SolarSystem from './SolarSystem'
 
 /** FBX root — scale + low Y so the figure sits in the lower half of the screen. */
@@ -836,6 +837,9 @@ function SceneContent({
   mathExpression,
   visualization,
   visualizationStepIndex,
+  spatialItems,
+  spatialActive,
+  onSpatialTouch,
 }) {
   return (
     <>
@@ -847,6 +851,11 @@ function SceneContent({
       <Suspense fallback={null}>
         <MathVisualization visualization={visualization} stepIndex={visualizationStepIndex} />
       </Suspense>
+      {spatialItems && (
+        <Suspense fallback={null}>
+          <SpatialViz items={spatialItems} active={spatialActive} onTouch={onSpatialTouch} />
+        </Suspense>
+      )}
       <Suspense fallback={<LoadingStand />}>
         <FBXCharacter motionFrames={motionFrames} animation={animation} aiState={aiState} />
       </Suspense>
@@ -866,6 +875,9 @@ export default function CharacterScene({
   mathExpression,
   visualization,
   visualizationStepIndex = 0,
+  spatialItems,
+  spatialActive,
+  onSpatialTouch,
 }) {
   return (
     <Canvas
@@ -885,6 +897,9 @@ export default function CharacterScene({
         mathExpression={mathExpression}
         visualization={visualization}
         visualizationStepIndex={visualizationStepIndex}
+        spatialItems={spatialItems}
+        spatialActive={spatialActive}
+        onSpatialTouch={onSpatialTouch}
       />
     </Canvas>
   )

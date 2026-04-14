@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor motions with both arms wide open, smiling and inviting the class to notice the colorful objects on the screen"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a tutor tilts their head slightly, leans forward, and points with one finger toward the two groups, encouraging the learners to observe"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor moves closer to the screen, gestures with both hands as if bringing the groups together, and smiles while explaining"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person raises both hands and waves them in a counting motion, inviting everyone to join in as they count the objects"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor steps back, spreads arms and invites the class to participate, encouraging them to count and combine the groups"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person points toward the imaginary combined group in the air, leaning slightly forward while asking about the total count"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor claps hands together, smiles brightly, and nods enthusiastically while celebrating the learners' success in combining groups"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a tutor raises a finger to emphasize, then moves hands outward as if spreading knowledge, reminding everyone about the importance of addition"
+    }
+  ]
+}

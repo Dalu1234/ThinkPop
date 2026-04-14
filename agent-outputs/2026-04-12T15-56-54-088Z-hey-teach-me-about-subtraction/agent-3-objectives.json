@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "K2-01",
+      "statement": "Count and group objects to show how many are left after taking some away.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "K2-02",
+      "statement": "Combine objects in different ways to demonstrate subtraction as taking away.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

@@ -626,13 +626,14 @@ function parseDivision(problem) {
   return { total, groupSize }
 }
 
-/** Pick a countable noun for mock viz — keywords from the message, else hash the text for variety. */
+/** Pick a countable noun for mock viz — keywords from message, else random non-apple variety. */
 function inferMockItemShape(problem) {
   const p = String(problem || '')
+  const explicitAppleRequest = /\bapple(s)?\b/i.test(p)
+  if (explicitAppleRequest) return 'apple'
   const pairs = [
     [/pumpkin|gourd/i, 'pumpkin'],
     [/orange(s)?|citrus|tangerine|mandarin/i, 'orange'],
-    [/apple/i, 'apple'],
     [/avocado/i, 'avocado'],
     [/walnut|\bnut\b|nuts/i, 'walnut'],
     [/balloon/i, 'balloons'],
@@ -652,10 +653,8 @@ function inferMockItemShape(problem) {
   for (const [re, shape] of pairs) {
     if (re.test(p)) return shape
   }
-  const pool = ['apple', 'pumpkin', 'orange', 'avocado', 'gift box', 'balloons', 'peach', 'paprika', 'walnut']
-  let h = 0
-  for (let i = 0; i < p.length; i++) h = (h * 31 + p.charCodeAt(i)) >>> 0
-  return pool[h % pool.length]
+  const pool = ['pumpkin', 'orange', 'avocado', 'gift box', 'balloons', 'peach', 'paprika', 'walnut', 'block', 'star']
+  return pool[Math.floor(Math.random() * pool.length)]
 }
 
 const MOCK_SHAPE_COLORS = {
@@ -846,7 +845,8 @@ async function agentVisualModel(intake, topic, lessonPlan) {
   const system = `${BASE}
 You are Agent 6 — Visual model director. Choose a concrete countable 3D arrangement for the MAIN mathematical idea.
 For whole-number addition (e.g., 3+4), use kind "addition_rows" with rowCounts array (e.g. [3, 4]) to show groups on separate rows.
-Pick WHAT is being counted — itemShape is a short English noun phrase the UI will show as 3D tokens (e.g. "oranges", "stars", "apples", "crayons"). Match the learner's message when possible. Do NOT default every problem to apples; vary objects (snacks, toys, animals, school supplies) to fit context.
+Pick WHAT is being counted — itemShape is a short English noun phrase the UI will show as 3D tokens (e.g. "oranges", "stars", "apples", "crayons"). Match the learner's message when possible.
+CRITICAL: Do NOT default every problem to apples. Only use apples when the learner explicitly asks for apples. Otherwise pick a different concrete object that fits context (snacks, toys, animals, school supplies).
 For whole-number multiplication (e.g. 3×4), use kind "grid" with rows and cols so rows*cols equals the product; put the FIRST factor as cols (items per row) and SECOND as rows unless the problem wording clearly says otherwise (e.g. "3 apples in each of 4 rows" → cols 3, rows 4).
 For whole-number division (e.g., 12÷3), use kind "division_groups" with total (dividend), groupSize (divisor), quotient, and remainder (0 if it divides evenly). Cap total at 36 and groupSize at 12.
 Return JSON only:
@@ -892,7 +892,7 @@ function normalizeGesturePlan(lessonPlan, raw) {
   return { gestures }
 }
 
-function normalizeVisualModel(raw) {
+function normalizeVisualModel(raw, context = {}) {
   const validKinds = ['grid', 'addition_rows', 'division_groups']
   const kind = validKinds.includes(raw?.kind) ? raw.kind : 'none'
   let rows = Number(raw?.rows) || 0
@@ -925,9 +925,28 @@ function normalizeVisualModel(raw) {
       remainder = Math.max(0, Math.min(groupSize - 1, Math.round(r)))
     }
   }
+  const contextText = [
+    context?.problem,
+    context?.intake?.normalizedProblem,
+  ]
+    .filter(Boolean)
+    .join(' ')
+    .toLowerCase()
+  const explicitAppleRequest = /\bapple(s)?\b/.test(contextText)
+
   const rawShape = String(raw?.itemShape ?? '').trim().toLowerCase()
-  const shape = rawShape
-  const color = typeof raw?.itemColor === 'string' && raw.itemColor.startsWith('#') ? raw.itemColor : '#00e5ff'
+  const fallbackShape = inferMockItemShape(context?.problem || contextText)
+  let shape = rawShape || fallbackShape
+
+  // Guardrail: if model keeps defaulting to apples without user intent, diversify object choice.
+  if ((shape === 'apple' || shape === 'apples') && !explicitAppleRequest) {
+    const fallbackPool = ['pumpkin', 'orange', 'avocado', 'gift box', 'balloons', 'peach', 'paprika', 'walnut', 'block', 'star']
+    shape = fallbackPool[Math.floor(Math.random() * fallbackPool.length)]
+  }
+
+  const color = typeof raw?.itemColor === 'string' && raw.itemColor.startsWith('#')
+    ? raw.itemColor
+    : (MOCK_SHAPE_COLORS[shape] || '#00e5ff')
   const itemLabel =
     typeof raw?.itemLabel === 'string' && raw.itemLabel.trim()
       ? scrubNumberLinePhrases(raw.itemLabel.trim())
@@ -1017,7 +1036,7 @@ export async function* runLessonPipelineStream(input) {
     yield { stage: 'gestures', agent: 'Agent 5 — Gesture director', data: gesturePlan }
 
     const visualRaw = await agentVisualModel(intake, topic, lessonPlan)
-    const visualModel = normalizeVisualModel(visualRaw)
+    const visualModel = normalizeVisualModel(visualRaw, { problem, intake, topic })
     const artifacts = await writeAgentOutputs(problem, {
       intake,
       topic,

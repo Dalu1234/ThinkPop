@@ -1,0 +1,10 @@
+{
+  "kind": "grid",
+  "rows": 3,
+  "cols": 4,
+  "rowCounts": [],
+  "itemShape": "toys",
+  "itemColor": "#00aaff",
+  "itemLabel": "Three groups of four toys each",
+  "caption": "Multiplication as equal groups"
+}

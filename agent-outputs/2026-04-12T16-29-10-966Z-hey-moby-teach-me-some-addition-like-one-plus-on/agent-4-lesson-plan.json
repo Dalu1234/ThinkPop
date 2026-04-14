@@ -1,0 +1,84 @@
+{
+  "title": "Fun with Adding Objects",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "colorful objects on screen",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these colorful objects we have on the screen!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Can you guess how many objects are here?",
+          "durationSeconds": 3
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "two groups of objects combined",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let's see what happens when we combine two groups together.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "Here is one group of two objects, and another group of one object.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s5",
+          "text": "When we count them all, how many do we have?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "counting objects aloud",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s6",
+          "text": "Let's count the objects together: one, two, and three!",
+          "durationSeconds": 6
+        },
+        {
+          "id": "s7",
+          "text": "So, how many objects did we find by adding two and one?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "summary of adding",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s8",
+          "text": "Great job today! We combined groups to learn about addition.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s9",
+          "text": "Remember, counting objects helps us find totals when we add!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to actively participate in counting and combining groups of objects."
+}

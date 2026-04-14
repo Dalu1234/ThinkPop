@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor steps forward, smiles broadly, and gestures with both hands toward the colorful objects on the screen."
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person tilts their head slightly and raises one hand, inviting the class to share their thoughts about the groups."
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor moves both hands together in a sweeping motion, suggesting the combining of the two groups of objects."
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person nods enthusiastically while using one hand to mimic counting, emphasizing the addition of both groups."
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor crouches slightly, opens both arms wide, and invites the learners to join in counting the new objects."
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person stands tall, looks around at the class, and gestures with both hands while asking about the total count."
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor raises both arms in celebration, smiling widely to acknowledge the students' hard work in learning addition."
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person gestures with one hand toward the objects, reinforcing the message about combining groups and finding totals."
+    }
+  ]
+}

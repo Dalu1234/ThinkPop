@@ -1,0 +1,10 @@
+{
+  "kind": "grid",
+  "rows": 3,
+  "cols": 4,
+  "rowCounts": [],
+  "itemShape": "blocks",
+  "itemColor": "#4caf50",
+  "itemLabel": "3 rows of 4 blocks each",
+  "caption": "Let's see how many blocks are in this array!"
+}

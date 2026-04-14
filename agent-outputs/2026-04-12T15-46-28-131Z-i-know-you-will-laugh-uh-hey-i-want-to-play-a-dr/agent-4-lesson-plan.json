@@ -1,0 +1,79 @@
+{
+  "title": "Introduction to Basic Addition",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "colorful objects grouped together",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these colorful objects grouped together on the screen!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "How many groups do you see, and what do you think we can do with them?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "two groups combining",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let's combine these two groups of objects to see the total amount.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "Counting both groups together gives us the answer we need!",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "counters for counting",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, let's practice counting these new objects together.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "How many objects do we have when we count both groups?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "objects arranged neatly",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job learning about addition with objects today!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "Remember, combining groups helps us find the total amount!",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to explore combining groups of objects with hands-on activities."
+}

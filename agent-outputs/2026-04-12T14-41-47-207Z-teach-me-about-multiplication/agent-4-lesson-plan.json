@@ -1,0 +1,79 @@
+{
+  "title": "Understanding Multiplication Concepts",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "colorful countable objects",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these colorful objects arranged in rows on the screen.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "How can we count all of these pieces quickly and easily?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "groups of objects",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let's group these objects into equal sets to see multiplication.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "Here we have three groups of four objects each, which equals twelve.",
+          "durationSeconds": 6
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "interactive grouping activity",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, let’s create our own equal groups and find the total together.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "Count the objects in each group and tell me the total you see.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "summary of groups",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "We learned that multiplication is like adding equal groups together.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Great job understanding multiplication today with these fun objects!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Focus on how grouping objects helps with understanding multiplication."
+}

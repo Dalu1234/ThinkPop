@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "K2-1",
+      "statement": "Count pairs of objects to demonstrate the concept of doubling.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "K2-2",
+      "statement": "Group objects in twos and find the total number of objects.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

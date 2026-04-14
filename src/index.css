@@ -13,16 +13,17 @@ body {
   font-family: 'Nunito', sans-serif;
   color: white;
   -webkit-font-smoothing: antialiased;
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='48' viewBox='0 0 40 48'%3E%3Cpath d='M6 2 L6 36 L14 28 L24 42 L30 38 L20 24 L32 22 Z' fill='%23ffe066' stroke='%23222' stroke-width='2.5' stroke-linejoin='round' stroke-linecap='round'/%3E%3Cpath d='M10 8 L10 28' stroke='rgba(255,255,255,0.45)' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") 6 2, auto;
 }
 
 a, button, [role="button"], input[type="submit"],
 input[type="button"], select, label[for],
 .suggestion-chip, .mic-btn, .send-btn, .big-center-mic,
 .viz-step-btn, .mdm-test-btn, .voice-conv-btn,
-.history-toggle-btn, .history-item, .history-delete-btn,
-.btn-use-baymax, .btn-use-baymax-secondary {
-  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44'%3E%3Cdefs%3E%3CradialGradient id='g' cx='18' cy='18' r='12' gradientUnits='userSpaceOnUse'%3E%3Cstop offset='0%25' stop-color='%23fff8e1'/%3E%3Cstop offset='40%25' stop-color='%23ffb74d'/%3E%3Cstop offset='100%25' stop-color='%23e65100'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='18' cy='18' r='10' fill='url(%23g)' stroke='%23bf360c' stroke-width='2'/%3E%3Ccircle cx='15' cy='15' r='3.5' fill='rgba(255,255,255,0.7)'/%3E%3Cpath d='M28 10 Q36 6 42 2' stroke='%23ffcc80' stroke-width='3' stroke-linecap='round' fill='none' opacity='0.9'/%3E%3Cpath d='M26 14 Q33 11 40 8' stroke='%23ffab40' stroke-width='2' stroke-linecap='round' fill='none' opacity='0.7'/%3E%3Cpath d='M27 18 Q34 16 42 14' stroke='%23ff9100' stroke-width='1.5' stroke-linecap='round' fill='none' opacity='0.5'/%3E%3Ccircle cx='30' cy='9' r='1.5' fill='%23ffe082' opacity='0.8'/%3E%3Ccircle cx='35' cy='6' r='1' fill='%23ffcc80' opacity='0.6'/%3E%3C/svg%3E") 18 18, pointer;
+.history-toggle-btn, .home-btn, .camera-nav-btn, .history-item, .history-delete-btn,
+.btn-use-baymax, .btn-use-baymax-secondary,
+.vlm-icon-btn, .vlm-send-btn, .vlm-shutter, .vlm-upload-btn, .vlm-tab-btn,
+.vlm-staged-remove {
+  cursor: pointer;
 }
 
 /* ============================================================
@@ -56,6 +57,52 @@ input[type="button"], select, label[for],
   50%  { background-position: 100% 50%; }
   75%  { background-position: 50% 100%; }
   100% { background-position: 0% 50%; }
+}
+
+/* ============================================================
+   KNOWLEDGE NEBULA (landing page)
+   ============================================================ */
+.nebula-canvas-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  background: rgba(6, 8, 18, 0.45);
+  border: 1px solid rgba(0, 229, 255, 0.1);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45), inset 0 0 60px rgba(0, 229, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.nebula-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  background: linear-gradient(to top, rgba(6, 8, 18, 0.85) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.nebula-caption-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(0, 229, 255, 0.7);
+}
+
+.nebula-caption-sub {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.4;
 }
 
 /* ============================================================
@@ -1024,6 +1071,56 @@ input[type="button"], select, label[for],
   transform: scale(1.05);
 }
 
+.home-btn {
+  position: fixed;
+  top: 24px;
+  left: 76px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: background 0.25s, transform 0.15s;
+  text-decoration: none;
+}
+
+.home-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+}
+
+.camera-nav-btn {
+  position: fixed;
+  top: 24px;
+  left: 128px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: white;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: background 0.25s, transform 0.15s;
+  text-decoration: none;
+}
+.camera-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+}
+
+
 .history-sidebar {
   position: fixed;
   top: 0;
@@ -1499,4 +1596,559 @@ input[type="button"], select, label[for],
   .finger-count-tool-number {
     font-size: clamp(40px, 18vw, 64px);
   }
+}
+
+/* ── Math Drag Tool Panel ─────────────────────────────────────────────── */
+.mdt-shell {
+  position: fixed;
+  left: 32px;
+  top: 108px;
+  z-index: 18;
+  width: min(400px, calc(100vw - 64px));
+}
+
+.mdt-card {
+  padding: 14px 14px 12px;
+  border-radius: 14px;
+  background: rgba(12, 14, 22, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.mdt-header {
+  margin-bottom: 10px;
+}
+
+.mdt-kicker {
+  display: block;
+  font-family: 'Nunito', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+  margin-bottom: 4px;
+}
+
+.mdt-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 26px;
+  font-weight: 900;
+  line-height: 1.2;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+
+.mdt-op {
+  color: #ffd700;
+}
+
+.mdt-eq {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ── Game area ─────────────────────────────────────────────────── */
+.mdt-game-area {
+  position: relative;
+  width: 100%;
+  height: 248px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+/* ── Drop zone ─────────────────────────────────────────────────── */
+.mdt-drop-zone {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 110px;
+  border: 2.5px dashed rgba(255, 255, 255, 0.18);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.22);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: border-color 0.18s, background 0.18s, color 0.18s;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.mdt-drop-zone.mdt-dz-hover {
+  border-color: rgba(68, 170, 255, 0.7);
+  background: rgba(68, 170, 255, 0.09);
+  color: rgba(68, 170, 255, 0.7);
+}
+
+.mdt-drop-zone.mdt-dz-correct {
+  border-color: #33cc66;
+  background: rgba(51, 204, 102, 0.12);
+  color: #33cc66;
+  font-family: 'Nunito', sans-serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.mdt-drop-zone.mdt-dz-wrong {
+  border-color: #ff4455;
+  background: rgba(255, 68, 85, 0.1);
+  animation: mdt-shake 0.38s ease;
+}
+
+@keyframes mdt-shake {
+  0%, 100% { left: 50%;           transform: translateX(-50%); }
+  20%       { left: calc(50% - 9px); transform: translateX(-50%); }
+  60%       { left: calc(50% + 9px); transform: translateX(-50%); }
+}
+
+/* ── Draggable tiles (base — bg/border/glow set inline per tile) ── */
+.mdt-tile {
+  position: absolute;
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.65rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.92);
+  cursor: grab;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  user-select: none;
+  pointer-events: auto;
+  transition: transform 0.12s, box-shadow 0.12s, opacity 0.45s;
+  z-index: 5;
+}
+
+.mdt-tile-grabbed {
+  transform: scale(1.18) rotate(-3deg) !important;
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.65), 0 0 20px rgba(80, 200, 255, 0.2) !important;
+  cursor: grabbing;
+  z-index: 20 !important;
+  transition: none !important;
+}
+
+.mdt-tile-snapping {
+  transition:
+    left 0.38s cubic-bezier(0.34, 1.56, 0.64, 1),
+    top  0.38s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+
+.mdt-tile-dissolve {
+  opacity: 0 !important;
+  transform: scale(1.35) !important;
+  transition: opacity 0.45s ease, transform 0.45s ease !important;
+}
+
+/* ── Hand skeleton canvas ──────────────────────────────────────── */
+.mdt-hand-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ── Hand cursor dot ───────────────────────────────────────────── */
+.mdt-cursor {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid rgba(80, 200, 255, 0.82);
+  background: transparent;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 15;
+  opacity: 0;
+  transition: width 0.1s, height 0.1s, background 0.1s, border-color 0.1s, box-shadow 0.1s;
+  box-shadow: 0 0 8px rgba(80, 200, 255, 0.3);
+}
+
+.mdt-cursor-pinch {
+  width: 13px;
+  height: 13px;
+  background: rgba(255, 215, 0, 0.92);
+  border-color: rgba(255, 215, 0, 0.5);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.45);
+}
+
+/* ── Feedback toast ────────────────────────────────────────────── */
+.mdt-feedback {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 6px 18px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.mdt-feedback-ok {
+  background: rgba(51, 204, 102, 0.14);
+  border: 1px solid rgba(51, 204, 102, 0.45);
+  color: #33cc66;
+}
+
+.mdt-feedback-err {
+  background: rgba(255, 68, 85, 0.14);
+  border: 1px solid rgba(255, 68, 85, 0.45);
+  color: #ff4455;
+}
+
+/* ── Hidden video for MediaPipe ────────────────────────────────── */
+.mdt-video {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+}
+
+/* ── Camera button ─────────────────────────────────────────────── */
+.mdt-cam-btn {
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 999px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(135deg, rgba(68, 170, 255, 0.92), rgba(136, 85, 255, 0.9));
+  box-shadow: 0 4px 18px rgba(68, 170, 255, 0.2);
+  transition: transform 0.12s ease, opacity 0.2s ease;
+}
+
+.mdt-cam-btn:hover:not(:disabled) { transform: scale(1.02); }
+.mdt-cam-btn:disabled             { opacity: 0.5; cursor: wait; }
+
+/* ── Error + hint ──────────────────────────────────────────────── */
+.mdt-error {
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255, 120, 120, 0.9);
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.mdt-hint {
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.38);
+}
+
+@media (max-width: 960px) {
+  .mdt-shell {
+    left: 16px;
+    right: 16px;
+    top: auto;
+    bottom: 72px;
+    width: auto;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+}
+
+/* ============================================================
+   CAMERA PAGE  (.cam-*)
+   ============================================================ */
+.cam {
+  position: fixed;
+  inset: 0;
+  background: #020304;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Nunito', sans-serif;
+  color: #fff;
+  overflow: hidden;
+}
+
+.cam-viewfinder {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: #000;
+}
+.cam-video,
+.cam-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cam-flash {
+  position: absolute;
+  inset: 0;
+  background: white;
+  animation: camFlash 0.15s ease-out forwards;
+  pointer-events: none;
+}
+@keyframes camFlash { 0% { opacity: 0.7; } 100% { opacity: 0; } }
+
+.cam-status {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Bars ────────────────────────────────────────────────────── */
+.cam-bar {
+  position: relative;
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+}
+.cam-bar--top {
+  background: linear-gradient(to bottom, rgba(2, 3, 4, 0.6) 0%, transparent 100%);
+}
+.cam-bar--bottom {
+  margin-top: auto;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 16px 20px;
+  background: linear-gradient(to top, rgba(2, 3, 4, 0.75) 0%, transparent 100%);
+}
+.cam-title {
+  flex: 1;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.cam-pill-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: white;
+  transition: background 0.2s;
+  text-decoration: none;
+  cursor: pointer;
+}
+.cam-pill-btn:hover { background: rgba(255, 255, 255, 0.18); }
+.cam-pill-btn--sm { width: 36px; height: 36px; }
+
+/* ── Input row ───────────────────────────────────────────────── */
+.cam-input-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.cam-shutter {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: transform 0.1s;
+  padding: 0;
+}
+.cam-shutter:active { transform: scale(0.9); }
+.cam-shutter:disabled { opacity: 0.3; cursor: default; }
+.cam-shutter-dot {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: white;
+  display: block;
+  transition: background 0.12s;
+}
+.cam-shutter:active .cam-shutter-dot { background: rgba(255, 255, 255, 0.65); }
+
+/* ── Action buttons ─────────────────────────────────────────── */
+.cam-btn {
+  padding: 10px 24px;
+  border-radius: 24px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  border: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.cam-btn--ghost {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.cam-btn--ghost:hover { background: rgba(255, 255, 255, 0.14); color: white; }
+.cam-btn--primary {
+  background: linear-gradient(135deg, #0ea5e9, #6366f1);
+  color: white;
+  box-shadow: 0 4px 14px rgba(14, 165, 233, 0.3);
+}
+.cam-btn--primary:hover { transform: scale(1.03); }
+
+/* ── Analyzing overlay ──────────────────────────────────────── */
+.cam-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: rgba(2, 3, 4, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.cam-overlay-text {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.04em;
+}
+.cam-spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(0, 229, 255, 0.15);
+  border-top-color: rgba(0, 229, 255, 0.7);
+  border-radius: 50%;
+  animation: camSpin 0.8s linear infinite;
+}
+@keyframes camSpin { to { transform: rotate(360deg); } }
+
+/* ── Result card ────────────────────────────────────────────── */
+.cam-result {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(2, 3, 4, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.cam-result-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 28px 32px;
+  max-width: 360px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.cam-result-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(0, 229, 255, 0.6);
+  margin-bottom: 4px;
+}
+.cam-result-subject {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: white;
+}
+.cam-result-topic {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.75);
+}
+.cam-result-details {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.5;
+  margin-top: 2px;
+}
+.cam-result-diff {
+  display: inline-flex;
+  align-self: flex-start;
+  padding: 3px 12px;
+  border-radius: 12px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+.cam-result-diff--easy {
+  background: rgba(52, 211, 153, 0.12);
+  color: rgba(52, 211, 153, 0.85);
+  border: 1px solid rgba(52, 211, 153, 0.2);
+}
+.cam-result-diff--medium {
+  background: rgba(251, 191, 36, 0.12);
+  color: rgba(251, 191, 36, 0.85);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+}
+.cam-result-diff--hard {
+  background: rgba(239, 68, 68, 0.12);
+  color: rgba(239, 68, 68, 0.85);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+.cam-result-saved {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: rgba(0, 229, 255, 0.5);
+  margin-top: 8px;
+}
+.cam-result-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
 }

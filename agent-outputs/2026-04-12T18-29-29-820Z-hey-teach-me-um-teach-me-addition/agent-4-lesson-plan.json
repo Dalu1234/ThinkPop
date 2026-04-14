@@ -1,0 +1,89 @@
+{
+  "title": "Discovering Addition with Objects",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "two groups of objects",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these two different groups of objects on the screen.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Can you count how many objects are in each group?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "combining groups",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let's combine these two groups to see how many we have together.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4",
+          "text": "One group has three objects and the other has two objects.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s5",
+          "text": "Three plus two equals five objects in total.",
+          "durationSeconds": 3
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "counting objects together",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s6",
+          "text": "Now, let's try adding two new groups of objects together.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s7",
+          "text": "Group one has four objects, and group two has three objects.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "Count with me: four plus three equals how many?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "total objects summary",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s9",
+          "text": "Great job! You learned how to combine groups to find the total.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s10",
+          "text": "Keep practicing addition with different groups of objects.",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to visualize the addition process with real objects for better understanding."
+}

@@ -1,0 +1,79 @@
+{
+  "title": "Understanding Subtraction Concepts",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "Colorful objects on screen",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these colorful objects we have on the screen.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "What happens when we take some away from this group?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model2",
+      "kind": "model",
+      "visualCue": "Removing objects in rows",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let’s count these objects together before taking some away.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "Now, I will take away two objects. How many do we have left?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice3",
+      "kind": "practice",
+      "visualCue": "Two groups displayed",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Here are two groups of objects. Let’s compare their amounts.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "Can you find the difference in the number of objects between these groups?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap4",
+      "kind": "wrap",
+      "visualCue": "Summary of actions",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Today we learned about taking away objects and comparing groups.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Great job exploring subtraction with these fun objects!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to engage actively with the objects on screen while learning subtraction."
+}

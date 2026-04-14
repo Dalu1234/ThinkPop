@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor steps forward, spreads arms wide to show the colorful objects, and smiles while engaging with the learners"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person leans slightly forward, gestures toward the objects, and nods enthusiastically while inviting exploration"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor points to the two rows, gesturing with the right hand while explaining the arrangement of objects"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person raises both arms slightly, drawing an imaginary line between the rows and emphasizes the number six with a nod"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor takes a small step back, opens palms toward the groups, and encourages the class to count along cheerfully"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person walks to the side, gestures with one hand toward the imagined groups, and smiles while prompting students to count"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor spreads arms wide in celebration, nods enthusiastically, and smiles broadly while summarizing the lesson"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person steps slightly forward, points with both hands at an imaginary array, and encourages students to remember this concept"
+    }
+  ]
+}

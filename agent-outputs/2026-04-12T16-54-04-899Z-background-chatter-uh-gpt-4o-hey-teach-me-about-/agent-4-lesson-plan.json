@@ -1,0 +1,79 @@
+{
+  "title": "Understanding Multiplication Through Objects",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook_1",
+      "kind": "hook",
+      "visualCue": "showing countable objects",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these colorful objects grouped together on the screen.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2",
+          "text": "Can you guess how we might count them quickly with groups?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model_1",
+      "kind": "model",
+      "visualCue": "demonstrating arrays",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Now, let's create an array using these objects arranged in rows.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "This array helps us see multiplication as repeated addition.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice_1",
+      "kind": "practice",
+      "visualCue": "counting grouped objects",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Count these groups together, how many objects do you see?",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "Try to write down the multiplication fact for this array.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap_1",
+      "kind": "wrap",
+      "visualCue": "reviewing key concepts",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job today understanding multiplication with groups and arrays!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Remember, multiplication is just repeated addition with objects.",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Focus on encouraging students to see multiplication as groups of objects."
+}

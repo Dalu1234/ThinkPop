@@ -1,0 +1,40 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor stands with a welcoming stance, pointing toward the screen while drawing attention to three groups of two colorful cubes."
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person leans slightly forward, tilting their head and raising an eyebrow while inviting guesses about the total number of cubes."
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor gestures with both hands as if arranging objects, stepping to the side while demonstrating how to make rows."
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person spreads their arms wide to show three rows, then taps their fingers to indicate each row has two cubes."
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor steps forward slightly, tilting their head to the side while asking how to find the total number of cubes."
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person turns toward the class, raising one hand and counting on fingers while encouraging everyone to count each row together."
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor leans forward softly, inviting the learners to think by shifting their head and asking how many cubes they have altogether."
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person claps their hands together energetically, smiling widely to celebrate the learners for mastering multiplication with groups of objects."
+    },
+    {
+      "sentenceId": "s9",
+      "mdmPrompt": "a tutor gestures with one hand towards imaginary groups while explaining that multiplication means adding equal groups together."
+    }
+  ]
+}

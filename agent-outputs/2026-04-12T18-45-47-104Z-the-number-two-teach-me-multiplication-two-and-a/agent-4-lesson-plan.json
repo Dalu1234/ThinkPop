@@ -1,0 +1,79 @@
+{
+  "title": "Discovering Multiplication by Two",
+  "estimatedMinutes": 6,
+  "segments": [
+    {
+      "id": "s1",
+      "kind": "hook",
+      "visualCue": "Rows of colorful objects",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1_1",
+          "text": "Look at these colorful objects arranged in rows!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s1_2",
+          "text": "How many objects do you see in each row?",
+          "durationSeconds": 3
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "kind": "model",
+      "visualCue": "Grouping the objects",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s2_1",
+          "text": "Let's group these objects in twos to understand multiplying by two.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2_2",
+          "text": "If I have two groups of two, how many do I have now?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "kind": "practice",
+      "visualCue": "Count pairs together",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s3_1",
+          "text": "Let’s count pairs of objects together and find the total.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s3_2",
+          "text": "How many groups of two can you see on the screen?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "kind": "wrap",
+      "visualCue": "Reviewing the concept",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s4_1",
+          "text": "Today, we learned how to multiply by two with groups!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4_2",
+          "text": "Great job counting and grouping the objects today!",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Focus on hands-on grouping and ensure learners visually connect pairs with multiplication."
+}

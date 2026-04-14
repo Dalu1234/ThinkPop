@@ -1,0 +1,79 @@
+{
+  "title": "Understanding Multiplication Concepts",
+  "estimatedMinutes": 6,
+  "segments": [
+    {
+      "id": "hook_1",
+      "kind": "hook",
+      "visualCue": "Equal groups of objects",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these groups of colorful blocks arranged on the screen!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Can you count how many blocks are in each group?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model_2",
+      "kind": "model",
+      "visualCue": "Creating an array",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let’s arrange these blocks into a 3 by 4 array.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4",
+          "text": "We can find the total by counting the rows and columns.",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "practice_3",
+      "kind": "practice",
+      "visualCue": "Count objects together",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, let’s practice counting the total of another array.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s6",
+          "text": "How many blocks do you see when we have 2 groups of 5?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "wrap_4",
+      "kind": "wrap",
+      "visualCue": "Reviewing concepts",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job! You learned how to create and count arrays today.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Multiplication can help us organize and find totals easily!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Focus on helping students visualize groupings and arrays for multiplication."
+}

@@ -1,0 +1,79 @@
+{
+  "title": "Understanding Subtraction Basics",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook_1",
+      "kind": "hook",
+      "visualCue": "colorful counting objects",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these colorful objects on the screen!",
+          "durationSeconds": 3
+        },
+        {
+          "id": "s2",
+          "text": "Today, we are going to learn about subtraction.",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model_2",
+      "kind": "model",
+      "visualCue": "taking away objects",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let's start with five objects in a row.",
+          "durationSeconds": 3
+        },
+        {
+          "id": "s4",
+          "text": "Now, if we take away two, how many are left?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "practice_3",
+      "kind": "practice",
+      "visualCue": "interactive object counting",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Count these objects with me as we take some away!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s6",
+          "text": "How many are left after we take one away?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "wrap_4",
+      "kind": "wrap",
+      "visualCue": "summary of counting",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job today learning about subtraction!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s8",
+          "text": "Remember, subtraction is how we take things away.",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to actively participate in counting and taking away objects."
+}

@@ -1,0 +1,89 @@
+{
+  "title": "Fun with Addition",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook_1",
+      "kind": "hook",
+      "visualCue": "Colorful objects on screen",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Let's play with some colorful objects to learn about addition!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2",
+          "text": "Look at these objects in two groups that we will add together.",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model_1",
+      "kind": "model",
+      "visualCue": "Adding object groups",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "I see 3 red blocks and 2 blue blocks on the screen.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "Let's combine these groups to find the total number of blocks.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s5",
+          "text": "We have 3 plus 2, which makes 5 blocks altogether!",
+          "durationSeconds": 6
+        }
+      ]
+    },
+    {
+      "id": "practice_1",
+      "kind": "practice",
+      "visualCue": "Counting together",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s6",
+          "text": "Now it’s your turn! Count these objects with me.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s7",
+          "text": "We have 4 yellow stars and 3 green stars.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "What do we get when we add 4 and 3 together?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap_1",
+      "kind": "wrap",
+      "visualCue": "Celebrating success",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s9",
+          "text": "Great job! You just learned how to add using objects.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s10",
+          "text": "Keep practicing, and you’ll become an addition expert!",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to physically count and combine objects during the lesson."
+}

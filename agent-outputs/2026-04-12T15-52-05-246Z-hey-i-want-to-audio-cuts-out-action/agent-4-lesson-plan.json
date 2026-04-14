@@ -1,0 +1,79 @@
+{
+  "title": "Combining Two Groups of Objects",
+  "estimatedMinutes": 6,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "Colorful countable objects",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these two groups of colorful objects on the screen!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Can you see how many are in each group?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "Combining objects visually",
+      "sceneHint": "combine_groups_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let's combine these two groups and see how many we have in total.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "We'll count each object together to find the sum!",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "Interactive counting activity",
+      "sceneHint": "count_and_combine_practice",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, it's your turn to count and combine the two groups.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "How many total objects do you see when we put them together?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "Summary of key concepts",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job! We learned how to combine groups of objects today.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Remember, combining objects helps us understand addition better!",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Use various groups of objects to engage learners and enhance understanding."
+}

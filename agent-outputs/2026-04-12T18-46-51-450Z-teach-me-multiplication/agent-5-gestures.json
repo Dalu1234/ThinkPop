@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor stands with a welcoming smile, gestures widely with both arms toward the colorful objects on the screen, inviting attention."
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person leans slightly forward, tilting their head and using one hand to mimic counting up, as if highlighting the groups."
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor points upward with both hands, tracing the lines of the rows and columns formed by the arranged objects in an array."
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person steps to the side, using one hand to gesture along the rows as they explain how multiplication relates to counting."
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor claps their hands together lightly, then extends arms forward enthusiastically, inviting everyone to join in counting groups."
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person holds up four fingers on one hand and then two fingers on the other, looking around as if engaging the learners in the question."
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor stands tall, spreading arms out to the sides, symbolizing the concept of multiplication as counting groups of objects learned today."
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person gently taps the side of their head with a finger, then makes a sweeping gesture in front as they emphasize using arrays for understanding."
+    }
+  ]
+}

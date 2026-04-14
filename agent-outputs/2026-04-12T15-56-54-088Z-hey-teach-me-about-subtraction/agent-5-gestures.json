@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor stands tall and gestures with both hands toward the screen while smiling to welcome learners."
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person steps forward slightly and raises both arms in excitement while announcing the topic of subtraction."
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor bends slightly at the knees and spreads arms wide to illustrate five objects in a row on the table."
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person moves one arm away from their body while tilting the head, encouraging the class to think about what remains."
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor claps hands together and then opens arms wide as if inviting students to count along with them."
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person leans forward slightly, raising a finger to demonstrate taking one object away, while looking inquisitively at the learners."
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor jumps in place joyfully and throws both hands in the air to celebrate the learning achieved today."
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person uses one hand to gesture outward while the other hand mimics taking away an object, emphasizing the concept of subtraction."
+    }
+  ]
+}

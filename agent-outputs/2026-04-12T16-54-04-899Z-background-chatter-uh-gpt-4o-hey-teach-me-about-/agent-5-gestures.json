@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor steps forward, smiles brightly, and gestures toward the grouped colorful objects on the screen with both hands"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a tutor tilts the head slightly, raises both arms in an inviting gesture, and leans forward as if encouraging guesses"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor moves sideways, reaches out with one hand, and mimics arranging objects in rows while describing the array"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a tutor stands tall, spreads arms wide, and slowly gestures as if revealing how the array relates to addition"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor crouches slightly, points thoughtfully at the groups, and encourages the class to count together with enthusiasm"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a tutor nods encouragingly while waving a hand as if inviting students to write down their thoughts on the multiplication fact"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a person claps hands joyfully, steps back, and smiles broadly while celebrating the students' understanding of multiplication"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a tutor gently gestures with both hands to reinforce the concept, as if connecting repeated addition to the idea of multiplication"
+    }
+  ]
+}

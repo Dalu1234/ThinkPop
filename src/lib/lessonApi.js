@@ -71,6 +71,65 @@ function agentVisualHints(visualModel) {
   return out
 }
 
+function parseOperationNumbers(text) {
+  const s = String(text || '')
+  let m = s.match(/(\d{1,2})\s*\+\s*(\d{1,2})/)
+  if (m) return { op: 'addition', a: Number(m[1]), b: Number(m[2]) }
+  m = s.match(/(\d{1,2})\s*-\s*(\d{1,2})/)
+  if (m) return { op: 'subtraction', a: Number(m[1]), b: Number(m[2]) }
+  m = s.match(/(\d{1,2})\s*[x×*]\s*(\d{1,2})/)
+  if (m) return { op: 'multiplication', a: Number(m[1]), b: Number(m[2]) }
+  m = s.match(/(\d{1,2})\s*[\/÷]\s*(\d{1,2})/)
+  if (m) return { op: 'division', total: Number(m[1]), groupSize: Number(m[2]) }
+  return null
+}
+
+function inferFallbackVisualization(result, problemText, assetVariant) {
+  const topicText = String(result?.topic?.topicTitle || '').toLowerCase()
+  const summaryText = String(result?.topic?.briefSummary || '').toLowerCase()
+  const lessonText = Array.isArray(result?.lessonPlan?.segments)
+    ? result.lessonPlan.segments
+      .flatMap(seg => (Array.isArray(seg?.sentences) ? seg.sentences.map(s => s?.text) : [seg?.narration]))
+      .filter(Boolean)
+      .join(' ')
+      .toLowerCase()
+    : ''
+  const combined = `${problemText} ${topicText} ${summaryText} ${lessonText}`.trim()
+  const parsed = parseOperationNumbers(problemText) || parseOperationNumbers(combined)
+
+  const hasMathCue = /\b(add|plus|sum|subtract|minus|take away|difference|multiply|times|product|divide|division|group|row|count)\b/.test(combined)
+  if (!hasMathCue && !parsed) return null
+
+  const hints = agentVisualHints(result?.visualModel)
+  if (parsed?.op === 'subtraction' || /\bsubtract|minus|take away|difference\b/.test(combined)) {
+    const a = parsed?.a ?? 8
+    const b = Math.min(a, parsed?.b ?? 3)
+    return { type: 'subtraction', a, b, steps: true, assetVariant, ...hints }
+  }
+  if (parsed?.op === 'multiplication' || /\bmultiply|multiplication|times|product|rows?|columns?|equal groups\b/.test(combined)) {
+    const a = parsed?.a ?? 3
+    const b = parsed?.b ?? 4
+    return { type: 'multiplication', a, b, steps: true, assetVariant, ...hints }
+  }
+  if (parsed?.op === 'division' || /\bdivide|division|quotient|remainder|equal groups\b/.test(combined)) {
+    const total = parsed?.total ?? 12
+    const groupSize = parsed?.groupSize ?? 3
+    return {
+      type: 'division',
+      total,
+      groupSize,
+      quotient: Math.floor(total / groupSize),
+      remainder: total % groupSize,
+      steps: true,
+      assetVariant,
+      ...hints,
+    }
+  }
+  const a = parsed?.a ?? 4
+  const b = parsed?.b ?? 3
+  return { type: 'addition', a, b, steps: true, assetVariant, ...hints }
+}
+
 /** @param {Record<string, unknown>} result */
 export function extractVisualization(result) {
   if (result?.visualization && typeof result.visualization === 'object') {
@@ -129,7 +188,7 @@ export function extractVisualization(result) {
     }
   }
 
-  return null
+  return inferFallbackVisualization(result, problemText, assetVariant)
 }
 
 /** @param {Record<string, unknown>} result */

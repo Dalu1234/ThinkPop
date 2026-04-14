@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Count objects in a group up to 20.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "2",
+      "statement": "Combine two groups of objects and find the total.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

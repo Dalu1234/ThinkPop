@@ -1,0 +1,10 @@
+{
+  "kind": "grid",
+  "rows": 3,
+  "cols": 4,
+  "rowCounts": [],
+  "itemShape": "blocks",
+  "itemColor": "#ff6f40",
+  "itemLabel": "Three rows of four blocks each",
+  "caption": "Let's see how blocks can show multiplication!"
+}

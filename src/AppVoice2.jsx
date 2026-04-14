@@ -3,7 +3,7 @@
  * 1) Topic — intro + optional Agent 2 brief; hook/model lesson lines with 3D viz (Agent 6 visual model).
  * 2) Counting checkpoint — exactly one lab at random (50% Counting Lab dots, 50% Finger Lab). Never both in the same round.
  * 3) Reinforcement — practice + wrap lines with 3D viz again.
- * Multiplication / subtraction checkpoints stay dot-only. Finger Lab: tutor asks “show N fingers,” hold steady or say the number.
+ * Multiplication / subtraction checkpoints stay dot-only. Finger Lab: tutor asks “show N fingers,” then hold steady.
  * Route: #/baymax-voice2
  */
 import { useState, useCallback, useRef, useEffect } from 'react'
@@ -16,6 +16,7 @@ import AIStatus from './components/AIStatus'
 import PipelineProgress from './components/PipelineProgress'
 import CountingToolPanel from './components/CountingToolPanel'
 import FingerCountToolPanel from './components/FingerCountToolPanel'
+import MathDragToolPanel from './components/MathDragToolPanel'
 import { textToSpeechBlob, playAudioBlob } from './lib/elevenlabs'
 import {
   streamLessonPipeline,
@@ -34,14 +35,21 @@ import { ANIMATION_NAMES } from './lib/boneAnimations'
 
 const NUMBER_WORDS = {
   zero: '0',
+  oh: '0',
+  o: '0',
   one: '1',
+  won: '1',
   two: '2',
+  to: '2',
+  too: '2',
   three: '3',
   four: '4',
+  for: '4',
   five: '5',
   six: '6',
   seven: '7',
   eight: '8',
+  ate: '8',
   nine: '9',
   ten: '10',
   eleven: '11',
@@ -61,6 +69,43 @@ const COUNTING_TOPIC = { label: 'Counting with dots', emoji: '🔢' }
 const FINGER_COUNT_TOPIC = { label: 'Counting with fingers', emoji: '🖐️' }
 const MULTIPLICATION_DOTS_TOPIC = { label: 'Multiplication with dots', emoji: '✖️' }
 const SUBTRACTION_DOTS_TOPIC = { label: 'Subtraction with dots', emoji: '➖' }
+const SPATIAL_LAB_TOPIC = { label: 'Spatial Lab', emoji: '🧊' }
+
+const SPATIAL_OBJECT_POOL = [
+  { id: 'planet_earth',   name: 'Earth',   path: '/models/planets/earth.glb' },
+  { id: 'planet_mars',    name: 'Mars',    path: '/models/planets/mars.glb' },
+  { id: 'planet_saturn',  name: 'Saturn',  path: '/models/planets/saturn.glb' },
+  { id: 'planet_jupiter', name: 'Jupiter', path: '/models/planets/jupiter.glb' },
+  { id: 'planet_venus',   name: 'Venus',   path: '/models/planets/venus.glb' },
+  { id: 'planet_neptune', name: 'Neptune', path: '/models/planets/neptune.glb' },
+  { id: 'planet_mercury', name: 'Mercury', path: '/models/planets/mercury.glb' },
+  { id: 'planet_uranus',  name: 'Uranus',  path: '/models/planets/uranus.glb' },
+]
+
+const SPATIAL_POSITIONS = [
+  [-0.55, 0.3, 0],
+  [0.55, 0.3, 0],
+  [-0.55, -0.25, 0],
+  [0.55, -0.25, 0],
+  [0, 0.05, 0],
+]
+
+function pickSpatialItems(count = 4) {
+  const shuffled = [...SPATIAL_OBJECT_POOL].sort(() => Math.random() - 0.5)
+  return shuffled.slice(0, count).map((obj, i) => ({
+    ...obj,
+    position: SPATIAL_POSITIONS[i] || [0, 0, 0],
+  }))
+}
+
+function shuffleArray(arr) {
+  const out = [...arr]
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]]
+  }
+  return out
+}
 const COUNTING_ACTIVITY_INITIAL = {
   visible: false,
   totalDots: 0,
@@ -108,14 +153,90 @@ function normalizeAnswerText(text) {
   return value
 }
 
+function extractNumericValue(text) {
+  const normalized = normalizeAnswerText(text)
+  if (!normalized) return null
+
+  const direct = Number(normalized)
+  if (!Number.isNaN(direct)) return direct
+
+  const tokens = normalized.replace(/-/g, ' ').split(/\s+/).filter(Boolean)
+  if (!tokens.length) return null
+
+  let total = 0
+  let current = 0
+  let sawNumberWord = false
+
+  for (const token of tokens) {
+    if (/^-?\d+(\.\d+)?$/.test(token)) return Number(token)
+    if (NUMBER_WORDS[token] != null) {
+      current += Number(NUMBER_WORDS[token])
+      sawNumberWord = true
+      continue
+    }
+    if (token === 'thirty') { current += 30; sawNumberWord = true; continue }
+    if (token === 'forty') { current += 40; sawNumberWord = true; continue }
+    if (token === 'fifty') { current += 50; sawNumberWord = true; continue }
+    if (token === 'sixty') { current += 60; sawNumberWord = true; continue }
+    if (token === 'seventy') { current += 70; sawNumberWord = true; continue }
+    if (token === 'eighty') { current += 80; sawNumberWord = true; continue }
+    if (token === 'ninety') { current += 90; sawNumberWord = true; continue }
+    if (token === 'hundred') {
+      current = (current || 1) * 100
+      sawNumberWord = true
+      continue
+    }
+    if (token === 'thousand') {
+      total += (current || 1) * 1000
+      current = 0
+      sawNumberWord = true
+      continue
+    }
+    if (token === 'and') continue
+    if (sawNumberWord) break
+  }
+
+  if (!sawNumberWord) return null
+  return total + current
+}
+
+function answerContainsExpectedNumber(actual, expected) {
+  const normalized = normalizeAnswerText(actual)
+  const expectedNum = extractNumericValue(expected)
+  if (!normalized || expectedNum == null) return false
+
+  const expectedDigits = String(expectedNum)
+  const digitWordSet = new Set(
+    Object.entries(NUMBER_WORDS)
+      .filter(([, n]) => String(n) === expectedDigits)
+      .map(([word]) => word)
+  )
+
+  const tokens = normalized.split(/\s+/).filter(Boolean)
+  for (const token of tokens) {
+    if (token === expectedDigits) return true
+    if (NUMBER_WORDS[token] != null && String(NUMBER_WORDS[token]) === expectedDigits) return true
+  }
+
+  if (new RegExp(`(^|\\D)${expectedDigits}(\\D|$)`).test(normalized)) return true
+
+  for (const w of digitWordSet) {
+    if (new RegExp(`\\b${w}\\b`).test(normalized)) return true
+  }
+  return false
+}
+
 function answersMatch(actual, expected) {
   const a = normalizeAnswerText(actual)
   const e = normalizeAnswerText(expected)
   if (!a || !e) return false
   if (a === e) return true
-  const aNum = Number(a)
-  const eNum = Number(e)
-  if (!Number.isNaN(aNum) && !Number.isNaN(eNum)) return aNum === eNum
+
+  const aNum = extractNumericValue(a)
+  const eNum = extractNumericValue(e)
+  if (aNum != null && eNum != null) return aNum === eNum
+  if (answerContainsExpectedNumber(a, e)) return true
+
   return a.replace(/\s+/g, '') === e.replace(/\s+/g, '')
 }
 
@@ -163,6 +284,42 @@ function isSubtractionPrompt(text) {
     return true
   }
   return /(\d{1,2})\s*[-−]\s*(\d{1,2})/.test(value)
+}
+
+function isSpatialLabRequest(text) {
+  const value = String(text || '').toLowerCase()
+  if (!value) return false
+  return /\b(spatial|identify|find\s+objects?|name\s+the|touch\s+the|point\s+at|what\s+object|3d\s+objects?|object\s+lab)\b/.test(value)
+}
+
+function inferRequestedLab(text) {
+  const value = String(text || '').toLowerCase()
+  if (!value) return 'none'
+  if (isSpatialLabRequest(value)) return 'spatial'
+  if (isSubtractionPrompt(value)) return 'subtraction'
+  if (isMultiplicationPrompt(value)) return 'multiplication'
+  if (isCountingPracticeRequest(value)) return 'counting'
+  return 'none'
+}
+
+function isAdditionPrompt(text) {
+  const v = String(text || '').toLowerCase()
+  if (!v) return false
+  return /\badd(ition)?\b|\bplus\b|\bsum\b/.test(v)
+}
+
+function chooseCheckpointLab(questionText, result) {
+  const intake = String(result?.intake?.normalizedProblem || '')
+  const domain = String(result?.intake?.mathDomain || '')
+  const topic = String(result?.topic?.topicTitle || '')
+  const summary = String(result?.topic?.briefSummary || '')
+  const combined = [questionText, intake, domain, topic, summary].join(' ')
+  const requested = inferRequestedLab(combined)
+
+  if (requested === 'subtraction')    return 'subtraction'
+  if (requested === 'multiplication') return 'multiplication'
+  if (isAdditionPrompt(combined))     return 'addition'
+  return 'counting'
 }
 
 function pluralizeItem(shape) {
@@ -265,14 +422,19 @@ export function BaymaxVoiceFirstExperience() {
   const reactTimerRef = useRef(null)
   const [countingActivity, setCountingActivity] = useState(COUNTING_ACTIVITY_INITIAL)
   const [fingerToolVisible, setFingerToolVisible] = useState(false)
+  const [mathDragActivity, setMathDragActivity] = useState({ visible: false, operation: 'addition', a: 3, b: 2 })
   /** 3D token viz from lesson pipeline (addition / subtraction / multiplication / division) */
   const [currentVisualization, setCurrentVisualization] = useState(null)
   const [visualizationStepIndex, setVisualizationStepIndex] = useState(0)
+  /** Spatial Lab — array of { name, path, position } for mixed 3D objects */
+  const [spatialItems, setSpatialItems] = useState(null)
+  const [spatialActive, setSpatialActive] = useState(false)
+  const spatialTouchResolverRef = useRef(null)
   const [messages, setMessages] = useState([
     {
       id: 1,
       from: 'ai',
-      text: "I'm your math tutor. Use the mic to speak (we transcribe with ElevenLabs STT), or type in chat.",
+      text: "I'm your math tutor. Ask me about addition, subtraction, multiplication — or say \"Spatial Lab\" to identify 3D objects with your hands!",
     },
   ])
   const [userModelHint, setUserModelHint] = useState(null)
@@ -285,6 +447,27 @@ export function BaymaxVoiceFirstExperience() {
   const initialCheckpointDoneRef = useRef(false)
   const lastFingerCountRef = useRef(-1)
   const fingerCameraActiveRef = useRef(false)
+  const queuedUserInputRef = useRef('')
+  const queuedNoticeShownRef = useRef(false)
+  const drainingQueuedInputRef = useRef(false)
+  const mathDragSolveRef = useRef(null)
+
+  const ALL_LABS = ['dots', 'fingers', 'mathDrag', 'multiplicationDots', 'subtractionDots', 'spatial']
+  const usedLabsRef = useRef([])
+
+  /**
+   * Pick a lab from `eligible` that hasn't been used yet this cycle.
+   * Once every lab in the full roster has been played, the tracker resets.
+   */
+  const pickNextLab = useCallback((eligible) => {
+    if (eligible.includes('mathDrag')) return 'mathDrag'
+    const available = eligible.filter(l => !usedLabsRef.current.includes(l))
+    const pool = available.length > 0 ? available : eligible
+    if (pool === eligible) usedLabsRef.current = []
+    const choice = pool[Math.floor(Math.random() * pool.length)]
+    usedLabsRef.current = [...usedLabsRef.current, choice]
+    return choice
+  }, [])
 
   const onFingerCountChange = useCallback(n => {
     lastFingerCountRef.current = typeof n === 'number' ? n : -1
@@ -292,6 +475,23 @@ export function BaymaxVoiceFirstExperience() {
 
   const onFingerCameraActiveChange = useCallback(on => {
     fingerCameraActiveRef.current = on
+  }, [])
+
+  const onSpatialTouch = useCallback((index, name) => {
+    if (spatialTouchResolverRef.current) {
+      spatialTouchResolverRef.current(name)
+    }
+  }, [])
+
+  const waitForSpatialTouch = useCallback((targetName) => {
+    return new Promise(resolve => {
+      spatialTouchResolverRef.current = (touchedName) => {
+        if (touchedName.toLowerCase() === targetName.toLowerCase()) {
+          spatialTouchResolverRef.current = null
+          resolve()
+        }
+      }
+    })
   }, [])
 
   const nextVisualizationStep = useCallback(() => {
@@ -364,8 +564,13 @@ export function BaymaxVoiceFirstExperience() {
   const resetCountingActivity = useCallback(() => {
     setCountingActivity(COUNTING_ACTIVITY_INITIAL)
     setFingerToolVisible(false)
+    setMathDragActivity({ visible: false, operation: 'addition', a: 3, b: 2 })
     lastFingerCountRef.current = -1
     fingerCameraActiveRef.current = false
+  }, [])
+
+  const onMathDragSolve = useCallback(() => {
+    mathDragSolveRef.current?.()
   }, [])
 
   const waitForUserAnswer = useCallback(() => {
@@ -379,8 +584,7 @@ export function BaymaxVoiceFirstExperience() {
   }, [])
 
   /**
-   * Tutor asked for exactly `target` fingers (0–10). Resolves when hold is steady on camera
-   * or the learner says/s types the right number. Wrong voice replies keep waiting.
+   * Tutor asked for exactly `target` fingers (0–10). Resolves when hold is steady on camera.
    */
   const waitForShowNFingers = useCallback(
     target => {
@@ -434,7 +638,7 @@ export function BaymaxVoiceFirstExperience() {
       if (!skipIntro) {
         await speakSegment(
           'finger-drill-intro',
-          "Now let's use your hands. I'll ask for a number from one to ten. Show that many fingers and hold them still for a moment so I can see. If the camera isn't working, you can say the number instead."
+          "Now let's use your hands. I'll ask for a number from one to ten. Show that many fingers and hold them still for a moment so I can see."
         )
       }
 
@@ -515,7 +719,8 @@ export function BaymaxVoiceFirstExperience() {
       }
 
       /** One lab per round — not both. Topic card matches which lab is active. */
-      const useDotLab = Math.random() < 0.5
+      const countingChoice = pickNextLab(['dots', 'fingers'])
+      const useDotLab = countingChoice === 'dots'
 
       if (useDotLab) {
         setTopicDisplay(COUNTING_TOPIC)
@@ -596,7 +801,7 @@ export function BaymaxVoiceFirstExperience() {
 
         await speakSegment(
           'counting-finger-intro',
-          "This round we're using Finger Lab only — no dots. I'll ask for amounts from one to ten on your fingers; hold still, or you can say the number."
+          "This round we're using Finger Lab only — no dots. I'll ask for amounts from one to ten on your fingers, then hold still."
         )
 
         await runFingerCountDrillSession({ checkpointMode, skipIntro: true })
@@ -622,7 +827,7 @@ export function BaymaxVoiceFirstExperience() {
       setCurrentMotionFrames(null)
       initialCheckpointDoneRef.current = true
     },
-    [askQuestionWithRetries, runFingerCountDrillSession, speakSegment, updateCountingActivity]
+    [askQuestionWithRetries, pickNextLab, runFingerCountDrillSession, speakSegment, updateCountingActivity]
   )
 
   const runMultiplicationDotsSession = useCallback(
@@ -781,6 +986,139 @@ export function BaymaxVoiceFirstExperience() {
     [askQuestionWithRetries, speakSegment, updateCountingActivity]
   )
 
+  const runSpatialLabSession = useCallback(
+    async () => {
+      setAiError('')
+      setCurrentVisualization(null)
+      setVisualizationStepIndex(0)
+      resetCountingActivity()
+      pipelineResultRef.current = null
+      setAiState('building')
+
+      const items = pickSpatialItems(4)
+      setSpatialItems(items)
+      setSpatialActive(false)
+      setTopicDisplay(SPATIAL_LAB_TOPIC)
+      setFingerToolVisible(true)
+
+      await delay(1200)
+
+      await speakSegment(
+        'spatial-intro',
+        "Welcome to Spatial Lab! I've placed different planets in front of you. Each one has its name floating above it."
+      )
+      await delay(600)
+      await speakSegment(
+        'spatial-camera',
+        'Enable your camera if it is not on yet, then point your finger at the planet I ask for.'
+      )
+      await delay(800)
+
+      setSpatialActive(true)
+
+      const order = shuffleArray(items)
+      for (let i = 0; i < order.length; i++) {
+        const target = order[i]
+        await speakSegment(
+          `spatial-find-${i}`,
+          `Can you find ${target.name}? Point at it with your finger!`
+        )
+        setAiState('awaiting_user')
+        await waitForSpatialTouch(target.name)
+        playReaction('wave', 2500)
+        await speakSegment(
+          `spatial-found-${i}`,
+          `You found the ${target.name}! Great job!`
+        )
+        await delay(350)
+      }
+
+      setSpatialActive(false)
+
+      await askQuestionWithRetries({
+        segmentId: 'spatial-count',
+        question: `Now tell me, how many planets did we find in total?`,
+        expectedAnswer: String(items.length),
+        successMessage: `That's right! We found ${items.length} different planets!`,
+        failureMessage: "Not quite.",
+        hint: 'Think about how many planets I asked you to find.',
+        maxTries: 2,
+      })
+
+      const nameList = items.map(it => it.name).join(', ')
+      await speakSegment(
+        'spatial-wrap',
+        `Awesome work! You identified all the planets: ${nameList}. Come back any time to play Spatial Lab again!`
+      )
+
+      setSpatialItems(null)
+      setSpatialActive(false)
+      setFingerToolVisible(false)
+      spatialTouchResolverRef.current = null
+      setAiState(null)
+      setCurrentMotionFrames(null)
+    },
+    [
+      askQuestionWithRetries,
+      playReaction,
+      resetCountingActivity,
+      speakSegment,
+      waitForSpatialTouch,
+    ]
+  )
+
+  const runMathDragSession = useCallback(
+    async ({ checkpointMode = false, operation: op = 'addition', a: inputA, b: inputB } = {}) => {
+      setAiError('')
+      setCurrentVisualization(null)
+      setVisualizationStepIndex(0)
+      setAiState('building')
+      if (!checkpointMode) pipelineResultRef.current = null
+
+      // Generate random numbers if not supplied (direct-lab mode)
+      const a = inputA ?? Math.floor(Math.random() * 9) + 1
+      const b = inputB ?? (op === 'subtraction'
+        ? Math.floor(Math.random() * a) + 1
+        : Math.floor(Math.random() * 9) + 1)
+
+      const opName  = op === 'subtraction' ? 'subtraction' : op === 'multiplication' ? 'multiplication' : 'addition'
+      const opEmoji = op === 'subtraction' ? '➖' : op === 'multiplication' ? '✖️' : '➕'
+      const opWord  = op === 'subtraction' ? 'minus' : op === 'multiplication' ? 'times' : 'plus'
+
+      setTopicDisplay({ label: `${opName.charAt(0).toUpperCase() + opName.slice(1)} Practice`, emoji: opEmoji })
+      setFingerToolVisible(false)
+      updateCountingActivity({ visible: false })
+
+      await speakSegment(
+        'mathdrag-intro',
+        `Let's practice ${opName}. Drag the correct answer tile into the drop zone to solve the problem!`
+      )
+
+      setMathDragActivity({ visible: true, operation: op, a, b })
+      setAiState('awaiting_user')
+
+      // Wait for student to drop the correct tile
+      await new Promise(resolve => { mathDragSolveRef.current = resolve })
+      mathDragSolveRef.current = null
+
+      setMathDragActivity({ visible: false, operation: 'addition', a: 3, b: 2 })
+
+      const answer = op === 'subtraction' ? Math.max(0, a - b) : op === 'multiplication' ? a * b : a + b
+      await speakSegment(
+        'mathdrag-wrap',
+        checkpointMode
+          ? `Well done! ${a} ${opWord} ${b} equals ${answer}. Checkpoint complete. Let's continue with the lesson.`
+          : `Well done! ${a} ${opWord} ${b} equals ${answer}. Ask for more practice any time.`
+      )
+
+      if (!checkpointMode) setAiState(null)
+      else setAiState('building')
+      setCurrentMotionFrames(null)
+      initialCheckpointDoneRef.current = true
+    },
+    [speakSegment, updateCountingActivity]
+  )
+
   const runTutorSession = useCallback(
     async (questionText) => {
       initialCheckpointDoneRef.current = false
@@ -906,12 +1244,33 @@ export function BaymaxVoiceFirstExperience() {
         }
       }
 
-      // Phase 2 — hands-on tools (dots) + questions; clears 3D viz while the panel is active
+      // Phase 2 — hands-on tools + questions; clears 3D viz while the panel is active
       if (!initialCheckpointDoneRef.current) {
-        if (isMultiplicationPrompt(questionText)) {
-          await runMultiplicationDotsSession({ checkpointMode: true })
-        } else if (isSubtractionPrompt(questionText)) {
+        const checkpointLab = chooseCheckpointLab(questionText, result)
+        const va = vizPayload?.a ?? Math.floor(Math.random() * 9) + 1
+        const vb = vizPayload?.b ?? Math.floor(Math.random() * 9) + 1
+
+        const eligibleForSubtraction    = ['subtractionDots', 'mathDrag', 'dots', 'fingers']
+        const eligibleForMultiplication  = ['multiplicationDots', 'mathDrag', 'dots', 'fingers']
+        const eligibleForAddition       = ['dots', 'fingers', 'mathDrag']
+        const eligibleDefault           = ['dots', 'fingers']
+
+        let eligible
+        if (checkpointLab === 'subtraction')         eligible = eligibleForSubtraction
+        else if (checkpointLab === 'multiplication') eligible = eligibleForMultiplication
+        else if (checkpointLab === 'addition')       eligible = eligibleForAddition
+        else                                         eligible = eligibleDefault
+
+        const lab = pickNextLab(eligible)
+
+        if (lab === 'mathDrag') {
+          const op = checkpointLab === 'subtraction' ? 'subtraction'
+            : checkpointLab === 'multiplication' ? 'multiplication' : 'addition'
+          await runMathDragSession({ checkpointMode: true, operation: op, a: va, b: vb })
+        } else if (lab === 'subtractionDots') {
           await runSubtractionDotsSession({ checkpointMode: true })
+        } else if (lab === 'multiplicationDots') {
+          await runMultiplicationDotsSession({ checkpointMode: true })
         } else {
           await runCountingSession({ checkpointMode: true })
         }
@@ -957,8 +1316,10 @@ export function BaymaxVoiceFirstExperience() {
     },
     [
       deliverAiMessage,
+      pickNextLab,
       resetCountingActivity,
       runCountingSession,
+      runMathDragSession,
       runMultiplicationDotsSession,
       runSubtractionDotsSession,
       speakSegment,
@@ -977,32 +1338,74 @@ export function BaymaxVoiceFirstExperience() {
         return
       }
 
-      if (aiState !== null) return
+      if (aiState !== null) {
+        queuedUserInputRef.current = spokenText
+        if (!queuedNoticeShownRef.current) {
+          queuedNoticeShownRef.current = true
+          setMessages(prev => [
+            ...prev,
+            {
+              id: Date.now() + Math.random(),
+              from: 'ai',
+              text: "I heard you. I'll switch to that topic as soon as this part finishes.",
+            },
+          ])
+        }
+        return
+      }
+      queuedNoticeShownRef.current = false
       setAiError('')
 
+      const requestedLab = inferRequestedLab(spokenText)
       const toolsOnly =
         !wantsTeachingPipelineFirst(spokenText) &&
-        (isCountingPracticeRequest(spokenText) ||
-          isMultiplicationDotsRequest(spokenText) ||
-          isSubtractionDotsRequest(spokenText))
+        (requestedLab === 'counting' || requestedLab === 'multiplication' || requestedLab === 'subtraction' || requestedLab === 'spatial')
 
       if (toolsOnly) {
-        if (isCountingPracticeRequest(spokenText)) {
+        if (requestedLab === 'spatial') {
+          pickNextLab(['spatial'])
+          await runSpatialLabSession()
+          return
+        }
+        if (requestedLab === 'counting') {
+          pickNextLab(['dots', 'fingers'])
           await runCountingSession()
           return
         }
-        if (isMultiplicationDotsRequest(spokenText)) {
-          await runMultiplicationDotsSession()
+        if (requestedLab === 'multiplication') {
+          const lab = pickNextLab(['multiplicationDots', 'mathDrag', 'dots', 'fingers'])
+          if (lab === 'mathDrag') await runMathDragSession({ operation: 'multiplication' })
+          else if (lab === 'multiplicationDots') await runMultiplicationDotsSession()
+          else await runCountingSession()
           return
         }
-        await runSubtractionDotsSession()
-        return
+        if (requestedLab === 'subtraction') {
+          const lab = pickNextLab(['subtractionDots', 'mathDrag', 'dots', 'fingers'])
+          if (lab === 'mathDrag') await runMathDragSession({ operation: 'subtraction' })
+          else if (lab === 'subtractionDots') await runSubtractionDotsSession()
+          else await runCountingSession()
+          return
+        }
       }
 
       await runTutorSession(spokenText)
     },
-    [aiState, runCountingSession, runMultiplicationDotsSession, runSubtractionDotsSession, runTutorSession]
+    [aiState, pickNextLab, runCountingSession, runMathDragSession, runMultiplicationDotsSession, runSubtractionDotsSession, runSpatialLabSession, runTutorSession]
   )
+
+  useEffect(() => {
+    if (aiState !== null) return
+    if (drainingQueuedInputRef.current) return
+    const queued = String(queuedUserInputRef.current || '').trim()
+    if (!queued) return
+
+    queuedUserInputRef.current = ''
+    queuedNoticeShownRef.current = false
+    drainingQueuedInputRef.current = true
+    Promise.resolve(handleUserInput(queued)).finally(() => {
+      drainingQueuedInputRef.current = false
+    })
+  }, [aiState, handleUserInput])
 
   useEffect(() => {
     return () => {
@@ -1011,6 +1414,10 @@ export function BaymaxVoiceFirstExperience() {
         fingerTargetPollRef.current = null
       }
       awaitingUserRef.current = null
+      spatialTouchResolverRef.current = null
+      queuedUserInputRef.current = ''
+      queuedNoticeShownRef.current = false
+      drainingQueuedInputRef.current = false
     }
   }, [])
 
@@ -1032,12 +1439,27 @@ export function BaymaxVoiceFirstExperience() {
 
   return (
     <div className="app-root">
+      <a href="#/" className="home-btn" aria-label="Back to home" title="Home">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M3 10L10 3l7 7" />
+          <path d="M5 8.5V16a1 1 0 001 1h3v-4h2v4h3a1 1 0 001-1V8.5" />
+        </svg>
+      </a>
+      <a href="#/camera" className="camera-nav-btn" aria-label="Camera" title="Camera">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" />
+          <circle cx="12" cy="13" r="4" />
+        </svg>
+      </a>
       <CharacterScene
         aiState={aiState}
         motionFrames={currentMotionFrames}
         animation={sceneAnimation}
         visualization={currentVisualization}
         visualizationStepIndex={visualizationStepIndex}
+        spatialItems={spatialItems}
+        spatialActive={spatialActive}
+        onSpatialTouch={onSpatialTouch}
       />
 
       <AiAudioBackdropSync levelsRef={aiAudioLevelsRef} active={aiAudioActive} />
@@ -1082,6 +1504,13 @@ export function BaymaxVoiceFirstExperience() {
         autoStartCamera={fingerToolVisible}
         onCountChange={onFingerCountChange}
         onCameraActiveChange={onFingerCameraActiveChange}
+      />
+      <MathDragToolPanel
+        visible={mathDragActivity.visible}
+        operation={mathDragActivity.operation}
+        a={mathDragActivity.a}
+        b={mathDragActivity.b}
+        onSolve={onMathDragSolve}
       />
       <ChatPanel
         messages={messages}

@@ -1,0 +1,10 @@
+{
+  "kind": "grid",
+  "rows": 2,
+  "cols": 3,
+  "rowCounts": [],
+  "itemShape": "colorful blocks",
+  "itemColor": "#ff6347",
+  "itemLabel": "Two groups of three blocks",
+  "caption": "This shows two groups of three colorful blocks."
+}

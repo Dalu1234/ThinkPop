@@ -1,0 +1,84 @@
+{
+  "title": "Understanding the Basics of Multiplication",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook_1",
+      "kind": "hook",
+      "visualCue": "3D groups of objects",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these three groups of two colorful cubes on the screen.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Can you guess how many cubes there are in total?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model_2",
+      "kind": "model",
+      "visualCue": "Arranging objects in rows",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let’s arrange these objects in rows to see the multiplication clearly.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4",
+          "text": "We have three rows and each row has two cubes.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s5",
+          "text": "Now, how can we find the total number of cubes?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "practice_3",
+      "kind": "practice",
+      "visualCue": "Counting groups together",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s6",
+          "text": "Let’s count each row together to find the total amount.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s7",
+          "text": "How many cubes do we have when we count all the rows?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "wrap_4",
+      "kind": "wrap",
+      "visualCue": "Reviewing multiplication with groups",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s8",
+          "text": "Great job! You’ve learned how to multiply using groups of objects.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s9",
+          "text": "Multiplication means adding equal groups together.",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to visualize multiplication by grouping and counting objects together."
+}

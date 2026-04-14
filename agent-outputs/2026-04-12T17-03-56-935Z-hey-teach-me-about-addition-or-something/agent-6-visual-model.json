@@ -1,0 +1,13 @@
+{
+  "kind": "addition_rows",
+  "rows": 2,
+  "cols": 0,
+  "rowCounts": [
+    4,
+    3
+  ],
+  "itemShape": "stars",
+  "itemColor": "#f0e130",
+  "itemLabel": "Four yellow stars and three green stars",
+  "caption": "Let's add four yellow stars and three green stars together!"
+}

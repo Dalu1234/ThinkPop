@@ -1,0 +1,79 @@
+{
+  "title": "Introduction to Addition with Objects",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "colorful objects on screen",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these colorful objects arranged in two groups.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Today, we will learn how to combine these groups together!",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "combining two groups",
+      "sceneHint": "combine_groups_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "We have three red blocks in one group and two blue blocks in another.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "Let's combine these groups to find the total number of blocks.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "counting total objects",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, count with me! How many blocks do we have in total?",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "One, two, three, four, and five blocks in total!",
+          "durationSeconds": 6
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "summary of addition",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job! We learned how to combine groups to add objects.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Remember, addition means finding the total when we put groups together!",
+          "durationSeconds": 6
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Engage students by using hands-on counting with available objects during the lesson."
+}

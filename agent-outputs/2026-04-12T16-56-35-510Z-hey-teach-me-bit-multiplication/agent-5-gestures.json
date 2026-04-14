@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor points to the colorful blocks on the screen and smiles while inviting learners to look closely."
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person leans slightly forward, tilts head with curiosity, and gestures with both hands as if counting."
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor moves one hand in a sweeping motion, showing three groups, while nodding to emphasize the blocks."
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person raises both arms, counting off by tapping each arm as they say four plus four plus four."
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor steps back, opens arms wide, and gestures toward imaginary groups while energizing the learners."
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person bends slightly forward, encourages with hand motions as if combining groups, and invites counting aloud."
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor claps hands together cheerfully, nodding and smiling to celebrate the learners’ understanding of multiplication."
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person raises both hands in a friendly wave and gestures forward as if encouraging ongoing practice and exploration."
+    }
+  ]
+}

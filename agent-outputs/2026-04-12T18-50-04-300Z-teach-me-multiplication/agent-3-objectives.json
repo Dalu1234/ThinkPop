@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "obj1",
+      "statement": "Group objects in sets to demonstrate multiplication concepts.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "obj2",
+      "statement": "Combine sets of objects to find the total using multiplication.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

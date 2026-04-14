@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor steps forward, spreads arms wide while looking at the screen, and smiles at the colorful blocks."
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person tilts their head slightly and gestures with a hand toward the groups, encouraging learners to count along."
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor bends slightly at the knees, stretches arms forward and outward, forming a rectangle to represent the 3 by 4 array."
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person raises one hand and moves it in a sweeping motion, counting fingers as if illustrating rows and columns."
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor takes a step back, claps hands together excitedly, and invites the learners to join in counting the new array."
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person leans forward, holds up two fingers, and motions with the other hand as if counting blocks in the groups."
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor raises both arms in a celebratory gesture and nods enthusiastically while praising the learners for their hard work."
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person steps forward, places hands on hips confidently, and gestures outward as if sharing the power of multiplication."
+    }
+  ]
+}

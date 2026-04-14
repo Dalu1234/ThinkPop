@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor stands with a welcoming posture, gestures with both hands toward the colorful objects on the screen, and smiles"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person leans slightly forward, tilts their head with curiosity, and raises both hands in a questioning gesture toward the learners"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor steps to the side, extends one arm while tracing an imaginary line and describes creating two groups of three objects"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person gestures with one hand to the left and then to the right, emphasizing the idea of 2 groups of 3 objects with clear motions"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor opens both arms wide, invitingly gestures towards the screen, and encourages counting all the objects in the two groups"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person raises both hands to their chin with an inquisitive look, tilts their head slightly, and waits for responses about the total count"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor claps their hands together excitedly, smiles broadly, and nods encouragingly to celebrate the students' understanding of grouping"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person steps closer to the screen, spreads both arms wide again, and gestures enthusiastically to reinforce the idea of combining groups"
+    }
+  ]
+}

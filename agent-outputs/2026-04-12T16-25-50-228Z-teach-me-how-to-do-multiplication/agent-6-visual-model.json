@@ -1,0 +1,10 @@
+{
+  "kind": "grid",
+  "rows": 2,
+  "cols": 3,
+  "rowCounts": [],
+  "itemShape": "colorful objects",
+  "itemColor": "#ff6f40",
+  "itemLabel": "Two rows of three colorful objects each",
+  "caption": "Two times three equals six."
+}

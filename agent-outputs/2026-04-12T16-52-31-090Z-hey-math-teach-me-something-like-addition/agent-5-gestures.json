@@ -1,0 +1,40 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor steps closer to the screen, spreads arms wide to show the two groups of apples, and smiles warmly."
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person tilts their head slightly, raises both hands in front, and gestures invitingly as if asking for answers."
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor kneels down, looks attentively at the apples, and moves hands in a careful counting motion."
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person holds up the right hand with three fingers, then the left hand with two fingers, while looking between them."
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor clasps hands together, then spreads arms apart as if combining the groups, nodding enthusiastically."
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person walks over to the blocks, bends slightly to touch them, and gestures with both hands to emphasize counting."
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor raises one finger to signal 'one moment', then points toward the blocks with both hands while questioning."
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person raises both arms in celebration, smiles brightly, and takes a joyful step forward to engage the learners."
+    },
+    {
+      "sentenceId": "s9",
+      "mdmPrompt": "a tutor gently pushes both hands forward, as if sharing knowledge, then looks around the room for understanding."
+    }
+  ]
+}

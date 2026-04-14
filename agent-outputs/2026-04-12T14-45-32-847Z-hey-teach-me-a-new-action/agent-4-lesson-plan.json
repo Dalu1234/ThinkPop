@@ -1,0 +1,79 @@
+{
+  "title": "Understanding Basic Addition with Objects",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "Two groups of objects",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these two groups of colorful blocks on the screen.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2",
+          "text": "What happens if we combine these two groups together?",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "Combining groups",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Let’s count all the blocks after combining the two groups.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "We have five blocks total when we combine these groups.",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "Counting total objects",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, let’s try combining two new groups of blocks together.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "Can you count the total number of blocks we have?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "Summary of addition",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job! You learned how to add by combining groups of objects.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Keep practicing to become an addition expert!",
+          "durationSeconds": 4
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to use different objects to explore addition further."
+}

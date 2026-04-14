@@ -1,0 +1,44 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor stands comfortably and gestures toward the screen while inviting attention to the two groups of objects."
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a tutor leans slightly forward with a welcoming smile, encouraging the learners to start counting objects aloud."
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor steps to the side, extends both arms wide, and invites everyone to visualize combining the two groups."
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a tutor holds one hand out with three fingers raised and the other hand showing two fingers while explaining the groups."
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor raises both hands above their head, bringing them together while celebrating the total of five objects."
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a tutor takes a step back and gestures with both hands toward imaginary new groups, inviting the class to join."
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor holds one hand with four fingers extended while using the other hand to show three fingers, emphasizing each group."
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a tutor smiles brightly and holds both hands up, encouraging the learners to count together while celebrating their effort."
+    },
+    {
+      "sentenceId": "s9",
+      "mdmPrompt": "a tutor claps their hands lightly, stepping forward slightly to express excitement about combining groups successfully."
+    },
+    {
+      "sentenceId": "s10",
+      "mdmPrompt": "a tutor gestures with open palms toward the class with an encouraging nod, inviting them to continue practicing addition."
+    }
+  ]
+}

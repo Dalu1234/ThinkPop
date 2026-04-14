@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "1",
+      "statement": "Group objects into equal sets to show multiplication as repeated addition.",
+      "bloomLevel": "understand"
+    },
+    {
+      "id": "2",
+      "statement": "Count the total number of objects in an array to find the product of two numbers.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

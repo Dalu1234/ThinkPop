@@ -1,0 +1,36 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor steps forward slightly, glances around at the colorful objects, and gestures with open arms to invite attention."
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a tutor leans forward and tilts the head inquisitively while spreading arms to the side in a welcoming manner."
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor raises both hands and moves them in a sweeping motion to indicate grouping the objects together."
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a tutor points toward the screen with one hand while using the other to count off in the air, showcasing the groups."
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor steps to the side and motions with both hands as if starting the process of creating groups with enthusiasm."
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a tutor holds up a finger to emphasize counting, nods encouragingly, and gestures toward multiple areas in front."
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a person stands tall and opens arms wide, nodding while conveying that multiplication is about adding equal groups."
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a tutor claps hands together with a big smile, stepping forward to celebrate the learning moments shared with the class."
+    }
+  ]
+}

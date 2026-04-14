@@ -6,6 +6,7 @@ import {
   countFingers,
   drawHand,
 } from '../lib/fingerCountCore'
+import { updateFingerTip, clearFingerTip } from '../lib/fingerBridge'
 
 const MEDIAPIPE_WASM = 'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/wasm'
 const HAND_MODEL =
@@ -56,6 +57,7 @@ export default function FingerCountToolPanel({
     setTotal(0)
     setHandData([])
     setStatus('')
+    clearFingerTip()
     onCountChange?.(-1)
     onCameraActiveChange?.(false)
   }, [onCountChange, onCameraActiveChange])
@@ -100,6 +102,13 @@ export default function FingerCountToolPanel({
         setTotal(nextTotal)
         setHandData(nextHandData)
         onCountChange?.(nextTotal)
+
+        if (results.landmarks.length > 0) {
+          const tip = results.landmarks[0][8]
+          if (tip) updateFingerTip(tip.x, tip.y)
+        } else {
+          clearFingerTip()
+        }
         setStatus(
           results.landmarks.length === 0
             ? 'No hand detected'

@@ -1,0 +1,10 @@
+{
+  "kind": "grid",
+  "rows": 6,
+  "cols": 2,
+  "rowCounts": [],
+  "itemShape": "blocks",
+  "itemColor": "#6b8e23",
+  "itemLabel": "Two blocks in each row",
+  "caption": "Let's see how two groups multiply!"
+}

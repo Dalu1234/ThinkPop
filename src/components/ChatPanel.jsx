@@ -3,11 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { speechToText } from '../lib/elevenlabs'
 
 const SUGGESTIONS = [
+  'Find the planets in Spatial Lab',
   'How do I add fractions with different denominators?',
   'Explain place value with tens and ones',
   'What is multiplication as repeated addition?',
   'Help me understand division with remainders',
-  'How do I compare two fractions?',
 ]
 
 function extensionForMime(mime) {

@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "OBJ1",
+      "statement": "Group objects into equal sets to demonstrate multiplication.",
+      "bloomLevel": "apply"
+    },
+    {
+      "id": "OBJ2",
+      "statement": "Combine groups of objects to find the total number in multiplication scenarios.",
+      "bloomLevel": "understand"
+    }
+  ]
+}

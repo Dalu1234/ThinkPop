@@ -1,0 +1,40 @@
+{
+  "gestures": [
+    {
+      "sentenceId": "s1",
+      "mdmPrompt": "a tutor steps forward, gestures with both hands to the screen, and smiles while showcasing the colorful objects"
+    },
+    {
+      "sentenceId": "s2",
+      "mdmPrompt": "a person tilts their head slightly, raises one hand with an open palm, and looks around as if inviting responses"
+    },
+    {
+      "sentenceId": "s3",
+      "mdmPrompt": "a tutor lifts one arm, counts with fingers to the side, and nods enthusiastically while emphasizing each count"
+    },
+    {
+      "sentenceId": "s4",
+      "mdmPrompt": "a person moves closer to the object groups, points with excitement to the second group while counting aloud"
+    },
+    {
+      "sentenceId": "s5",
+      "mdmPrompt": "a tutor draws both hands together, looks at the class, and asks curiously while raising eyebrows to encourage thinking"
+    },
+    {
+      "sentenceId": "s6",
+      "mdmPrompt": "a person extends both arms outward, encouragingly gestures toward the screen, and invites everyone to start combining groups"
+    },
+    {
+      "sentenceId": "s7",
+      "mdmPrompt": "a tutor faces the class, steps back slightly, and gestures with an open hand while encouraging everyone to count aloud"
+    },
+    {
+      "sentenceId": "s8",
+      "mdmPrompt": "a person claps hands together joyfully, steps forward with a big smile, and celebrates the success of learning addition"
+    },
+    {
+      "sentenceId": "s9",
+      "mdmPrompt": "a tutor gestures with hands moving in circles, reinforcing the idea of combining groups, and nods while explaining"
+    }
+  ]
+}

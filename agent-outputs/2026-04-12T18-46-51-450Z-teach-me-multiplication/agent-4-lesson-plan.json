@@ -1,0 +1,79 @@
+{
+  "title": "Introduction to Multiplication",
+  "estimatedMinutes": 6,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "countable objects displayed",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these colorful objects on the screen in groups!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Can you see how we can count them in groups?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "arranged object arrays",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "These objects are arranged in rows and columns in an array.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s4",
+          "text": "We can use this array to show multiplication by counting rows.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "interactive object grouping",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Let's practice together by counting groups of these objects!",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s6",
+          "text": "How many objects do you see if there are four groups of two?",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "summary of concepts",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Today, we learned that multiplication is counting groups of objects.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "We can use arrays to make multiplication easier to understand.",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Focus on how groups and arrays help illustrate the concept of multiplication."
+}

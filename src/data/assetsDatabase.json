@@ -4,139 +4,243 @@
     "name": "Apple (photogrammetry)",
     "path": "/models/apple_photogrammetry.glb",
     "category": "Food",
-    "tags": ["apple", "fruit", "food", "photogrammetry", "scan"]
+    "tags": [
+      "apple",
+      "fruit",
+      "food",
+      "photogrammetry",
+      "scan"
+    ]
   },
   {
     "id": "model_02",
     "name": "Avocado",
     "path": "/models/avocado.glb",
     "category": "Food",
-    "tags": ["avocado", "fruit", "food", "scan"]
+    "tags": [
+      "avocado",
+      "fruit",
+      "food",
+      "scan"
+    ]
   },
   {
     "id": "model_03",
     "name": "Walnut",
     "path": "/models/a_walnut.glb",
     "category": "Food",
-    "tags": ["walnut", "nut", "food", "scan"]
+    "tags": [
+      "walnut",
+      "nut",
+      "food",
+      "scan"
+    ]
   },
   {
     "id": "model_04",
     "name": "Cat animation",
     "path": "/models/cat_animation.glb",
     "category": "Characters",
-    "tags": ["cat", "animation", "animal"]
+    "tags": [
+      "cat",
+      "animation",
+      "animal"
+    ]
   },
   {
     "id": "model_05",
     "name": "Colorful balloons",
     "path": "/models/colorful_balloons.glb",
     "category": "Props",
-    "tags": ["balloons", "party", "decoration", "colorful"]
+    "tags": [
+      "balloons",
+      "party",
+      "decoration",
+      "colorful"
+    ]
   },
   {
     "id": "model_06",
     "name": "Dolphin",
     "path": "/models/dolphin.glb",
     "category": "Animals",
-    "tags": ["dolphin", "ocean", "marine", "mammal"]
+    "tags": [
+      "dolphin",
+      "ocean",
+      "marine",
+      "mammal"
+    ]
   },
   {
     "id": "model_07",
     "name": "Emperor penguin",
     "path": "/models/emperor_penguin.glb",
     "category": "Animals",
-    "tags": ["penguin", "bird", "antarctic", "animal"]
+    "tags": [
+      "penguin",
+      "bird",
+      "antarctic",
+      "animal"
+    ]
   },
   {
     "id": "model_08",
     "name": "Fender electric guitar",
     "path": "/models/fender_electric_guitar.glb",
     "category": "Music",
-    "tags": ["guitar", "electric", "instrument", "music", "fender"]
+    "tags": [
+      "guitar",
+      "electric",
+      "instrument",
+      "music",
+      "fender"
+    ]
   },
   {
     "id": "model_09",
     "name": "FNAF gift box",
     "path": "/models/fnaf_gift_box.glb",
     "category": "Props",
-    "tags": ["fnaf", "gift", "box", "party"]
+    "tags": [
+      "fnaf",
+      "gift",
+      "box",
+      "party"
+    ]
   },
   {
     "id": "model_10",
     "name": "FNAF table",
     "path": "/models/fnaf_table_new.glb",
     "category": "Environment",
-    "tags": ["fnaf", "table", "furniture", "party"]
+    "tags": [
+      "fnaf",
+      "table",
+      "furniture",
+      "party"
+    ]
   },
   {
     "id": "model_11",
     "name": "Mini pumpkin",
     "path": "/models/mini-pumpkin_vcu_3d_2280.glb",
     "category": "Food",
-    "tags": ["pumpkin", "food", "scan", "mini"]
+    "tags": [
+      "pumpkin",
+      "food",
+      "scan",
+      "mini"
+    ]
   },
   {
     "id": "model_12",
     "name": "FNAF party hat",
     "path": "/models/new_party_hat__fnaf.glb",
     "category": "Props",
-    "tags": ["fnaf", "party", "hat", "costume"]
+    "tags": [
+      "fnaf",
+      "party",
+      "hat",
+      "costume"
+    ]
   },
   {
     "id": "model_13",
     "name": "Paprika",
     "path": "/models/paprika.glb",
     "category": "Food",
-    "tags": ["paprika", "pepper", "vegetable", "food"]
+    "tags": [
+      "paprika",
+      "pepper",
+      "vegetable",
+      "food"
+    ]
   },
   {
     "id": "model_14",
     "name": "Party hat",
     "path": "/models/party_hat.glb",
     "category": "Props",
-    "tags": ["party", "hat", "costume"]
+    "tags": [
+      "party",
+      "hat",
+      "costume"
+    ]
   },
   {
     "id": "model_15",
     "name": "Peach (3D scan)",
     "path": "/models/peach_by_afinia_es360_3d_scanner.glb",
     "category": "Food",
-    "tags": ["peach", "fruit", "food", "scanner", "orange", "oranges", "citrus"]
+    "tags": [
+      "peach",
+      "fruit",
+      "food",
+      "scanner",
+      "orange",
+      "oranges",
+      "citrus"
+    ]
   },
   {
     "id": "model_16",
     "name": "Deer",
     "path": "/models/realistic_deer_3d_model_2.0_demo_free_download.glb",
     "category": "Animals",
-    "tags": ["deer", "forest", "mammal", "animal"]
+    "tags": [
+      "deer",
+      "forest",
+      "mammal",
+      "animal"
+    ]
   },
   {
     "id": "model_17",
     "name": "Saxophone",
     "path": "/models/saxophone.glb",
     "category": "Music",
-    "tags": ["saxophone", "jazz", "instrument", "music"]
+    "tags": [
+      "saxophone",
+      "jazz",
+      "instrument",
+      "music"
+    ]
   },
   {
     "id": "model_18",
     "name": "Shiny fish",
     "path": "/models/shiny_fish.glb",
     "category": "Animals",
-    "tags": ["fish", "ocean", "aquatic", "animal"]
+    "tags": [
+      "fish",
+      "ocean",
+      "aquatic",
+      "animal"
+    ]
   },
   {
     "id": "model_19",
     "name": "Trumpet",
     "path": "/models/trumpet.glb",
     "category": "Music",
-    "tags": ["trumpet", "brass", "instrument", "music"]
+    "tags": [
+      "trumpet",
+      "brass",
+      "instrument",
+      "music"
+    ]
   },
   {
     "id": "model_20",
     "name": "Violin",
     "path": "/models/violin.glb",
     "category": "Music",
-    "tags": ["violin", "strings", "classical", "instrument", "music"]
+    "tags": [
+      "violin",
+      "strings",
+      "classical",
+      "instrument",
+      "music"
+    ]
   }
 ]

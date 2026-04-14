@@ -1,5 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from 'react'
 import LandingPage from './LandingPage'
+import CameraPage from './components/CameraPage'
 import CharacterScene from './components/CharacterScene'
 import TopicCard from './components/TopicCard'
 import ChatPanel from './components/ChatPanel'
@@ -541,6 +542,10 @@ export default function App() {
 
   if (route === '#/baymax-voice2' || route === '#/baymax') {
     return <BaymaxVoiceFirstExperience />
+  }
+
+  if (route === '#/camera') {
+    return <CameraPage />
   }
 
   return <LandingPage />

@@ -1,0 +1,10 @@
+{
+  "kind": "grid",
+  "rows": 3,
+  "cols": 2,
+  "rowCounts": [],
+  "itemShape": "cubes",
+  "itemColor": "#ff6347",
+  "itemLabel": "Three rows of two cubes each",
+  "caption": "Three rows of two colorful cubes."
+}

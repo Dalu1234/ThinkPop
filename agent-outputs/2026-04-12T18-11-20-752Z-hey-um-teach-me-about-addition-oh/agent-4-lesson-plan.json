@@ -1,0 +1,84 @@
+{
+  "title": "Understanding Addition Concepts",
+  "estimatedMinutes": 5,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "colorful 3D objects",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these colorful objects on the screen!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s2",
+          "text": "Let’s learn how to add them together in groups.",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "combining two groups",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Here, I have two groups of objects.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4",
+          "text": "Let’s count the total by combining them.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s5",
+          "text": "One group has three objects and the other has two.",
+          "durationSeconds": 6
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "count together aloud",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s6",
+          "text": "How many objects do we have if we count them all?",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s7",
+          "text": "Let’s count them together out loud now!",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "summary of lesson",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s8",
+          "text": "Great job adding groups of objects today!",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s9",
+          "text": "Remember, counting objects helps us understand addition.",
+          "durationSeconds": 5
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Keep the lesson interactive by encouraging students to count objects with you."
+}

@@ -1,0 +1,14 @@
+{
+  "objectives": [
+    {
+      "id": "objective1",
+      "statement": "Count a group of objects and a second group of objects.",
+      "bloomLevel": "remember"
+    },
+    {
+      "id": "objective2",
+      "statement": "Combine two groups of objects and count the total to find the sum.",
+      "bloomLevel": "apply"
+    }
+  ]
+}

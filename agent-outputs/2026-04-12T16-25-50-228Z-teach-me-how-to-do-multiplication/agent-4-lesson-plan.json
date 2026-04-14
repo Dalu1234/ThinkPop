@@ -1,0 +1,79 @@
+{
+  "title": "Exploring Multiplication with Groups",
+  "estimatedMinutes": 6,
+  "segments": [
+    {
+      "id": "hook1",
+      "kind": "hook",
+      "visualCue": "Colorful objects in rows",
+      "sceneHint": "object_groups_hook",
+      "sentences": [
+        {
+          "id": "s1",
+          "text": "Look at these colorful objects arranged in rows and groups.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s2",
+          "text": "Let’s discover how we can use these objects to understand multiplication.",
+          "durationSeconds": 4
+        }
+      ]
+    },
+    {
+      "id": "model1",
+      "kind": "model",
+      "visualCue": "Array of objects shown",
+      "sceneHint": "combine_rows_model",
+      "sentences": [
+        {
+          "id": "s3",
+          "text": "Here we have two rows of three objects each.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s4",
+          "text": "This shows the multiplication fact two times three equals six.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "practice1",
+      "kind": "practice",
+      "visualCue": "Count objects in groups",
+      "sceneHint": "count_aloud_practice",
+      "sentences": [
+        {
+          "id": "s5",
+          "text": "Now, let’s practice counting objects in other groups.",
+          "durationSeconds": 4
+        },
+        {
+          "id": "s6",
+          "text": "Count how many objects are in three groups of two.",
+          "durationSeconds": 5
+        }
+      ]
+    },
+    {
+      "id": "wrap1",
+      "kind": "wrap",
+      "visualCue": "Recap of concepts",
+      "sceneHint": "lesson_wrap",
+      "sentences": [
+        {
+          "id": "s7",
+          "text": "Great job today! Multiplication is all about grouping objects.",
+          "durationSeconds": 5
+        },
+        {
+          "id": "s8",
+          "text": "Remember, we can use arrays to find the total in multiplication.",
+          "durationSeconds": 6
+        }
+      ]
+    }
+  ],
+  "teacherNotes": "Encourage students to visualize multiplication through grouping and counting objects."
+}
